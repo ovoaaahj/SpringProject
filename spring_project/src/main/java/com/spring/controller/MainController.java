@@ -12,4 +12,10 @@ public class MainController {
 		return "test";
 	}
 	
+	
+	@RequestMapping(value="/shopMain.do",method=RequestMethod.GET)
+	public String shopMain() {
+		return "shop/shopMain";
+	}
+	
 }
