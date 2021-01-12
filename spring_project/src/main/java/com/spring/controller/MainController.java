@@ -17,5 +17,8 @@ public class MainController {
 	public String shopMain() {
 		return "shop/shopMain";
 	}
-	
+	@RequestMapping(value="/shopContent.do",method=RequestMethod.GET)
+	public String shopContent() {
+		return "shop/shopContent";
+	}
 }
