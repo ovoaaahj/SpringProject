@@ -8,8 +8,12 @@
 </head>
 <body>
 <div class="content">
-	<aside >
-	
+	<aside class="side">
+		<div class="sidecontent">
+			<ul class="all">
+				<li></li>
+			</ul>		
+		</div>
 	</aside>
 
 </div>
