@@ -63,18 +63,56 @@
 	div.content>div.shopMain>div.shopMainTop{
 		border: 1px solid red;
 		display: inline-block;
-		font-size:20px; 
+		font-size:15px; 
 	}
-	div.content>div.shopMain>div.shopMainCenter{
+	
+	/**  
+	* shopMainCenterMenu
+	*/ 
+	
+	div.content>div.shopMain>div.shopMainCenterMenu{
 		border:1px solid blue;
 		text-align:center;
+		padding:20px 0;
 	}
-	div.content>div.shopMain>div.shopMainCenter ul{
+	div.content>div.shopMain>div.shopMainCenterMenu ul{
 		list-style:none;
 	}
-	div.content>div.shopMain>div.shopMainCenter ul li{
+	div.content>div.shopMain>div.shopMainCenterMenu ul li{
 		display:inline-block;
 		padding: 0 8px;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul li a{
+		text-decoration:none;
+		color:black;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul li:hover{
+		text-decoration:underline;
+	}
+	
+	/**  
+	* shopMainCenterTable
+	*/ 
+	div.content>div.shopMain>div.shopMainCenter{
+		margin:auto;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable,
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable tr,
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td,
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable th{
+		border:1px solid black;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable{
+		width:100%;
+		border-collapse:collapse;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable th{
+		height: 50px;
+		text-align: right;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td{
+		height: 500px;
+		padding:10px;
 	}
 </style>
 <script>
@@ -100,7 +138,7 @@
 			$("#subulcoffee").hide();
 			$("#subulgoods").hide();
 		}
-		}
+		}//choose
 		
 		$("#subCoffeeTitle").click(function(){
 			if($("#subulcoffee").is(":visible")){
@@ -109,7 +147,7 @@
 				$("#subulcoffee").show();
 				$(location).attr('href','http://localhost:9000/project/shopMain.do?kind1=coffee');
 			}
-		});
+		}); // CoffeeClick
 		
 		$("#subGoodsTitle").click(function(){
 			if($("#subulgoods").is(":visible")){
@@ -118,8 +156,32 @@
 				$("#subulgoods").show();
 				$(location).attr('href','http://localhost:9000/project/shopMain.do?kind1=goods');
 			}
-		});
-	});
+		}); //GoodsClick
+		
+		var output ="<table class='shopMainCenterTable'>"
+		    output +="<tr>"
+		    output +="<th colspan='4'> New Name LowPrice HighPrice Review"
+		    output +="</th>"
+		    output +="</tr>"
+		    output +="<tr>"
+		    output +="<td>"
+		    output +="첫번째자리"
+		    output +="</td>"
+			output +="<td>"
+			output +="두번째자리"
+			output +="</td>"
+			output +="<td>"
+			output +="세번째자리"
+			output +="</td>"	
+			output +="<td>"
+			output +="네번째자리"
+			output +="</td>"
+		    output +="</tr>"
+		    output +="</table>"
+		    
+		    $(".shopMainCenter").append(output);
+		
+	});//ready
 </script>
 </head>
 <body>
@@ -160,19 +222,40 @@
 		<div class="shopMainTop">
 		<%= kind1 %> <% if(kind2 != null) { %> > <%= kind2 %> <% } %>
 		</div>
-		<div class="shopMainCenter">
-			<%-- if(kind1 == "coffee") { --%>
+		<div class="shopMainCenterMenu">
+			<% if( kind1.equals("coffee")  ) { %>
 			<ul>
-				<h2>커피</h2>
-				<li>싱글오리진</li>
-				<li>블렌드</li>
-				<li>스페셜티</li>
-				<li>커피팩/선물세트</li>
-				<li>더치커피</li>
-				<li>디카페인</li>
+				<h2><% if(kind2 != null) { %>
+						<%= kind2 %>
+					<% }else { %>
+						커피
+					<% } %>				
+				</h2>
+				<li class="underline" id="sub1"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=싱글오리진">싱글오리진</a></li>
+				<li class="underline" id="sub2"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=블렌드">블렌드</a></li>
+				<li class="underline" id="sub3"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=스페셜티">스페셜티</a></li>
+				<li class="underline" id="sub4"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=커피팩/선물세트">커피팩/선물세트</a></li>				
+				<li class="underline" id="sub5"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=더치커피">더치커피</a></li>				
+				<li class="underline" id="sub6"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=디카페인">디카페인</a></li>
 			</ul>
-			<%-- } --%>
-		</div>
+			<% } else if(kind1.equals("goods")){%>
+			<ul>
+				<h2><% if(kind2 != null) { %>
+						<%= kind2 %>
+					<% }else { %>
+						커피용품
+					<% } %>				
+				</h2>
+				<li>핸드드립</li>
+				<li>커피추출용품</li>
+				<li>브루잉세트</li>
+				<li>테이크아웃</li>
+				<li>Bean's Story 굿즈</li>
+			</ul>
+			<% } %>
+		</div> 
+		<div class="shopMainCenter"></div>
+		
 	</div>
 
 </div>
