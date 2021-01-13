@@ -15,7 +15,8 @@
 <style>
 	div.content{
 		border: 1px solid orange;
-		width:100%;
+		width:1500px;
+		margin:auto;
 	}
 	
 	/**  
@@ -23,15 +24,20 @@
 	*/ 
 	div.content>aside.side{
 		border:1px solid red;
-		width:350px;
+		width:250px;
 		height:1000px;
 		display:inline-block;
-		float:left;
+		float:left; 
+	}
+	div.content>aside.side>div.sidecontent{
+		display:inline-block;
 	}
 	div.content>aside.side>div.sidecontent>ul.all{
 		border:1px solid purple;
 		list-style:none;
-		display:inline-block
+		display:inline-block;
+		width:200px;
+		
 		
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli{
@@ -43,7 +49,9 @@
 	}
 	div.content>aside.side>div.sidecontent>ul.all a img{
 		border:1px solid red;
-		width:80%;
+		width:100%;
+		display:inline-block;
+		margin:0;
 	}
 	div.content>aside.side>div.sidecontent>ul.all a {
 		text-decoration:none;
@@ -56,8 +64,10 @@
 	
 	div.content>div.shopMain{
 		border:1px solid green;
-		width:80%;
-		margin-left:380px;
+		width:1200px;
+		margin-left: 20px;
+		display:inline-block;
+		
 		
 	}
 	div.content>div.shopMain>div.shopMainTop{
@@ -95,6 +105,7 @@
 	*/ 
 	div.content>div.shopMain>div.shopMainCenter{
 		margin:auto;
+		text-align:center;
 	}
 	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable,
 	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable tr,
@@ -111,8 +122,59 @@
 		text-align: right;
 	}
 	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td{
-		height: 500px;
-		padding:10px;
+		height: 400px;
+		padding:2px;
+		width:300px;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td img{
+		height:250px;
+		width:250px;
+		margin-top:5px;
+		padding:0;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div{
+		display:inline-block;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.a img{
+		display:inline-block;
+		height: 30px;
+		width:100px;
+		padding: 10px;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.b img{
+		display:inline-block;
+		height: 30px;
+		width:70px;
+		padding: 10px;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.title{
+		font-size: 17px;
+		font-weight:700;
+		padding: 5px 10px;	
+		text-align:left;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.gray{
+		font-size: 12px;
+		font-weight:700;
+		padding: 6px 1px;
+		color:gray;	
+		text-align:left;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.price{
+		font-size: 17px;
+		font-weight:700;
+		padding: 5px 10px;
+		color:black;	
+		display:block;
+		text-align:left;
+	}
+	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.review{
+		font-size: 13px;
+		font-weight:400;
+		padding: 5px 10px;
+		color:gray;	
+		display:block;
+		text-align:left;
 	}
 </style>
 <script>
@@ -123,17 +185,15 @@
 		function choose(){
 		  var kind1 = "<%= kind1 %>";
 			
-		 if(kind1== null){
-			 var item = "";
-		}else{
-			var item = "<%= kind1 %>";
-		}
-		if(item == "coffee"){
-			$("#subulcoffee").show();
-			$("#subulgoods").hide();
-		}else if(item == "goods"){
-			$("#subulcoffee").hide();
-			$("#subulgoods").show();
+		 if(kind1 != "null"){
+			 var item = "<%= kind1 %>";
+				if(item == "coffee"){
+					$("#subulcoffee").show();
+					$("#subulgoods").hide();
+				}else if(item == "goods"){
+					$("#subulcoffee").hide();
+					$("#subulgoods").show();
+				}
 		}else{
 			$("#subulcoffee").hide();
 			$("#subulgoods").hide();
@@ -165,7 +225,25 @@
 		    output +="</tr>"
 		    output +="<tr>"
 		    output +="<td>"
-		    output +="첫번째자리"
+		    output +="<img src = 'http://localhost:9000/project/images/콜롬비아산_어거스틴.jpg'>"
+		    output += "<div class='a'>"
+		    output +="<img src = 'http://localhost:9000/project/images/이달의커피_할인.png'>"
+		    output += "</div>"
+		   	output += "<div class='b'>"
+		    output += "<img src = 'http://localhost:9000/project/images/디카페인.png'>"
+		    output += "</div>"
+		    output += "<div class='title'>"
+		    output += "디카페인 콜롬비아 수프리모 후일라 피탈리토 산어거스틴"
+		    output += "</div>"
+		    output += "<div class='gray'>"
+		 	output += "#캐러멜 #꿀 #오렌지 #밀크초콜릿"
+		    output += "</div>"
+		    output += "<div class='price'>"
+			output += "8000"
+			output += "</div>"
+			output += "<div class='review'>"
+			output += "후기: 17"
+			output += "</div>"
 		    output +="</td>"
 			output +="<td>"
 			output +="두번째자리"
@@ -220,9 +298,10 @@
 	</aside>
 	<div class="shopMain">
 		<div class="shopMainTop">
-		<%= kind1 %> <% if(kind2 != null) { %> > <%= kind2 %> <% } %>
+		<% if(kind1 != null) {%> <%= kind1 %> <% if(kind2 != null) { %> > <%= kind2 %> <% } } else {}%> 
 		</div>
 		<div class="shopMainCenterMenu">
+			<% if(kind1 != null) {%>
 			<% if( kind1.equals("coffee")  ) { %>
 			<ul>
 				<h2><% if(kind2 != null) { %>
@@ -253,6 +332,7 @@
 				<li>Bean's Story 굿즈</li>
 			</ul>
 			<% } %>
+			<% } //kind1이 null이 아닐때 %>
 		</div> 
 		<div class="shopMainCenter"></div>
 		
