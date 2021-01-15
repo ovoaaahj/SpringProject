@@ -6,73 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-/**
-		footer
-	*/
-	*{
-		margin:0px; padding:0px;
-		font-family:"나눔바른고딕";		
-	}
-	
-	footer{
-		background-color:black;
-		color:white;
-	}
 
-	footer>div.info{
-		width:1000px;
-		padding:50px;
-		margin:auto;
-	}
-
-	footer>div.info>div{
-			font-size:13px;
-			padding:3px 0;	
-			margin-left: 5px;
-			margin-bottom:15px;
-	}
-	footer nav>ul>li {
-		display:inline-block;
-		
-	}
-	footer nav>ul>li>a {		
-		text-decoration:none;
-		font-size:13px;
-		font-weight:bold;
-		color:#333;	
-		padding:0 8px 0 3px;	
-	}
-	footer nav>ul>li div {
-	
-		background-color:gray;
-		width:1px; height:10px;
-		display:inline-block;
-	} 
-	footer>div.info>div ul {
-	
-	 font-size:16px;
-
-	}
-	
-	
-footer{
-		/* background-color:rgb(242,242,242); */
-		background-color:#ecd8c6;
-		color:black;
-}
-
-footer>div.info{
-	width:1100px;
-	height:150px;
-	padding:30px;
-	margin:auto;
-}
-
-
-footer>div.info>div{
-		font-size:13px;
-		padding:3px 0;	
-}
 </style>
 </head>
 <body>
