@@ -311,10 +311,11 @@
 					
 					//2-1. DHTML을 이용하여 테이블 생성 및 출력
 					var output = "<table class='shopMainCenterTable'>";
-						output +="<tr>";
 					for(var i in jdata.jlist){
-						output +="<a href='#'>";
-						output +="<td>"
+						if(i%4 == 0){
+							output +="<tr>";
+							output +="<a href='#'>";
+							output +="<td>"
 						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
 						    output += "<div class='event'>"
 						    output += "<div class='a'>"
@@ -346,6 +347,76 @@
 							output += "</div>"
 						    output +="</td>"
 						output +="</a>"
+						}else if(i%4==3){
+							output +="<a href='#'>";
+							output +="<td>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output += "<div class='event'>"
+						    output += "<div class='a'>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
+						    output += "</div>"
+						   	output += "<div class='b'>"
+						    output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
+						    output += "</div>"
+						    output += "</div>"
+						    output += "<div class='title'>"
+						    output += jdata.jlist[i].ptitle
+						    output += "</div>"
+						    output += "<div class='gray'>"
+						 	output += jdata.jlist[i].phash
+						    output += "</div>"
+						    output += "<div class='price'>"
+						    output += "<div class='beforeprice'>"
+							output += jdata.jlist[i].pprice+"원"
+							output += "</div>"
+							output += "<div class='nowprice'>"
+							output += jdata.jlist[i].pprice*0.9+"원"
+							output += "</div>"
+							output += "<div class='discount'>"
+							output += "[10%]"
+							output += "</div>"
+							output += "</div>"
+							output += "<div class='review'>"
+							output += "후기: 17"
+							output += "</div>"
+						    output +="</td>"
+							output +="</a>"
+							output +="</tr>"
+						}else{
+							output +="<a href='#'>";
+							output +="<td>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output += "<div class='event'>"
+						    output += "<div class='a'>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
+						    output += "</div>"
+						   	output += "<div class='b'>"
+						    output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
+						    output += "</div>"
+						    output += "</div>"
+						    output += "<div class='title'>"
+						    output += jdata.jlist[i].ptitle
+						    output += "</div>"
+						    output += "<div class='gray'>"
+						 	output += jdata.jlist[i].phash
+						    output += "</div>"
+						    output += "<div class='price'>"
+						    output += "<div class='beforeprice'>"
+							output += jdata.jlist[i].pprice+"원"
+							output += "</div>"
+							output += "<div class='nowprice'>"
+							output += jdata.jlist[i].pprice*0.9+"원"
+							output += "</div>"
+							output += "<div class='discount'>"
+							output += "[10%]"
+							output += "</div>"
+							output += "</div>"
+							output += "<div class='review'>"
+							output += "후기: 17"
+							output += "</div>"
+						    output +="</td>"
+							output +="</a>"
+						}
 					}
 						output +="</tr>"
 					output +="</table>";

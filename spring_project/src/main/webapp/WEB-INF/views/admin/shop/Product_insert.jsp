@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
 <style>
 	div.shopinsert{
 		border:1px solid red;
@@ -105,12 +106,11 @@
 </style>
 <script>
 $(document).ready(function(){
-	$(".productInsert").click(function(
-			
 	
-	));
-	
-});
+	$("#productInsert").click(function(){
+			shopinsertForm.submit();
+			});
+	});
 </script>
 </head>
 <body>
@@ -150,7 +150,7 @@ $(document).ready(function(){
 		</li>
 		<li>
 			<label>가격</label>
-			<input type='text' placeholder="숫자만 입력해주세요" id="pprice" name="phash">
+			<input type='text' placeholder="숫자만 입력해주세요" id="pprice" name="pprice">
 		</li>
 		<li>
 			<label>할인여부</label>

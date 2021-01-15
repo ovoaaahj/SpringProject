@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +12,29 @@ import com.spring.vo.ProductVO;
 
 @Controller
 public class Admin_ShopController {
+
+	
+	
+	/**
+	 * 상품창 목록경로
+	 */
+	@RequestMapping(value="admin_product_list.do", method = RequestMethod.GET)
+	public ModelAndView admin_product_list() {
+		
+		
+		ModelAndView mv = new ModelAndView();
+		AdminProductDAO dao = new AdminProductDAO();
+		
+		ArrayList<ProductVO> list = dao.getList();
+		
+		mv.addObject("list",list);
+		
+		mv.setViewName("admin/shop/Product_list");
+		
+		return mv;
+		
+	}
+	
 	/**
 	 * 인서트 proc
 	 */
@@ -19,7 +44,7 @@ public class Admin_ShopController {
 		String go="";
 		
 		boolean result = false;
-		result = dao.productInsert();
+		result = dao.productInsert(vo);
 		
 		if(result) {
 			go="admin/shop/Product_list";
