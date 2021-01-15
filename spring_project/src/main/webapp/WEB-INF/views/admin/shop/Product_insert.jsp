@@ -103,6 +103,15 @@
 		 padding:0px;
 	}
 </style>
+<script>
+$(document).ready(function(){
+	$(".productInsert").click(function(
+			
+	
+	));
+	
+});
+</script>
 </head>
 <body>
 <div class="shopinsert">
@@ -114,11 +123,11 @@
 	<ul>
 		<li>
 			<label>상품명</label>
-			<input type='text' id="ptitle">
+			<input type='text' id="ptitle" name="ptitle">
 		</li>
 		<li>
 			<label>대분류</label>
-			<select id="pkind1">
+			<select id="pkind1" name="pkind1">
 				<option value="coffee">커피</option>
 				<option value="goods">상품</option>
 				<option value="tea">티</option>
@@ -126,22 +135,22 @@
 		</li>
 		<li>
 			<label>소분류</label>
-			<select id="pkind2">
-				<option>싱글오리진</option>
-				<option>블렌드</option>
-				<option>스페셜티</option>
-				<option>커피팩/선물세트</option>
-				<option>더치커피</option>
-				<option>디카페인</option>
+			<select id="pkind2" name="pkind2">
+				<option value="싱글오리진">싱글오리진</option>
+				<option value="블렌드">블렌드</option>
+				<option value="스페셜티">스페셜티</option>
+				<option value="커피팩/선물세트">커피팩/선물세트</option>
+				<option value="더치커피">더치커피</option>
+				<option value="디카페인">디카페인</option>
 			</select>
 		</li>
 		<li>
 			<label>해쉬설명</label>
-			<input type='text' placeholder="#000 형식으로 입력해주세요">
+			<input type='text' placeholder="#000 형식으로 입력해주세요" id="phash" name="phash">
 		</li>
 		<li>
 			<label>가격</label>
-			<input type='text' placeholder="숫자만 입력해주세요">
+			<input type='text' placeholder="숫자만 입력해주세요" id="pprice" name="phash">
 		</li>
 		<li>
 			<label>할인여부</label>
@@ -154,7 +163,7 @@
 			<label>카페인</label>
 			<div class="radio">
 			<input type="radio" name="sub2" value="디카페인.png">디카페인
-			<input type="radio" name="sub1" value="">카페인
+			<input type="radio" name="sub2" value="">카페인
 			</div>
 		</li>
 		<li>

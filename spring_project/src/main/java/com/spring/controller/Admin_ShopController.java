@@ -5,16 +5,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.dao.AdminProductDAO;
+import com.spring.vo.ProductVO;
+
 @Controller
 public class Admin_ShopController {
 	/**
 	 * ¿Œº≠∆Æ proc
 	 */
 	@RequestMapping(value="/shop_insert_proc.do",method = RequestMethod.POST)
-	public ModelAndView shop_insert_proc(){
-		ModelAndView mv = new ModelAndView();
+	public String shop_insert_proc(ProductVO vo){
+		AdminProductDAO dao = new AdminProductDAO();
+		String go="";
 		
-		return mv;
+		boolean result = false;
+		result = dao.productInsert();
+		
+		if(result) {
+			go="admin/shop/Product_list";
+		}else {
+			go="error";
+		}
+		return go;
 	}
 	
 	
