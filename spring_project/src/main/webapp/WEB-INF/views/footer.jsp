@@ -19,8 +19,6 @@ footer{
       width:100%;
       background-color:#ecd8c6;
       color:black;
-        position:absolute;
-   bottom:0;
    height:220px;   /* Height of the footer */
 }
 

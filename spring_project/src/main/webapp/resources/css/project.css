@@ -1,23 +1,21 @@
-	* {
-		margin:0px;
-		padding:0px;
-	}
-	header {		
-	position:absolute;
-	top:0px;
-  width:100%; height:20px;
-      margin:0;
+* {
+	margin:0px;
+	padding:0px;
 }
-	 header>div{
-      width:100%; 
-      margin:auto;
-   }
 body {		
 		margin:0px; padding:0px;
 		/* background-color:rgb(253,252,240); */
 		font-family:"³ª´®¹Ù¸¥°íµñ";
   		font-size: 13px;
 	}
+	header {		
+	  	width:100%;
+	    margin:0;
+	}
+	 header>div{
+      width:100%; 
+      margin:auto;
+   }
 
 	header>div>nav>ul:first-child {
 		text-align:right;
@@ -146,8 +144,6 @@ footer{
 		width:100%;
 		background-color:#ecd8c6;
 		color:black;
-		  position:absolute;
-   bottom:0;
    height:220px;   /* Height of the footer */
 }
 
