@@ -64,7 +64,7 @@
 				<li class="allli"><h3>고객센터</h3></li>
 				<li class="allli"><h3>이벤트</h3></li>
 			</ul>		
-		</div>
+		</div>s
 	</aside>
 	<div class="shopMain">
 		<!-- shopMainCenter 시작 -->

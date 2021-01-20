@@ -5,7 +5,9 @@
 
 	String kind1 = request.getParameter("kind1");
 	String kind2 = request.getParameter("kind2");
-
+	
+	ProductDAO dao = new ProductDAO();
+	ArrayList<ProductVO> list = dao.getList();
 %>
 <!DOCTYPE html>
 <html>
@@ -106,6 +108,40 @@
 		text-decoration:underline;
 	}
 	
+	div.content>div.shopMain div.shopMainCenter div.subMainCenter{
+		height: 30px;
+		text-align: right;
+		border:1px solid black;
+	}
+	
+	div.subMainCenter{
+		height: 30px;
+		text-align: right;
+		border:1px solid black;
+		display:inline_block;
+	}
+	div.subMainCenter div.search{
+		padding:0px 10px;
+		font-size:13px;
+		margin:0;
+		text-align:left;
+		display:inline-block;
+		border:1px solid red;
+	}
+	div.subMainCenter div.orders{
+		padding:0px 10px;
+		font-size:13px;
+		margin:0;
+		text-align:right;
+		display:inline-block;
+		border:1px solid red;
+	}
+	div.subMainCenter div.orders span.left{
+		border-left:1px solid gray;
+		padding:0px 1px;
+	
+	}
+	
 	/**  
 	* shopMainCenterTable
 	*/ 
@@ -113,69 +149,58 @@
 		margin:auto;
 		text-align:center;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable,
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable tr,
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td,
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable th{
+	 table.shopMainCenterTable,
+	 table.shopMainCenterTable tr,
+	 table.shopMainCenterTable td,
+	 table.shopMainCenterTable th{
 		border:1px solid black;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable{
+	table.shopMainCenterTable{
 		width:100%;
 		border-collapse:collapse;
 		border-top:1px solid lightgray;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable th{
-		height: 30px;
-		text-align: right;
-	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable th.search span{
-		padding:0px 10px;
-		font-size:13px;
-		margin:0;
-	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable th.search span.left{
-		border-left:1px solid gray;
-	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td{
+
+	table.shopMainCenterTable td{
 		height: 400px;
 		padding:2px;
 		width:300px;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td img{
+	 table.shopMainCenterTable td img{
 		height:250px;
 		width:250px;
 		margin-top:5px;
 		padding:0;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div{
+	 table.shopMainCenterTable td div{
 		display:inline-block;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.event{
+	 table.shopMainCenterTable td div.event{
 		border:1px solid red;
 		display:block;
 		text-align:left;
 		height:50px;
 		margin:0px;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.event div.a img{
+	 table.shopMainCenterTable td div.event div.a img{
 		display:inline-block;
 		height: 30px;
 		width:100px;
 		padding: 0px 0px 3px 24px;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.event div.b img{
+	 table.shopMainCenterTable td div.event div.b img{
 		display:inline-block;
 		height: 30px;
 		width:70px;
 		padding: 3px;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.title{
+	table.shopMainCenterTable td div.title{
 		font-size: 17px;
 		font-weight:700;
 		padding: 5px 10px;	
 		text-align:left;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.gray{
+	 table.shopMainCenterTable td div.gray{
 		font-size: 12px;
 		font-weight:700;
 		padding: 6px 10px;
@@ -183,12 +208,12 @@
 		text-align:left;
 		display:block;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.price{
+	 table.shopMainCenterTable td div.price{
 		border:1px solid red;
 		text-align:left;
 		display:block;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.beforeprice{
+	 table.shopMainCenterTable td div.beforeprice{
 		font-size: 18px;
 		font-weight:700;
 		padding: 5px 2px 5px 10px;
@@ -198,7 +223,7 @@
 		text-decoration:line-through
 	}
 	
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.nowprice{
+	table.shopMainCenterTable td div.nowprice{
 		font-size: 18px;
 		font-weight:700;
 		padding: 5px 2px;
@@ -206,7 +231,7 @@
 		display:inline-block;
 		text-align:left;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.discount{
+	 table.shopMainCenterTable td div.discount{
 		font-size: 18px;
 		font-weight:700;
 		padding: 5px 2px;
@@ -215,7 +240,7 @@
 		text-align:left;
 		color:orange;
 	}
-	div.content>div.shopMain>div.shopMainCenter>table.shopMainCenterTable td div.review{
+	 table.shopMainCenterTable td div.review{
 		font-size: 11px;
 		font-weight:400;
 		padding: 5px 10px;
@@ -266,6 +291,145 @@
 			}
 		}); //GoodsClick
 		
+		/**페이지 로딩 시 회원 전체 리스트 출력 **/
+		product_list("total", "","");
+		
+		$("#sname").change(function(){
+			if($("#sname").val()=="total"){
+				$("#svalue").val("");
+			}
+		});
+		
+		
+		
+		/** Ajax를 활용한 물건전체 리스트 출력 **/
+		function product_list(sname, svalue, rpage){
+			$.ajax({
+				url :"product_list_proc.do?sname="+sname+"&svalue="+svalue, //+"&rpage="+rpage,
+				success:function(result){
+					var jdata =result ;
+					
+					//2-1. DHTML을 이용하여 테이블 생성 및 출력
+					var output = "<table class='shopMainCenterTable'>";
+					for(var i in jdata.jlist){
+						if(i%4 == 0){
+							output +="<tr>";
+							output +="<a href='#'>";
+							output +="<td>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output += "<div class='event'>"
+						    output += "<div class='a'>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
+						    output += "</div>"
+						   	output += "<div class='b'>"
+						    output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
+						    output += "</div>"
+						    output += "</div>"
+						    output += "<div class='title'>"
+						    output += jdata.jlist[i].ptitle
+						    output += "</div>"
+						    output += "<div class='gray'>"
+						 	output += jdata.jlist[i].phash
+						    output += "</div>"
+						    output += "<div class='price'>"
+						    output += "<div class='beforeprice'>"
+							output += jdata.jlist[i].pprice+"원"
+							output += "</div>"
+							output += "<div class='nowprice'>"
+							output += jdata.jlist[i].pprice*0.9+"원"
+							output += "</div>"
+							output += "<div class='discount'>"
+							output += "[10%]"
+							output += "</div>"
+							output += "</div>"
+							output += "<div class='review'>"
+							output += "후기: 17"
+							output += "</div>"
+						    output +="</td>"
+						output +="</a>"
+						}else if(i%4==3){
+							output +="<a href='#'>";
+							output +="<td>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output += "<div class='event'>"
+						    output += "<div class='a'>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
+						    output += "</div>"
+						   	output += "<div class='b'>"
+						    output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
+						    output += "</div>"
+						    output += "</div>"
+						    output += "<div class='title'>"
+						    output += jdata.jlist[i].ptitle
+						    output += "</div>"
+						    output += "<div class='gray'>"
+						 	output += jdata.jlist[i].phash
+						    output += "</div>"
+						    output += "<div class='price'>"
+						    output += "<div class='beforeprice'>"
+							output += jdata.jlist[i].pprice+"원"
+							output += "</div>"
+							output += "<div class='nowprice'>"
+							output += jdata.jlist[i].pprice*0.9+"원"
+							output += "</div>"
+							output += "<div class='discount'>"
+							output += "[10%]"
+							output += "</div>"
+							output += "</div>"
+							output += "<div class='review'>"
+							output += "후기: 17"
+							output += "</div>"
+						    output +="</td>"
+							output +="</a>"
+							output +="</tr>"
+						}else{
+							output +="<a href='#'>";
+							output +="<td>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output += "<div class='event'>"
+						    output += "<div class='a'>"
+						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
+						    output += "</div>"
+						   	output += "<div class='b'>"
+						    output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
+						    output += "</div>"
+						    output += "</div>"
+						    output += "<div class='title'>"
+						    output += jdata.jlist[i].ptitle
+						    output += "</div>"
+						    output += "<div class='gray'>"
+						 	output += jdata.jlist[i].phash
+						    output += "</div>"
+						    output += "<div class='price'>"
+						    output += "<div class='beforeprice'>"
+							output += jdata.jlist[i].pprice+"원"
+							output += "</div>"
+							output += "<div class='nowprice'>"
+							output += jdata.jlist[i].pprice*0.9+"원"
+							output += "</div>"
+							output += "<div class='discount'>"
+							output += "[10%]"
+							output += "</div>"
+							output += "</div>"
+							output += "<div class='review'>"
+							output += "후기: 17"
+							output += "</div>"
+						    output +="</td>"
+							output +="</a>"
+						}
+					}
+						output +="</tr>"
+					output +="</table>";
+					$("table.shopMainCenterTable").remove();
+					$("div.subMainCenter").after(output);
+					
+					
+				}//success
+			});//ajax
+		
+		
+		
+	<%-- 	
 		var output ="<table class='shopMainCenterTable'>"
 		    output +="<tr>"
 		    output +="<th colspan='4' class='search'>" 
@@ -278,15 +442,15 @@
 		    output +="</tr>"
 		    <%   for(int j=0;j<3;j++){ %>
 		    output +="<tr>"
-		    <%	  for(int i=0 ;i<4;i++) {%>
+		    <%	  for(ProductVO vo:list) {%>
 		    output +="<td>"
-		    output +="<img src = 'http://localhost:9000/project/images/콜롬비아산_어거스틴.jpg'>"
+		    output +="<img src = 'http://localhost:9000/project/images/<%= vo.getPmphoto() %>'>"
 		    output += "<div class='event'>"
 		    output += "<div class='a'>"
-		    output +="<img src = 'http://localhost:9000/project/images/이달의커피_할인.png'>"
+		    output +="<img src = 'http://localhost:9000/project/images/<%= vo.getPsub1() %>'>"
 		    output += "</div>"
 		   	output += "<div class='b'>"
-		    output += "<img src = 'http://localhost:9000/project/images/디카페인.png'>"
+		    output += "<img src = 'http://localhost:9000/project/images/<%= vo.getPsub2() %>'>"
 		    output += "</div>"
 		    output += "</div>"
 		    output += "<div class='title'>"
@@ -315,9 +479,13 @@
 		    <% } %>
 		    output +="</table>"
 		    	-->
-		    $(".shopMainCenter").append(output);
+		    $(".shopMainCenter").append(output); --%>
+		    
+		    
+		}//product_list    
 		
 	});//ready
+	
 </script>
 </head>
 <body>
@@ -393,6 +561,24 @@
 			<% } //kind1이 null이 아닐때 %>
 		</div> 
 		<div class="shopMainCenter"></div>
+		<div class="subMainCenter">
+			<div class="search">
+				<select id='sname'>
+				<option value='total'>전체</option>
+				<option value='ptitle'>이름</option>
+				<option value='price'>가격</option>
+				</select>
+				<input type='text' id='svalue'>
+				</div>
+				<div  class='orders'>
+				<span id='pdate'>New</span>
+				<span id='ptitle' class='left'>Name</span> 
+				<span id='pprice' class='left'>LowPrice</span> 
+				<span id='pprice' class='left'>HighPrice</span>
+			    <span id='name' class='left'>Review</span>
+				</div>	    
+	
+		</div>
 		
 	</div>
 
