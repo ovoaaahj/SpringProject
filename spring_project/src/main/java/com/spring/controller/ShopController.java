@@ -1,11 +1,8 @@
 package com.spring.controller;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,11 +13,14 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.spring.dao.ProductDAO;
+import com.spring.service.ShopService;
 import com.spring.vo.ProductVO;
 
 @Controller
 public class ShopController {
-
+	@Autowired
+	private ShopService shopService;
+	
 	@RequestMapping(value = "/shopMain2.do", method = RequestMethod.GET)
 	public String shopMain2() {
 		return "shop/shopMain2";
@@ -72,52 +72,22 @@ public class ShopController {
 
 	
 	@RequestMapping(value = "/shopMain3.do", method = RequestMethod.GET)
-	public ModelAndView shopMain3(String pkind1,String pkind2) {
-		ModelAndView mv = new ModelAndView();
-		
-		ProductDAO dao = new ProductDAO();
-		
-		ArrayList<ProductVO> list = dao.getList();
-		
-		mv.addObject("list",list);
-		mv.setViewName("shop/shopMain3");
-		
-		return mv;
+	public ModelAndView shopMain3() {
+		return shopService.getList();
 	}
 	
 	
 	@RequestMapping(value = "/shopMain3_1.do", method = RequestMethod.GET)
 	public ModelAndView shopMain3_1(String pkind1) {
-		ModelAndView mv = new ModelAndView();
-		
-		ProductDAO dao = new ProductDAO();
-		System.out.println(pkind1);
-		ArrayList<ProductVO> list = dao.getList(pkind1);
-		
-		mv.addObject("list",list);
-		mv.setViewName("shop/shopMain3_1");
-		
-		return mv;
+		return shopService.getList(pkind1);
 	}
 	
 	@RequestMapping(value = "/shopMain3_2.do", method = RequestMethod.GET)
 	public ModelAndView shopMain3_2(String pkind1,String pkind2) {
-		ModelAndView mv = new ModelAndView();
-		
-		ProductDAO dao = new ProductDAO();
-		
-		ArrayList<ProductVO> list = dao.getList(pkind1,pkind2);
-		
-		mv.addObject("list",list);
-		mv.setViewName("shop/shopMain3_2");
-		
-		return mv;
+		return shopService.getList(pkind1, pkind2);
 	}
 	
-	@RequestMapping(value = "/shopMain.do", method = RequestMethod.GET)
-	public String shopMain() {
-		return "shop/shopMain";
-	}
+
 
 	@RequestMapping(value = "/shopContent.do", method = RequestMethod.GET)
 	public String shopContent() {

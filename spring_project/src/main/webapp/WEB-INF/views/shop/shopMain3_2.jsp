@@ -303,9 +303,6 @@
 			}
 		}); //GoodsClick
 	
-		$("#subTeaTitle").click(function(){
-			$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?pkind1=tea');
-		});
 		
 	});//ready
 </script>
