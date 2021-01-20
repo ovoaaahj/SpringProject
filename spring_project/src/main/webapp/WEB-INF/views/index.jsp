@@ -35,7 +35,7 @@
 	
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
             <div class="carousel-inner">
-          <!-- 슬라이드 쇼ㅅㅂ -->
+          <!-- 슬라이드 쇼 -->
           <div class="carousel-item active">
             <div class="visual_37 vl">
                 <a href="#">
