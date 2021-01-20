@@ -24,14 +24,14 @@
 		text-align:center;
 		border:1px solid red;
 	}
-	div.shopinsert div.shopInsertContent ul{
+	div.shopinsert div.shopInsertContent ul.big{
 		list-style:none;
 		border:1px solid green;
-		width:800px;
+		width:900px;
 		margin:auto;
 	}
 	
-	div.shopinsert div.shopInsertContent ul li{
+	div.shopinsert div.shopInsertContent ul.big>li{
 		margin:auto;
 		border:1px solid blue;
 		padding:10px;
@@ -41,7 +41,7 @@
 		
 		
 	}
-	div.shopInsertContent ul li label{
+	div.shopInsertContent ul.big>li>label{
 		border:1px solid white;
 		border-bottom :1px solid gray;
 		height:30px;
@@ -51,7 +51,7 @@
 		float:left;
 	}
 	
-	div.shopinsert div.shopInsertContent ul li input[type='text']{
+	div.shopinsert div.shopInsertContent ul.big>li>input[type='text']{
 		border: 1px solid white;
 		border-bottom: 1px solid gray;
 		height:23px;
@@ -60,7 +60,7 @@
 		display:inline-block;
 	}
 	
-	div.shopinsert div.shopInsertContent ul li select{
+	div.shopinsert div.shopInsertContent ul.big>li>select{
 		border: 1px solid white;
 		border-bottom: 1px solid gray;
 		height:30px;
@@ -68,14 +68,14 @@
 		padding-top:5px;
 		margin-top:5px;
 	}
-	div.shopinsert div.shopInsertContent ul li div.radio{
+	div.shopinsert div.shopInsertContent ul.big>li>div.radio{
 		border-bottom:1px solid gray;
 		display:inline-block;
 		height:30px;
 		width:200px;
 		margin:5px 0;
 	}
-	div.shopinsert div.shopInsertContent ul li button.btnStylep{
+	div.shopinsert div.shopInsertContent ul.big>li>button.btnStylep{
 		border:1px solid gray;
 		border-radius:4px;
 		background-color:white;
@@ -84,18 +84,18 @@
 		margin:0 10px;
 		
 	}
-	div.shopinsert div.shopInsertContent ul li.picture{
+	div.shopinsert div.shopInsertContent ul.big>li.picture{
 		border:1px solid red;
 		height:220px;
 		text-align:center;
 	}
-	div.shopinsert div.shopInsertContent ul li div.picture{
+	div.shopinsert div.shopInsertContent ul.big>li>div.picture{
 		border:1px solid green;
 		height:200px;
 		width:200px;
 		margin:auto;
 	}
-	div.shopinsert div.shopInsertContent ul li p{
+	div.shopinsert div.shopInsertContent ul.big>li p{
 		 border-bottom:1px solid gray;
 		 margin:auto;
 		 display:inline-block;
@@ -103,13 +103,59 @@
 		 height:30px;
 		 padding:0px;
 	}
+	
+	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) button{
+		width:50px;
+		height:40px;
+		float:right;
+	}
+	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul{
+		border:1px solid red;
+		text-align:center;
+		list-style:none;
+	}
+	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul li{
+		border:1px solid red;
+		padding:5px 0;
+	}
+	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul li{
+		border:1px solid red;
+		padding:5px 0;
+	}
+	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul li label{
+		border-bottom:1px solid gray;
+		display:inline-block;
+		width:80px;
+		height:30px;
+		padding:0,5px;
+	}
+	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul li input[type='text']{
+		border: 1px solid white;
+		border-bottom:1px solid gray;
+		display:inline-block;
+		width:200px;
+		height:30px;
+	}
 </style>
 <script>
 $(document).ready(function(){
+	$(".moreul").hide();
 	
 	$("#productInsert").click(function(){
 			shopinsertForm.submit();
 			});
+	$("#more").click(function(){
+		if($(".moreul").is(":visible")){
+			$(".price").css('height','30');
+			$(".moreul").hide();
+		}else{
+			$(".price").css('height','180');
+			$(".moreul").show();
+		}
+		
+	});
+	
+	
 	});
 </script>
 </head>
@@ -120,7 +166,7 @@ $(document).ready(function(){
 	</div>
 	<div class="shopInsertContent">
 	<form name="shopinsertForm" action="shop_insert_proc.do" method="post">
-	<ul>
+	<ul class="big">
 		<li>
 			<label>상품명</label>
 			<input type='text' id="ptitle" name="ptitle">
@@ -148,10 +194,27 @@ $(document).ready(function(){
 			<label>해쉬설명</label>
 			<input type='text' placeholder="#000 형식으로 입력해주세요" id="phash" name="phash">
 		</li>
-		<li>
-			<label>가격</label>
-			<input type='text' placeholder="숫자만 입력해주세요" id="pprice" name="pprice">
+		<li class="price">
+			<label>기본가격</label>
+			<input type='text' placeholder="숫자만 입력해주세요" id="pprice100" name="pprice100">
+			<button type="button" id="more">more</button>
+				<ul class="moreul">
+					<li>
+						<label>200g 가격</label>
+						<input type='text' placeholder="숫자만 입력해주세요" id="pprice200" name="pprice200">
+					</li>
+					<li>
+						<label>500g 가격</label>
+						<input type='text' placeholder="숫자만 입력해주세요" id="pprice500" name="pprice500">
+					</li>
+					<li>
+						<label>1kg 가격</label>
+						<input type='text' placeholder="숫자만 입력해주세요" id="pprice1000" name="pprice1000">
+					</li>	
+						
+				</ul>
 		</li>
+	
 		<li>
 			<label>할인여부</label>
 			<div class="radio">
@@ -173,9 +236,16 @@ $(document).ready(function(){
 		<li class="picture">
 		<div class="picture"></div>
 		</li>
+		<li>
+			<p>마우스올렸을때사진</p>
+			
+		</li>
+		<li class="picture">
+		<div class="picture"></div>
+		</li>
 		<li >
 			<button type="button" id="productInsert" class="btnStylep">등록하기</button>
-			<button type="button" id="productList"  class="btnStylep">목록으로</button>
+			<button type="button" id="productList"  class="btnStylep"><a href="http://localhost:9000/project/admin/product_list.do">목록으로</a></button>
 		</li>
 	</ul>
 	</form>

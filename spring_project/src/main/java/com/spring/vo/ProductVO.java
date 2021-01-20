@@ -2,7 +2,7 @@ package com.spring.vo;
 
 public class ProductVO {
 	String pid,pmphoto,pmsphoto,pcphoto,pcsphoto,psub1,psub1s,psub2,psub2s,psub3,
-			psub3s,ptitle,phash,pprice,pcontent,pcontent2,pdate,pkind1,pkind2;
+			psub3s,ptitle,phash,pprice100,pprice200,pprice500,pprice1000 ,pcontent,pcontent2,pdate,pkind1,pkind2;
 	int rno;
 	public int getRno() {
 		return rno;
@@ -132,12 +132,12 @@ public class ProductVO {
 		this.phash = phash;
 	}
 
-	public String getPprice() {
-		return pprice;
+	public String getPprice100() {
+		return pprice100;
 	}
 
-	public void setPprice(String pprice) {
-		this.pprice = pprice;
+	public void setPprice100(String pprice) {
+		this.pprice100 = pprice;
 	}
 
 	public String getPcontent() {
