@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
 <style>
    div.admin_shop_content{
    		margin:auto;
@@ -77,6 +78,19 @@
 		margin:10px;
 	}
 </style>
+<script>
+	$(document).ready(function(){
+		$("#deleteProduct").click(function(){
+			  var pid="";
+		      $("input[name='chk']:checked").each(function(index){
+		         pid += $("input[name='chk']:checked").attr("id");
+		      });
+		      
+		      location.href='http://localhost:9000/project/admin/product_delete.do?pid='+pid;
+		});
+	});//ready
+
+</script>
 </head>
 <body>
 <div class="admin_shop_content">
@@ -100,18 +114,18 @@
 			</tr>
 			<c:forEach var="vo"  items="${list}">
 			<tr>
-				<td><input type='checkbox' value=${vo.pid }></td>
+				<td><input type='checkbox' name='chk' id=${vo.pid } ></td>
 				<td>${vo.ptitle}</td>
-				<td>${vo.pprice}</td>
+				<td>${vo.pprice100}</td>
 				<td>${vo.pkind1 }</td>
 				<td>${vo.pkind2 }</td>
-				<td>${vo.psub1 }</td>
+				<td>${vo.psub1 }</td> <!-- 여기는 O,X로 수정해야함 -->
 			</tr>
 			</c:forEach>
 			<tr>
 			<td colspan="6">
 				<a href="http://localhost:9000/project/admin_product_insert.do"><button type='button'>상품추가</button></a>
-				<button type='button'>상품삭제</button>
+				<button type='button' id="deleteProduct">상품삭제</button>
 			</td>
 			</tr>
 		</table>
