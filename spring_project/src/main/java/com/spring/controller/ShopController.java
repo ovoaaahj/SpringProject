@@ -20,37 +20,6 @@ import com.spring.vo.ProductVO;
 
 @Controller
 public class ShopController {
-	
-	
-	@RequestMapping(value = "/dbtest.do", method = RequestMethod.GET)
-	public String dbtest() {
-		// 0 ---> 드라이버준비
-		// 1
-		String result = "";
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			// 2
-			String url = "jdbc:oracle:thin:@localhost:1521";
-			String user = "coffee";
-			String pass = "coffee";
-			Connection conn = DriverManager.getConnection(url, user, pass);
-			// 3
-			Statement stmt = conn.createStatement();
-			// Statement pstmt=conn.prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery("select empno,ename from emp");
-			while (rs.next()) {
-				System.out.println("empno :" + rs.getString(1));
-				System.out.println("ename :" + rs.getString(2));
-			}
-			result = "index";
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}// dbtest
 
 	@RequestMapping(value = "/shopMain2.do", method = RequestMethod.GET)
 	public String shopMain2() {
@@ -83,7 +52,7 @@ public class ShopController {
 			jobj.addProperty("psub3", vo.getPsub3());
 			jobj.addProperty("ptitle", vo.getPtitle());
 			jobj.addProperty("phash", vo.getPhash());
-			jobj.addProperty("pprice", vo.getPprice());
+			jobj.addProperty("pprice", vo.getPprice100());
 			jobj.addProperty("pkind1", vo.getPkind1());
 			jobj.addProperty("pkind2", vo.getPkind2());
 		
@@ -100,6 +69,51 @@ public class ShopController {
 
 	}  
 
+
+	
+	@RequestMapping(value = "/shopMain3.do", method = RequestMethod.GET)
+	public ModelAndView shopMain3(String pkind1,String pkind2) {
+		ModelAndView mv = new ModelAndView();
+		
+		ProductDAO dao = new ProductDAO();
+		
+		ArrayList<ProductVO> list = dao.getList();
+		
+		mv.addObject("list",list);
+		mv.setViewName("shop/shopMain3");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "/shopMain3_1.do", method = RequestMethod.GET)
+	public ModelAndView shopMain3_1(String pkind1) {
+		ModelAndView mv = new ModelAndView();
+		
+		ProductDAO dao = new ProductDAO();
+		System.out.println(pkind1);
+		ArrayList<ProductVO> list = dao.getList(pkind1);
+		
+		mv.addObject("list",list);
+		mv.setViewName("shop/shopMain3_1");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/shopMain3_2.do", method = RequestMethod.GET)
+	public ModelAndView shopMain3_2(String pkind1,String pkind2) {
+		ModelAndView mv = new ModelAndView();
+		
+		ProductDAO dao = new ProductDAO();
+		
+		ArrayList<ProductVO> list = dao.getList(pkind1,pkind2);
+		
+		mv.addObject("list",list);
+		mv.setViewName("shop/shopMain3_2");
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "/shopMain.do", method = RequestMethod.GET)
 	public String shopMain() {
 		return "shop/shopMain";

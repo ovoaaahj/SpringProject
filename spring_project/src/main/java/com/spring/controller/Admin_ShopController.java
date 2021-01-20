@@ -12,13 +12,46 @@ import com.spring.vo.ProductVO;
 
 @Controller
 public class Admin_ShopController {
-
 	
+	/**
+	 * 삭제진행
+	 */
+	@RequestMapping(value="/admin/product_delete_proc.do",method = RequestMethod.GET)
+	public ModelAndView product_delete_proc(String pid) {
+		ModelAndView mv = new ModelAndView();
+		
+		AdminProductDAO dao = new AdminProductDAO();
+		boolean result=dao.getResultDelete(pid);
+		
+		if(result) {
+			mv.setViewName("redirect:/admin/product_list.do");
+		}
+		
+		return mv;
+	}
+	
+	/**
+	 * 삭제창 경로
+	 * @return
+	 */
+	@RequestMapping(value = "/admin/product_delete.do", method = RequestMethod.GET)
+	public ModelAndView product_delete(String pid) {
+		
+		ModelAndView mv = new ModelAndView();
+		AdminProductDAO dao = new AdminProductDAO();
+		
+		ProductVO vo = dao.getDelete(pid);
+		
+		mv.addObject("vo",vo);
+		mv.setViewName("admin/shop/Product_delete");
+		
+		return mv;
+	}// delete.do
 	
 	/**
 	 * 상품창 목록경로
 	 */
-	@RequestMapping(value="admin_product_list.do", method = RequestMethod.GET)
+	@RequestMapping(value="admin/product_list.do", method = RequestMethod.GET)
 	public ModelAndView admin_product_list() {
 		
 		
