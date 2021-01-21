@@ -7,6 +7,27 @@ import com.spring.vo.ProductVO;
 
 public class ProductDAO extends DBConn{
 	
+	/**
+	 * 전체 리스트 카운트
+	 */
+	public int getListCount() {
+		int result = 0;
+		
+		try {
+			String sql = "select count(*) from product";
+			getPreparedStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) result = rs.getInt(1);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+	
+	
 	/** 대분류 만 선택했을경우 */
 	public ArrayList<ProductVO> getList(String pkind1){
 		

@@ -76,7 +76,7 @@
 	<aside class="side">
 		<div class="sidecontent">
 			<ul class="all">
-				<a href="http://localhost:9000/project/shopMain3.do"><img src="http://localhost:9000/project/images/logo.png"></a>
+				<a href="http://localhost:9000/project/index.do"><img src="http://localhost:9000/project/images/logo.png"></a>
 				<li class="allli">
 					<h3 id="subCoffeeTitle">커피</h3>
 					<ul class="subul" id="subulcoffee">
@@ -143,7 +143,7 @@
 			<%  } %>
 			<% } //kind1이 null이 아닐때 %>
 		</div> 
-		<div class="shopMainCenter"></div>
+		<div class="shopMainCenter">
 		<div class="subMainCenter">
 			<div class="search">
 				<select id='sname'>
@@ -204,7 +204,7 @@
 		    </table>
 		
 	</div>
-
+</div>
 </div>
 </body>
 </html>
