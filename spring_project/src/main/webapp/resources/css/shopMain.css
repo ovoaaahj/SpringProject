@@ -1,0 +1,245 @@
+div.content{
+		/** border: 1px solid orange; */
+		width:1500px;
+		margin:auto;
+	}
+	
+	/**  
+	* aside
+	*/ 
+	div.content>aside.side{
+		width:250px;
+		height:1000px;
+		display:inline-block;
+		float:left; 
+	}
+	div.content>aside.side>div.sidecontent{
+		display:inline-block;
+		position:fixed;
+	}
+	div.content>aside.side>div.sidecontent>ul.all{
+		border-right:1px solid gray; 
+		list-style:none;
+		display:inline-block;
+		width:250px;
+		margin:0;
+		padding:100px 0 0 0;
+		height:800px;
+		
+		
+		
+	}
+	div.content>aside.side>div.sidecontent>ul.all>li.allli{
+		
+	}
+	div.content>aside.side>div.sidecontent>ul.all>li.allli>ul.subul>li.subli{
+		/** border:1px solid purple; */
+		list-style:none;
+	}
+	div.content>aside.side>div.sidecontent>ul.all a img{
+		/** border:1px solid red;*/
+		width:230px;
+		display:inline-block;
+		height:70px;
+		margin:0;
+	}
+	div.content>aside.side>div.sidecontent>ul.all a {
+		text-decoration:none;
+		color:black;
+	}
+	
+	/**  
+	* shopMain
+	*/ 
+	
+	div.content>div.shopMain{
+		/**border:1px solid green; */
+		width:1200px;
+		margin-left: 20px;
+		display:inline-block;
+	}
+	
+	div.content>div.shopMain>div.shopMainTop{
+		/** border: 1px solid red;*/
+		display: inline-block;
+		font-size:15px; 
+	}
+	
+		/**  
+	* shopMainCenterMenu
+	*/ 
+	
+	div.content>div.shopMain>div.shopMainCenterMenu{
+		/** border:1px solid blue;*/
+		text-align:center;
+		padding:20px 0;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul{
+		list-style:none;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul li{
+		display:inline-block;
+		padding: 0 8px;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul li a{
+		text-decoration:none;
+		color:black;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul li:hover{
+		text-decoration:underline;
+	}
+	
+	div.content>div.shopMain div.shopMainCenter div.subMainCenter{
+		height: 30px;
+		text-align: right;
+		border-top:1px solid black;
+	}
+	
+	div.subMainCenter{
+		height: 40px;
+		text-align: right;
+		/** border-top:1px solid gray; */
+		display:inline_block;
+	}
+	div.subMainCenter div.search{
+		padding:0px 10px;
+		font-size:13px;
+		margin-top:2px;
+		text-align:left;
+		display:inline-block;
+		/** border:1px solid red;*/
+		height:21px;
+		margin-top:7px;
+	}
+	div.subMainCenter div.orders{
+		padding:0px 10px;
+		font-size:13px;
+		margin-top:0;
+		text-align:right;
+		display:inline-block;
+		/** border:1px solid red;*/
+		height:21px;
+	}
+	div.subMainCenter div.orders span.left{
+		border-left:1px solid gray;
+		padding:0px 1px;
+	
+	}
+	
+	
+	/**  
+	* shopMainCenterTable
+	*/ 
+	div.shopMainCenter{
+		margin:auto;
+		text-align:center;
+	}
+	table.shopMainCenterTable,
+	table.shopMainCenterTable tr,
+	table.shopMainCenterTable td,
+	table.shopMainCenterTable th{
+		/** border:1px solid black;*/
+	}
+	
+	table.shopMainCenterTable{
+		width:100%;
+		border-collapse:collapse;
+		border-top:1px solid lightgray;
+		margin-top:15px;
+	}
+
+	table.shopMainCenterTable td{
+		height: 400px;
+		padding:2px;
+		width:200px;
+		text-align:left;
+	}
+	table.shopMainCenterTable td>img{
+		height:250px;
+		width:250px;
+		margin-right:25px;
+		padding:0;
+		margin-top:5px;
+		
+	}
+	table.shopMainCenterTable td div{
+		display:inline-block;
+	}
+	table.shopMainCenterTable td div.event{
+		/** border:1px solid red;*/
+		display:block;
+		text-align:left;
+		height:40px;
+		margin:0px;
+	}
+	table.shopMainCenterTable td div.event div.a img{
+		display:inline-block;
+		height: 30px;
+		width:100px;
+		padding: 0px 0px 3px 24px;
+	}
+	table.shopMainCenterTable td div.event div.b img{
+		display:inline-block;
+		height: 30px;
+		width:70px;
+		padding: 3px;
+	}
+	table.shopMainCenterTable td div.title{
+		font-size: 17px;
+		font-weight:700;
+		padding: 5px 10px;
+		margin-right:20px;	
+		text-align:left;
+		/** border:1px solid red; */
+		width:250px;
+		height:50px;
+	}
+	table.shopMainCenterTable td div.gray{
+		font-size: 12px;
+		font-weight:700;
+		padding: 6px 10px;
+		color:gray;	
+		text-align:left;
+		display:block;
+	}
+	table.shopMainCenterTable td div.price{
+		/** border:1px solid red; */
+		text-align:left;
+		display:block;
+	}
+	table.shopMainCenterTable td div.beforeprice{
+		font-size: 18px;
+		font-weight:700;
+		padding: 5px 2px 5px 10px;
+		color:gray;	
+		display:inline-block;
+		text-align:left;
+		text-decoration:line-through
+	}
+	
+	table.shopMainCenterTable td div.nowprice{
+		font-size: 18px;
+		font-weight:700;
+		padding: 5px 2px;
+		color:black;	
+		display:inline-block;
+		text-align:left;
+	}
+	table.shopMainCenterTable td div.discount{
+		font-size: 18px;
+		font-weight:700;
+		padding: 5px 2px;
+		color:black;	
+		display:inline-block;
+		text-align:left;
+		color:orange;
+	}
+	table.shopMainCenterTable td div.review{
+		font-size: 11px;
+		font-weight:400;
+		padding: 5px 10px;
+		color:gray;	
+		display:block;
+		text-align:left;
+	}
+	
