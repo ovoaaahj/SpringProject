@@ -25,16 +25,16 @@ public class JoinController {
 	/**
 	 * 회원가입 처리
 	 */
-	@RequestMapping(value="/join_proc.do", method=RequestMethod.POST)
-	public String join_proc(CoffeeMemberVO vo) {
-		String result = "";
+//		@RequestMapping(value="/join_proc.do", method=RequestMethod.POST)
+//	public String join_proc(CoffeeMemberVO vo) {
+//		String result = "";
 	/*	String id,pass,name,gender,email,email_agr,addr1,addr2
 		,hp1,hp2,hp3,cp1,cp2,cp3,job,intro, mdate;
 	String[] hobby;
 	String addr, hp, cp, hobby_list; */
 	
 		//DB연동후 저장
-	    CoffeeMemberDAO dao = new CoffeeMemberDAO();
+		/**   CoffeeMemberDAO dao = new CoffeeMemberDAO();
 	   boolean join_result=dao.getInsert(vo);
 	   
 	   if(join_result){
@@ -45,7 +45,7 @@ public class JoinController {
 	      result = "errorPage";
 	   }  
 	   return result;
-	}
+	} */
 
 	/**
 	 * 회원가입 사용자 화면
