@@ -169,12 +169,16 @@
 				<%} %>	
 		   		<td>
 				    <img src = 'http://localhost:9000/project/images/${vo.pmphoto }'>
-				    <div class='event'>
+				     <div class='event'>
 					    <div class='a'>
-					    	<img src = 'http://localhost:9000/project/images/${vo.psub1 }'>
+					       <c:if test ="${!empty vo.psub1 }">
+					    		<img src = 'http://localhost:9000/project/images/${vo.psub1 }'>
+					  		</c:if>
 					  	</div>
 					   	<div class='b'>
-					   		<img src = 'http://localhost:9000/project/images/${vo.psub2 }'>
+					   		<c:if test ="${!empty vo.psub2 }">
+					   			<img src = 'http://localhost:9000/project/images/${vo.psub2 }'>
+					    	</c:if>
 					    </div>
 					 </div>
 					    <div class='title'>

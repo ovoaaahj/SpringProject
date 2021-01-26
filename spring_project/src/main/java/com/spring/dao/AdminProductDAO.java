@@ -91,17 +91,23 @@ public class AdminProductDAO extends DBConn {
 		boolean result = false;
 		
 		try {
-			String sql="insert into product (pid,ptitle,pkind1,pkind2,phash,pprice100,psub1,psub2,pmphoto,pdate) "
-					+"values ('p_'||SEQU_PRODUCT.nextval,?,?,?,?,?,?,?,?,sysdate)";
+			String sql="insert into product (pid,ptitle,pkind1,pkind2,phash,pprice100,pprice200,pprice500,pprice1000,psub1,psub2,pmphoto,pmsphoto,phphoto,phsphoto,pdate) "
+					+"values ('p_'||SEQU_PRODUCT.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,sysdate)";
 			getPreparedStatement(sql);
 			pstmt.setString(1, vo.getPtitle());
 			pstmt.setString(2, vo.getPkind1());
 			pstmt.setString(3, vo.getPkind2());
 			pstmt.setString(4, vo.getPhash());
 			pstmt.setString(5, vo.getPprice100());
-			pstmt.setString(6, vo.getPsub1());
-			pstmt.setString(7, vo.getPsub2());
-			pstmt.setString(8, vo.getPmphoto());
+			pstmt.setString(6, vo.getPprice200());
+			pstmt.setString(7, vo.getPprice500());
+			pstmt.setString(8, vo.getPprice1000());
+			pstmt.setString(9, vo.getPsub1());
+			pstmt.setString(10, vo.getPsub2());
+			pstmt.setString(11, vo.getPmphoto());
+			pstmt.setString(12, vo.getPmsphoto());
+			pstmt.setString(13, vo.getPhphoto());
+			pstmt.setString(14, vo.getPhsphoto());
 			
 			int count = pstmt.executeUpdate();
 			if(count != 0) {

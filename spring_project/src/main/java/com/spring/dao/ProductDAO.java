@@ -2,10 +2,19 @@ package com.spring.dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.spring.vo.ProductVO;
 
 public class ProductDAO extends DBConn{
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
+	private static String namespace="mapper.shop";
 	
 	/**
 	 * 전체 리스트 카운트
@@ -30,10 +39,11 @@ public class ProductDAO extends DBConn{
 	
 	/** 대분류 만 선택했을경우 */
 	public ArrayList<ProductVO> getList(String pkind1){
+		List<ProductVO> list = sqlSession.selectList(namespace+".shoplist1",pkind1);
+		return (ArrayList<ProductVO>)list;
 		
-		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
-		try {
+/**		try {
 			String sql="select pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,psub3,psub3s,phash,pprice100,pdate,ptitle from product where pkind1=?";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pkind1);
@@ -62,7 +72,7 @@ public class ProductDAO extends DBConn{
 			e.printStackTrace();
 		}
 		
-		return list;
+		return list;  */
 	}
 	
 	/**
@@ -70,7 +80,8 @@ public class ProductDAO extends DBConn{
 	 */
 	
 	public ArrayList<ProductVO> getList(String pkind1,String pkind2){
-		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		
+		 ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
 			String sql="select pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,psub3,psub3s,phash,pprice100,pdate,ptitle from product where pkind1=? and pkind2=?";
@@ -103,7 +114,7 @@ public class ProductDAO extends DBConn{
 			e.printStackTrace();
 		}
 		
-		return list;
+		return list; 
 	}
 	
 	
