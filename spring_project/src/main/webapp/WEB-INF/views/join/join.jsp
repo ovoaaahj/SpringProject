@@ -64,7 +64,7 @@
 				src="http://localhost:9000/project/images/logo.png"
 				style="width: 180px" />
 			</a>
-			<h2>회원 가입</h2>
+			<h2>회원 가입1</h2>
 		</div>
 		<form id="joinForm" name="joinForm" action="join_proc.do"
 			method="POST" target="_self">
