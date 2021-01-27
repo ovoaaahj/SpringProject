@@ -71,11 +71,6 @@ public class ShopController {
 
 
 	
-	@RequestMapping(value = "/shopMain3.do", method = RequestMethod.GET)
-	public ModelAndView shopMain3() {
-		return shopService.getList();
-	}
-	
 	
 	@RequestMapping(value = "/shopMain3_1.do", method = RequestMethod.GET)
 	public ModelAndView shopMain3_1(String pkind1) {

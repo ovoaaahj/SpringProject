@@ -1,6 +1,7 @@
 div.content{
-		/** border: 1px solid orange; */
-		width:1500px;
+	    border: 1px solid orange; 
+		width:1800px;
+		height:1600px;
 		margin:auto;
 	}
 	
@@ -8,7 +9,7 @@ div.content{
 	* aside
 	*/ 
 	div.content>aside.side{
-		width:250px;
+		width:200px;
 		height:1000px;
 		display:inline-block;
 		float:left; 
@@ -21,23 +22,23 @@ div.content{
 		border-right:1px solid gray; 
 		list-style:none;
 		display:inline-block;
-		width:250px;
+		width:300px;
 		margin:0;
 		padding:100px 0 0 0;
-		height:800px;
-		
-		
+		height:800px;		
 		
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli{
-		
+		margin-right:50px;
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli>ul.subul>li.subli{
-		/** border:1px solid purple; */
+		 border:1px solid purple; 
 		list-style:none;
+		height:28px;
+		padding-top:4px;
 	}
 	div.content>aside.side>div.sidecontent>ul.all a img{
-		/** border:1px solid red;*/
+	    border:1px solid red;
 		width:230px;
 		display:inline-block;
 		height:70px;
@@ -53,16 +54,18 @@ div.content{
 	*/ 
 	
 	div.content>div.shopMain{
-		/**border:1px solid green; */
-		width:1200px;
-		margin-left: 20px;
+		border:1px solid green; 
+		width:1400px;
+		margin-left: 110px;
 		display:inline-block;
 	}
 	
 	div.content>div.shopMain>div.shopMainTop{
-		/** border: 1px solid red;*/
+		border: 1px solid red;
 		display: inline-block;
-		font-size:15px; 
+		font-size:18px; 
+		height:25px;
+		margin-top:10px;
 	}
 	
 		/**  
@@ -70,12 +73,14 @@ div.content{
 	*/ 
 	
 	div.content>div.shopMain>div.shopMainCenterMenu{
-		/** border:1px solid blue;*/
+		 border:1px solid blue;
 		text-align:center;
 		padding:20px 0;
+		height:180px;
 	}
 	div.content>div.shopMain>div.shopMainCenterMenu ul{
 		list-style:none;
+		margin:40px;
 	}
 	div.content>div.shopMain>div.shopMainCenterMenu ul li{
 		display:inline-block;
@@ -98,7 +103,7 @@ div.content{
 	div.subMainCenter{
 		height: 40px;
 		text-align: right;
-		/** border-top:1px solid gray; */
+		border-top:1px solid gray; 
 		display:inline_block;
 	}
 	div.subMainCenter div.search{
@@ -107,7 +112,7 @@ div.content{
 		margin-top:2px;
 		text-align:left;
 		display:inline-block;
-		/** border:1px solid red;*/
+		 border:1px solid red;
 		height:21px;
 		margin-top:7px;
 	}
@@ -117,7 +122,7 @@ div.content{
 		margin-top:0;
 		text-align:right;
 		display:inline-block;
-		/** border:1px solid red;*/
+		 border:1px solid red;
 		height:21px;
 	}
 	div.subMainCenter div.orders span.left{
@@ -138,7 +143,7 @@ div.content{
 	table.shopMainCenterTable tr,
 	table.shopMainCenterTable td,
 	table.shopMainCenterTable th{
-		/** border:1px solid black;*/
+		border:1px solid black;
 	}
 	
 	table.shopMainCenterTable{
@@ -150,14 +155,17 @@ div.content{
 
 	table.shopMainCenterTable td{
 		height: 400px;
-		padding:2px;
-		width:200px;
+		padding:5px 0;
+		padding-right:10px;
+		padding-left:10px;
+		width:25%;
 		text-align:left;
 	}
 	table.shopMainCenterTable td>img{
-		height:250px;
-		width:250px;
-		margin-right:25px;
+		height:300px;
+		width:300px;
+		margin-left:15px;
+		margin-right:15px;
 		padding:0;
 		margin-top:5px;
 		
@@ -166,17 +174,17 @@ div.content{
 		display:inline-block;
 	}
 	table.shopMainCenterTable td div.event{
-		/** border:1px solid red;*/
+		 border:1px solid red;
 		display:block;
 		text-align:left;
 		height:40px;
-		margin:0px;
+		margin-right:3px;
 	}
 	table.shopMainCenterTable td div.event div.a img{
 		display:inline-block;
 		height: 30px;
 		width:100px;
-		padding: 0px 0px 3px 24px;
+		padding: 0px 0px 3px 14px;
 	}
 	table.shopMainCenterTable td div.event div.b img{
 		display:inline-block;
@@ -187,11 +195,11 @@ div.content{
 	table.shopMainCenterTable td div.title{
 		font-size: 17px;
 		font-weight:700;
-		padding: 5px 10px;
+		padding: 5px 12px;
 		margin-right:20px;	
 		text-align:left;
-		/** border:1px solid red; */
-		width:250px;
+		border:1px solid red; 
+		width:280px;
 		height:50px;
 	}
 	table.shopMainCenterTable td div.gray{
@@ -203,7 +211,7 @@ div.content{
 		display:block;
 	}
 	table.shopMainCenterTable td div.price{
-		/** border:1px solid red; */
+		border:1px solid red; 
 		text-align:left;
 		display:block;
 	}

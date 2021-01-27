@@ -44,7 +44,7 @@
 				$("#subulcoffee").hide();
 			}else{
 				$("#subulcoffee").show();
-				$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?kind1=coffee');
+				$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?pkind1=coffee');
 			}
 		}); // CoffeeClick
 		
@@ -53,7 +53,7 @@
 				$("#subulgoods").hide();
 			}else{
 				$("#subulgoods").show();
-				$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?kind1=goods');
+				$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?pkind1=goods');
 			}
 		}); //GoodsClick
 	
@@ -76,7 +76,7 @@
 	<aside class="side">
 		<div class="sidecontent">
 			<ul class="all">
-				<a href="http://localhost:9000/project/shopMain3.do"><img src="http://localhost:9000/project/images/logo.png"></a>
+				<a href="http://localhost:9000/project/index.do"><img src="http://localhost:9000/project/images/logo.png"></a>
 				<li class="allli">
 					<h3 id="subCoffeeTitle">커피</h3>
 					<ul class="subul" id="subulcoffee">
@@ -143,7 +143,7 @@
 			<%  } %>
 			<% } //kind1이 null이 아닐때 %>
 		</div> 
-		<div class="shopMainCenter"></div>
+		<div class="shopMainCenter">
 		<div class="subMainCenter">
 			<div class="search">
 				<select id='sname'>
@@ -166,13 +166,17 @@
 				<tr>	
 				<%} %>	
 		   		<td>
-				    <img src = 'http://localhost:9000/project/images/${vo.pmphoto }'>
+				    <img src = 'http://localhost:9000/project/resources/upload/${vo.pmsphoto }'>
 				    <div class='event'>
 					    <div class='a'>
-					    	<img src = 'http://localhost:9000/project/images/${vo.psub1 }'>
+					       <c:if test ="${!empty vo.psub1 }">
+					    		<img src = 'http://localhost:9000/project/images/${vo.psub1 }'>
+					  		</c:if>
 					  	</div>
 					   	<div class='b'>
-					   		<img src = 'http://localhost:9000/project/images/${vo.psub2 }'>
+					   		<c:if test ="${!empty vo.psub2 }">
+					   			<img src = 'http://localhost:9000/project/images/${vo.psub2 }'>
+					    	</c:if>
 					    </div>
 					 </div>
 					    <div class='title'>
@@ -204,7 +208,7 @@
 		    </table>
 		
 	</div>
-
+</div>
 </div>
 </body>
 </html>
