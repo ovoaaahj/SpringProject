@@ -31,7 +31,7 @@
 			<div class="main_menus">
 				<ul>
 					<li class="dropdown">
-					    <a href="javascript:void(0)" class="dropbtn">Shop</a>
+					    <a href="http://localhost:9000/project/shopMain3_1.do?pkind1=coffee" class="dropbtn">Shop</a>
 					    <div class="dropdown-content">
 					      <a href="#">싱글오리진</a>
 					      <a href="#">블렌드</a>

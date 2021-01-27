@@ -16,6 +16,8 @@
 <title>Bean's Story Shop</title>
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost:9000/project/css/shopMain.css">
+<link rel="stylesheet" href = "http://localhost:9000/MyCGV/css/am-pagination.css">
+<script src="http://localhost:9000/MyCGV/js/am-pagination.js"></script>  
 <script>
 	$(document).ready(function(){
 		
@@ -44,7 +46,7 @@
 				$("#subulcoffee").hide();
 			}else{
 				$("#subulcoffee").show();
-				$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?kind1=coffee');
+				$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?pkind1=coffee');
 			}
 		}); // CoffeeClick
 		
@@ -53,7 +55,7 @@
 				$("#subulgoods").hide();
 			}else{
 				$("#subulgoods").show();
-				$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?kind1=goods');
+				$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?pkind1=goods');
 			}
 		}); //GoodsClick
 	
@@ -68,15 +70,41 @@
 			$('#subGoodsTitle').css('text-decoration','underline');
 		}
 		
+		
+		//페이지 번호 및 링크 		
+		var pager = jQuery("#ampaginationsm").pagination({
+			maxSize : 5,			
+			totals:'${dbCount}',
+			page : '${reqPage}',
+			pageSize : '${pageSize}',
+					
+			
+			lastText : '&raquo;&raquo;',
+			firstText : '&laquo;&laquo',
+			prevTest : '&laquo;',
+			nextTest : '&raquo;',
+			
+			btnSize : 'sm' 			
+		}); 
+		
+		//
+		jQuery("#ampaginationsm").on('am.pagination.change',function(e){
+			$(location).attr('href','http://localhost:9000/project/shop_Main3_2.do?pkind1=<%= pkind1%>&&pkind2=<%= pkind2%>&&rpage='+e.page);  
+			//location.href('이동페이지');
+		});
+		
+		
+		
 	});//ready
 </script>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 <div class="content">
 	<aside class="side">
 		<div class="sidecontent">
 			<ul class="all">
-				<a href="http://localhost:9000/project/shopMain3.do"><img src="http://localhost:9000/project/images/logo.png"></a>
+				<a href="http://localhost:9000/project/index.do"><img src="http://localhost:9000/project/images/logo.png"></a>
 				<li class="allli">
 					<h3 id="subCoffeeTitle">커피</h3>
 					<ul class="subul" id="subulcoffee">
@@ -99,7 +127,6 @@
 						</ul>
 					
 				</li>
-				<li class="allli"><h3 id="subTeaTitle">티</h3></li>
 				<li class="allli"><h3>고객센터</h3></li>
 				<li class="allli"><h3>이벤트</h3></li>
 			</ul>		
@@ -143,7 +170,7 @@
 			<%  } %>
 			<% } //kind1이 null이 아닐때 %>
 		</div> 
-		<div class="shopMainCenter"></div>
+		<div class="shopMainCenter">
 		<div class="subMainCenter">
 			<div class="search">
 				<select id='sname'>
@@ -166,13 +193,17 @@
 				<tr>	
 				<%} %>	
 		   		<td>
-				    <img src = 'http://localhost:9000/project/images/${vo.pmphoto }'>
+				    <img src = 'http://localhost:9000/project/resources/upload/${vo.pmsphoto }'>
 				    <div class='event'>
 					    <div class='a'>
-					    	<img src = 'http://localhost:9000/project/images/${vo.psub1 }'>
+					       <c:if test ="${!empty vo.psub1 }">
+					    		<img src = 'http://localhost:9000/project/images/${vo.psub1 }'>
+					  		</c:if>
 					  	</div>
 					   	<div class='b'>
-					   		<img src = 'http://localhost:9000/project/images/${vo.psub2 }'>
+					   		<c:if test ="${!empty vo.psub2 }">
+					   			<img src = 'http://localhost:9000/project/images/${vo.psub2 }'>
+					    	</c:if>
 					    </div>
 					 </div>
 					    <div class='title'>
@@ -201,10 +232,15 @@
 			<%} %>		 
 		   	<% i++; %>	
 		    </c:forEach>
+		    <tr>
+		 	   <td colspan="4"> <div id="ampaginationsm"></div> </td>
+		    </tr>
 		    </table>
 		
 	</div>
-
 </div>
+</div>
+<!-- footer -->
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

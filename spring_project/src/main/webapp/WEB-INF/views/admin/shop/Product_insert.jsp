@@ -153,10 +153,55 @@ $(document).ready(function(){
 			$(".moreul").show();
 		}
 		
+		var pkind1= $("#pkind1").val();
+		
 	});
 	
+
 	
 	});
+	
+function sub(type, select){
+	$('#pkind2').empty();
+	
+	
+	if(type=='coffee'){
+		$('#pkind2').append("<option value='싱글오리진'>싱글오리진</option>");
+		$('#pkind2').append("<option value='블렌드'>블렌드</option>");
+		$('#pkind2').append("<option value='스페셜티'>스페셜티</option>");
+		$('#pkind2').append("<option value='선물세트'>선물세트</option>");
+		$('#pkind2').append("<option value='더치커피'>더치커피</option>");
+		$('#pkind2').append("<option value='디카페인'>디카페인</option>");
+	}else if(type == 'goods'){
+		$('#pkind2').append("<option value='핸드드립'>핸드드립</option>");
+		$('#pkind2').append("<option value='커피추출용품'>커피추출용품</option>");
+		$('#pkind2').append("<option value='브루잉세트'>브루잉세트</option>");
+		$('#pkind2').append("<option value='테이크아웃'>테이크아웃</option>");
+		$('#pkind2').append("<option value='굿즈'>굿즈</option>");
+	}
+	document.getElementById("pkind2").style.display="";
+		
+};
+	
+
+
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#img1').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#file1").change(function() {
+    readURL(this);
+});
+
+
+
 </script>
 </head>
 <body>
@@ -165,7 +210,7 @@ $(document).ready(function(){
 	<h2>상품추가</h2>
 	</div>
 	<div class="shopInsertContent">
-	<form name="shopinsertForm" action="shop_insert_proc.do" method="post">
+	<form name="shopinsertForm" action="shop_insert_proc.do" method="post" enctype="multipart/form-data">
 	<ul class="big">
 		<li>
 			<label>상품명</label>
@@ -173,7 +218,8 @@ $(document).ready(function(){
 		</li>
 		<li>
 			<label>대분류</label>
-			<select id="pkind1" name="pkind1">
+			<select id="pkind1" name="pkind1" onchange='sub(this.value)'>
+				<option>대분류를 선택해주세요</option>
 				<option value="coffee">커피</option>
 				<option value="goods">상품</option>
 				<option value="tea">티</option>
@@ -181,14 +227,11 @@ $(document).ready(function(){
 		</li>
 		<li>
 			<label>소분류</label>
+		
 			<select id="pkind2" name="pkind2">
-				<option value="싱글오리진">싱글오리진</option>
-				<option value="블렌드">블렌드</option>
-				<option value="스페셜티">스페셜티</option>
-				<option value="커피팩/선물세트">커피팩/선물세트</option>
-				<option value="더치커피">더치커피</option>
-				<option value="디카페인">디카페인</option>
+				<option>소분류를 선택해주세요</option>
 			</select>
+		
 		</li>
 		<li>
 			<label>해쉬설명</label>
@@ -219,29 +262,34 @@ $(document).ready(function(){
 			<label>할인여부</label>
 			<div class="radio">
 			<input type="radio" name="sub1" value="이달의커피_할인.png">O
-			<input type="radio" name="sub1" value="">X
+			<input type="radio" name="sub1" value="no">X
 			</div>
 		</li>
 		<li>
 			<label>카페인</label>
 			<div class="radio">
 			<input type="radio" name="sub2" value="디카페인.png">디카페인
-			<input type="radio" name="sub2" value="">카페인
+			<input type="radio" name="sub2" value="no">카페인
 			</div>
 		</li>
 		<li>
 			<p>메인사진</p>
+			<input type ="file" name="file1" id="file1">
 			
 		</li>
 		<li class="picture">
-		<div class="picture"></div>
+		<div class="picture" id="mphoto">
+			<img id="img1" src="#" />
+		</div>
 		</li>
 		<li>
 			<p>마우스올렸을때사진</p>
-			
+			<input type ="file" name="file2" id="file2">
 		</li>
 		<li class="picture">
-		<div class="picture"></div>
+		<div class="picture">
+		
+		</div>
 		</li>
 		<li >
 			<button type="button" id="productInsert" class="btnStylep">등록하기</button>

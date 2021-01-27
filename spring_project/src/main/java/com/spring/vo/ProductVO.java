@@ -1,9 +1,74 @@
 package com.spring.vo;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class ProductVO {
 	String pid,pmphoto,pmsphoto,pcphoto,pcsphoto,psub1,psub1s,psub2,psub2s,psub3,
-			psub3s,ptitle,phash,pprice100,pprice200,pprice500,pprice1000 ,pcontent,pcontent2,pdate,pkind1,pkind2;
+			psub3s,ptitle,phash,pprice100,pprice200,pprice500,pprice1000 ,pcontent,pcontent2,pdate,pkind1,pkind2,phphoto,phsphoto;
 	int rno;
+	
+
+	public String getPhphoto() {
+		return phphoto;
+	}
+
+	public void setPhphoto(String phphoto) {
+		this.phphoto = phphoto;
+	}
+
+	public String getPhsphoto() {
+		return phsphoto;
+	}
+
+	public void setPhsphoto(String phsphoto) {
+		this.phsphoto = phsphoto;
+	}
+
+
+	
+	CommonsMultipartFile file1,file2;
+	
+	
+	public String getPprice200() {
+		return pprice200;
+	}
+
+	public void setPprice200(String pprice200) {
+		this.pprice200 = pprice200;
+	}
+
+	public String getPprice500() {
+		return pprice500;
+	}
+
+	public void setPprice500(String pprice500) {
+		this.pprice500 = pprice500;
+	}
+
+	public String getPprice1000() {
+		return pprice1000;
+	}
+
+	public void setPprice1000(String pprice1000) {
+		this.pprice1000 = pprice1000;
+	}
+
+	public CommonsMultipartFile getFile1() {
+		return file1;
+	}
+
+	public void setFile1(CommonsMultipartFile file1) {
+		this.file1 = file1;
+	}
+
+	public CommonsMultipartFile getFile2() {
+		return file2;
+	}
+
+	public void setFile2(CommonsMultipartFile file2) {
+		this.file2 = file2;
+	}
+
 	public int getRno() {
 		return rno;
 	}

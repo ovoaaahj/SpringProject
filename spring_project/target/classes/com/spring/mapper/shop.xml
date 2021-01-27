@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    
+    <mapper namespace="mapper.shop">
+    
+    <!-- 삭제할 상품 정보 가져오기 -->
+    <select id="deletelist" parameterType="java.lang.String" resultType="com.spring.vo.ProductVO">
+    
+    select pid,ptitle,pmphoto,pprice100 from product where pid=#{pid}
+    
+    </select>
+    
+    <!-- 관리자페이지 상품 삭제하기 -->
+    <delete id="deleteproduct" parameterType="java.lang.String">
+    	delete from product where pid =#{pid}
+    </delete>
+    
+    
+    <!-- 관리자페이지 상품리스트 가져오기 -->
+    <select id="adminshoplist" resultType="com.spring.vo.ProductVO">
+    	select pid,ptitle,pprice100,pkind1,pkind2,psub1 from product
+    </select>
+    
+    
+    
+    <!-- 물건 삽입 -->
+    <insert id="insertProduct" parameterType="com.spring.vo.ProductVO">
+    
+    
+    insert into product (pid,ptitle,pkind1,pkind2,phash,pprice100,pprice200,pprice500,pprice1000,psub1,psub2,pmphoto,pmsphoto,phphoto,phsphoto,pdate)
+					values ('p_'||SEQU_PRODUCT.nextval,#{ptitle},#{pkind1},#{pkind2},#{phash},#{pprice100},#{pprice200},#{pprice500},#{pprice1000}
+							, #{psub1 ,jdbcType=VARCHAR},#{psub2, jdbcType=VARCHAR},#{pmphoto},#{pmsphoto},#{phphoto},#{phsphoto},sysdate)
+    
+    </insert>
+    
+    <!-- 리스트 카운트 -->
+    <select id="listcount" resultType="int">
+    
+    select count(*) from product
+    
+    </select>
+    
+    
+    <!-- 대분류 리스트 가져오기 -->
+    <select id="shoplist1" 	parameterType="map" resultType="com.spring.vo.ProductVO" > 
+		select * from (select rownum rno,pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,
+				psub3,psub3s,phash,pprice100,pdate,ptitle from product where pkind1= #{pkind1} )
+				where rno between ${start} and ${end}
+	</select>
+	
+	
+	 <!-- 소분류 리스트 가져오기 -->
+	 <select id="shoplist2" parameterType="map" resultType="com.spring.vo.ProductVO" > 
+		select * from (select rownum rno,pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,
+				psub3,psub3s,phash,pprice100,pdate,ptitle from product 
+				where pkind1=#{pkind1} and pkind2=#{pkind2})
+				where rno between ${start} and ${end}
+				
+	 </select>
+	
+	
+</mapper>
