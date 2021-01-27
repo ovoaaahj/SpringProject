@@ -14,23 +14,30 @@
     		 * 회원가입 - 아이디 중복체크
     		 */
     		 $("#id").focusout(function(){
-    				//ajax를 활용한 서버 연동
-    				$.ajax({
-    					url:"idCheck.do?id="+$("#id").val(), 
-    					success:function(result){
-    						if(result == 1){
-    							$("#idMsg").text($("#id").val()+"는 이미 사용중인 아이디입니다.")
-    							.css("color","#da7354");
-    							$("#id").focus();
-    							return false;
-    						}else{
-    							$("#idMsg").text($("#id").val()+"는 사용 가능한 아이디입니다.")
-    							.css("color","#da7354");
-    							$("#pass").focus();
-    							return true;
-    						}
-    					}
-    				});
+    			 	if ($("#id").val() == "") {
+    		            $("#idMsg").text("아이디를 입력해주세요").css("color","#da7354");
+    		            $("#id").focus();
+    		            return false;
+    		          }else{
+	    				//ajax를 활용한 서버 연동
+	    				$.ajax({
+	    					url:"idCheck.do?id="+$("#id").val(), 
+	    					success:function(result){
+	    						if(result == 1){
+	    							$("#idMsg").text($("#id").val()+"는 이미 사용중인 아이디입니다.")
+	    							.css("color","#da7354");
+	    							$("#id").focus();
+	    							return false;
+	    						}else{
+	    							$("#idMsg").text($("#id").val()+"는 사용 가능한 아이디입니다.")
+	    							.css("color","#da7354");
+	    							$("#pass").focus();
+	    							return true;
+	    						}
+	    					}
+	    				});
+    		        	  
+    		          }
     		});
     	  
     	/* 회원가입 폼체크 */
@@ -40,22 +47,18 @@
             alert("아이디를 입력해주세요");
             return false;
           } else if ($("#pass").val() == "") {
-            alert("패스워드를 입력해주세요");
+            alert("비밀번호를 입력해주세요");
             $("#pass").focus();
             return false;
           } else if ($("#spass").val() == "") {
-            alert("패스워드 확인을 입력해주세요");
+            alert("비밀번호를 확인을 입력해주세요");
             $("#spass").focus();
             return false;
           } else if ($("#name").val() == "") {
-            alert("성명을 입력해주세요");
+            alert("이름을 입력해주세요");
             $("#name").focus();
             return false;
-          } else if ($("#email").val() == "") {
-            alert("이메일을 입력해주세요");
-            $("#email").focus();
-            return false;
-          } else if ($("#hp2").val() == "") {
+          }else if ($("#hp2").val() == "") {
             alert("핸드폰번호를 입력해주세요");
             $("#hp2").focus();
             return false;
@@ -63,6 +66,10 @@
             alert("핸드폰번호를 입력해주세요");
             $("#hp3").focus();
             return false;
+          }else if ($("#email").val() == "") {
+              alert("이메일을 입력해주세요");
+              $("#email").focus();
+              return false;
           } else {
             //서버전송
               joinForm.submit();
