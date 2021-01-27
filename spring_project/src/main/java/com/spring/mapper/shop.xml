@@ -46,18 +46,20 @@
     
     
     <!-- 대분류 리스트 가져오기 -->
-    <select id="shoplist1" 	parameterType="java.lang.String" resultType="com.spring.vo.ProductVO" > 
-		select pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,
-				psub3,psub3s,phash,pprice100,pdate,ptitle from product 
-				where pkind1=#{pkind1}
+    <select id="shoplist1" 	parameterType="map" resultType="com.spring.vo.ProductVO" > 
+		select * from (select rownum rno,pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,
+				psub3,psub3s,phash,pprice100,pdate,ptitle from product where pkind1= #{pkind1} )
+				where rno between ${start} and ${end}
 	</select>
 	
 	
 	 <!-- 소분류 리스트 가져오기 -->
 	 <select id="shoplist2" parameterType="map" resultType="com.spring.vo.ProductVO" > 
-		select pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,
+		select * from (select rownum rno,pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,
 				psub3,psub3s,phash,pprice100,pdate,ptitle from product 
-				where pkind1=#{pkind1} and pkind2=#{pkind2}
+				where pkind1=#{pkind1} and pkind2=#{pkind2})
+				where rno between ${start} and ${end}
+				
 	 </select>
 	
 	

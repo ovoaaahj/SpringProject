@@ -16,6 +16,8 @@
 <title>Bean's Story Shop</title>
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost:9000/project/css/shopMain.css">
+<link rel="stylesheet" href = "http://localhost:9000/MyCGV/css/am-pagination.css">
+<script src="http://localhost:9000/MyCGV/js/am-pagination.js"></script>  
 <script>
 	$(document).ready(function(){
 		
@@ -68,10 +70,36 @@
 			$('#subGoodsTitle').css('text-decoration','underline');
 		}
 		
+		
+		//페이지 번호 및 링크 		
+		var pager = jQuery("#ampaginationsm").pagination({
+			maxSize : 5,			
+			totals:'${dbCount}',
+			page : '${reqPage}',
+			pageSize : '${pageSize}',
+					
+			
+			lastText : '&raquo;&raquo;',
+			firstText : '&laquo;&laquo',
+			prevTest : '&laquo;',
+			nextTest : '&raquo;',
+			
+			btnSize : 'sm' 			
+		}); 
+		
+		//
+		jQuery("#ampaginationsm").on('am.pagination.change',function(e){
+			$(location).attr('href','http://localhost:9000/project/shop_Main3_2.do?pkind1=<%= pkind1%>&&pkind2=<%= pkind2%>&&rpage='+e.page);  
+			//location.href('이동페이지');
+		});
+		
+		
+		
 	});//ready
 </script>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 <div class="content">
 	<aside class="side">
 		<div class="sidecontent">
@@ -99,7 +127,6 @@
 						</ul>
 					
 				</li>
-				<li class="allli"><h3 id="subTeaTitle">티</h3></li>
 				<li class="allli"><h3>고객센터</h3></li>
 				<li class="allli"><h3>이벤트</h3></li>
 			</ul>		
@@ -205,10 +232,15 @@
 			<%} %>		 
 		   	<% i++; %>	
 		    </c:forEach>
+		    <tr>
+		 	   <td colspan="4"> <div id="ampaginationsm"></div> </td>
+		    </tr>
 		    </table>
 		
 	</div>
 </div>
 </div>
+<!-- footer -->
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

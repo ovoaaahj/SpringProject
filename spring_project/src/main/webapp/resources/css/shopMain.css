@@ -13,6 +13,7 @@ div.content{
 		height:1000px;
 		display:inline-block;
 		float:left; 
+		margin-left:50px;
 	}
 	div.content>aside.side>div.sidecontent{
 		display:inline-block;
@@ -25,17 +26,22 @@ div.content{
 		width:300px;
 		margin:0;
 		padding:100px 0 0 0;
-		height:800px;		
+		height:600px;	
+		font-size:15px;	
+		
 		
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli{
+		padding:10px;
 		margin-right:50px;
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli>ul.subul>li.subli{
-		 border:1px solid purple; 
+		margin-top:3px;
+		border:1px solid purple; 
 		list-style:none;
 		height:28px;
 		padding-top:4px;
+		margin-left:50px;
 	}
 	div.content>aside.side>div.sidecontent>ul.all a img{
 	    border:1px solid red;
@@ -56,6 +62,7 @@ div.content{
 	div.content>div.shopMain{
 		border:1px solid green; 
 		width:1400px;
+		height:2000px;
 		margin-left: 110px;
 		display:inline-block;
 	}
@@ -81,10 +88,13 @@ div.content{
 	div.content>div.shopMain>div.shopMainCenterMenu ul{
 		list-style:none;
 		margin:40px;
+		font-size:18px;
 	}
 	div.content>div.shopMain>div.shopMainCenterMenu ul li{
 		display:inline-block;
+		margin-top:30px;
 		padding: 0 8px;
+		font-size:15px;
 	}
 	div.content>div.shopMain>div.shopMainCenterMenu ul li a{
 		text-decoration:none;

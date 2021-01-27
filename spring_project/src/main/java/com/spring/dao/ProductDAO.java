@@ -71,8 +71,13 @@ public class ProductDAO extends DBConn{
 	
 	
 	/** 대분류 만 선택했을경우 */
-	public ArrayList<ProductVO> getList(String pkind1){
-		List<ProductVO> list = sqlSession.selectList(namespace+".shoplist1",pkind1);
+	public ArrayList<ProductVO> getList(String pkind1,String start,String end){
+		Map<String,String> param = new HashMap<String,String>();
+		param.put("pkind1", pkind1);
+		param.put("start", start);
+		param.put("end", end);
+		
+		List<ProductVO> list = sqlSession.selectList(namespace+".shoplist1",param);
 		return (ArrayList<ProductVO>)list;
 
 	}
@@ -81,10 +86,12 @@ public class ProductDAO extends DBConn{
 	 * 소분류 까지 선택한 경우
 	 */
 	
-	public ArrayList<ProductVO> getList(String pkind1,String pkind2){
+	public ArrayList<ProductVO> getLists(String pkind1,String pkind2,String start,String end){
 		Map<String,String> param = new HashMap<String,String>();
 		param.put("pkind1", pkind1);
 		param.put("pkind2", pkind2);
+		param.put("start", start);
+		param.put("end", end);
 		
 		List<ProductVO> list = sqlSession.selectList(namespace+".shoplist2",param);
 		return (ArrayList<ProductVO>) list;
