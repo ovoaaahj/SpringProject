@@ -2,7 +2,9 @@ package com.spring.dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,23 +19,54 @@ public class ProductDAO extends DBConn{
 	private static String namespace="mapper.shop";
 	
 	/**
+	 * 삭제 진행하기
+	 */
+	public boolean getResultDelete(String pid) {
+		boolean result = false;
+		int val = sqlSession.delete(namespace+".deleteproduct", pid);
+		if(val != 0) result = true;
+		return result;
+		
+	}
+	
+	/**
+	 * 삭제물품 정보가져오기
+	 */
+	public ProductVO getDelete(String pid) {
+		return sqlSession.selectOne(namespace+".deletelist", pid);
+
+	}
+	
+	/**
+	 * 상품 리스트 불러오기
+	 */
+	public ArrayList<ProductVO> getAdminProductList(){
+		List<ProductVO> list = sqlSession.selectList(namespace+".adminshoplist");
+		return (ArrayList<ProductVO>) list;
+	}
+	
+	
+	/**
+	 * 상품 입력 
+	 * @param vo
+	 * @return
+	 */
+	public boolean productInsert(ProductVO vo) {
+		boolean result = false;
+		int val = sqlSession.insert(namespace+".insertProduct",vo);
+		if(val != 0) result = true;
+		return result;
+		
+	}
+	
+	
+	
+
+	/**
 	 * 전체 리스트 카운트
 	 */
 	public int getListCount() {
-		int result = 0;
-		
-		try {
-			String sql = "select count(*) from product";
-			getPreparedStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) result = rs.getInt(1);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		return result;
+		return sqlSession.selectOne(namespace+".listcount");
 	}
 	
 	
@@ -41,38 +74,7 @@ public class ProductDAO extends DBConn{
 	public ArrayList<ProductVO> getList(String pkind1){
 		List<ProductVO> list = sqlSession.selectList(namespace+".shoplist1",pkind1);
 		return (ArrayList<ProductVO>)list;
-		
-		
-/**		try {
-			String sql="select pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,psub3,psub3s,phash,pprice100,pdate,ptitle from product where pkind1=?";
-			getPreparedStatement(sql);
-			pstmt.setString(1, pkind1);
-			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				ProductVO vo = new ProductVO();
-				vo.setPid(rs.getString(1));
-				vo.setPmphoto(rs.getString(2));
-				vo.setPmsphoto(rs.getString(3));
-				vo.setPsub1(rs.getString(4));
-				vo.setPsub1s(rs.getString(5));
-				vo.setPsub2(rs.getString(6));
-				vo.setPsub2s(rs.getString(7));
-				vo.setPsub3(rs.getString(8));
-				vo.setPsub3s(rs.getString(9));
-				vo.setPhash(rs.getString(10));
-				vo.setPprice100(rs.getString(11));
-				vo.setPdate(rs.getString(12));
-				vo.setPtitle(rs.getString(13));
-				
-				list.add(vo);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list;  */
+
 	}
 	
 	/**
@@ -80,41 +82,12 @@ public class ProductDAO extends DBConn{
 	 */
 	
 	public ArrayList<ProductVO> getList(String pkind1,String pkind2){
+		Map<String,String> param = new HashMap<String,String>();
+		param.put("pkind1", pkind1);
+		param.put("pkind2", pkind2);
 		
-		 ArrayList<ProductVO> list = new ArrayList<ProductVO>();
-		
-		try {
-			String sql="select pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,psub3,psub3s,phash,pprice100,pdate,ptitle from product where pkind1=? and pkind2=?";
-			getPreparedStatement(sql);
-			pstmt.setString(1, pkind1);
-			pstmt.setString(2, pkind2);
-			
-			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-				ProductVO vo = new ProductVO();
-				vo.setPid(rs.getString(1));
-				vo.setPmphoto(rs.getString(2));
-				vo.setPmsphoto(rs.getString(3));
-				vo.setPsub1(rs.getString(4));
-				vo.setPsub1s(rs.getString(5));
-				vo.setPsub2(rs.getString(6));
-				vo.setPsub2s(rs.getString(7));
-				vo.setPsub3(rs.getString(8));
-				vo.setPsub3s(rs.getString(9));
-				vo.setPhash(rs.getString(10));
-				vo.setPprice100(rs.getString(11));
-				vo.setPdate(rs.getString(12));
-				vo.setPtitle(rs.getString(13));
-				
-				list.add(vo);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list; 
+		List<ProductVO> list = sqlSession.selectList(namespace+".shoplist2",param);
+		return (ArrayList<ProductVO>) list;
 	}
 	
 	

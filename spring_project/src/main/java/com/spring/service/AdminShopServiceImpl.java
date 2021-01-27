@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.dao.AdminProductDAO;
+import com.spring.dao.ProductDAO;
 import com.spring.vo.ProductVO;
 
 public class AdminShopServiceImpl implements AdminShopService{
 	@Autowired
-	private AdminProductDAO AdminProductDAO;
+	private ProductDAO ProductDAO;
 	
 	/**
 	 * 리스트 가져오기
@@ -22,7 +22,7 @@ public class AdminShopServiceImpl implements AdminShopService{
 	public ModelAndView getList() {
 		ModelAndView mv = new ModelAndView();
 		
-		ArrayList<ProductVO> list = AdminProductDAO.getList();
+		ArrayList<ProductVO> list = ProductDAO.getAdminProductList();
 		
 		mv.addObject("list",list);
 		
@@ -38,7 +38,7 @@ public class AdminShopServiceImpl implements AdminShopService{
 
 		ModelAndView mv = new ModelAndView();
 		
-		ProductVO vo = AdminProductDAO.getDelete(pid);
+		ProductVO vo = ProductDAO.getDelete(pid);
 		
 		mv.addObject("vo",vo);
 		mv.setViewName("admin/shop/Product_delete");
@@ -52,7 +52,7 @@ public class AdminShopServiceImpl implements AdminShopService{
 	public ModelAndView getResultDelete(String pid){
 		ModelAndView mv = new ModelAndView();
 		
-		boolean result=AdminProductDAO.getResultDelete(pid);
+		boolean result=ProductDAO.getResultDelete(pid);
 		
 		if(result) {
 			mv.setViewName("redirect:/admin/product_list.do");
@@ -83,7 +83,7 @@ public class AdminShopServiceImpl implements AdminShopService{
 			vo.setPhsphoto(uuid +"_"+vo.getFile2().getOriginalFilename());
 			
 			boolean result = false;
-			result = AdminProductDAO.productInsert(vo);
+			result = ProductDAO.productInsert(vo);
 			
 			if(result) {
 				String root_path = request.getSession().getServletContext().getRealPath("/");

@@ -219,6 +219,7 @@ $("#file1").change(function() {
 		<li>
 			<label>대분류</label>
 			<select id="pkind1" name="pkind1" onchange='sub(this.value)'>
+				<option>대분류를 선택해주세요</option>
 				<option value="coffee">커피</option>
 				<option value="goods">상품</option>
 				<option value="tea">티</option>
@@ -261,14 +262,14 @@ $("#file1").change(function() {
 			<label>할인여부</label>
 			<div class="radio">
 			<input type="radio" name="sub1" value="이달의커피_할인.png">O
-			<input type="radio" name="sub1" value="">X
+			<input type="radio" name="sub1" value="no">X
 			</div>
 		</li>
 		<li>
 			<label>카페인</label>
 			<div class="radio">
 			<input type="radio" name="sub2" value="디카페인.png">디카페인
-			<input type="radio" name="sub2" value="">카페인
+			<input type="radio" name="sub2" value="no">카페인
 			</div>
 		</li>
 		<li>

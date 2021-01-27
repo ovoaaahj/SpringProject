@@ -18,8 +18,6 @@
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 
-	<!-- DAO Object -->
-	<beans:bean class="com.spring.dao.CoffeeMemberDAO" id="coffee_memberDAO"></beans:bean>
 	
 	
 	<!-- multipartResolver -->
@@ -34,7 +32,8 @@
 	
 	<!-- DAO Object  -->	
 	<beans:bean class="com.spring.dao.ProductDAO" id="productDAO"></beans:bean>
-	<beans:bean class="com.spring.dao.AdminProductDAO" id="AdminProductDAO"></beans:bean>
+	<beans:bean class="com.spring.dao.CoffeeMemberDAO" id="coffee_memberDAO"></beans:bean>
+	
 	
 	<beans:bean class="com.spring.service.ShopService" id="shopService"></beans:bean>
 	<beans:bean class="com.spring.service.AdminShopServiceImpl" id="AdminShopService"></beans:bean>
