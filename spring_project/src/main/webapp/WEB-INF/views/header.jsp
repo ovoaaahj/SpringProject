@@ -17,9 +17,9 @@
 		<div class="right_menus">
 			<nav class="right_nav">
 				<ul class="right_ul">
-					<li class="right"><a class="right_a" href="http://localhost:9000/project/login/login.do">로그인</a></li>
+					<li class="right"><a class="right_a" href="http://localhost:9000/project/login.do">로그인</a></li>
 					<li class="right"><a class="right_a" href="http://localhost:9000/project/mypage/mypage.do">마이페이지</a></li>
-					<li class="right"><a class="right_a" href="http://localhost:9000/project/join/join.do">회원가입</a></li>
+					<li class="right"><a class="right_a" href="http://localhost:9000/project/join.do">회원가입</a></li>
 					<li class="right"><a class="right_a" href="#"><img src="http://localhost:9000/project/images/instagram_icon.png"></a></li>
 					<li class="right"><input type="search" placeholder="search"><button type="button">검색</button></li>
 				</ul>

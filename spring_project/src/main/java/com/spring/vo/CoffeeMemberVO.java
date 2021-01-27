@@ -2,30 +2,8 @@ package com.spring.vo;
 
 public class CoffeeMemberVO {
 	int rno;
-	String name, id, pass, addr1,addr2,addr,email, email_agr, hp1, hp2, hp3, hp, age, mdate;
+	String id, pass, name, hp,hp1,hp2,hp3, email,mdate;
 	
-	
-	public String getAddr1() {
-		return addr1;
-	}
-	public void setAddr1(String addr1) {
-		this.addr1 = addr1;
-	}
-	public String getAddr2() {
-		return addr2;
-	}
-	public void setAddr2(String addr2) {
-		this.addr2 = addr2;
-	}
-	public String getAddr() {	
-		String str ="";
-		if(addr1 != null) {
-			str = getAddr1() + " " + getAddr2();
-		}else {
-			str = addr;
-		}
-		return str;
-	}
 	public int getRno() {
 		return rno;
 	}
@@ -56,12 +34,6 @@ public class CoffeeMemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getEmail_agr() {
-		return email_agr;
-	}
-	public void setEmail_agr(String email_agr) {
-		this.email_agr = email_agr;
-	}
 	public String getHp1() {
 		return hp1;
 	}
@@ -91,12 +63,6 @@ public class CoffeeMemberVO {
 	}
 	public void setHp(String hp) {
 		this.hp = hp;
-	}
-	public String getAge() {
-		return age;
-	}
-	public void setAge(String age) {
-		this.age = age;
 	}
 	public String getMdate() {
 		return mdate;
