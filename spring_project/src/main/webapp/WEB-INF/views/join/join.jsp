@@ -8,19 +8,44 @@
 <link rel="stylesheet" href="http://localhost:9000/project/css/jw.css" />
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
 <script>
+	
       $(document).ready(function () {
+    	  /**
+    		 * 회원가입 - 아이디 중복체크
+    		 */
+    		 $("#id").focusout(function(){
+    				//ajax를 활용한 서버 연동
+    				$.ajax({
+    					url:"idCheck.do?id="+$("#id").val(), 
+    					success:function(result){
+    						if(result == 1){
+    							$("#idMsg").text($("#id").val()+"는 이미 사용중인 아이디입니다.")
+    							.css("color","#da7354");
+    							$("#id").focus();
+    							return false;
+    						}else{
+    							$("#idMsg").text($("#id").val()+"는 사용 가능한 아이디입니다.")
+    							.css("color","#da7354");
+    							$("#pass").focus();
+    							return true;
+    						}
+    					}
+    				});
+    		});
+    	  
+    	/* 회원가입 폼체크 */
         $("#joinBtn").click(function () {
           if ($("#id").val() == "") {
             $("#id").focus();
             alert("아이디를 입력해주세요");
             return false;
-          } else if ($("#password").val() == "") {
+          } else if ($("#pass").val() == "") {
             alert("패스워드를 입력해주세요");
             $("#pass").focus();
             return false;
-          } else if ($("#spassword").val() == "") {
+          } else if ($("#spass").val() == "") {
             alert("패스워드 확인을 입력해주세요");
-            $("#cpass").focus();
+            $("#spass").focus();
             return false;
           } else if ($("#name").val() == "") {
             alert("성명을 입력해주세요");
@@ -40,10 +65,66 @@
             return false;
           } else {
             //서버전송
-            joinForm.submit();
+              joinForm.submit();
           }
         });
-      });
+        /* 비밀번호 정규식  */
+		 $("#pass").focusout(function(){
+			 	var regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+	    		if(regExp.test($("#pass").val())){
+	    			$("#pwMsg1").text("");
+	    			return true;	//이메일 형식에 맞는 경우
+	    		}else{
+	    			$("#pwMsg1").text("최소 8 자, 최소 하나의 문자 및 하나의 숫자를 입력해주세요").css("color","#da7354");
+	    			$("#pass").focus();
+	    			return false;
+	    		}
+			}); //focusout
+			
+		/* 비밀번호 같은지 확인 */
+        $("#spass").focusout(function(){
+			if($("#pass").val() != "" && $("#spass").val() != ""){	
+				
+				if($("#pass").val() == $("#spass").val()){					
+					$("#pwMsg2").text("패스워드가 동일합니다").css("color","#da7354");
+					$("#name").focus();
+					return true; 
+				}else{
+					$("#pwMsg2").text("패스워드가 다릅니다. 다시 입력해주세요").css("color","#da7354");
+					$("#spass").val("");
+					$("#pass").focus();
+					return false;				
+				}		
+			}
+		}); //focusout
+		
+    	/**
+    	*	이메일 정규식 체크
+    	**/
+		 $("#email").focusout(function(){
+			 	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	    		if(regExp.test($("#email").val())){
+	    			$("#emailMsg").text("");
+	    			return true;	//이메일 형식에 맞는 경우
+	    		}else{
+	    			$("#emailMsg").text("이메일 형식으로 입력해 주세요").css("color","#da7354");
+	    			$("#email").focus();
+	    			return false;
+	    		}
+			}); //focusout
+			
+		 $("#sAgreeAllChecked").click(function(){
+	            //만약 전체 선택 체크박스가 체크된상태일경우
+	            if($("#sAgreeAllChecked").prop("checked")) {
+	                $("input[type=checkbox]").prop("checked",true);
+	                //input type이 체크박스인것은 모두 체크함
+	            } else {
+	                $("input[type=checkbox]").prop("checked",false);
+	                //input type이 체크박스인것은 모두 체크 해제함
+	            }
+	      });
+ 		
+});
     </script>
 </head>
 <body>
@@ -53,18 +134,18 @@
 				<div id="gnb">
 					<div id="log"
 						class="xans-element- xans-layout xans-layout-statelogoff">
-						<a href="#">로그인</a> <a href="#">회원가입</a> <a href="#"
+						<a href="#">로그인</a> <a href="http://localhost:9000/project/join.do">회원가입</a> <a href="#"
 							style="margin-left: 8px; padding-left: 8px; border-left: 1px solid #ddd; color: #333; font-weight: bold">개인결제</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="titleArea" style="margin-top: 80px">
-			<a href="#"> <img
+			<a href="http://localhost:9000/project/index.do"> <img
 				src="http://localhost:9000/project/images/logo.png"
 				style="width: 180px" />
 			</a>
-			<h2>회원 가입1</h2>
+			<h2>회원 가입</h2>
 		</div>
 		<form id="joinForm" name="joinForm" action="join_proc.do"
 			method="POST" target="_self">
@@ -86,7 +167,7 @@
 									alt="필수" /></td>
 								<td class="joinkong2" style="padding-top: 10px"><input
 									type="text" name="id" id="id" autocomplete="off" /> <br /> <span
-									id="idMsg" class="error">아이디를 입력해 주세요.</span></td>
+									id="idMsg" class="error"></span></td>
 							</tr>
 							<tr>
 								<td class="joinkong" style="padding-top: 10px"><span
@@ -94,9 +175,8 @@
 									src="http://localhost:9000/project/images/ico_required.gif"
 									alt="필수" /></td>
 								<td class="joinkong2" style="padding-top: 10px"><input
-									type="password" name="password" id="password"
-									autocomplete="off" maxlength="16" /> <br /> (영문 대소문자/숫자/특수문자
-									중 2가지 이상 조합,10자~16자)</td>
+									type="password" name="pass" id="pass" autocomplete="off"
+									maxlength="16" /> <br /> <span id="pwMsg1" class="error"></span></td>
 							</tr>
 							<tr>
 								<td class="joinkong" style="padding-top: 10px"><span
@@ -104,9 +184,8 @@
 									src="http://localhost:9000/project/images/ico_required.gif"
 									alt="필수" /></td>
 								<td class="joinkong2" style="padding-top: 10px"><input
-									type="password" name="spassword" id="spassword"
-									autocomplete="off" maxlength="16" /> <br /> <span id="pwMsg"
-									class="error">비밀번호가 일치하지 않습니다</span></td>
+									type="password" name="spass" id="spass" autocomplete="off"
+									maxlength="16" /> <br /> <span id="pwMsg2" class="error"></span></td>
 							</tr>
 							<tr>
 								<td class="joinkong" style="padding-top: 10px"><span
@@ -123,16 +202,16 @@
 									src="http://localhost:9000/project/images/ico_required.gif"
 									alt="필수" /></td>
 								<td class="joinkong2" style="padding-top: 10px"><select
-									name="hp[]" id="hp1">
+									name="hp1" id="hp1">
 										<option value="010">010</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
 										<option value="017">017</option>
 										<option value="018">018</option>
 										<option value="019">019</option>
-								</select> - <input type="text" name="hp[]" id="hp2" maxlength="4"
-									autocomplete="off" /> - <input type="text" name="hp[]"
-									id="hp3" maxlength="4" autocomplete="off" /></td>
+								</select> - <input type="text" name="hp2" id="hp2" maxlength="4"
+									autocomplete="off" /> - <input type="text" name="hp3" id="hp3"
+									maxlength="4" autocomplete="off" /></td>
 							</tr>
 							<tr>
 								<td class="joinkong" style="padding-top: 10px"><span
@@ -141,7 +220,8 @@
 									alt="필수" /></td>
 								<td class="joinkong2" style="padding-top: 10px"><input
 									type="text" name="email" id="email" maxlength="20"
-									autocomplete="off" /></td>
+									autocomplete="off" /><br>
+								<span id="emailMsg" class="error"></span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -191,7 +271,8 @@
 				</div>
 			</div>
 			<div style="padding-top: 60px" class="ec-base-button">
-				<button type="button" id="joinBtn" style="padding: 16px 60px; border: 1px solid #222; background: #222; font-size: 15px; color: #fff; font-weight: normal;">회원가입</button>
+				<button type="button" id="joinBtn"
+					style="padding: 16px 60px; border: 1px solid #222; background: #222; font-size: 15px; color: #fff; font-weight: normal;">회원가입</button>
 			</div>
 		</form>
 	</div>
