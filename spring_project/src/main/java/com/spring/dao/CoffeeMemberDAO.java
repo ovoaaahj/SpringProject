@@ -16,17 +16,15 @@ public class CoffeeMemberDAO extends DBConn{
 	public boolean getUpdate(CoffeeMemberVO vo) {
 		boolean result = false;
 		try {
-			String sql="update coffee_member set name =?, pass=?, email=?, email_agr=?, hp=? , age=? where id=?";
+			String sql="update coffee_member set name =?, pass=?, email=?, hp=? where id=?";
 
 			getPreparedStatement(sql);
 
 			 pstmt.setString(1, vo.getName());
 			 pstmt.setString(2, vo.getPass());
 			 pstmt.setString(3, vo.getEmail());
-			 pstmt.setString(4, vo.getEmail_agr());
-			 pstmt.setString(5, vo.getHp());
-			 pstmt.setString(6, vo.getAge());
-			 pstmt.setString(7, vo.getId());
+			 pstmt.setString(4, vo.getHp());
+			 pstmt.setString(5, vo.getId());
 			
 			int val = pstmt.executeUpdate();
 			if(val!=0) result = true;
@@ -71,6 +69,10 @@ public class CoffeeMemberDAO extends DBConn{
 		}
 		
 		return result;
+	}
+	public boolean getInsert(CoffeeMemberVO vo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 

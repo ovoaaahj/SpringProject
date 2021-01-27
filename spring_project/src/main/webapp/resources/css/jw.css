@@ -430,3 +430,213 @@ strike {
 	width:500px;
 	height: 500px;
 }
+
+
+
+
+#contentsWrap {
+  margin: 0 auto;
+}
+#subtop {
+  position: fixed;
+  margin-top: 40px;
+  right: 10%;
+  top: 20px;
+  z-index: 99;
+  width: auto;
+  height: 60px;
+  -webkit-transition-duration: 0.3;
+  transition-duration: 0.3s;
+}
+
+#subtop .subgnbinner {
+  float: right;
+  width: 250px;
+  height: 30px;
+  padding: 15px 0;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 2px 3px 14px rgba(0, 0, 0, 0.09);
+}
+
+#subtop #log {
+  float: left;
+  font-size: 13px;
+  line-height: 30px;
+  color: #777;
+  margin: 0 0 0 40px;
+}
+#subtop #log a:first-child {
+  margin-right: 8px;
+  padding-right: 8px;
+  border-right: 1px solid rgba(0, 0, 0, 0.14);
+}
+#subtop #log a {
+  color: #777;
+}
+.titleArea {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 55px;
+}
+.titleArea h2 {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+.xans-member-join .required {
+  margin: -25px 0 10px;
+  color: #353535;
+  text-align: right;
+}
+.xans-member-join .required img {
+  vertical-align: middle;
+}
+.ec-base-table table {
+  position: relative;
+  margin: 10px 0 0;
+  border: 1px solid #eaeaea;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  color: #fff;
+  line-height: 1.5;
+  font-size: 13px;
+}
+.ec-base-table table::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #eaeaea;
+}
+table {
+  width: 100%;
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+th,
+td {
+  border: 0;
+  vertical-align: top;
+}
+.ec-base-table td {
+  padding: 11px 10px 10px;
+  border-top: 1px solid #eaeaea;
+  color: #353535;
+  vertical-align: middle;
+}
+.ec-base-table.typeWrite td {
+  padding: 8px 10px 7px;
+}
+.ec-base-table.typeWrite .joinkong {
+  font-size: 12px;
+  color: #da7354;
+  border: 0;
+}
+.ec-base-table.typeWrite .joinkong2 {
+  font-size: 12px;
+  color: #da7354;
+  border: 0;
+}
+.ec-base-table.typeWrite img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+.ec-base-table.typeWrite .joinkong2 input {
+  width: 340px;
+  height: 35px;
+}
+input[type="text"],
+input[type="password"] {
+  height: 18px;
+  line-height: 20px;
+  padding: 2px 4px;
+  border: 1px solid #d5d5d5;
+  color: #000;
+  font-size: 12px;
+}
+input,
+select,
+textarea {
+  font-size: 100%;
+  font-family: "noto", sans-serif;
+  color: #000;
+  vertical-align: middle;
+}
+#hp1 {
+  width: 93px;
+  margin: 0 4px 0 0;
+  height: 41px;
+  background: #fff;
+}
+.joinkong2 select {
+  border: 1px solid #d5d5d5;
+}
+.joinkong2 option {
+  font-weight: 300;
+  display: block;
+  white-space: pre;
+  min-height: 1.2em;
+  padding: 0px 2px 1px;
+}
+#hp2,
+#hp3 {
+  width: 102px;
+  margin: 0 1px;
+}
+.ec-base-box_join {
+  margin-left: auto;
+  margin-right: auto;
+  color: #333;
+  font-size: 13px;
+}
+.ec-base-chk {
+  display: inline-block;
+  position: relative;
+  margin: 0 8px 0 0;
+  width: 22px;
+  height: 22px;
+  vertical-align: top;
+  cursor: pointer;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  border: 0;
+}
+.ec-base-chk input {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.ec-base-button {
+  padding: 10px 0;
+  margin-bottom : 15px;
+  text-align: center;
+}
+.ec-base-button:after {
+  display: block;
+  content: "";
+  clear: both;
+}
