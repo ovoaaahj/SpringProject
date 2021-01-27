@@ -2,7 +2,6 @@ package com.spring.dao;
 
 
 import java.sql.ResultSet;
-
 import com.spring.vo.CoffeeMemberVO;
 
 public class CoffeeMemberDAO extends DBConn{
@@ -70,9 +69,31 @@ public class CoffeeMemberDAO extends DBConn{
 		
 		return result;
 	}
+	/**
+	 * Insert : 회원가입
+	 */
 	public boolean getInsert(CoffeeMemberVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		
+		try {
+			String sql = "insert INTO COFFEE_MEMBER "
+					+ " VALUES(?,?,?,?,?,sysdate)";
+			getPreparedStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPass());
+			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getHp());
+			pstmt.setString(5, vo.getEmail());
+			
+			int val = pstmt.executeUpdate();
+			
+			if(val != 0) result = true;			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}		
+		
+		return result;
 	}
 	
 
