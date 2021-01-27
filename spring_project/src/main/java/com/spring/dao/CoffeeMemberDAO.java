@@ -7,8 +7,7 @@ import com.spring.vo.CoffeeMemberVO;
 
 public class CoffeeMemberDAO extends DBConn{
 	
-	
-	
+
 	/**
 	 * 마이페이지 - 회원정보 수정하기
 	 */
