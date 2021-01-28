@@ -10,12 +10,12 @@ import com.spring.vo.CoffeeMemberVO;
 
 public class CoffeeMemberDAO extends DBConn{
 
-	@Autowired
+	/**@Autowired
 	private SqlSessionTemplate sqlSession;
 	
 	private static String namespace = "mapper.mypage";
 
-	/**
+	
 	 * 마이페이지 - 회원정보 수정하기
 	 */
     
