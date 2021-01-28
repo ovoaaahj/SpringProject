@@ -7,32 +7,188 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="http://localhost:9000/project/css/wook.css">
 <link rel="stylesheet" href="http://localhost:9000/project/css/am-pagination.css">
+<script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
+<!-- <script src="http://localhost:9000/project/js/wook.js"></script> -->
 <script>
-   $(document).ready(function(){
-      // 페이지 번호 및 링크
-      var pager = jQuery("#ampaginationsm").pagination({
-         maxSize: 5,
-         totals: "${dbCount}",
-         pageSize: "${pageSize}",
-         page: "${reqPage}",
-         
-         lastText: '&raquo;&raquo;',
-         firstText: '&laquo;&laquo;',
-         prevText: '&laquo;',
-         nextText: '&raquo;',
-         
-         btnSize: 'sm'
-      });
-      
-      jQuery("#ampaginationsm").on('am.pagination.change',function(e){
-         $(location).attr('href','http://localhost:9000/MyCGV/admin/notice_list.do?rpage=' + e.page); // location.href('이동페이지');
-      });
-   });
+	$(document).ready(function(){
+		
+		   //천단위 콤마 펑션
+		function addComma(value){
+		     value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		  return value; 
+		}
+		
+		var total_count=parseInt("0");
+		var total_price=parseInt("0");
+		function uuidv4() {
+			  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+			    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+			    return v.toString(16);
+			  });
+			}
+		function explan_table(compose,compose_price){
+			var output="";
+			var uuid = uuidv4();
+			output += '<tr id="opt_product'+uuid+'">';
+				output += 	'<td>';
+					output +=   '<p id="ptitle_kor">';
+						output +=   '<span id="bname">에티오피아 시다모 G2 커피</span>';
+						output +=   '<br>';
+						output +=   '-';
+						output +=   '<span id="bcompose">'+compose+'</span>';
+					output +=   '</p>';
+				output +=   '</td>';
+				output +=   '<td>';
+					output +=   '<span>';
+						output +=   '<input type="text" id="bcount_input" value="1" disabled style="background-color:white";>';
+						output +=   '<button type="button" class="plus_btn" id="plus_btn">+</button>';
+						output +=   '<button type="button" class="minus_btn" id="minus_btn">-</button>';
+					output += '</span>';	
+						output += '<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif" alt="삭제" id="option_box1_del" class="option_box_del">';	
+				output += '</td>';	
+				output += '<td>';	
+					output += '<span><span id="bprice">'+addComma(String(compose_price))+'</span>원</span>';	
+				output += '</td>';	
+			output += '</tr> }';	
+				
+		    $(".ExplanationTable_3").append(output);
+			var cnt_price =parseInt("0");
+			var tot_price=cnt_price+compose_price;
+		  	var count = parseInt($("#opt_product"+uuid+" #bcount_input").val());
+		  	
+		  	$("#opt_product"+uuid+" #plus_btn").click(function(){
+		  		count +=1;
+		  		$("#opt_product"+uuid+" #bcount_input").val(count);
+		  		tot_price +=compose_price
+		  		$("#opt_product"+uuid+" #bprice").text(addComma(String(tot_price)));
+		  		total_price += compose_price;
+				//$("#sumprice").text(String(total_price));
+				$("#sumprice").text(addComma(String(total_price)));
+				total_count += 1;
+				$("#bcount_span").text("("+String(total_count)+")개");
+		  	});
+		  	$("#opt_product"+uuid+" #minus_btn").click(function(){
+		  		if(count>1){
+			  		count +=-1;
+			  		$("#opt_product"+uuid+" #bcount_input").val(count);
+			  		tot_price -=compose_price
+			  		$("#opt_product"+uuid+" #bprice").text(addComma(String(tot_price)));
+			  		total_price -= compose_price;
+			  		$("#sumprice").text(addComma(String(total_price)));
+			  		total_count -= 1;
+			  		$("#bcount_span").text("("+String(total_count)+")개");
+		  		}else{
+		  			alert("최대 1개이상 주문가능");
+		  		}
+		  	});
+
+		    
+		    
+		    
+		} //function explan_table()
+		
+		
+		
+       function gramClick(input){
+    	   
+    	   	/* alert(input); */ 
+    	   	$("#product_100g ,#product_200g, #product_500g, #product_1kg").parent().css("border", "1px solid #888888"); 
+	  		$("#"+input+"").parent().css("border", "1px solid black"); 
+	  		if(input == "product_100g"){
+	  			$("#product_crush").html('<option value="" selected disabled hidden>-[필수]옵션을 선택해 주세요-</option><option value="" disabled>---------------</option><option value="분쇄안함/원두">분쇄안함/원두</option><option value="굵게분쇄/핸드드립">굵게분쇄/핸드드립</option><option value="중간분쇄/더치커피">중간분쇄/더치커피</option><option value="곱게분쇄/모카포트">곱게분쇄/모카포트</option><option value="아주곱게분쇄/에스프레소">아주곱게분쇄/에스프레소</option>');
+	  			$("#hidden_input").attr("value","100");
+	  		}else if(input=="product_200g"){
+	  			$("#product_crush").html('<option value="" selected disabled hidden>-[필수]옵션을 선택해 주세요-</option><option value="" disabled>---------------</option><option value="분쇄안함/원두(+4000)">분쇄안함/원두(+4000)</option><option value="굵게분쇄/핸드드립(+4000)">굵게분쇄/핸드드립(+4000)</option><option value="중간분쇄/더치커피(+4000)">중간분쇄/더치커피(+4000)</option><option value="곱게분쇄/모카포트(+4000)">곱게분쇄/모카포트(+4000)</option><option value="아주곱게분쇄/에스프레소(+4000)">아주곱게분쇄/에스프레소(+4000)</option>');
+	  			$("#hidden_input").attr("value","200");
+	  		}else if(input=="product_500g"){
+	  			$("#product_crush").html('<option value="" selected disabled hidden>-[필수]옵션을 선택해 주세요-</option><option value="" disabled>---------------</option><option value="분쇄안함/원두(+7000)">분쇄안함/원두(+7000)</option><option value="굵게분쇄/핸드드립(+7000)">굵게분쇄/핸드드립(+7000)</option><option value="중간분쇄/더치커피(+7000)">중간분쇄/더치커피(+7000)</option><option value="곱게분쇄/모카포트(+7000)">곱게분쇄/모카포트(+7000)</option><option value="아주곱게분쇄/에스프레소(+7000)">아주곱게분쇄/에스프레소(+7000)</option>');
+	  			$("#hidden_input").attr("value","500");
+	  		}else if(input=="product_1kg"){
+	  			$("#product_crush").html('<option value="" selected disabled hidden>-[필수]옵션을 선택해 주세요-</option><option value="" disabled>---------------</option><option value="분쇄안함/원두(+9000)">분쇄안함/원두(+9000)</option><option value="굵게분쇄/핸드드립(+9000)">굵게분쇄/핸드드립(+9000)</option><option value="중간분쇄/더치커피(+9000)">중간분쇄/더치커피(+9000)</option><option value="곱게분쇄/모카포트(+9000)">곱게분쇄/모카포트(+9000)</option><option value="아주곱게분쇄/에스프레소(+9000)">아주곱게분쇄/에스프레소(+9000)</option>');
+	  			$("#hidden_input").attr("value","1000");
+	  		}
+       }//function gramClick
+	  	
+	  	$("#product_100g ,#product_200g, #product_500g, #product_1kg").click(function(){
+	  		gramClick($(this).attr('id'));
+	  		$("#product_crush option").prop('disabled',false);
+	  		$("#product_crush option[value='']").prop('disabled',true);
+	  	});
+	  	
+		
+		$("#product_crush").change(function(){
+			
+			if($("#product_crush option").is(":selected")){
+				$(".productExplanation_3").css("display","block");	
+				if($("#hidden_input").val()=="100"){
+					
+					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
+					var compose_price = parseInt("3000");
+					explan_table(compose,compose_price);
+					total_price += compose_price;
+					$("#sumprice").text(addComma(String(total_price)));
+					total_count += 1;
+					$("#bcount_span").text("("+String(total_count)+")개");
+					//$("#bcompose").text($("#product_100g").text()+"/"+ $(this).children('option:selected').text()); 
+					//$("#bprice").text("3000")
+					//price=parseInt("3000");
+					
+					//$(".ExplanationTable_3").append($("#opt_product"));
+				}else if($("#hidden_input").val()=="200"){
+					var compose = $("#product_200g").text()+"/"+ $(this).children('option:selected').text();
+					var compose_price = parseInt("7000");
+					explan_table(compose,compose_price);
+					total_price += compose_price;
+					$("#sumprice").text(addComma(String(total_price)));
+					total_count += 1;
+					$("#bcount_span").text("("+String(total_count)+")개");
+					/* $("#bcompose").text($("#product_200g").text()+"/"+ $(this).children('option:selected').text());
+					$("#bprice").text("7000")
+					price=parseInt("7000"); */
+				}else if($("#hidden_input").val()=="500"){
+					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
+					var compose_price = parseInt("10000");
+					explan_table(compose,compose_price);
+					total_price += compose_price;
+					$("#sumprice").text(addComma(String(total_price)));
+					total_count += 1;
+					$("#bcount_span").text("("+String(total_count)+")개");
+					/* $("#bcompose").text($("#product_500g").text()+"/"+ $(this).children('option:selected').text());
+				    $("#bprice").text("10000")
+				    price=parseInt("10000"); */
+				}else if($("#hidden_input").val()=="1000"){
+					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
+					var compose_price = parseInt("12000");
+					explan_table(compose,compose_price);
+					total_price += compose_price;
+					$("#sumprice").text(addComma(String(total_price)));
+					total_count += 1;
+					$("#bcount_span").text("("+String(total_count)+")개");
+					/* $("#bcompose").text($("#product_1kg").text()+"/"+ $(this).children('option:selected').text());
+					$("#bprice").text("12000")
+					price=parseInt("12000"); */
+					
+				}
+				
+ 	  			
+			} 
+	  	});
+	  
+
+	  	
+	  	
+	  	$("#product_buy").click(function(){
+	  		alert("비번 입력해");
+	  	});
+   });//ready
 </script>
 
 
 </head>
 <body>
+<!-- header -->
+	<jsp:include page="../header.jsp" /> 
+
 <div class="content">
 	<aside class="side">
 		<div class="sidecontent">
@@ -335,7 +491,7 @@
 					</tr>
 					<tr>
 						<td>
-							<strong id="product_price_text">3,900원</strong>
+							<strong id="product_price_text">3,000원</strong>
 							<input id="product_price" name="product_price" value="" type="hidden">
 						</td>
 					</tr>
@@ -344,6 +500,7 @@
 			</div> 
 			<!--  상품설명 끝 productExplanation -->
 			<div class="productExplanation_2">
+				<input type="hidden"  id ="hidden_input" value="">
 				<table class = "ExplanationTable_2" >
 					<tr>
 						<th>중량 선택</th>
@@ -360,13 +517,17 @@
 						<th>분쇄도 선택</th>
 						<td>
 							<select id="product_crush">
-								<option>-[필수]옵션을 선택해 주세요-</option>
-								<option>---------------------</option>
-								<option>분쇄안함/원두</option>
-								<option>굵게분쇄/핸드드립</option>
-								<option>중간분쇄/더치커피</option>
-								<option>곱게분쇄/모카포트</option>
-								<option>아주곱게분쇄/에스프레소</option>
+								<option value="" selected disabled hidden>-[필수]옵션을 선택해 주세요-</option>
+								<option value="" disabled>---------------</option>
+								<option value="분쇄안함/원두" disabled >분쇄안함/원두</option>
+								<option value="굵게분쇄/핸드드립" disabled >굵게분쇄/핸드드립</option>
+								<option value="중간분쇄/더치커피" disabled >중간분쇄/더치커피</option>
+								<option value="곱게분쇄/모카포트" disabled >곱게분쇄/모카포트</option>
+								<option value="아주곱게분쇄/에스프레소" disabled >아주곱게분쇄/에스프레소</option>
+							</select> 
+						<!-- 		<select id="product_crush">
+								<option value="" selected disabled hidden>-[필수]옵션을 선택해 주세요-</option>
+								<option value="" disabled>---------------</option> -->
 							</select>
 						</td>
 					</tr>
@@ -375,36 +536,12 @@
 			</div>
 			<div class="productExplanation_3">
 				<table class="ExplanationTable_3" >
-					<tr>
-						<td>
-							<p id="ptitle_kor">
-								에티오피아 시다모 G2 커피
-								<br>
-								-
-								<span id="bcompose">
-									100g/분쇄안함/원두
-								</span>
-							</p>
-						</td>
-						<td>
-							<span>
-								<input type="text" id="bcount_input">
-								<button type="button" class="plus_btn">+</button>
-								<button type="button" class="minus_btn">-</button>
-							</span>
-							<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif" alt="삭제" id="option_box1_del" class="option_box_del">
-						</td>
-						<td>
-							<span>
-								<span id="bprice">3900원</span>
-							</span>
-						</td>
-					</tr>
+
 				</table>
 			
 			</div>
 			<div class="productExplanation_4">
-				합계 : <span class="bprice"><strong><em>3900원</em></strong> <span id="bcount_span">(1개)</span></span>	
+				합계 : <span class="sumprice" id="sumprice"><strong><em></em></strong></span>	<span id="bcount_span"></span>
 			
 			</div>
 			<div class="productExplanation_5">
@@ -426,5 +563,8 @@
 	</div><!-- shomain 끝 -->
 
 </div><!-- content 끝 -->
+	<!-- footer -->
+	<jsp:include page="../footer.jsp" />
+
 </body>
 </html>

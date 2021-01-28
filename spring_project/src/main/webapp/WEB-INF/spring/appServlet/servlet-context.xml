@@ -18,6 +18,12 @@
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 
+
+	
+	<!-- multipartResolver -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean> 
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -26,8 +32,10 @@
 	
 	<!-- DAO Object  -->	
 	<beans:bean class="com.spring.dao.ProductDAO" id="productDAO"></beans:bean>
-	<beans:bean class="com.spring.dao.AdminProductDAO" id="AdminProductDAO"></beans:bean>
+	<!-- <beans:bean class="com.spring.dao.AdminProductDAO" id="AdminProductDAO"></beans:bean> -->
 	<beans:bean class="com.spring.dao.CoffeeMemberDAO" id="coffee_memberDAO"></beans:bean>
+
+
 	
 	<beans:bean class="com.spring.service.ShopService" id="shopService"></beans:bean>
 	<beans:bean class="com.spring.service.AdminShopServiceImpl" id="AdminShopService"></beans:bean>

@@ -1,11 +1,19 @@
 package com.spring.dao;
 
-import java.sql.ResultSet;
+import java.util.List;
 import java.util.ArrayList;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.spring.vo.CartVO;
 
 public class CartDAO extends DBConn{
+
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
+	private static String namespace = "mapper.mypage";
 	
 	/**
 	 * 장바구니 조회 - 페이징 처리
@@ -45,7 +53,9 @@ public class CartDAO extends DBConn{
 	 * 장바구니 조회
 	 */
 	public ArrayList<CartVO> getList(String wid){
-		ArrayList<CartVO> list = new ArrayList<CartVO>();
+		List<CartVO> list = sqlSession.selectList(namespace+".cartlist", wid);
+		return (ArrayList<CartVO>)list;
+		/*ArrayList<CartVO> list = new ArrayList<CartVO>();
 	
 		try {
 			String sql="select p.pid, p.pmphoto, p.ptitle, p.pkind1, p.pkind2"
@@ -69,7 +79,7 @@ public class CartDAO extends DBConn{
 			e.printStackTrace();
 		}
 		
-		return list;
+		return list;*/
 	}
 	
 	/**

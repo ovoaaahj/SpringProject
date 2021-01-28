@@ -104,7 +104,7 @@ div.content {
  }
 
 section.section1 input[type='text'], section.section1 input[type='password'] {
-	border:1px solid gray;
+		 border:1px solid gray;;
 		border-radius:4px;
 		width:27%;
 		padding:7px 10px;
@@ -125,6 +125,34 @@ form.user_info button {
 section.section1 form.user_info ul li:last-child {
 	text-align:center;
 }
+
+
+
+section.section1 input[type='text'].addr2{
+	
+	margin-left:124px;
+	margin-top: 5px;
+}
+
+section.section1 input[type='text'].hp_number{
+	
+	width:70px;
+} 
+
+select.hp{
+	border:1px solid gray;
+	width:85px;
+	height:30px;
+	border-radius:4px;
+}
+
+select.age{
+	border:1px solid gray;
+	width:85px;
+	height:30px;
+	border-radius:4px;
+}
+
 </style>
 </head>
 <body>
@@ -185,7 +213,7 @@ section.section1 form.user_info ul li:last-child {
 							<label><span class="red">*</span>주소</label>
 							<input type="text" name="addr1" class="addr" id="addr1">
 							<button type="button" class="sub">검색</button><br>
-							<input type="text" name="addr2" class="addr" id="addr2">
+							<input type="text" name="addr2" class="addr2" id="addr2">
 						</li>
 						<li>
 							<label><span class="red">*</span>전화번호</label>

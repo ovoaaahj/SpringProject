@@ -9,25 +9,58 @@
 <script src="http://localhost:9000/WebProject/js/jquery-3.5.1.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$("input[name='chk']").change(function(){
-			// $("#all:checked").length == 0
-			if($(this).is(":checked")){
-				//선택 - 하위 checkbox 선택
-				$(this).prop("checked",true);
-			}else{
-				//선택 - 하위 checkbox 해제
-				$(this).prop("checked",false);
-				 $.ajax({
-					url:"wishdelete.jsp?pid="+$(this).attr("wid"),
-					success : function(result){
-						if(result!=0){
-							location.href="http://localhost:9000/project/mypage/wishlist.do";
-						}
-					}
-				});
-			}
-	
+		
+		//페이지 번호 및 링크 		
+		var pager = jQuery("#ampaginationsm").pagination({
+			maxSize : 5,			
+			totals:'${dbCount}',
+			page : '${reqPage}'',
+			pageSize : '${pageSize}',
+					
+			
+			lastText : '&raquo;&raquo;',
+			firstText : '&laquo;&laquo',
+			prevTest : '&laquo;',
+			nextTest : '&raquo;',
+			
+			btnSize : 'sm' 			
+		}); 
+		
+		//
+		jQuery("#ampaginationsm").on('am.pagination.change',function(e){
+			$(location).attr('href','http://localhost:9000/MyCGV/admin/notice_list.do?rpage='+e.page);  
+			//location.href('이동페이지');
 		});
+		
+		
+		
+		
+		//체크박스 전체선택
+		$("#all").click(function(
+			if($(this).is(":checked")){
+				$("input[type=checkbox]").prop("checked",true);
+			}else {
+				$("input[type=checkbox]").prop("checked",false);
+			}
+		));
+		//선택삭제 버튼 
+		$("#btnDelete").click(function(
+			var choice = confirm("정말로 삭제하시겠습니까?");
+			if(choice){
+				//삭제리스트 - nid 
+				//체크박스중에 체크된 리스트만 가져와서 삭제리스트에 추가
+				//삭제할 페이지로 전송 
+				var chk_list = new Array();
+				$("input[type=checkbox]:checked").each(function(i){
+					if($(this).attr("id") != "all"){
+						chk_list[i] = $(this).attr("id");
+					}	
+					
+				});
+				
+				$(location).attr("href","http://localhost:9000/project/cart_delete.do?chklist="+chk_list);
+			}
+		));
 		
 	});
 
@@ -143,7 +176,7 @@ table tr {
 				 		<table class="cart_list">
 				 		<tr>
 				 			<th>
-				 				<input type="checkbox" name="chk" id="${vo.pid }" checked>
+				 				<input type="checkbox" name="all" id="all">
 				 			</th>
 				 			<th>상품사진</th>
 				 			<th>상품명</th>
@@ -151,16 +184,19 @@ table tr {
 				 			<th>수량</th>
 				 			<th>선택</th>
 				 		</tr>
+				 		<c:forEach var="vo" items="${list}">
 				 		<tr>
+				 			<td><input type="checkbox" id=${vo.wid }></td>
 				 			<td>${vo.pmphoto }</td>
 				 			<td>${vo.ptitle }</td>
 				 			<td>${vo.bprice }</td>
 				 			<td></td>
 				 			<td>
 				 				<a href=""><button type="button" class="cart_btn">주문하기</button></a>
-				 				<a href="http://localhost:9000/project/mypage/cart_delete.do"><button type="button" class="cart_btn">삭제하기</button></a>
+				 				<a href="http://localhost:9000/project/mypage/cart_list_del.do"><button type="button" class="cart_btn">삭제하기</button></a>
 				 			</td>
 				 		</tr>
+				 		</c:forEach>
 				 		<tr>
 				 			<td colspan="6">
 				 				<!-- <a href="?pid=${vo.pid }"> -->
@@ -171,6 +207,9 @@ table tr {
 				 				</a>
 				 			</td>
 				 		</tr>
+				 		<tr>
+						<td colspan="4"> <div id="ampaginationsm"></div> </td>
+						</tr>
 				 		</table>
 				 		<%--} --%>
 						</div>

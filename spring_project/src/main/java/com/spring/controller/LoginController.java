@@ -32,13 +32,13 @@ public class LoginController {
 	 * 로그인 처리
 	 * @return
 	 */
-	@RequestMapping(value="/login_proc.do",method=RequestMethod.POST)
-	public String login_proc(CoffeeMemberVO vo, HttpSession session) {
+//	@RequestMapping(value="/login_proc.do",method=RequestMethod.POST)
+//	public String login_proc(CoffeeMemberVO vo, HttpSession session) {
 		//JSP의 빌트인 객체는 컨트롤러의 파라미터로 넘어올 수 있음. 
 		//단, 원래 클래스타입으로 받아야 함.
 		
-		CoffeeMemberDAO dao = new CoffeeMemberDAO();
-		SessionVO svo = dao.getLogin(vo);
+//		CoffeeMemberDAO dao = new CoffeeMemberDAO();
+	/**	SessionVO svo = dao.getLogin(vo); 
 		String result = "";
 		
 		if(svo.getResult() != 0) {
@@ -47,8 +47,8 @@ public class LoginController {
 		}else {
 			result = "/login/loginFail";
 		}
-		return result;
-	}
+		return result; */
+//	}
 	
 	/**
 	 * 로그인화면

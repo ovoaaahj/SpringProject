@@ -194,7 +194,7 @@
   <div style="width: 1250px;padding: 50px;height: 500px;margin: 60px auto 0;position: relative;z-index: 100;
   text-align: center;color: #999;line-height: 22px;font-weight: 200;font-size: 15px;border-top: 1px solid #eaeaea;">
 		<a href="#" style="color:#999">
-			<div style="float: left;padding-right: 20px;font-size: 14px;">
+			<div style="float: left;padding-right: 20px;font-size: 14px;padding-left: 25px">
 				<img src="http://localhost:9000/project/images/index_mypack.png" style="width: 260px;display: block;">
 				<h2 class="index-h2" style="color: #111;line-height: 40px;font-weight: 800;">내 취향의 커피, 빈즈스토리</h2>
 				<p class="index-p">
