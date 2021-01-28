@@ -48,6 +48,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="../../header.jsp" />
 	<div class="productDeleteContent">
 		<table class="productDeleteTable">
 			<tr>
@@ -73,5 +74,6 @@
 			</tr>
 		</table>
 	</div>
+	<jsp:include page="../../footer.jsp" />
 </body>
 </html>

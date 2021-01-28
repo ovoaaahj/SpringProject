@@ -16,6 +16,8 @@
 		text-align:auto;
 		width:1000px;
 		margin:auto;
+		height:800px;
+		padding-top:70px;
 	}
 	div.admin_product_list div.product_TitleName{
 		border:1px solid red;
@@ -67,7 +69,7 @@
 	div.product_list_table table.product_table td{
 		text-align:center;
 		width:180px;
-		height:30px;
+		height:40px;
 	}
 	div.product_list_table table.product_table td button{
 		border:1px solid gray;
@@ -93,6 +95,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="../../header.jsp" />
 <div class="admin_shop_content">
 <div class="admin_product_list">
 	<div class="product_TitleName">
@@ -133,5 +136,7 @@
 
 </div>
 </div>
+<!-- footer -->
+<jsp:include page="../../footer.jsp" />
 </body>
 </html>
