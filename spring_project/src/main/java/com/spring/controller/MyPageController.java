@@ -54,12 +54,12 @@ public class MyPageController {
 	}
 	/**
 	 * 장바구니 삭제 처리
-	*/
+	
 	@RequestMapping(value="/mypage/cart_list_del.do", method=RequestMethod.GET)
 	public String getcartDelete() {
 		return
 	}
-	 
+	 */
 	
 	/**
 	 * 장바구니 페이지
