@@ -2,13 +2,23 @@ package com.spring.dao;
 
 
 import java.sql.ResultSet;
+<<<<<<< HEAD
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+=======
+>>>>>>> branch 'develop' of https://github.com/ovoaaahj/SpringProject
 import com.spring.vo.CoffeeMemberVO;
 
 public class CoffeeMemberDAO extends DBConn{
+
+	@Autowired
+	private SqlSessionTemplate sqlSession;
 	
-	
-	
+	private static String namespace = "mapper.mypage";
 	/**
+	
 	 * 마이페이지 - 회원정보 수정하기
 	 */
     
