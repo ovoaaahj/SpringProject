@@ -2,13 +2,10 @@ package com.spring.dao;
 
 
 import java.sql.ResultSet;
-<<<<<<< HEAD
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
-=======
->>>>>>> branch 'develop' of https://github.com/ovoaaahj/SpringProject
 import com.spring.vo.CoffeeMemberVO;
 
 public class CoffeeMemberDAO extends DBConn{
