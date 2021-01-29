@@ -14,6 +14,13 @@ public class MypageServiceImpl implements MypageService{
 	private CoffeeMemberDAO memberDAO;
 	private CartDAO cartDAO;
 	
+	/**
+	 * 선택삭제
+	 */
+	public int getSelectDelete(String[] dellist) {
+		return cartDAO.getDelete(dellist);
+	}
+	
 	public ModelAndView getdelResult(String id) {
 		ModelAndView mv = new ModelAndView();
 		boolean result = memberDAO.getDelete(id);

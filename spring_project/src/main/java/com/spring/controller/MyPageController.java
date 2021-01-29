@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import java.util.StringTokenizer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.dao.CartDAO;
 import com.spring.dao.CoffeeMemberDAO;
-import com.spring.service.MypageService;
+import com.spring.service.MypageServiceImpl;
 
 @Controller
 public class MyPageController {
@@ -17,14 +19,27 @@ public class MyPageController {
 	@Autowired
 	private CartDAO cartDAO;
 	@Autowired
-	private MypageService mypageService;
+	private MypageServiceImpl mypageService;
 	/**
 	 * Å»Åð ¼º°ø ÆäÀÌÁö
 	 * @return
 	 */
-	@RequestMapping(value="/del_account_proc.do", method=RequestMethod.GET)
-	public ModelAndView delSuccess(String id) {
-		return mypageService.getdelResult(id);
+	@RequestMapping(value="/cart_list_del.do", method=RequestMethod.GET)
+	public ModelAndView delcartList(String chklist) {
+		System.out.println("chklist--->" + chklist);
+		ModelAndView mv = new ModelAndView();
+		
+		//String chklist --> Array
+		StringTokenizer st = new StringTokenizer(chklist,",");
+		String[] dellist = new String[st.countTokens()];
+		for(int i=0;i<dellist.length;i++) {
+			dellist[i] = st.nextToken();
+		}
+		
+		int result = mypageService.getSelectDelete(dellist);
+		
+		mv.setViewName("redirect:/admin/notice_list.do");
+		return mv;
 	}
 	
 	

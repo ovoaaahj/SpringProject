@@ -58,7 +58,7 @@
 					
 				});
 				
-				$(location).attr("href","http://localhost:9000/project/cart_delete.do?chklist="+chk_list);
+				$(location).attr("href","http://localhost:9000/project/cart_list_del.do?chklist="+chk_list);
 			}
 		));
 		
@@ -193,7 +193,7 @@ table tr {
 				 			<td></td>
 				 			<td>
 				 				<a href=""><button type="button" class="cart_btn">주문하기</button></a>
-				 				<a href="http://localhost:9000/project/mypage/cart_list_del.do"><button type="button" class="cart_btn">삭제하기</button></a>
+				 				<a href="http://localhost:9000/project/mypage/cart_list_del.do"><button type="button" class="btnDelete">삭제하기</button></a>
 				 			</td>
 				 		</tr>
 				 		</c:forEach>

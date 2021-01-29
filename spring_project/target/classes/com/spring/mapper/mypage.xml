@@ -5,8 +5,8 @@
 
     <mapper namespace="mapper.mypage">
     <!-- 장바구니 삭제 -->
-    <delete id="cartlistdel">
-    
+    <delete id="cartlistdel" parameterType="java.lang.relfect.Array">
+    	delete from coffee_cart where wid in
 	
 	 <foreach item="str" index="index" collection="array"
       open="(" separator="," close=")">
