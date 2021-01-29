@@ -1,157 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+     <%--
+    	SessionVO svo = (SessionVO)session.getAttribute(svo);
+    	
+    	if(svo != null){
+    --%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$("#userInfoCheck").click(function(){
+		if($("#name").val()==""){
+			alert("성명을 입력해주세요");
+			$("#name").focus();
+			return false;
+		}else if($("#pass").val()==""){
+			alert("패스워드를 입력해주세요");
+			$("#pass").focus();
+			return false;
+		}else if($("#spass").val()==""){
+			alert("패스워드 확인을 입력해주세요");
+			$("#spass").focus();
+			return false;
+		}else if($("#hp1").val()=="선택"){
+			alert("휴대전화를 선택해주세요");
+			$("#hp1").focus();
+			return false;
+		}else if($("#hp2").val()==""){
+			alert("휴대전화를 입력해주세요");
+			$("#hp2").focus();
+			return false;
+		}else if($("#hp3").val()==""){
+			alert("휴대전화를 입력해주세요");
+			$("#hp3").focus();
+			return false;
+		}else if($("#email").val()==""){
+			alert("이메일을 입력해주세요");
+			$("#email").focus();
+			return false;
+		}else{
+			userupdateForm.submit();
+		}
+	});
+	
+	
+	//idCheck
+	$("#idCheck").click(function(){
+			if(!ruleCheck($("#id"))){
+				return false;
+			}else{
+				$.ajax({
+					url:"idCheck.do?id="+$("#id").val(),
+					success:function(result){
+						if(result == 1){
+							$("#idcheck_result").text("중복된 아이디 입니다.")
+							.css("color","tomato");
+						}else {
+							$(".idcheck").css("display","none");
+							$("#idcheck_result").text("사용가능한 아이디 입니다.")
+							.css("color","dodgerblue");
+						}
+					}
+				});
+			}
+		
+		});
+	
+	$("#cpass").focusout(function(){
+		if($("#pass").val() != "" && $("#cpass").val() != ""){
+			if($("#pass").val() == $("#cpass").val()) {
+				$("#msg").text("패스워드가 동일합니다").css("color","blue");
+				$("#email").focus();
+				return true;
+			}else{
+				$("#msg").text("패스워드가 다릅니다. 다시 입력해주세요").css("color","red");
+				$("#pass").val("");
+				$("#cpass").val("");
+				$("#pass").focus();
+				return false;
+			}
+		}
+	});//비밀번호 확인 
+});//ready
+
+
+function ruleCheck(obj){
+	var re = /^[A-Za-z0-9]{6,12}$/;
+	if(obj.value != 0){
+		if(re.test(obj.value)){	//정규식에 맞는 경우
+			return true;
+		}else {
+			alert("비밀번호는 6~12자리 사이로 입력해주세요.")
+			obj.focus();
+			return false;
+		}
+	}
+	
+}//ruleCheck
+
+</script>
 <style>
-	body {
-  font-family: "Lato", sans-serif;
-}
-
-div.sidenav>div{
-	font-size:30px;
-	color: white;
-	text-decoration:underline;
-}
-
-div.sidenav>div.hover {
-	font-color: #f1f1f1;
-}
-.sidenav {
-  height: 800px;
-  width: 200px;
-  position: relative;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color:white;
-  overflow-x: hidden;
-  padding-top: 10px;
-  padding-bottom: 0px;
-  display:inline-block;
-}
-
-.sidenav a {
-  padding: 25px 6px 25px 32px;
-  text-decoration: none;
-  font-size: 21px;
-  color: #000000;
-  display: block;
-  
-}
-.sidenav a:first-child {
-	padding-top:0px;
-}
-
-.sidenav span {
-	padding: 0px 6px 25px 32px;
-  text-decoration: none;
-  font-size:32px;
-  color: #000000;
-  font-weight:500;
-  display:block;
-}
-
-.sidenav div.underline {
-	height:2px;
-	width:210px;
-	background-color:lightgray;
-	margin-left: 15px;
-	margin-top:-10px;
-	margin-bottom:17px;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-div.content {
-	 display:inline-block;
-}
-	
- div.content section.section1 {
-      margin-left:250px;
-
-   }
-   span.red {
-   color:red;
-   }
-   
-   section.section1 h1 {
-   	margin-top:48px;
-   }
- section.section1 form.user_info ul li{
- 	font-size:15px;
- 	margin-top: 15px;
- 	list-style-type:none;
-		clear:both;
-		margin-bottom:7px;
- }
- section.section1 label {
- 		border:1px solid lightgray;
-		background-color:lightgray;
-		display:inline-block;
-		width:105px;
-		padding:7px 0;
-		text-indent:20px;
-		color:#333; font-size:13px; font-weight:600;
-		border-radius:4px;
-		float:left;
-		margin-right:15px;
- }
-
-section.section1 input[type='text'], section.section1 input[type='password'] {
-		 border:1px solid gray;;
-		border-radius:4px;
-		width:27%;
-		padding:7px 10px;
-		color:#333; font-size:12px;
-}
-
-form.user_info textarea {
-	width:55%;
-	height:200px;
-}
-
-form.user_info button {
-	font-size:12px;
-		width:80px; padding:6px 0;
-		border-radius:4px;
-		margin:10px 5px 0 0;
-}
-section.section1 form.user_info ul li:last-child {
-	text-align:center;
-}
-
-
-
-section.section1 input[type='text'].addr2{
-	
-	margin-left:124px;
-	margin-top: 5px;
-}
-
-section.section1 input[type='text'].hp_number{
-	
-	width:70px;
-} 
-
-select.hp{
-	border:1px solid gray;
-	width:85px;
-	height:30px;
-	border-radius:4px;
-}
-
-select.age{
-	border:1px solid gray;
-	width:85px;
-	height:30px;
-	border-radius:4px;
-}
 
 </style>
 </head>
@@ -173,82 +127,134 @@ select.age{
 		<section class="section1">
 			<div>
 				<h1>개인정보 수정</h1>				
-				<form name="user_info" action="join_proc.do" method="post" class="user_info">
-				<div class="jtitle"><span class="red">*</span>표시 항목은 필수 입력 항목 입니다.</div>
-					<ul>  
-						<li>
-							<label><span class="red">*</span>아이디</label>
-							<input type="text" name="id" class="f1" placeholder="Email 형식" id="id">
-							<button type="button" class="sub" id="idCheck">ID중복검사</button>
-							<div id="idcheck_result">
-							<div class="idcheck">아이디는 영문,숫자 조합으로 이메일 형식으로 입력해주세요</div>
-							<div class="idcheck">아이디는 <span class="red">소문자</span>로 저장 됩니다.</div>
-							</div>	
-						</li>
-						<li>
-							<label><span class="red">*</span>패스워드</label>
-							<input type="password" name="pass" class="f1" id="pass">
-							<div>비밀번호는 6자리 이상 12자리 이하로 입력해주세요.</div>
-						</li>
-						<li>
-							<label><span class="red">*</span>패스워드 확인</label>
-							<input type="password" name="cpass" class="f1" id="cpass">
-							<div id="msg"></div>
-						</li>
-						<li>
-							<label><span class="red">*</span>성명</label>
-							<input type="text" name="name" class="f1" id="name">
-						</li>
-						
-						<li>
-							<label><span class="red">*</span>E-mail</label>
-							<input type="text" name="email" class="f1" id="email">
-						</li>
-						<li>
-							<label><span class="red">*</span>메일수신</label>
-							<input type="radio" name="email_agr" checked><span class="rchk">수신동의</span>
-							<input type="radio" name="email_agr"><span class="rchk">수신거부</span>
-						</li>
-						<li>
-							<label><span class="red">*</span>주소</label>
-							<input type="text" name="addr1" class="addr" id="addr1">
-							<button type="button" class="sub">검색</button><br>
-							<input type="text" name="addr2" class="addr2" id="addr2">
-						</li>
-						<li>
-							<label><span class="red">*</span>전화번호</label>
-							<select name="hp1" class="hp" id="hp1">
-								<option value="선택">선택
-								<option value="010">010
-								<option value="011">011
-								<option value="017">017
-							</select>
-							- <input type="text" name="hp2" class="hp_number" id="hp2">
-							- <input type="text" name="hp3" class="hp_number" id="hp3">
-						</li>
-				
-						<li>
-							<label><span class="red">*</span>나이</label>
-							<select name="age" class="age" id="age">
-								<option value="선택">선택
-								<option value="20대">20대
-								<option value="30대">30대
-								<option value="40대">40대
-								<option value="50대">50대						
-								<option value="60대">60대							
-							</select>							
-						</li>
-						<li>
-							<label>자기소개</label>
-							<textarea name="intro"></textarea>
-						</li>
-						<li>
-							<button type="button" class="btn_style" id="btnJoin">가입하기</button>
-							<button type="reset" class="btn_style">다시쓰기</button>
-						</li>
-					</ul>
-				
-				</form>
+				   <form id="userupdateForm" name="userupdateForm" action="join_proc.do"
+         method="POST" target="_self">
+         <div style="width: 500px; margin: 0 auto"
+            class="xans-element- xans-member xans-member-join">
+            <div
+               style="font-size: 18px; font-weight: bold; padding: 40px 0 10px 0">기본정보</div>
+            <p class="required" style="font-size: 12px">
+               <img src="http://localhost:9000/project/images/ico_required.gif"
+                  alt="필수" /> 필수입력사항
+            </p>
+            <div class="ec-base-table typeWrite">
+               <table border="1">
+                  <tbody>
+                     <tr>
+                        <td class="joinkong" style="padding-top: 10px"><span
+                           style="font-size: 14px; color: #222">아이디</span> <img
+                           src="http://localhost:9000/project/images/ico_required.gif"
+                           alt="필수" /></td>
+                        <td class="joinkong2" style="padding-top: 10px"><input
+                           type="text" name="id" id="id" autocomplete="off" /> <br /> <span
+                           id="idMsg" class="error"></span></td>
+                     </tr>
+                     <tr>
+                        <td class="joinkong" style="padding-top: 10px"><span
+                           style="font-size: 14px; color: #222">비밀번호</span> <img
+                           src="http://localhost:9000/project/images/ico_required.gif"
+                           alt="필수" /></td>
+                        <td class="joinkong2" style="padding-top: 10px"><input
+                           type="password" name="pass" id="pass" autocomplete="off"
+                           maxlength="16" /> <br /> <span id="pwMsg1" class="error"></span></td>
+                     </tr>
+                     <tr>
+                        <td class="joinkong" style="padding-top: 10px"><span
+                           style="font-size: 14px; color: #222">비밀번호 확인</span> <img
+                           src="http://localhost:9000/project/images/ico_required.gif"
+                           alt="필수" /></td>
+                        <td class="joinkong2" style="padding-top: 10px"><input
+                           type="password" name="spass" id="spass" autocomplete="off"
+                           maxlength="16" /> <br /> <span id="pwMsg2" class="error"></span></td>
+                     </tr>
+                     <tr>
+                        <td class="joinkong" style="padding-top: 10px"><span
+                           style="font-size: 14px; color: #222">이름</span> <img
+                           src="http://localhost:9000/project/images/ico_required.gif"
+                           alt="필수" /></td>
+                        <td class="joinkong2" style="padding-top: 10px"><input
+                           type="text" name="name" id="name" maxlength="20"
+                           autocomplete="off" /></td>
+                     </tr>
+                     <tr>
+                        <td class="joinkong" style="padding-top: 10px"><span
+                           style="font-size: 14px; color: #222">휴대전화</span> <img
+                           src="http://localhost:9000/project/images/ico_required.gif"
+                           alt="필수" /></td>
+                        <td class="joinkong2" style="padding-top: 10px"><select
+                           name="hp1" id="hp1">
+                              <option value="010">010</option>
+                              <option value="011">011</option>
+                              <option value="016">016</option>
+                              <option value="017">017</option>
+                              <option value="018">018</option>
+                              <option value="019">019</option>
+                        </select> - <input type="text" name="hp2" id="hp2" maxlength="4"
+                           autocomplete="off" /> - <input type="text" name="hp3" id="hp3"
+                           maxlength="4" autocomplete="off" /></td>
+                     </tr>
+                     <tr>
+                        <td class="joinkong" style="padding-top: 10px"><span
+                           style="font-size: 14px; color: #222">이메일</span> <img
+                           src="http://localhost:9000/project/images/ico_required.gif"
+                           alt="필수" /></td>
+                        <td class="joinkong2" style="padding-top: 10px"><input
+                           type="text" name="email" id="email" maxlength="20"
+                           autocomplete="off" /><br>
+                        <span id="emailMsg" class="error"></span></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div
+               style="font-size: 18px; font-weight: bold; padding: 40px 0 10px 0">
+               이용약관동의 <span
+                  style="font-weight: normal; font-size: 12px; color: #999">*
+                  선택항목에 동의하지 않은 경우도 회원가입이 가능합니다.</span>
+            </div>
+            <div class="ec-base-box_join">
+               <p style="font-size: 14px">
+                  <span class="ec-base-chk"> <input type="checkbox"
+                     id="sAgreeAllChecked" /> <em class="checkbox"></em>
+                  </span> <label for="sAgreeAllChecked"> <strong
+                     style="font-weight: bold;">전체동의</strong>
+                  </label>
+               </p>
+            </div>
+            <div class="ec-base-box_join">
+               <p class="check">
+                  <span> [필수] <a href="#"
+                     style="text-decoration: underline; font-weight: bold;">이용약관</a> 에
+                     동의하십니까?
+                  </span> <input type="checkbox" id="agree_service_chk">
+               </p>
+            </div>
+            <div class="ec-base-box_join">
+               <p class="check">
+                  <span> [필수] <a href="#"
+                     style="text-decoration: underline; font-weight: bold;">개인정보
+                        수집 및 이용</a> 에 동의하십니까?
+                  </span> <input type="checkbox" id="agree_service_chk">
+               </p>
+            </div>
+            <div class="ec-base-box_join">
+               <p class="check">
+                  <span> [선택] SMS 수신을 동의하십니까? </span> <input type="checkbox"
+                     id="agree_service_chk">
+               </p>
+            </div>
+            <div class="ec-base-box_join">
+               <p class="check">
+                  <span> [선택] 이메일 수신을 동의하십니까? </span> <input type="checkbox"
+                     id="agree_service_chk">
+               </p>
+            </div>
+         </div>
+         <div style="padding-top: 60px" class="ec-base-button">
+            <button type="button" id="userInfoCheck"
+               style="padding: 16px 60px; border: 1px solid #222; background: #222; font-size: 15px; color: #fff; font-weight: normal;">수정하기</button>
+         </div>
+      </form>
 			</div>
 		</section>		
 	</div>
@@ -258,3 +264,9 @@ select.age{
 	
 </body>
 </html>
+
+<%-- }else{ %>
+<script>
+   alert("로그인을 진행하셔야 접근이 가능합니다.");
+</script>
+<% } --%>
