@@ -640,3 +640,79 @@ input[type="checkbox"] {
   content: "";
   clear: both;
 }
+
+.memberloginbox .login {
+  border: 1px solid #eaeaea;
+  margin: 0 auto;
+  padding: 0;
+  color: #2e2e2e;
+  width: 500px;
+}
+.memberloginbox .login fieldset {
+  position: relative;
+  width: 380px;
+  margin: 0 auto;
+  border: none;
+  vertical-align: top;
+}
+#login-wrap .idbox input {
+  border: 1px solid #eee;
+  width: 240px;
+  margin-bottom: 5px;
+  color: #000;
+  font-size: 12px;
+  height: 38px;
+  background-image: url(/web/upload/ga09/login/id.gif);
+  background-repeat: no-repeat;
+  background-position-x: 10px;
+  background-position-y: 17px;
+}
+#login-wrap .pwbox {
+  margin-top: 10px;
+}
+#login-wrap .pwbox input {
+  border: 1px solid #eee;
+  width: 240px;
+  margin: 0;
+  color: #000;
+  font-size: 12px;
+  height: 38px;
+  background-image: url(/web/upload/ga09/login/pw.gif);
+  background-repeat: no-repeat;
+  background-position-x: 10px;
+  background-position-y: 17px;
+}
+.memberloginbox .login fieldset > button {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+.memberloginbox .login fieldset ul {
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 0;
+  border: 0;
+}
+.memberloginbox .login fieldset .security {
+  padding: 0;
+  margin: 0;
+  color: #757575;
+}
+li {
+  list-style: none;
+}
+.memberloginbox .login fieldset li {
+  float: left;
+}
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  margin: 0 4px 0 2px;
+}
+input[id*="popup"] + label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #000;
+  cursor: pointer;
+}
