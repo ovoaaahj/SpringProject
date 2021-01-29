@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import java.util.StringTokenizer;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +22,25 @@ public class Admin_ShopController {
 	 * 삭제진행
 	 */
 	@RequestMapping(value="/admin/product_delete_proc.do",method = RequestMethod.GET)
-	public ModelAndView product_delete_proc(String pid) {
-		return AdminShopService.getResultDelete(pid);
+	public ModelAndView product_delete_proc(String chklist) {
+		//String chklist -->Array
+		ModelAndView mv = new ModelAndView();
+			
+				StringTokenizer st = new StringTokenizer(chklist,",");
+				String[] dellist = new String[st.countTokens()];
+				for(int i=0;i<dellist.length;i++) {
+					dellist[i]=st.nextToken();
+				}
+				int result=AdminShopService.getResultDelete(dellist);
+				
+				if(result != 0) {
+				mv.setViewName("redirect:/admin/product_list.do");
+				}
+				
+		return mv;
+				
 	}
 	
-	/**
-	 * 삭제창 경로
-	 * @return
-	 */
-	@RequestMapping(value = "/admin/product_delete.do", method = RequestMethod.GET)
-	public ModelAndView product_delete(String pid) {
-		return AdminShopService.getDelete(pid);
-	}// delete.do
 	
 	/**
 	 * 상품창 목록경로

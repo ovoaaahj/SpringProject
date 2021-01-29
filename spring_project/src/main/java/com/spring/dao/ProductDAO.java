@@ -21,21 +21,12 @@ public class ProductDAO extends DBConn{
 	/**
 	 * 삭제 진행하기
 	 */
-	public boolean getResultDelete(String pid) {
-		boolean result = false;
-		int val = sqlSession.delete(namespace+".deleteproduct", pid);
-		if(val != 0) result = true;
-		return result;
+	public int getResultDelete(String[] dellist) {
 		
+		return sqlSession.delete(namespace+".deleteproduct",dellist);	
 	}
 	
-	/**
-	 * 삭제물품 정보가져오기
-	 */
-	public ProductVO getDelete(String pid) {
-		return sqlSession.selectOne(namespace+".deletelist", pid);
-
-	}
+	
 	
 	/**
 	 * 상품 리스트 불러오기
@@ -102,6 +93,10 @@ public class ProductDAO extends DBConn{
 	 * 검색한 목록 가져오기
 	 */
 	public ArrayList<ProductVO> getSearchList(String sname,String svalue){
+		Map <String,String> param = new HashMap<String,String>();
+		param.put("sname", sname);
+		param.put("svalue", svalue);
+		
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
@@ -189,26 +184,12 @@ public class ProductDAO extends DBConn{
 	 * 전체 로우수 가져오기
 	 */
 	public int getListCount(String sname,String svalue) {
-		int count = 0;
+		Map<String,String> param = new HashMap<String,String>();
+		param.put("sname", sname);
+		param.put("svalue", svalue);
 		
-		try {
-			String str ="";
-			if(!sname.equals("total")) {
-				str = " where "+sname+"='"+svalue+"'";
-			}
-			
-			String sql = "select * from product "+str;
-			getStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			
-			if(rs.next()) {
-				count = rs.getInt(1);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+		return sqlSession.selectOne(namespace+".listcountajax",param);
 		
-		return count;
 	}
 	
 	

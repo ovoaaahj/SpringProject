@@ -15,11 +15,38 @@
 <meta charset="UTF-8">
 <title>Bean's Story Shop</title>
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
+<script src="http://localhost:9000/project/js/am-pagination.js"></script>  
 <link rel="stylesheet" type="text/css" href="http://localhost:9000/project/css/shopMain.css">
-<link rel="stylesheet" href = "http://localhost:9000/MyCGV/css/am-pagination.css">
-<script src="http://localhost:9000/MyCGV/js/am-pagination.js"></script>  
+<link rel="stylesheet" href = "http://localhost:9000/project/css/am-pagination.css">
 <script>
 	$(document).ready(function(){
+		
+		//페이지 번호 및 링크 		
+		var pager = jQuery("#ampaginationsm").pagination({
+			maxSize : 5,	
+		/* 	totals:10,
+			page:1,
+			pageSize:5, */
+			totals:'${dbCount}',
+			page : '${reqPage}',
+			pageSize : '${pageSize}', 
+					
+			
+			lastText : '&raquo;&raquo;',
+			firstText : '&laquo;&laquo',
+			prevTest : '&laquo;',
+			nextTest : '&raquo;',
+			
+			btnSize : 'sm' 			
+		}); 
+		
+		//
+		jQuery("#ampaginationsm").on('am.pagination.change',function(e){
+			$(location).attr('href','http://localhost:9000/project/shop_Main3_1.do?pkind1=<%= pkind1%>&&rpage='+e.page);  
+			//location.href('이동페이지');
+		});
+		
+		
 		
 		choose();
 		
@@ -73,33 +100,20 @@
 			$('#subGoodsTitle').css('text-decoration','underline');
 		}
 		
-		
-		//페이지 번호 및 링크 		
-		var pager = jQuery("#ampaginationsm").pagination({
-			maxSize : 5,			
-			totals:'${dbCount}',
-			page : '${reqPage}',
-			pageSize : '${pageSize}',
-					
-			
-			lastText : '&raquo;&raquo;',
-			firstText : '&laquo;&laquo',
-			prevTest : '&laquo;',
-			nextTest : '&raquo;',
-			
-			btnSize : 'sm' 			
-		}); 
-		
-		//
-		jQuery("#ampaginationsm").on('am.pagination.change',function(e){
-			$(location).attr('href','http://localhost:9000/project/shop_Main3_1.do?pkind1=<%= pkind1%>&&rpage='+e.page);  
-			//location.href('이동페이지');
+		/** 검색 버튼 이벤트 처리 **/
+		$("#btnsearch").click(function(){
+			if($("#sname").val() !="total" && $("#svalue").val() == ""){
+				alert("검색할 데이터를 입력해 주세요");
+				$("#svalue").focus();
+				return false;
+			}else{
+				var sname = $("#sname").val();
+				var svalue = $("#svalue").val();
+				
+				product_list(sname, svalue,"");
+			}
 		});
-		
-		
-		
-		
-		
+
 	});//ready
 </script>
 </head>
@@ -184,6 +198,7 @@
 				<option value='price'>가격</option>
 				</select>
 				<input type='text' id='svalue'>
+				<button id="btnsearch">검색</button>
 				</div>
 				<div  class='orders'>
 				<span id='pdate'>New</span>
@@ -198,7 +213,9 @@
 				<tr>	
 				<%} %>	
 		   		<td>
-				    <img src = 'http://localhost:9000/project/images/${vo.pmphoto }'>
+				    <img src = 'http://localhost:9000/project/resources/upload/ ${vo.pmsphoto }' 
+				    onmouseover="this.src='http://localhost:9000/project/resources/upload/ ${vo.phsphoto }'"
+					onmouseout="this.src='http://localhost:9000/project/resources/upload/ ${vo.pmsphoto }'">
 				     <div class='event'>
 					    <div class='a'>
 					       <c:if test ="${!empty vo.psub1 }">
@@ -237,9 +254,9 @@
 			<%} %>		 
 		   	<% i++; %>	
 		    </c:forEach>
-			    <tr>
-			   		 <td colspan="5"> <div id="ampaginationsm"></div> </td>
-			    </tr>
+			 	<tr>
+			   		<td colspan="4"> <div id="ampaginationsm"></div> </td>
+			    </tr>  
 		   </table>
 		
 	</div>

@@ -6,23 +6,28 @@
     
     
     <mapper namespace="mapper.shop">
-    
-    <!-- 삭제할 상품 정보 가져오기 -->
-    <select id="deletelist" parameterType="java.lang.String" resultType="com.spring.vo.ProductVO">
-    
-    select pid,ptitle,pmphoto,pprice100 from product where pid=#{pid}
-    
+    <!-- 검색목록 가져오기 -->
+    <select id="listcountajax" parameterType="map" resultType="int">
+		select count(*) from product
+		<if test="sname != 'total'">
+			 where ${sname} = #{svalue} 
+		</if>
     </select>
+
     
     <!-- 관리자페이지 상품 삭제하기 -->
-    <delete id="deleteproduct" parameterType="java.lang.String">
-    	delete from product where pid =#{pid}
+    <delete id="deleteproduct" parameterType="java.lang.reflect.Array">
+    	delete from product where pid in
+    	<foreach item="item" index="index" collection="array"
+			open="(" separator="," close=")">
+		 #{item}	
+		</foreach>
     </delete>
     
     
     <!-- 관리자페이지 상품리스트 가져오기 -->
     <select id="adminshoplist" resultType="com.spring.vo.ProductVO">
-    	select pid,ptitle,pprice100,pkind1,pkind2,psub1 from product
+    	select pid,ptitle,pprice100,pkind1,pkind2,psub1,pdate from product
     </select>
     
     
@@ -33,7 +38,7 @@
     
     insert into product (pid,ptitle,pkind1,pkind2,phash,pprice100,pprice200,pprice500,pprice1000,psub1,psub2,pmphoto,pmsphoto,phphoto,phsphoto,pdate)
 					values ('p_'||SEQU_PRODUCT.nextval,#{ptitle},#{pkind1},#{pkind2},#{phash},#{pprice100},#{pprice200},#{pprice500},#{pprice1000}
-							, #{psub1 ,jdbcType=VARCHAR},#{psub2, jdbcType=VARCHAR},#{pmphoto},#{pmsphoto},#{phphoto},#{phsphoto},sysdate)
+							, #{psub1 ,jdbcType=VARCHAR},#{psub2, jdbcType=VARCHAR},#{pmphoto},#{pmsphoto},#{phphoto},#{phsphoto},TO_CHAR(SYSDATE,'YYYY/MM/DD'))
     
     </insert>
     
@@ -47,7 +52,7 @@
     
     <!-- 대분류 리스트 가져오기 -->
     <select id="shoplist1" 	parameterType="map" resultType="com.spring.vo.ProductVO" > 
-		select * from (select rownum rno,pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,
+		select * from (select rownum rno,pid,pmphoto,pmsphoto,phphoto,phsphoto,psub1,psub1s,psub2,psub2s,
 				psub3,psub3s,phash,pprice100,pdate,ptitle from product where pkind1= #{pkind1} )
 				where rno between ${start} and ${end}
 	</select>
@@ -55,7 +60,7 @@
 	
 	 <!-- 소분류 리스트 가져오기 -->
 	 <select id="shoplist2" parameterType="map" resultType="com.spring.vo.ProductVO" > 
-		select * from (select rownum rno,pid,pmphoto,pmsphoto,psub1,psub1s,psub2,psub2s,
+		select * from (select rownum rno,pid,pmphoto,pmsphoto,phphoto,phsphoto,psub1,psub1s,psub2,psub2s,
 				psub3,psub3s,phash,pprice100,pdate,ptitle from product 
 				where pkind1=#{pkind1} and pkind2=#{pkind2})
 				where rno between ${start} and ${end}

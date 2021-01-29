@@ -8,7 +8,6 @@ import com.spring.vo.ProductVO;
 
 public interface AdminShopService {
 	ModelAndView getList();
-	ModelAndView getDelete(String pid);
-	ModelAndView getResultDelete(String id);
+	int getResultDelete(String[] dellist);
 	ModelAndView getResultInsert(ProductVO vo,HttpServletRequest request);
 }
