@@ -5,6 +5,9 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class ProductVO {
 	String pid,pmphoto,pmsphoto,pcphoto,pcsphoto,psub1,psub1s,psub2,psub2s,psub3,
 			psub3s,ptitle,phash,pprice100,pprice200,pprice500,pprice1000 ,pcontent,pcontent2,pdate,pkind1,pkind2,phphoto,phsphoto;
+	int rno;
+	
+
 	public String getPhphoto() {
 		return phphoto;
 	}
@@ -21,7 +24,7 @@ public class ProductVO {
 		this.phsphoto = phsphoto;
 	}
 
-	int rno;
+
 	
 	CommonsMultipartFile file1,file2;
 	
