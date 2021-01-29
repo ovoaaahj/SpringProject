@@ -162,9 +162,9 @@ select.age{
 	<div class="sidenav">
 					<span>마이페이지</span>
 					<div class="underline"></div>
-					<a href="http://localhost:9000/project/userInfo.do">개인정보 수정</a>
-					<a href="http://localhost:9000/project/cart_list.do">장바구니 목록</a>
-					<a href="http://localhost:9000/project/buying_list.do">구매확인</a>
+					<a href="http://localhost:9000/project/mypage/userInfo.do">개인정보 수정</a>
+					<a href="http://localhost:9000/project/mypage/cart_list.do">장바구니 목록</a>
+					<a href="http://localhost:9000/project/mypage/buying_list.do">구매확인</a>
 					<a href="http://localhost:9000/project/delAccount.do">회원탈퇴</a>
 	</div>
 	

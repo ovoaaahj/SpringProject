@@ -10,11 +10,11 @@
       footer
    */
    *{
-      margin:0px; padding:0px;
       font-family:"나눔바른고딕";      
    }
    
 footer{
+      margin:0px; padding:0px;
       /* background-color:rgb(242,242,242); */
       width:100%;
       background-color:#ecd8c6;
