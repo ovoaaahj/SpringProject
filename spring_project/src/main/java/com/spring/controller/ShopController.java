@@ -26,47 +26,12 @@ public class ShopController {
 		return "shop/shopMain2";
 	}// shopmain2
 
+	
 	/** product_list_proc */
-	
-	@RequestMapping(value = "/product_list_proc.do", produces="application/json;charset=UTF-8",method = RequestMethod.GET)
 	@ResponseBody
-	public String product_list_proc(String sname, String svalue) {
-		
-		ProductDAO dao = new ProductDAO();
-		
-	
-		ArrayList<ProductVO> list = dao.getSearchList(sname, svalue);
-
-		// list 객체의 데이터를 JSON 객체로 변환작업 필요 ---> JSON 라이브러리 설치(gson)
-		JsonArray jarray = new JsonArray();
-		JsonObject jdata = new JsonObject();
-		Gson gson = new Gson();
-
-		for (ProductVO vo : list) {
-			JsonObject jobj = new JsonObject();
-			jobj.addProperty("rno", vo.getRno());
-			jobj.addProperty("pid", vo.getPid());
-			jobj.addProperty("pmphoto", vo.getPmphoto());
-			jobj.addProperty("psub1", vo.getPsub1());
-			jobj.addProperty("psub2", vo.getPsub2());
-			jobj.addProperty("psub3", vo.getPsub3());
-			jobj.addProperty("ptitle", vo.getPtitle());
-			jobj.addProperty("phash", vo.getPhash());
-			jobj.addProperty("pprice", vo.getPprice100());
-			jobj.addProperty("pkind1", vo.getPkind1());
-			jobj.addProperty("pkind2", vo.getPkind2());
-		
-			jarray.add(jobj);
-		}
-		
-		
-		jdata.add("jlist", jarray);
-		
-		
-
-		
-		return gson.toJson(jdata); // gson.toJson(변환할 객체);
-
+	@RequestMapping(value = "/product_list_proc.do", produces="application/json;charset=UTF-8",method = RequestMethod.GET)
+	public String product_list_proc(String sname, String svalue, String rpage) {
+		return shopService.getSearchList(sname,svalue,rpage);
 	}  
 
 	

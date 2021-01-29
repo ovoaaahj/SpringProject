@@ -16,8 +16,8 @@
 <title>Bean's Story Shop</title>
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost:9000/project/css/shopMain.css">
-<link rel="stylesheet" href = "http://localhost:9000/MyCGV/css/am-pagination.css">
-<script src="http://localhost:9000/MyCGV/js/am-pagination.js"></script>  
+<link rel="stylesheet" type="text/css" href = "http://localhost:9000/project/css/am-pagination.css">
+<script src="http://localhost:9000/project/js/am-pagination.js"></script>   
 <script>
 	$(document).ready(function(){
 		
@@ -193,7 +193,9 @@
 				<tr>	
 				<%} %>	
 		   		<td>
-				    <img src = 'http://localhost:9000/project/resources/upload/${vo.pmsphoto }'>
+				    <img src = 'http://localhost:9000/project/resources/upload/${vo.pmsphoto }' 
+				    onmouseover="this.src='http://localhost:9000/project/resources/upload/${vo.phsphoto }'"
+					onmouseout="this.src='http://localhost:9000/project/resources/upload/${vo.pmsphoto }'">
 				    <div class='event'>
 					    <div class='a'>
 					       <c:if test ="${!empty vo.psub1 }">

@@ -1,7 +1,7 @@
 div.content{
 	    border: 1px solid orange; 
-		width:1800px;
-		height:1600px;
+		width:2000px;
+		height:2200px;
 		margin:auto;
 	}
 	
@@ -260,4 +260,7 @@ div.content{
 		display:block;
 		text-align:left;
 	}
-	
+	table.shopMainCenterTable tr:last-child td{
+		height:30px;
+		text-align:center;
+	}

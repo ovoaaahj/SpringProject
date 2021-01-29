@@ -31,35 +31,14 @@ public class AdminShopServiceImpl implements AdminShopService{
 		return mv;
 	}
 	
-	/**
-	 * 삭제정보 가져오기
-	 */
-	public ModelAndView getDelete(String pid) {
 
-		ModelAndView mv = new ModelAndView();
-		
-		ProductVO vo = ProductDAO.getDelete(pid);
-		
-		mv.addObject("vo",vo);
-		mv.setViewName("admin/shop/Product_delete");
-		
-		return mv;
-	}
 	
 	/**
 	 * 삭제진행
 	 */
-	public ModelAndView getResultDelete(String pid){
-		ModelAndView mv = new ModelAndView();
-		
-		boolean result=ProductDAO.getResultDelete(pid);
-		
-		if(result) {
-			mv.setViewName("redirect:/admin/product_list.do");
-		}
-		
-		return mv;
-		
+	public int getResultDelete(String[] dellist){
+
+		return ProductDAO.getResultDelete(dellist);
 	}
 	
 	/**
