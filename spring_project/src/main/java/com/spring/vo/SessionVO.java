@@ -4,7 +4,6 @@ public class SessionVO {
 	int result;
 	String name;
 	
-	
 	public int getResult() {
 		return result;
 	}

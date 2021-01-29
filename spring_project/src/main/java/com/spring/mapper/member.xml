@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.member">
+
+	<select id="login" parameterType="com.spring.vo.CoffeeMemberVO" resultType="com.spring.vo.SessionVO">
+				select count(*) result from(
+					SELECT count(*)FROM coffee_member 
+					WHERE ID=#{id} AND PASS=#{pass} group by name)
+	</select>
+
+	<select id="idCheck" parameterType="java.lang.String" resultType="int">
+		select count(*) from coffee_member where id=#{id}
+	</select>
+	
+    <insert id="join" parameterType="com.spring.vo.CoffeeMemberVO">
+    	INSERT INTO COFFEE_MEMBER VALUES(#{id},#{pass},#{name},#{hp},#{email},sysdate)
+    </insert>
+    
+</mapper>

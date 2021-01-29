@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://localhost:9000/project/css/jw.css" />
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 	
       $(document).ready(function () {
@@ -43,44 +44,45 @@
     	/* 회원가입 폼체크 */
         $("#joinBtn").click(function () {
           if ($("#id").val() == "") {
-            $("#id").focus();
-            alert("아이디를 입력해주세요");
-            return false;
+              swal("아이디를 입력해주세요","","warning");
+              $("#id").focus();
+              return false;
           } else if ($("#pass").val() == "") {
-            alert("비밀번호를 입력해주세요");
-            $("#pass").focus();
-            return false;
+        	  swal("비밀번호를 입력해주세요", "", "warning");
+              $("#pass").focus();
+           	  return false;
           } else if ($("#spass").val() == "") {
-            alert("비밀번호를 확인을 입력해주세요");
-            $("#spass").focus();
-            return false;
+        	  swal("비밀번호를 확인을 입력해주세요", "", "warning");
+              $("#spass").focus();
+              return false;
           } else if ($("#name").val() == "") {
-            alert("이름을 입력해주세요");
-            $("#name").focus();
-            return false;
+        	  swal("이름을 입력해주세요", "", "warning");
+              $("#name").focus();
+              return false;
           }else if ($("#hp2").val() == "") {
-            alert("핸드폰번호를 입력해주세요");
-            $("#hp2").focus();
-            return false;
+        	  swal("핸드폰번호를 입력해주세요", "", "warning");
+              $("#hp2").focus();
+              return false;
           } else if ($("#hp3").val() == "") {
-            alert("핸드폰번호를 입력해주세요");
-            $("#hp3").focus();
-            return false;
+        	  swal("핸드폰번호를 입력해주세요", "", "warning");
+              $("#hp3").focus();
+              return false;
           }else if ($("#email").val() == "") {
-              alert("이메일을 입력해주세요");
+        	  swal("이메일을 입력해주세요", "", "warning");
               $("#email").focus();
               return false;
           } else {
             //서버전송
-              joinForm.submit();
-          }
+              alert("회원가입이 완료되었습니다");
+			  joinForm.submit();
+          } 
         });
         /* 비밀번호 정규식  */
 		 $("#pass").focusout(function(){
 			 	var regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 	    		if(regExp.test($("#pass").val())){
 	    			$("#pwMsg1").text("");
-	    			return true;	//이메일 형식에 맞는 경우
+	    			return true;	//비밀번호 형식에 맞는 경우
 	    		}else{
 	    			$("#pwMsg1").text("최소 8 자, 최소 하나의 문자 및 하나의 숫자를 입력해주세요").css("color","#da7354");
 	    			$("#pass").focus();
@@ -99,7 +101,7 @@
 				}else{
 					$("#pwMsg2").text("패스워드가 다릅니다. 다시 입력해주세요").css("color","#da7354");
 					$("#spass").val("");
-					$("#pass").focus();
+					$("#spass").focus();
 					return false;				
 				}		
 			}
@@ -141,7 +143,7 @@
 				<div id="gnb">
 					<div id="log"
 						class="xans-element- xans-layout xans-layout-statelogoff">
-						<a href="#">로그인</a> <a href="http://localhost:9000/project/join.do">회원가입</a> <a href="#"
+						<a href="http://localhost:9000/project/login.do">로그인</a> <a href="http://localhost:9000/project/join.do">회원가입</a> <a href="#"
 							style="margin-left: 8px; padding-left: 8px; border-left: 1px solid #ddd; color: #333; font-weight: bold">개인결제</a>
 					</div>
 				</div>
@@ -152,7 +154,19 @@
 				src="http://localhost:9000/project/images/logo.png"
 				style="width: 180px" />
 			</a>
-			<h2>회원 가입</h2>
+			 <div
+                style="
+                  font-size: 26px;
+                  font-weight: bold;
+                  margin: 0 auto;
+                  padding-bottom: 15px;
+                  width: 380px;
+                  margin-top: 30px;
+                  text-align: center;
+                "
+              >
+                회원 가입
+              </div>
 		</div>
 		<form id="joinForm" name="joinForm" action="join_proc.do"
 			method="POST" target="_self">
