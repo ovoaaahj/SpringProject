@@ -3,6 +3,9 @@ package com.spring.dao;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -71,6 +74,33 @@ public class CoffeeMemberDAO extends DBConn{
 	 */
 	public int getIdCheck(String id) {
 		return sqlSession.selectOne(namespace_member+".idCheck",id);
+	}
+	/**
+	 * 아이디찾기
+	 */
+	public CoffeeMemberVO findId(String name,String hp) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("name", name);
+		param.put("hp", hp);
+		return sqlSession.selectOne(namespace_member+".findId",param);
+	}
+	/**
+	 * 비밀번호찾기
+	 */
+	public CoffeeMemberVO findPass(String id) {
+		return sqlSession.selectOne(namespace_member+".findPass",id);
+	}
+	/**
+	 * 아이디 result찾기
+	 */
+	public int findName_result(String name) {
+		return sqlSession.selectOne(namespace_member+".findName",name);
+	}
+	/**
+	 * 전화번호 result 찾기
+	 */
+	public int findHp_result(String hp) {
+		return sqlSession.selectOne(namespace_member+".findHp",hp);
 	}
 	/**
 	 * Insert : 회원가입
