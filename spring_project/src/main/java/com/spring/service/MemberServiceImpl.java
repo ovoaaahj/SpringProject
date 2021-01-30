@@ -15,7 +15,54 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private CoffeeMemberDAO coffee_memberDAO;
-
+	/*
+	 * 아이디  찾기
+	 */
+	@Override
+	public ModelAndView getFineId(String name,String hp) {
+		ModelAndView mv = new ModelAndView();
+		CoffeeMemberVO vo = coffee_memberDAO.findId(name,hp);
+		if(vo != null) {
+			mv.addObject("id", vo.getId());
+			mv.setViewName("/find_id_pw/find_id_pw");
+		}else {
+			mv.addObject("failId", "failId");
+			mv.setViewName("/find_id_pw/find_id_pw");
+		}
+		return mv;
+	}
+	/*
+	 * 비밀번호  찾기
+	 */
+	@Override
+	public ModelAndView getFindPass(String id) {
+		ModelAndView mv = new ModelAndView();
+		CoffeeMemberVO vo = coffee_memberDAO.findPass(id);
+		if(vo != null) {
+			mv.addObject("pass", vo.getPass());
+			mv.setViewName("/find_id_pw/find_id_pw");
+		}else {
+			mv.addObject("failPass", "failPass");
+			mv.setViewName("/find_id_pw/find_id_pw");
+		}
+		return mv;
+	}
+	/*
+	 * 이름 result 찾기
+	 */
+	@Override
+	public String getResultName(String name) {
+		int result = coffee_memberDAO.findName_result(name);
+		return String.valueOf(result);
+	}
+	/*
+	 * 전화번호 result 찾기
+	 */
+	@Override
+	public String getResultHp(String hp) {
+		int result = coffee_memberDAO.findHp_result(hp);
+		return String.valueOf(result);
+	}
 	/**
 	 * 로그인 처리
 	 */

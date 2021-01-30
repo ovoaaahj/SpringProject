@@ -10,4 +10,8 @@ public interface MemberService {
 	ModelAndView getResultLogin(CoffeeMemberVO vo,HttpSession session);
 	String getResultJoin(CoffeeMemberVO vo);
 	String getResultIdCheck(String id);
+	String getResultName(String name);
+	String getResultHp(String hp);
+	ModelAndView getFineId(String name,String hp);
+	ModelAndView getFindPass(String id);
 }

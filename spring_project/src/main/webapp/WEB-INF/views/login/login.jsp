@@ -118,11 +118,9 @@ $(document).ready(function () {
 							style="padding: 15px 0; font-size: 13px; border-top: 1px solid #eee; margin-top: 20px; text-align: center;">
 							<a href="http://localhost:9000/project/join.do"
 								style="padding: 0 10px; border-right: 1px solid #e9e9e9; color: #666;">회원가입</a>
-							<a href="#"
+							<a href="http://localhost:9000/project/find_id_pw.do"
 								style="border-right: 1px solid #e9e9e9; padding: 0 12px; color: #666;">아이디
-								찾기</a> <a href="#"
-								style="padding: 0 12px; padding: 0 12px; color: #666;">비밀번호
-								찾기</a>
+								/ 비밀번호 찾기</a> 
 						</div>
 						<div id="resultPopup"
 							style="text-align: center; margin: 0 auto; background: #5392e5; padding: 10px;">
