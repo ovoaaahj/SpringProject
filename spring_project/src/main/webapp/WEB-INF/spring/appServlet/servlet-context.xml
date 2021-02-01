@@ -32,9 +32,12 @@
 	
 	<!-- DAO Object  -->	
 	<beans:bean class="com.spring.dao.ProductDAO" id="productDAO"></beans:bean>
+	<beans:bean class="com.spring.dao.CartDAO" id="cartDAO"></beans:bean>
+	
 	<beans:bean class="com.spring.dao.CoffeeMemberDAO" id="coffee_memberDAO"></beans:bean>
 
 	
+	<beans:bean class="com.spring.service.MemberServiceImpl" id="memberService"></beans:bean>
 	<beans:bean class="com.spring.service.ShopService" id="shopService"></beans:bean>
 	<beans:bean class="com.spring.service.AdminShopServiceImpl" id="AdminShopService"></beans:bean>
 	<beans:bean class="com.spring.service.MypageServiceImpl" id="mypageService"></beans:bean>

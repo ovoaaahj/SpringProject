@@ -5,13 +5,13 @@
 
     <mapper namespace="mapper.mypage">
     <!-- 장바구니 삭제 -->
-    <delete id="cartlistdel" parameterType="java.lang.relfect.Array">
+    <delete id="cartlistdel" parameterType="java.lang.reflect.Array">
     	delete from coffee_cart where wid in
 	
 	 <foreach item="str" index="index" collection="array"
       open="(" separator="," close=")">
         #{str}
-  </foreach>
+	  </foreach>
     </delete>
     <!-- 장바구니 저장 -->
     <insert id="pickcart">

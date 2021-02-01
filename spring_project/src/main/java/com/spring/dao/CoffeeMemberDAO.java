@@ -3,18 +3,24 @@ package com.spring.dao;
 
 import java.sql.ResultSet;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.spring.vo.CoffeeMemberVO;
+import com.spring.vo.SessionVO;
 
 
 public class CoffeeMemberDAO extends DBConn{
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
 	private static String namespace = "mapper.mypage";
+	
+	private static String namespace_member="mapper.member";
 	/**
 	
 	 * 마이페이지 - 회원정보 수정하기
@@ -59,23 +65,44 @@ public class CoffeeMemberDAO extends DBConn{
 	}
 	
 	/**
+	 * login 
+	 */
+	public SessionVO getLogin(CoffeeMemberVO vo) {
+		return sqlSession.selectOne(namespace_member+".login",vo);
+	}
+	
+	/**
 	 * 회원가입 - ID중복체크
 	 */
 	public int getIdCheck(String id) {
-		int result = 0;
-		
-		try {
-			String sql ="select count(*) from coffee_member where id=?";
-			getPreparedStatement(sql);
-			pstmt.setString(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) result = rs.getInt(1);			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+		return sqlSession.selectOne(namespace_member+".idCheck",id);
+	}
+	/**
+	 * 아이디찾기
+	 */
+	public CoffeeMemberVO findId(String name,String hp) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("name", name);
+		param.put("hp", hp);
+		return sqlSession.selectOne(namespace_member+".findId",param);
+	}
+	/**
+	 * 비밀번호찾기
+	 */
+	public CoffeeMemberVO findPass(String id) {
+		return sqlSession.selectOne(namespace_member+".findPass",id);
+	}
+	/**
+	 * 아이디 result찾기
+	 */
+	public int findName_result(String name) {
+		return sqlSession.selectOne(namespace_member+".findName",name);
+	}
+	/**
+	 * 전화번호 result 찾기
+	 */
+	public int findHp_result(String hp) {
+		return sqlSession.selectOne(namespace_member+".findHp",hp);
 	}
 	/**
 	 * Insert : 회원가입
@@ -83,24 +110,10 @@ public class CoffeeMemberDAO extends DBConn{
 	public boolean getInsert(CoffeeMemberVO vo) {
 		boolean result = false;
 		
-		try {
-			String sql = "insert INTO COFFEE_MEMBER "
-					+ " VALUES(?,?,?,?,?,sysdate)";
-			getPreparedStatement(sql);
-			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getPass());
-			pstmt.setString(3, vo.getName());
-			pstmt.setString(4, vo.getHp());
-			pstmt.setString(5, vo.getEmail());
-			
-			int val = pstmt.executeUpdate();
-			
-			if(val != 0) result = true;			
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}		
-		
+		int value = sqlSession.insert(namespace_member+".join",vo);
+		if(value != 0) {
+			result = true;
+		}
 		return result;
 	}
 	
