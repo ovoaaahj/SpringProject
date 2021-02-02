@@ -87,7 +87,7 @@
 							output +="<tr>";
 							output +="<a href='#'>";
 							output +="<td>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output +="<img src = 'http://localhost:9000/project/resources/update/"+jdata.jlist[i].pmphoto+"'>"
 						    output += "<div class='event'>"
 						    output += "<div class='a'>"
 						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
@@ -97,7 +97,7 @@
 						    output += "</div>"
 						    output += "</div>"
 						    output += "<div class='title'>"
-						    output += jdata.jlist[i].ptitle
+						    output += "<a href='http://localhost:9000/project/shopContent.do?pid="+jdata.jlist[i].pid +"'>"+ jdata.jlist[i].ptitle+"</a>"
 						    output += "</div>"
 						    output += "<div class='gray'>"
 						 	output += jdata.jlist[i].phash
@@ -121,7 +121,7 @@
 						}else if(i%4==3){
 							output +="<a href='#'>";
 							output +="<td>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output +="<img src = 'http://localhost:9000/project/resources/update/"+jdata.jlist[i].pmphoto+"'>"
 						    output += "<div class='event'>"
 						    output += "<div class='a'>"
 						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
@@ -131,7 +131,7 @@
 						    output += "</div>"
 						    output += "</div>"
 						    output += "<div class='title'>"
-						    output += jdata.jlist[i].ptitle
+						    output += "<a href='http://localhost:9000/project/shopContent.do?pid="+jdata.jlist[i].pid +"'>"+ jdata.jlist[i].ptitle+"</a>"
 						    output += "</div>"
 						    output += "<div class='gray'>"
 						 	output += jdata.jlist[i].phash
@@ -156,7 +156,7 @@
 						}else{
 							output +="<a href='#'>";
 							output +="<td>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output +="<img src = 'http://localhost:9000/project/resources/update/"+jdata.jlist[i].pmphoto+"'>"
 						    output += "<div class='event'>"
 						    output += "<div class='a'>"
 						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
@@ -166,7 +166,7 @@
 						    output += "</div>"
 						    output += "</div>"
 						    output += "<div class='title'>"
-						    output += jdata.jlist[i].ptitle
+						    output += "<a href='http://localhost:9000/project/shopContent.do?pid="+jdata.jlist[i].pid +"'>"+ jdata.jlist[i].ptitle+"</a>"
 						    output += "</div>"
 						    output += "<div class='gray'>"
 						 	output += jdata.jlist[i].phash
@@ -299,6 +299,30 @@
 	});//ready
 	
 </script>
+<style>
+
+	div.shopMainCenterMenu  {
+		text-align:center;
+		border:1px solid red;
+	}
+	div.shopMainCenterMenu div.search h2{
+		font-size:25px;
+		height:80px;
+	}
+	div.shopMainCenterMenu div.search select{
+		height:40px;
+		width:200px;
+		
+	}
+	div.shopMainCenterMenu div.search input[type='text']{
+		height:35px;
+	}
+	div.shopMainCenterMenu div.search button{
+		height:38px;
+		width:40px;
+	}
+
+</style>
 </head>
 <body>
 <div class="content">
@@ -306,7 +330,7 @@
 	<aside class="side">
 		<div class="sidecontent">
 			<ul class="all">
-				<a href="http://localhost:9000/project/shopMain.do"><img src="http://localhost:9000/project/images/logo.png"></a>
+				<a href="http://localhost:9000/project/index.do"><img src="http://localhost:9000/project/images/logo.png"></a>
 								<li class="allli">
 					<h3 id="subCoffeeTitle">커피</h3>
 						<ul class="subul" id="subulcoffee">
@@ -340,6 +364,16 @@
 		<% if(kind1 != null) {%> <%= kind1 %> <% if(kind2 != null) { %> > <%= kind2 %> <% } } else {}%> 
 		</div>
 		<div class="shopMainCenterMenu">
+			<div class="search">
+				<h2>검색하기</h2>
+				<select id='sname'>
+				<option value='total'>전체</option>
+				<option value='ptitle'>이름</option>
+				<option value='price'>가격</option>
+				</select>
+				<input type='text' id='svalue'>
+				<button id="btnsearch">검색</button>
+				</div>
 			<% if(kind1 != null) {%>
 			<% if( kind1.equals("coffee")  ) { %>
 			<ul>
@@ -375,15 +409,6 @@
 		</div> 
 		<div class="shopMainCenter"></div>
 		<div class="subMainCenter">
-			<div class="search">
-				<select id='sname'>
-				<option value='total'>전체</option>
-				<option value='ptitle'>이름</option>
-				<option value='price'>가격</option>
-				</select>
-				<input type='text' id='svalue'>
-				<button id="btnsearch">검색</button>
-				</div>
 				<div  class='orders'>
 				<span id='pdate'>New</span>
 				<span id='ptitle' class='left'>Name</span> 

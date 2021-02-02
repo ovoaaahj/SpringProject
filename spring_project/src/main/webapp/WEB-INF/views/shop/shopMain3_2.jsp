@@ -94,6 +94,11 @@
 		});
 		
 		
+		/** 검색 버튼 이벤트 처리 **/
+		$("#btnsearch").click(function(){		
+				$(location).attr('href','http://localhost:9000/project/shopMain2.do');
+			
+		});
 		
 	});//ready
 </script>
@@ -173,12 +178,7 @@
 		<div class="shopMainCenter">
 		<div class="subMainCenter">
 			<div class="search">
-				<select id='sname'>
-				<option value='total'>전체</option>
-				<option value='ptitle'>이름</option>
-				<option value='price'>가격</option>
-				</select>
-				<input type='text' id='svalue'>
+				<button id="btnsearch">검색하기</button>
 				</div>
 				<div  class='orders'>
 				<span id='pdate'>New</span>
@@ -209,20 +209,31 @@
 					    </div>
 					 </div>
 					    <div class='title'>
-					   		 ${vo.ptitle }
+					   		 <a href="http://localhost:9000/project/shopContent.do?pid=${vo.pid }"> ${vo.ptitle }</a>
 					    </div>
 					    <div class='gray'>
 					 		${vo.phash }
 					   </div>
 					    <div class='price'>
+					   		<c:if test ="${!empty vo.psub1 }">
 						    <div class='beforeprice'>
 								${vo.pprice100 }
 							</div>
+							</c:if>
+							<c:if test ="${empty vo.psub1 }">
+								<div class='nowprice'>
+									${vo.pprice100 }
+								</div>
+							</c:if>
 							<div class='nowprice'>
-								${vo.pprice100 }
+								<c:if test ="${!empty vo.psub1 }">
+									${vo.pprice100 }
+								</c:if>
 							</div>
 							<div class='discount'>
+							 <c:if test ="${!empty vo.psub1 }">
 								[10%]
+							</c:if>
 							</div>
 						</div>
 						<div class='review'>
