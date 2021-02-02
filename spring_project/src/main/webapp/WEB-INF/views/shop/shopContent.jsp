@@ -20,12 +20,17 @@
 		
 		var total_count=parseInt("0");
 		var total_price=parseInt("0");
+		//난수생성
 		function uuidv4() {
 			  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
 			    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
 			    return v.toString(16);
 			  });
 			}
+		
+		var compose_arr = [];
+		 
+		 //고른제품 추가되는 기능
 		function explan_table(compose,compose_price){
 			var output="";
 			var uuid = uuidv4();
@@ -50,8 +55,26 @@
 					output += '<span><span id="bprice">'+addComma(String(compose_price))+'</span>원</span>';	
 				output += '</td>';	
 			output += '</tr> }';	
-				
-		    $(".ExplanationTable_3").append(output);
+
+			 compose_arr.push(compose);
+			 var set = new Set(compose_arr);
+		    // duplicate
+		    if(compose_arr.length !== set.size) {
+		    	 /*  document.writeln(compose_arr.length); // 4
+			    document.writeln(set.size); // 3 */
+		      alert("중복발생");
+			    var s = compose_arr.pop();
+			   /*  alert("배열 >"+compose_arr ); */
+			    total_price -= compose_price;
+				$("#sumprice").text(addComma(String(total_price)));
+				total_count -= 1;
+		  		$("#bcount_span").text("("+String(total_count)+")개");
+		    }else{
+		    	if(compose_arr.length==0){}
+		    	$(".ExplanationTable_3").append(output);
+		    	 /* alert("배열 >"+compose_arr ); */
+		    }
+	
 			var cnt_price =parseInt("0");
 			var tot_price=cnt_price+compose_price;
 		  	var count = parseInt($("#opt_product"+uuid+" #bcount_input").val());
@@ -82,18 +105,35 @@
 		  		}
 		  	});
 
-		    
+		    $("#opt_product"+uuid+" #option_box1_del").click(function(){
+		    	
+		    	var find_compose = compose_arr.indexOf(compose)
+		    	 compose_arr.splice(find_compose,1);
+
+		  		var input_count = parseInt($("#opt_product"+uuid+" #bcount_input").val());
+		    	total_count -= input_count;
+		  		$("#bcount_span").text("("+String(total_count)+")개");
+		  		total_price -= (compose_price * input_count);
+		  		$("#sumprice").text(addComma(String(total_price)));
+		  		$("#opt_product"+uuid).remove();
+		  		
+		  		if(compose_arr.length <= 0){
+		  			
+		  			$(".productExplanation_3").css("display","none");
+		  		}
+		  		
+		    });
 		    
 		    
 		} //function explan_table()
 		
 		
-		
+		// 그램 선택화면 select 부분 바뀌는곳
        function gramClick(input){
     	   
     	   	/* alert(input); */ 
     	   	$("#product_100g ,#product_200g, #product_500g, #product_1kg").parent().css("border", "1px solid #888888"); 
-	  		$("#"+input+"").parent().css("border", "1px solid black"); 
+	  		$("#"+input+"").parent().css("border", "2px solid #888888"); 
 	  		if(input == "product_100g"){
 	  			$("#product_crush").html('<option value="" selected disabled hidden>-[필수]옵션을 선택해 주세요-</option><option value="" disabled>---------------</option><option value="분쇄안함/원두">분쇄안함/원두</option><option value="굵게분쇄/핸드드립">굵게분쇄/핸드드립</option><option value="중간분쇄/더치커피">중간분쇄/더치커피</option><option value="곱게분쇄/모카포트">곱게분쇄/모카포트</option><option value="아주곱게분쇄/에스프레소">아주곱게분쇄/에스프레소</option>');
 	  			$("#hidden_input").attr("value","100");
@@ -108,7 +148,7 @@
 	  			$("#hidden_input").attr("value","1000");
 	  		}
        }//function gramClick
-	  	
+    // 그램 선택화면 select 부분 클릭하면 
 	  	$("#product_100g ,#product_200g, #product_500g, #product_1kg").click(function(){
 	  		gramClick($(this).attr('id'));
 	  		$("#product_crush option").prop('disabled',false);
@@ -129,11 +169,7 @@
 					$("#sumprice").text(addComma(String(total_price)));
 					total_count += 1;
 					$("#bcount_span").text("("+String(total_count)+")개");
-					//$("#bcompose").text($("#product_100g").text()+"/"+ $(this).children('option:selected').text()); 
-					//$("#bprice").text("3000")
-					//price=parseInt("3000");
-					
-					//$(".ExplanationTable_3").append($("#opt_product"));
+	
 				}else if($("#hidden_input").val()=="200"){
 					var compose = $("#product_200g").text()+"/"+ $(this).children('option:selected').text();
 					var compose_price = parseInt("7000");
@@ -142,9 +178,7 @@
 					$("#sumprice").text(addComma(String(total_price)));
 					total_count += 1;
 					$("#bcount_span").text("("+String(total_count)+")개");
-					/* $("#bcompose").text($("#product_200g").text()+"/"+ $(this).children('option:selected').text());
-					$("#bprice").text("7000")
-					price=parseInt("7000"); */
+		
 				}else if($("#hidden_input").val()=="500"){
 					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
 					var compose_price = parseInt("10000");
@@ -153,9 +187,7 @@
 					$("#sumprice").text(addComma(String(total_price)));
 					total_count += 1;
 					$("#bcount_span").text("("+String(total_count)+")개");
-					/* $("#bcompose").text($("#product_500g").text()+"/"+ $(this).children('option:selected').text());
-				    $("#bprice").text("10000")
-				    price=parseInt("10000"); */
+	
 				}else if($("#hidden_input").val()=="1000"){
 					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
 					var compose_price = parseInt("12000");
@@ -164,9 +196,6 @@
 					$("#sumprice").text(addComma(String(total_price)));
 					total_count += 1;
 					$("#bcount_span").text("("+String(total_count)+")개");
-					/* $("#bcompose").text($("#product_1kg").text()+"/"+ $(this).children('option:selected').text());
-					$("#bprice").text("12000")
-					price=parseInt("12000"); */
 					
 				}
 				
@@ -186,7 +215,7 @@
 
 </head>
 <body>
-<!-- header -->
+ <!-- header -->
 	<jsp:include page="../header.jsp" /> 
 
 <div class="content">
@@ -226,14 +255,14 @@
 		<!-- shopMainCenter 시작 -->
 		<div class="shopMainCenter">
 			<div class="centerExplanation_1">
-				<ul>
+				<ul >
 					<li> 
 						<img src="http://localhost:9000/project/images/coffee_sample.jpg" class="pmphoto" id ="pmphoto">
 					</li>
 				</ul>
 			
 			</div>
-			<div class="centerExplanation_2" style="background-color:rgb(233,233,233);">
+			<div class="centerExplanation_2" >
 				<div style="padding:15%; text-align:left; line-height:24px;">
 
 					<p>
@@ -541,12 +570,12 @@
 			
 			</div>
 			<div class="productExplanation_4">
-				합계 : <span class="sumprice" id="sumprice"><strong><em></em></strong></span>	<span id="bcount_span"></span>
+				합계 : <span class="sumprice" id="sumprice"><strong>0</strong></span>	<span id="bcount_span">(0)개</span>
 			
 			</div>
 			<div class="productExplanation_5">
 				<div class="product_buy" id="product_buy">
-					<span>바로구매</span>
+					<a href="http://localhost:9000/project/shopBuylist.do"><span>바로구매</span></a>
 				</div>
 				<div class="product_cart" id="product_cart">
 					<span>장바구니</span>
@@ -564,7 +593,7 @@
 
 </div><!-- content 끝 -->
 	<!-- footer -->
-	<jsp:include page="../footer.jsp" />
+	 <jsp:include page="../footer.jsp" /> 
 
 </body>
 </html>
