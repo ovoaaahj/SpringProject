@@ -640,3 +640,223 @@ input[type="checkbox"] {
   content: "";
   clear: both;
 }
+
+.memberloginbox .login {
+  border: 1px solid #eaeaea;
+  margin: 0 auto;
+  padding: 0;
+  color: #2e2e2e;
+  width: 500px;
+}
+.memberloginbox .login fieldset {
+  position: relative;
+  width: 380px;
+  margin: 0 auto;
+  border: none;
+  vertical-align: top;
+}
+#login-wrap .idbox input {
+  border: 1px solid #eee;
+  width: 240px;
+  margin-bottom: 5px;
+  color: #000;
+  font-size: 12px;
+  height: 38px;
+  background-image: url(/web/upload/ga09/login/id.gif);
+  background-repeat: no-repeat;
+  background-position-x: 10px;
+  background-position-y: 17px;
+}
+#login-wrap .pwbox {
+  margin-top: 10px;
+}
+#login-wrap .pwbox input {
+  border: 1px solid #eee;
+  width: 240px;
+  margin: 0;
+  color: #000;
+  font-size: 12px;
+  height: 38px;
+  background-image: url(/web/upload/ga09/login/pw.gif);
+  background-repeat: no-repeat;
+  background-position-x: 10px;
+  background-position-y: 17px;
+}
+.memberloginbox .login fieldset > button {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+.memberloginbox .login fieldset ul {
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 0;
+  border: 0;
+}
+.memberloginbox .login fieldset .security {
+  padding: 0;
+  margin: 0;
+  color: #757575;
+}
+li {
+  list-style: none;
+}
+.memberloginbox .login fieldset li {
+  float: left;
+}
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  margin: 0 4px 0 2px;
+}
+input[id*="popup"] + label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #000;
+  cursor: pointer;
+}
+
+/** 아이디 비번찾기 폼 **/
+.find-id-pw-body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(var(--b3f, 250, 250, 250), 1);
+}
+.idpw_header {
+  width: 100%;
+  border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+}
+div.idpw_top {
+  width: 1280px;
+  margin: auto;
+  height: 60px;
+}
+div.idpw_top img.logo {
+  width: 150px;
+  float: left;
+  padding-left: 100px;
+  padding-top: 10px;
+}
+div.idpw_container {
+  width: 1280px;
+  height: 800px;
+  margin: 0 auto;
+}
+div.idpw_content {
+  margin: 0 auto;
+  width: 400px;
+  height: 800px;
+}
+div.idpw_content h2 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+div.idpw {
+  width: auto;
+  height: 600px;
+}
+div.idpw_head {
+  background-color: #e8e8e8;
+  padding: 10px 20px;
+  height: 20px;
+}
+div.idpw_body {
+  padding: 20px;
+}
+div.idpw_body b {
+  height: 150px;
+}
+div.idpw input {
+  width: 93%;
+  height: 50px;
+  padding-left: 20px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+  outline: none;
+}
+div.idpw input:first-child {
+  margin-bottom: 25px;
+}
+/* 글씨*/
+div.idpw small {
+  margin: 10px 0;
+  margin-bottom: 10px;
+  font-size: 11px;
+  color: #888888;
+  display: block;
+}
+/* 아이디 비밀번호찾기 버튼*/
+div.idpw button {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: linear-gradient(to right, rgb(46, 50, 56), rgb(37, 42, 51), rgb(103, 107, 114));
+  background-size: 200%;
+  transition: 0.5s;
+  color: #fff;
+  outline: none;
+}
+/* 아이디 비밀번호찾기 버튼 호버*/
+div.idpw button:hover {
+  background-position: right;
+}
+
+div.pw-content button {
+  margin-top: 10px;
+}
+div.idpw_btn a {
+  color: rgb(46, 50, 56)
+  margin: 0 5px;
+  text-decoration: none;
+}
+div.idpw_btn a:last-child {
+  float: right;
+}
+/* 마우스 가져가면 굵어짐*/
+div.idpw_btn a:hover {
+  color:  rgb(108, 110, 114);
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* 밑에 쪼만한 글씨*/
+div.idpw_copyright {
+  text-align: center;
+  color: #888888;
+}
+/* 아이디폼 회색 테두리*/
+div.id-content {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+/* 비밀번호폼 회색 테두리*/
+div.pw-content {
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+}
+div.idpw_btn {
+  margin-top: 10px;
+}
+/*워닝 아이콘 영역*/
+.icon-form {
+  padding-bottom: 5px;
+  animation: 0.3s ease;
+  animation-iteration-count: 3;
+}
+/*워닝 아이콘 사이즈*/
+.fa-exclamation-triangle {
+  color: #ff7262;
+  font-size: 13px;
+}
+/*워닝 메시지*/
+p.warningmsg {
+  display: inline;
+  font-size: 13px;
+  color: #ff7262;
+}

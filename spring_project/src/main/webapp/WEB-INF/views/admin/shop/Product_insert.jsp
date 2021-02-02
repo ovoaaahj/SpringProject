@@ -10,6 +10,7 @@
 	div.shopinsert{
 		border:1px solid red;
 		text-align:center;
+		margin:30px;
 	}
 	div.shopinsert div.bigname{
 		border:1px solid red;
@@ -205,6 +206,7 @@ $("#file1").change(function() {
 </script>
 </head>
 <body>
+<jsp:include page="../../header.jsp" />
 <div class="shopinsert">
 	<div class="bigname">
 	<h2>상품추가</h2>
@@ -301,5 +303,6 @@ $("#file1").change(function() {
 
 
 </div>
+<jsp:include page="../../footer.jsp" />
 </body>
 </html>
