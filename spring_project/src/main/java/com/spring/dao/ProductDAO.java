@@ -42,6 +42,7 @@ public class ProductDAO extends DBConn{
 	 * @param vo
 	 * @return
 	 */
+	
 	public boolean productInsert(ProductVO vo) {
 		boolean result = false;
 		int val = sqlSession.insert(namespace+".insertProduct",vo);
@@ -59,6 +60,10 @@ public class ProductDAO extends DBConn{
 	public int getListCount() {
 		return sqlSession.selectOne(namespace+".listcount");
 	}
+	
+
+	
+	
 	
 	
 	/** 대분류 만 선택했을경우 */
@@ -89,63 +94,26 @@ public class ProductDAO extends DBConn{
 	}
 	
 	
-	/**
-	 * 검색한 목록 가져오기
-	 */
-	public ArrayList<ProductVO> getSearchList(String sname,String svalue){
-		Map <String,String> param = new HashMap<String,String>();
-		param.put("sname", sname);
-		param.put("svalue", svalue);
-		
-		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
-		
-		try {
-			String str="";
-			if(sname.equals("total")){
-				str="";
-				}else{
-				str="where "+sname+"='"+ svalue+"'";
-			}
-			String sql = "select * from"
-						+"(select rownum rno, pid,pmphoto,psub1,psub2,psub3,ptitle,phash,pprice100,pkind1,pkind2 from product "
-						+ str+ ")";
-			getStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) {
-				ProductVO vo = new ProductVO();
-				vo.setRno(rs.getInt(1));
-				vo.setPid(rs.getString(2));
-				vo.setPmphoto(rs.getString(3));
-				vo.setPsub1(rs.getString(4));
-				vo.setPsub2(rs.getString(5));
-				vo.setPsub3(rs.getString(6));
-				vo.setPtitle(rs.getString(7));
-				vo.setPhash(rs.getString(8));
-				vo.setPprice100(rs.getString(9));
-				vo.setPkind1(rs.getString(10));
-				vo.setPkind2(rs.getString(11));
-				
-			
-				
-				list.add(vo);
-			}
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
+	
 	
 
 	/**
 	 * 검색한 목록 가져오기
 	 */
 	public ArrayList<ProductVO> getSearchList(String sname,String svalue, String start,String end){
-		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
-		try {
+		Map<String,String> param = new HashMap<String,String>();
+		
+		param.put("sname", sname);
+		param.put("svalue", svalue);
+		param.put("start", start);
+		param.put("end", end);
+		
+		List<ProductVO> list = sqlSession.selectList(namespace+".searchlist",param);
+		
+		return (ArrayList<ProductVO>) list;
+		
+	/**	try {
 			String str="";
 			if(sname != "total") {
 				str="where "+sname+"='"+ svalue+"'";
@@ -177,7 +145,7 @@ public class ProductDAO extends DBConn{
 			e.printStackTrace();
 		}
 		
-		return list;
+		return list; **/
 	}
 	
 	/**

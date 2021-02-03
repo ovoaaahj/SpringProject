@@ -63,6 +63,8 @@
 		/**페이지 로딩 시 회원 전체 리스트 출력 **/
 		product_list("total", "","");
 		
+		
+		
 		$("#sname").change(function(){
 			if($("#sname").val()=="total"){
 				$("#svalue").val("");
@@ -83,222 +85,243 @@
 					//2-1. DHTML을 이용하여 테이블 생성 및 출력
 					var output = "<table class='shopMainCenterTable'>";
 					for(var i in jdata.jlist){
-						if(i%4 == 0){
+						if(i%4 == 0){ 
 							output +="<tr>";
-							output +="<a href='#'>";
-							output +="<td>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
-						    output += "<div class='event'>"
-						    output += "<div class='a'>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
-						    output += "</div>"
-						   	output += "<div class='b'>"
-						    output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
-						    output += "</div>"
-						    output += "</div>"
-						    output += "<div class='title'>"
-						    output += jdata.jlist[i].ptitle
-						    output += "</div>"
-						    output += "<div class='gray'>"
-						 	output += jdata.jlist[i].phash
-						    output += "</div>"
-						    output += "<div class='price'>"
-						    output += "<div class='beforeprice'>"
-							output += jdata.jlist[i].pprice+"원"
-							output += "</div>"
-							output += "<div class='nowprice'>"
-							output += jdata.jlist[i].pprice*0.9+"원"
-							output += "</div>"
-							output += "<div class='discount'>"
-							output += "[10%]"
-							output += "</div>"
-							output += "</div>"
-							output += "<div class='review'>"
-							output += "후기: 17"
-							output += "</div>"
-						    output +="</td>"
-						output +="</a>"
+							output +="<a href='#'>"
+								output +="<td>"
+								    output +="<img src = 'http://localhost:9000/project/resources/upload/"+jdata.jlist[i].pmphoto+"'>"
+								    output += "<div class='event'>"
+								    output += "<div class='a'>"
+									    if(jdata.jlist[i].psub1 != null){
+									   		output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
+									    }
+								    output += "</div>"
+								   	output += "<div class='b'>"
+								   		if(jdata.jlist[i].psub2 != null){
+								    		output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
+								  	 	}
+								    output += "</div>"
+								    output += "<div class='c'>"
+									    if(jdata.jlist[i].psub3 != null){
+									  	  output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub3+"'>"
+									    }
+									output += "</div>"
+								    output += "</div>"
+								    output += "<div class='title'>"
+								    output += "<a href='http://localhost:9000/project/shopContent.do?pid="+jdata.jlist[i].pid +"'>"+ jdata.jlist[i].ptitle+"</a>"
+								    output += "</div>"
+								    output += "<div class='gray'>"
+								 	output += jdata.jlist[i].phash
+								    output += "</div>"
+								    output += "<div class='price'>"
+								    if(jdata.jlist[i].psub1 != null){
+								    output += "<div class='beforeprice'>"
+									output += jdata.jlist[i].pprice+"원"
+									output += "</div>"
+									output += "<div class='nowprice'>"
+									output += jdata.jlist[i].pprice*0.9+"원"
+									output += "</div>"
+								    }else{
+								    output += "<div class='nowprice'>"
+									output += jdata.jlist[i].pprice+"원"
+									output += "</div>"
+								    }
+								    if(jdata.jlist[i].psub1 != null){
+									output += "<div class='discount'>"
+									output += "[10%]"
+									output += "</div>"
+								    }
+									output += "</div>"
+									output += "<div class='review'>"
+									output += "후기: 17"
+									output += "</div>"
+								    output +="</td>"
+									output +="</a>"
 						}else if(i%4==3){
-							output +="<a href='#'>";
-							output +="<td>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
-						    output += "<div class='event'>"
-						    output += "<div class='a'>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
-						    output += "</div>"
-						   	output += "<div class='b'>"
-						    output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
-						    output += "</div>"
-						    output += "</div>"
-						    output += "<div class='title'>"
-						    output += jdata.jlist[i].ptitle
-						    output += "</div>"
-						    output += "<div class='gray'>"
-						 	output += jdata.jlist[i].phash
-						    output += "</div>"
-						    output += "<div class='price'>"
-						    output += "<div class='beforeprice'>"
-							output += jdata.jlist[i].pprice+"원"
-							output += "</div>"
-							output += "<div class='nowprice'>"
-							output += jdata.jlist[i].pprice*0.9+"원"
-							output += "</div>"
-							output += "<div class='discount'>"
-							output += "[10%]"
-							output += "</div>"
-							output += "</div>"
-							output += "<div class='review'>"
-							output += "후기: 17"
-							output += "</div>"
-						    output +="</td>"
-							output +="</a>"
+							output +="<a href='#'>"
+								output +="<td>"
+								    output +="<img src = 'http://localhost:9000/project/resources/upload/"+jdata.jlist[i].pmphoto+"'>"
+								    output += "<div class='event'>"
+								    	 output += "<div class='a'>"
+											    if(jdata.jlist[i].psub1 != null){
+											   		output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
+											    }
+										    output += "</div>"
+										   	output += "<div class='b'>"
+										   		if(jdata.jlist[i].psub2 != null){
+										    		output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
+										  	 	}
+										    output += "</div>"
+										    output += "<div class='c'>"
+											    if(jdata.jlist[i].psub3 != null){
+											  	  output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub3+"'>"
+											    }
+											output += "</div>"
+								    output += "</div>"
+								    output += "<div class='title'>"
+								    output += "<a href='http://localhost:9000/project/shopContent.do?pid="+jdata.jlist[i].pid +"'>"+ jdata.jlist[i].ptitle+"</a>"
+								    output += "</div>"
+								    output += "<div class='gray'>"
+								 	output += jdata.jlist[i].phash
+								    output += "</div>"
+								        output += "<div class='price'>"
+										    if(jdata.jlist[i].psub1 != null){
+										    output += "<div class='beforeprice'>"
+											output += jdata.jlist[i].pprice+"원"
+											output += "</div>"
+											output += "<div class='nowprice'>"
+											output += jdata.jlist[i].pprice*0.9+"원"
+											output += "</div>"
+										    }else{
+										    output += "<div class='nowprice'>"
+											output += jdata.jlist[i].pprice+"원"
+											output += "</div>"
+										    }
+										    if(jdata.jlist[i].psub1 != null){
+											output += "<div class='discount'>"
+											output += "[10%]"
+											output += "</div>"
+										    }
+											output += "</div>"
+									output += "<div class='review'>"
+									output += "후기: 17"
+									output += "</div>"
+								    output +="</td>"
+									output +="</a>"
 							output +="</tr>"
 						}else{
 							output +="<a href='#'>";
 							output +="<td>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].pmphoto+"'>"
+						    output +="<img src = 'http://localhost:9000/project/resources/upload/"+jdata.jlist[i].pmphoto+"'>"
 						    output += "<div class='event'>"
-						    output += "<div class='a'>"
-						    output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
-						    output += "</div>"
-						   	output += "<div class='b'>"
-						    output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
-						    output += "</div>"
+						    	 output += "<div class='a'>"
+									    if(jdata.jlist[i].psub1 != null){
+									   		output +="<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'>"
+									    }
+								    output += "</div>"
+								   	output += "<div class='b'>"
+								   		if(jdata.jlist[i].psub2 != null){
+								    		output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub2+"'>"
+								  	 	}
+								    output += "</div>"
+								    output += "<div class='c'>"
+									    if(jdata.jlist[i].psub3 != null){
+									  	  output += "<img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub3+"'>"
+									    }
+									output += "</div>"
 						    output += "</div>"
 						    output += "<div class='title'>"
-						    output += jdata.jlist[i].ptitle
+						    output += "<a href='http://localhost:9000/project/shopContent.do?pid="+jdata.jlist[i].pid +"'>"+ jdata.jlist[i].ptitle+"</a>"
 						    output += "</div>"
 						    output += "<div class='gray'>"
 						 	output += jdata.jlist[i].phash
 						    output += "</div>"
-						    output += "<div class='price'>"
-						    output += "<div class='beforeprice'>"
-							output += jdata.jlist[i].pprice+"원"
-							output += "</div>"
-							output += "<div class='nowprice'>"
-							output += jdata.jlist[i].pprice*0.9+"원"
-							output += "</div>"
-							output += "<div class='discount'>"
-							output += "[10%]"
-							output += "</div>"
-							output += "</div>"
+						        output += "<div class='price'>"
+								    if(jdata.jlist[i].psub1 != null){
+								    output += "<div class='beforeprice'>"
+									output += jdata.jlist[i].pprice+"원"
+									output += "</div>"
+									output += "<div class='nowprice'>"
+									output += jdata.jlist[i].pprice*0.9+"원"
+									output += "</div>"
+								    }else{
+								    output += "<div class='nowprice'>"
+									output += jdata.jlist[i].pprice+"원"
+									output += "</div>"
+								    }
+								    if(jdata.jlist[i].psub1 != null){
+									output += "<div class='discount'>"
+									output += "[10%]"
+									output += "</div>"
+								    }
+									output += "</div>"
 							output += "<div class='review'>"
 							output += "후기: 17"
 							output += "</div>"
 						    output +="</td>"
 							output +="</a>"
-						}
+						} 
 					}
 						output +="</tr>"
 						output += '<tr><td colspan="4"> <div id="ampaginationsm"></div> </td>';
 					output +="</table>";
 					$("table.shopMainCenterTable").remove();
 					$("div.subMainCenter").after(output);
+					
 					page(jdata.dbcount, jdata.reqpage, jdata.pagesize);
 					
 				}//success
 			});//ajax
-		
-			/** 페이징 처리 함수 **/
-			function page(dbcount, reqpage, pagesize){
-				//페이지 번호 및 링크 		
-				var pager = jQuery("#ampaginationsm").pagination({
-					maxSize : 5,			
-					totals:dbcount,
-					page : reqpage,
-					pageSize : pagesize,
-							
-					
-					lastText : '&raquo;&raquo;',
-					firstText : '&laquo;&laquo',
-					prevTest : '&laquo;',
-					nextTest : '&raquo;',
-					
-					btnSize : 'sm' 			
-				}); 
-				
-				//
-				jQuery("#ampaginationsm").on('am.pagination.change',function(e){
-					product_list($("#sname").val(), $("#svalue").val(),e.page);
-				});
-			}//page
-			
-			/** 검색 버튼 이벤트 처리 **/
-			$("#btnsearch").click(function(){
-				if($("#sname").val() !="total" && $("#svalue").val() == ""){
-					alert("검색할 데이터를 입력해 주세요");
-					$("#svalue").focus();
-					return false;
-				}else{
-					var sname = $("#sname").val();
-					var svalue = $("#svalue").val();
-					
-					product_list(sname, svalue,"");
-				}
-			});
-			
-			
-			
-			
-		
-	<%-- 	
-		var output ="<table class='shopMainCenterTable'>"
-		    output +="<tr>"
-		    output +="<th colspan='4' class='search'>" 
-		    output +="<span id='new'>New</span>"  
-		    output +="<span id='name' class='left'>Name</span>"  
-		    output +="<span id='name' class='left'>LowPrice</span>" 
-		    output +="<span id='name' class='left'>HighPrice</span>" 
-		    output +="<span id='name' class='left'>Review</span>" 
-		    output +="</th>"
-		    output +="</tr>"
-		    <%   for(int j=0;j<3;j++){ %>
-		    output +="<tr>"
-		    <%	  for(ProductVO vo:list) {%>
-		    output +="<td>"
-		    output +="<img src = 'http://localhost:9000/project/images/<%= vo.getPmphoto() %>'>"
-		    output += "<div class='event'>"
-		    output += "<div class='a'>"
-		    output +="<img src = 'http://localhost:9000/project/images/<%= vo.getPsub1() %>'>"
-		    output += "</div>"
-		   	output += "<div class='b'>"
-		    output += "<img src = 'http://localhost:9000/project/images/<%= vo.getPsub2() %>'>"
-		    output += "</div>"
-		    output += "</div>"
-		    output += "<div class='title'>"
-		    output += "디카페인 콜롬비아 수프리모 후일라 피탈리토 산어거스틴"
-		    output += "</div>"
-		    output += "<div class='gray'>"
-		 	output += "#캐러멜 #꿀 #오렌지 #밀크초콜릿"
-		    output += "</div>"
-		    output += "<div class='price'>"
-		    output += "<div class='beforeprice'>"
-			output += "8000원"
-			output += "</div>"
-			output += "<div class='nowprice'>"
-			output += "7200원"
-			output += "</div>"
-			output += "<div class='discount'>"
-			output += "[10%]"
-			output += "</div>"
-			output += "</div>"
-			output += "<div class='review'>"
-			output += "후기: 17"
-			output += "</div>"
-		    output +="</td>"
-		    <% } %>
-		    output +="</tr>"
-		    <% } %>
-		    output +="</table>"
-		    	-->
-		    $(".shopMainCenter").append(output); --%>
-		    
 		    
 		}//product_list    
+		
+		/** 페이징 처리 함수 **/
+		function page(dbcount, reqpage, pagesize){
+			//페이지 번호 및 링크 		
+			var pager = jQuery("#ampaginationsm").pagination({
+				maxSize : 5,			
+				totals:dbcount,
+				page : reqpage,
+				pageSize : pagesize,
+				
+				lastText : '&raquo;&raquo;',
+				firstText : '&laquo;&laquo',
+				prevTest : '&laquo;',
+				nextTest : '&raquo;',
+				
+				btnSize : 'sm' 			
+			}); 
+			
+			//
+			jQuery("#ampaginationsm").on('am.pagination.change',function(e){
+				product_list($("#sname").val(), $("#svalue").val(),e.page);
+			});
+		}//page
+		
+		
+		
+		/** 검색 버튼 이벤트 처리 **/
+		$("#btnsearch").click(function(){
+			if($("#sname").val() !="total" && $("#svalue").val() == ""){
+				alert("검색할 데이터를 입력해 주세요");
+				$("#svalue").focus();
+				return false;
+			}else{
+				var sname = $("#sname").val();
+				var svalue = $("#svalue").val();
+				
+				product_list(sname, svalue,"");
+			}
+		});
+		
 		
 	});//ready
 	
 </script>
+<style>
+
+	div.shopMainCenterMenu  {
+		text-align:center;
+	/*	border:1px solid red; */
+	}
+	div.shopMainCenterMenu div.search h2{
+		font-size:25px;
+		height:80px;
+	}
+	div.shopMainCenterMenu div.search select{
+		height:40px;
+		width:200px;
+		
+	}
+	div.shopMainCenterMenu div.search input[type='text']{
+		height:35px;
+	}
+	div.shopMainCenterMenu div.search button{
+		height:38px;
+		width:40px;
+	}
+
+</style>
 </head>
 <body>
 <div class="content">
@@ -306,7 +329,7 @@
 	<aside class="side">
 		<div class="sidecontent">
 			<ul class="all">
-				<a href="http://localhost:9000/project/shopMain.do"><img src="http://localhost:9000/project/images/logo.png"></a>
+				<a href="http://localhost:9000/project/index.do"><img src="http://localhost:9000/project/images/logo.png"></a>
 								<li class="allli">
 					<h3 id="subCoffeeTitle">커피</h3>
 						<ul class="subul" id="subulcoffee">
@@ -329,7 +352,6 @@
 						</ul>
 					
 				</li>
-				<li class="allli"><h3 id="subTeaTitle">티</h3></li>
 				<li class="allli"><h3>고객센터</h3></li>
 				<li class="allli"><h3>이벤트</h3></li>
 			</ul>		
@@ -340,6 +362,16 @@
 		<% if(kind1 != null) {%> <%= kind1 %> <% if(kind2 != null) { %> > <%= kind2 %> <% } } else {}%> 
 		</div>
 		<div class="shopMainCenterMenu">
+			<div class="search">
+				<h2>검색하기</h2>
+				<select id='sname'>
+				<option value='total'>전체</option>
+				<option value='ptitle'>이름</option>
+				<option value='price'>가격</option>
+				</select>
+				<input type='text' id='svalue'>
+				<button id="btnsearch">검색</button>
+				</div>
 			<% if(kind1 != null) {%>
 			<% if( kind1.equals("coffee")  ) { %>
 			<ul>
@@ -375,15 +407,6 @@
 		</div> 
 		<div class="shopMainCenter"></div>
 		<div class="subMainCenter">
-			<div class="search">
-				<select id='sname'>
-				<option value='total'>전체</option>
-				<option value='ptitle'>이름</option>
-				<option value='price'>가격</option>
-				</select>
-				<input type='text' id='svalue'>
-				<button id="btnsearch">검색</button>
-				</div>
 				<div  class='orders'>
 				<span id='pdate'>New</span>
 				<span id='ptitle' class='left'>Name</span> 

@@ -1,6 +1,7 @@
 package com.spring.dao;
 
 
+import java.sql.ResultSet;
 
 
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.spring.vo.CoffeeMemberVO;
 import com.spring.vo.SessionVO;
+
 
 public class CoffeeMemberDAO extends DBConn{
 

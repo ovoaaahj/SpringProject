@@ -20,8 +20,6 @@ public class ShopService {
 	
 	
 	
-	
-	
 	/**리스트 검색 기능 */
 	
 	public String getSearchList(String sname, String svalue, String rpage) {
@@ -55,7 +53,7 @@ public class ShopService {
 		}	
 		
 		
-		ArrayList<ProductVO> list = productDAO.getSearchList(sname, svalue);
+		ArrayList<ProductVO> list = productDAO.getSearchList(sname,svalue,String.valueOf(start),String.valueOf(end));
 
 		// list 객체의 데이터를 JSON 객체로 변환작업 필요 ---> JSON 라이브러리 설치(gson)
 		JsonArray jarry = new JsonArray();
@@ -67,6 +65,7 @@ public class ShopService {
 			jobj.addProperty("rno", vo.getRno());
 			jobj.addProperty("pid", vo.getPid());
 			jobj.addProperty("pmphoto", vo.getPmphoto());
+			jobj.addProperty("pmsphoto", vo.getPmsphoto());
 			jobj.addProperty("psub1", vo.getPsub1());
 			jobj.addProperty("psub2", vo.getPsub2());
 			jobj.addProperty("psub3", vo.getPsub3());
@@ -88,20 +87,7 @@ public class ShopService {
 		return gson.toJson(jdata);
 	}
 	
-	/**
-	 * 목록불러오기 전체
-	 * @return
-	 */
-	public ModelAndView getList() {
-		ModelAndView mv = new ModelAndView();
-		
-		ArrayList<ProductVO> list = productDAO.getList();
-		
-		mv.addObject("list",list);
-		mv.setViewName("shop/shopMain3");
-		
-		return mv;
-	}
+
 	
 	/**
 	 * 목록불러오기 대분류
