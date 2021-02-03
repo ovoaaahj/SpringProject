@@ -73,10 +73,13 @@
 		
 		//페이지 번호 및 링크 		
 		var pager = jQuery("#ampaginationsm").pagination({
-			maxSize : 5,			
-			totals:'${dbCount}',
+			maxSize : 5,	
+			totals:10,
+			page:1,
+			pageSize:12, 
+		/*	totals:'${dbCount}',
 			page : '${reqPage}',
-			pageSize : '${pageSize}',
+			pageSize : '${pageSize}', */
 					
 			
 			lastText : '&raquo;&raquo;',
@@ -89,7 +92,7 @@
 		
 		//
 		jQuery("#ampaginationsm").on('am.pagination.change',function(e){
-			$(location).attr('href','http://localhost:9000/project/shop_Main3_2.do?pkind1=<%= pkind1%>&&pkind2=<%= pkind2%>&&rpage='+e.page);  
+			$(location).attr('href','http://localhost:9000/project/shopMain3_2.do?pkind1=<%= pkind1%>&&pkind2=<%= pkind2%>&&rpage='+e.page);  
 			//location.href('이동페이지');
 		});
 		

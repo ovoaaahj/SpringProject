@@ -42,7 +42,7 @@
 		
 		//
 		jQuery("#ampaginationsm").on('am.pagination.change',function(e){
-			$(location).attr('href','http://localhost:9000/project/shop_Main3_1.do?pkind1=<%= pkind1%>&&rpage='+e.page);  
+			$(location).attr('href','http://localhost:9000/project/shopMain3_1.do?pkind1=<%= pkind1%>&&rpage='+e.page);  
 			//location.href('이동페이지');
 		});
 		
