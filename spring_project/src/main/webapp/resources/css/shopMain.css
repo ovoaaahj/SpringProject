@@ -1,5 +1,5 @@
 div.content{
-	    border: 1px solid orange; 
+	 /**   border: 1px solid orange; */
 		width:2000px;
 		height:2200px;
 		margin:auto;
@@ -37,14 +37,14 @@ div.content{
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli>ul.subul>li.subli{
 		margin-top:3px;
-		border:1px solid purple; 
+		/**border:1px solid purple; */
 		list-style:none;
 		height:28px;
 		padding-top:4px;
 		margin-left:50px;
 	}
 	div.content>aside.side>div.sidecontent>ul.all a img{
-	    border:1px solid red;
+	  /**  border:1px solid red;*/
 		width:230px;
 		display:inline-block;
 		height:70px;
@@ -60,15 +60,15 @@ div.content{
 	*/ 
 	
 	div.content>div.shopMain{
-		border:1px solid green; 
-		width:1400px;
+	/*	border:1px solid green; */
+		width:1600px;
 		height:2000px;
 		margin-left: 110px;
 		display:inline-block;
 	}
 	
 	div.content>div.shopMain>div.shopMainTop{
-		border: 1px solid red;
+	/*	border: 1px solid red;*/
 		display: inline-block;
 		font-size:18px; 
 		height:25px;
@@ -80,7 +80,7 @@ div.content{
 	*/ 
 	
 	div.content>div.shopMain>div.shopMainCenterMenu{
-		 border:1px solid blue;
+	/*	 border:1px solid blue;*/
 		text-align:center;
 		padding:20px 0;
 		height:180px;
@@ -122,7 +122,7 @@ div.content{
 		margin-top:2px;
 		text-align:left;
 		display:inline-block;
-		 border:1px solid red;
+	/*	 border:1px solid red; */
 		height:21px;
 		margin-top:7px;
 	}
@@ -132,7 +132,7 @@ div.content{
 		margin-top:0;
 		text-align:right;
 		display:inline-block;
-		 border:1px solid red;
+	/*	 border:1px solid red;*/
 		height:21px;
 	}
 	div.subMainCenter div.orders span.left{
@@ -153,7 +153,7 @@ div.content{
 	table.shopMainCenterTable tr,
 	table.shopMainCenterTable td,
 	table.shopMainCenterTable th{
-		border:1px solid black;
+		/*border:1px solid black;*/
 	}
 	
 	table.shopMainCenterTable{
@@ -184,7 +184,7 @@ div.content{
 		display:inline-block;
 	}
 	table.shopMainCenterTable td div.event{
-		 border:1px solid red;
+	/*	 border:1px solid red;*/
 		display:block;
 		text-align:left;
 		height:40px;
@@ -202,15 +202,25 @@ div.content{
 		width:70px;
 		padding: 3px;
 	}
+	table.shopMainCenterTable td div.event div.c img{
+		display:inline-block;
+		height: 30px;
+		width:70px;
+		padding: 3px;
+	}
 	table.shopMainCenterTable td div.title{
-		font-size: 17px;
+		font-size: 20px;
 		font-weight:700;
 		padding: 5px 12px;
 		margin-right:20px;	
 		text-align:left;
-		border:1px solid red; 
+	/*	border:1px solid red; */
 		width:280px;
-		height:50px;
+		height:30px;
+	}
+	table.shopMainCenterTable td  a{
+		color:black;
+		text-decoration:none;
 	}
 	table.shopMainCenterTable td div.gray{
 		font-size: 12px;
@@ -221,7 +231,7 @@ div.content{
 		display:block;
 	}
 	table.shopMainCenterTable td div.price{
-		border:1px solid red; 
+		/*border:1px solid red; */
 		text-align:left;
 		display:block;
 	}
@@ -238,7 +248,7 @@ div.content{
 	table.shopMainCenterTable td div.nowprice{
 		font-size: 18px;
 		font-weight:700;
-		padding: 5px 2px;
+		padding: 5px 9px;
 		color:black;	
 		display:inline-block;
 		text-align:left;
