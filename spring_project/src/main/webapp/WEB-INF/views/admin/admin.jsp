@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.spring.vo.SessionVO"%>
-    <%--
-	SessionVO svo = (SessionVO)session.getAttribute("svo");
-
-	//svo객체 != null : 로그인 상태
-	//svo객체 = null : 비로그인 상태
-if(svo != null){ --%>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,23 +66,21 @@ div.sidenav>div.hover {
   color: #f1f1f1;
 }
 
-
 </style>
 </head>
 <body>
-	<!-- header -->
+<!-- header -->
 	<jsp:include page="../header.jsp" />
+	
 	<div class="sidenav">
 					<span>마이페이지</span>
 					<div class="underline"></div>
-					<a href="http://localhost:9000/project/mypage/userInfo.do">개인정보 수정</a>
-					<a href="http://localhost:9000/project/mypage/cart_list.do">장바구니 목록</a>
-					<a href="http://localhost:9000/project/mypage/buying_list.do">구매확인</a>
-					<a href="http://localhost:9000/project/delAccount.do">회원탈퇴</a>
+					<a href="http://localhost:9000/project/admin/member_list.do">회원관리</a>
+					<a href="http://localhost:9000/project/admin/Product_list.do">상품관리</a>
+			
 	</div>
 	
 	<!-- footer -->
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
-<%-- } --%>
