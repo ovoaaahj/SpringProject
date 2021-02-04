@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="com.MyCGV.dao.*, com.MyCGV.vo.*, java.util.*, com.google.gson.* "%>
+    import="com.spring.dao.*, com.spring.vo.*, java.util.*, com.google.gson.* "%>
 <%
-	CgvMemberDAO dao = new CgvMemberDAO();
+	CoffeeMemberDAO dao = new CoffeeMemberDAO();
 	
 	String sname = request.getParameter("sname");
 	String svalue = request.getParameter("svalue");
@@ -18,6 +18,7 @@
 	int pageSize = 3; //한 페이지당 출력되는 row
 	int pageCount = 1; //전체 페이지 수  : 전체 리스트 row /한 페이지당 출력되는 row
 	int dbCount = dao.getListCount(sname, svalue); //DB연동 후 전체로우수 출력
+
 	System.out.println("dbCount--->>" + dbCount);	
 	int reqPage = 1; //요청페이지
 	
@@ -39,21 +40,20 @@
 	}	
 	
 	
-	ArrayList<CgvMemberVO> list = dao.getSearchList(sname,svalue,start,end);
+	ArrayList<CoffeeMemberVO> list = dao.getSearchList(sname,svalue,start,end);
 
 	//list객체의 데이터를 JSON 객체로 변환작업 필요 ---> JSON 라이브러리 설치(gson)
 		JsonArray jarry = new JsonArray();
 		JsonObject jdata = new JsonObject();
 		Gson gson =new Gson();
 	
-	for(CgvMemberVO vo:list){
+	for(CoffeeMemberVO vo:list){
 		JsonObject jobj = new JsonObject();		
 
 		jobj.addProperty("rno", vo.getRno());  
 		jobj.addProperty("id", vo.getId());  
 		jobj.addProperty("name", vo.getName());  
-		jobj.addProperty("cp", vo.getCp());  
-		jobj.addProperty("gender", vo.getGender());  
+		jobj.addProperty("hp", vo.getHp());  
 		jobj.addProperty("mdate", vo.getMdate());  
 		
 		jarry.add(jobj);		

@@ -7,6 +7,27 @@
     
 <mapper namespace="mapper.member">
 
+	<select id="searchlist" parameterType="map" resultType="com.spring.vo.CoffeeMemberVO">
+	select * from 
+					 (select rownum rno, id, name, hp,  to_char(mdate,'yyyy.mm.dd') mdate 
+					 from (select * from coffeemember order by mdate desc)
+					<if test="sname != 'total'">
+		  			where ${sname}=#{svalue}	
+	</if>
+					) 	
+				where rno between #{start} and #{end}
+</select>
+
+<select	id="listcountajax" parameterType="map" resultType="int">
+	select count(*) from cgvmember
+	<if test="sname != 'total'">
+		  where ${sname}=#{svalue}	
+		  <!-- #(sname) = 'id' = '홍길동' -->
+		  <!-- $(sname) = id = '홍길동' -->
+	</if>
+</select>
+
+
 	<select id="findName" parameterType="java.lang.String" resultType="int">
 		select count(*) from coffee_member where name=#{name}
 	</select>
