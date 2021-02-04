@@ -22,7 +22,7 @@ public class ShopController {
 	private ShopService shopService;
 	
 	@RequestMapping(value = "/shopMain2.do", method = RequestMethod.GET)
-	public String shopMain2() {
+	public String shopMain2(String rpage){
 		return "shop/shopMain2";
 	}// shopmain2
 
