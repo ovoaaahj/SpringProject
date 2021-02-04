@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.spring.vo.SessionVO"%>
+    <%--
+	SessionVO svo = (SessionVO)session.getAttribute("svo");
+
+	//svo객체 != null : 로그인 상태
+	//svo객체 = null : 비로그인 상태
+if(svo != null){ --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,3 +92,4 @@ div.sidenav>div.hover {
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
+<%-- } --%>
