@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" 
-    import = "com.MyCGV.dao.*, com.MyCGV.vo.*, java.util.*" %>
+    import = "com.spring.dao.*, com.spring.vo.*, java.util.*" %>
 <%
 	SessionVO svo = (SessionVO)session.getAttribute("svo");
 
@@ -100,7 +100,6 @@
 					output += '<th>아이디</th>';
 					output += '<th>성명</th>';
 					output += '<th>핸드폰번호</th>';
-					output += '<th>성별</th>';
 					output += '<th>가입일자</th></tr>';
 
 					for(var i in jdata.jlist){ 
@@ -110,7 +109,6 @@
 							+jdata.jlist[i].id+'">'+jdata.jlist[i].id+'</a></td>';
 					output += '<td>'+jdata.jlist[i].name+'</td>';
 					output += '<td>'+jdata.jlist[i].cp+'</td>';
-					output += '<td>'+jdata.jlist[i].gender+'</td>';
 					output += '<td>'+jdata.jlist[i].mdate+'</td>';
 					output += '</tr>'
 					} 
