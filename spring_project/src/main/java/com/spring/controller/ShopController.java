@@ -52,8 +52,11 @@ public class ShopController {
 	public String shopContent() {
 		return "shop/shopContent";
 	}
+	
 	@RequestMapping(value = "/shopBuylist.do", method = RequestMethod.GET)
 	public String shopBuylist() {
 		return "shop/shopBuylist";
 	}
+
+	
 }
