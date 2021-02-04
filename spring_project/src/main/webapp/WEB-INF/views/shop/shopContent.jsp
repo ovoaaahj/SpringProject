@@ -424,7 +424,7 @@
             <!-- centerReviewTable시작 -->
 			<div class="centerReviewTable">
 		
-				<table >
+				<table>
 					<tr>
 						<td>번호</td>
 						<td>제목</td>

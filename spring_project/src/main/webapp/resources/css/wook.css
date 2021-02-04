@@ -261,3 +261,83 @@
 		 padding:15px 20px 15px 20px; font-weight: bold;
 	}
 	/********************************************/
+	
+	
+	
+/**********************************************************shopBuylist**********************************************************/	
+
+	div.buylistMain{
+		width:1200px; margin:0 auto;
+		/* border:1px solid red;  */
+	}	
+	div.order_h2{
+		text-align:center; margin-top:80px;
+	}
+	div.order_h3{
+	 margin-top:50px; color:gray;
+	}
+	div.buylistMain_div{
+		/*    text-align:center;  *//* border:1px solid blue; */
+		   margin:0 auto;
+	}
+	table.buylistMain_Table {
+		/* width:350px; */
+	   border-top:1px solid #c9c9c9; 
+		   text-align:center; width:100% ;
+		margin-top: 20px;
+		 border-collapse: collapse;
+		 font-family: palatino;
+		 font-size:10px;
+	}
+    table.buylistMain_Table tr{
+    	border-bottom:1px solid #c9c9c9; height:50px;
+    }
+    table.buylistMain_Table tr:nth-child(1) td{
+      font-weight:bold;
+    }
+    table.buylistMain_Table tr td:nth-child(1){
+    	 width:5%; 
+    }
+    table.buylistMain_Table tr td:nth-child(2){
+    	 width:10%; padding:10px 0;   /* background-color:blue; */
+    }
+    table.buylistMain_Table tr td:nth-child(3){
+    	 width:40%;
+    	/*  background-color:red; */
+    }
+    table.buylistMain_Table tr td:nth-child(4),table.buylistMain_Table tr td:nth-child(5),table.buylistMain_Table tr td:nth-child(6),
+    table.buylistMain_Table tr td:nth-child(7){
+    	/* background-color:blue; */ width:10%;
+    }
+    table.buylistMain_Table tr.buylistMain_Table_price{
+    	text-align:right; font-size:12px; height:80px; /* background-color: red; */
+    }
+    table.buylistMain_Table tr.buylistMain_Table_del{
+    	text-align:right; 
+    }
+	button.listDel_btn{
+		background-color:rgb(235,214,192); padding:10px; border:1px solid #c9c9c9; border-radius:5px;
+	}
+	
+	
+	table.orderInfo_Table{
+		 border-top:1px solid #c9c9c9; 
+		 width:100% ;
+		 margin-top: 20px;
+		 border-collapse: collapse;
+		 font-family: palatino;
+		 font-size:10px;
+	}
+	table.orderInfo_Table tr{
+		height:40px; border-bottom:1px solid #c9c9c9; 
+	}
+	table.orderInfo_Table tr:nth-child(2) select.hp, input.cp_number{
+		width:60px;
+	}
+	
+	input.address, input.address_more{
+		width:450px; /* background-color:red; */ height:20px;margin-bottom:5px;
+	}
+	td.addr_td{
+		margin-top:-5px; background-color:red;
+	}
