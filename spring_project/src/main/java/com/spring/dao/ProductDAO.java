@@ -18,8 +18,13 @@ public class ProductDAO extends DBConn{
 	
 	private static String namespace="mapper.shop";
 	
+	public ProductVO getAdminContent(String pid) {
+		return (ProductVO)sqlSession.selectOne(namespace+".selectContent",pid);
+	}
 	
 	
+
+
 	public ProductVO getProductContent(String pid) {
 		
 		return (ProductVO)sqlSession.selectOne(namespace+".selectProduct",pid);
@@ -41,8 +46,13 @@ public class ProductDAO extends DBConn{
 	/**
 	 * 상품 리스트 불러오기
 	 */
-	public ArrayList<ProductVO> getAdminProductList(){
-		List<ProductVO> list = sqlSession.selectList(namespace+".adminshoplist");
+	public ArrayList<ProductVO> getAdminProductList(String start,String end){
+		Map<String,String> param = new HashMap<String,String>();
+		param.put("start", start);
+		param.put("end", end);
+		
+		List<ProductVO> list = sqlSession.selectList(namespace+".adminshoplist",param);
+		
 		return (ArrayList<ProductVO>) list;
 	}
 	
