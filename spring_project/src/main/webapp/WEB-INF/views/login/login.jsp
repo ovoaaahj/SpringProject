@@ -99,7 +99,7 @@ $(document).ready(function () {
 							oninput="setCustomValidity('')" />
 						</label> <label class="pwbox" title="비밀번호"> <input id="pass"
 							name="pass" type="password" autocomplete="off" required
-							oninvalid="this.setCustomValidity('아이디를 입력해주세요')"
+							oninvalid="this.setCustomValidity('비밀번호를 입력해주세요')"
 							oninput="setCustomValidity('')" />
 						</label>
 						<button type="submit" id="loginBtn"
