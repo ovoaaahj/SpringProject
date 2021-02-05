@@ -9,6 +9,7 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.spring.vo.ProductContentVO;
 import com.spring.vo.ProductVO;
 
 public class ProductDAO extends DBConn{
@@ -17,6 +18,18 @@ public class ProductDAO extends DBConn{
 	private SqlSessionTemplate sqlSession;
 	
 	private static String namespace="mapper.shop";
+	
+	
+	public boolean getContentInsert(ProductContentVO vo) {
+		
+		boolean result = false;
+		int val = sqlSession.insert(namespace+".insertProductContent",vo);
+		if(val != 0) result = true;
+		return result;
+		
+		
+	}
+	
 	
 	public ProductVO getAdminContent(String pid) {
 		return (ProductVO)sqlSession.selectOne(namespace+".selectContent",pid);
