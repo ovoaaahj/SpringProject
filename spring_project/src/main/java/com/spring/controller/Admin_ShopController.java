@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.service.AdminShopServiceImpl;
+import com.spring.vo.ProductContentVO;
 import com.spring.vo.ProductVO;
 
 @Controller
@@ -90,15 +91,19 @@ public class Admin_ShopController {
 	}// shopmain2
 	
 	@RequestMapping(value = "/productContent_insert.do", method = RequestMethod.GET)
-	public String productContent_insert() {
-		return "admin/shop/Product_Content";
+	public ModelAndView productContent_insert(String pid) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("pid",pid);
+		mv.setViewName("admin/shop/Product_Content");
+		return mv;
 	}// shopContent
 	
 	/**
 	 * ÀÎ¼­Æ® proc
 	 */
 	@RequestMapping(value="/productContent_insert_proc.do",method = RequestMethod.POST)
-	public ModelAndView productContent_insert_proc(ProductVO vo,HttpServletRequest request){
-		return AdminShopService.getResultInsert(vo,request);
+	public ModelAndView productContent_insert_proc(ProductContentVO vo){
+		System.out.println("ss -->" +vo.getAroma());
+		return AdminShopService.getContentInsert(vo);
 	}
 }
