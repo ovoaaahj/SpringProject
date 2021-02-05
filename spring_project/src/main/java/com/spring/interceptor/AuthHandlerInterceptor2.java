@@ -14,11 +14,9 @@ public class AuthHandlerInterceptor2 extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 		    throws Exception {
 		
-		//1. get information of session 
 		HttpSession session = request.getSession();
 		SessionVO svo = (SessionVO)session.getAttribute("svo");
 		
-		//2. check the svo - whether svo is null or not
 		if(svo == null) {
 			response.sendRedirect("/project/login.do");
 			return false;
@@ -29,7 +27,7 @@ public class AuthHandlerInterceptor2 extends HandlerInterceptorAdapter{
 				
 			}
 		}
-			return true; //bring svo after jump into the controller 
-		}//preHandle
+			return true; 
+		}
 	
 }
