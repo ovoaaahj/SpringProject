@@ -73,9 +73,9 @@
 				  <li class="dropdown">
 				    <a href="javascript:void(0)" class="dropbtn">What's new</a>
 				    <div class="dropdown-content">
-				      <a href="#">공지사항</a>
-				      <a href="#">FAQs</a>
-				      <a href="#">이벤트</a>
+				      <a href="notice.do">공지사항</a>
+				      <a href="question.do">FAQs</a>
+				      <a href="event.do">이벤트</a>
 				    </div>
 				  </li>
 				</ul>
