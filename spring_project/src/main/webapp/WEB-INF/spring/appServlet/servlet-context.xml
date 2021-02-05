@@ -17,6 +17,7 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/images/**" location="/resources/images/" />
+	<resources mapping="/upload/**" location="/resources/upload/" />
 
 	<beans:bean id="authInterceptor" class="com.spring.interceptor.AuthHandlerInterceptor"></beans:bean>
 	<interceptors>
@@ -39,6 +40,7 @@
 	<!-- DAO Object  -->	
 	<beans:bean class="com.spring.dao.ProductDAO" id="productDAO"></beans:bean>
 	<beans:bean class="com.spring.dao.CartDAO" id="cartDAO"></beans:bean>
+	<beans:bean class="com.spring.dao.TestEventDAO" id="eventDAO"></beans:bean>
 	
 	<beans:bean class="com.spring.dao.CoffeeMemberDAO" id="coffee_memberDAO"></beans:bean>
 
@@ -47,7 +49,8 @@
 	<beans:bean class="com.spring.service.ShopService" id="shopService"></beans:bean>
 	<beans:bean class="com.spring.service.AdminShopServiceImpl" id="AdminShopService"></beans:bean>
 	<beans:bean class="com.spring.service.MypageServiceImpl" id="mypageService"></beans:bean>
-
+	<beans:bean class="com.spring.service.EventServiceImpl"  id="eventService"></beans:bean>
+	
 	
 	<context:component-scan base-package="com.spring.project" />
 	<context:component-scan base-package="com.spring.controller" />

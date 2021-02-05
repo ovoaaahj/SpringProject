@@ -1,0 +1,196 @@
+
+
+
+.nmain_box {
+	/* 	border:1px solid black; */
+	width: 60%;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.notice_list{
+	width:60%;
+	margin:auto;
+	margin-top:50px;
+}
+
+
+
+.hnm_text h1{
+	color: #84847c;
+	font-size:15px;
+	 /* float: right;  */
+	 text-align:right;
+	
+}
+
+.hnm_title{
+	display:inline-block;
+	width:80%;
+}
+
+.hnm_date{
+	float:right;
+	margin-top:10px;
+	width:20%;
+	color: gray;
+	text-align:right; 
+	font-size:15px;
+}
+
+.nline{
+	border-top:3px solid rgb(177,177,177);
+	width: 100%; 
+	margin: auto;
+	margin-top : 40px;
+	margin-bottom : 20px;
+}
+.n2line{
+	border-top:1px solid rgb(177,177,177);
+	width: 100%; 
+	margin: auto;
+	margin-top : 20px;
+	margin-bottom : 20px;
+}
+
+
+.n_textline {
+	border-top: 1px solid rgb(177, 177, 177);
+	width: 100%;
+	margin: auto;
+	margin-top: 80px;
+	margin-bottom: 70px;
+}
+
+.page_text h1 {
+	font-size:15px;
+	color: gray;
+}
+
+.page_img {
+	text-align:center;
+}
+
+.page_img img{
+	width:80%;
+}
+
+.np_list a {
+    float: right;
+    width: 170px;
+    line-height: 35px;
+    margin-right: 0;
+    text-align: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-top: 16px;
+    color:gray;
+    text-decoration: none;
+}
+
+.n_textline2 {
+	border-top: 1px solid rgb(177, 177, 177);
+	width: 100%;
+	margin: auto;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	
+}.n_textline3 {
+	border-top: 1px solid rgb(177, 177, 177);
+	width: 100%;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.n_textline4 {
+	border-top: 1px solid rgb(177, 177, 177);
+	width: 100%;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 70px;
+}
+
+.npagelist{
+	display:inline-block;
+	width:6%;
+	font-size:12px;
+	color: gray;
+	margin-left: 20px;
+}
+
+.pagelist a{
+	font-size:12px;
+	color: gray;
+	text-decoration: none;
+}
+.npagedate{
+	float:right;
+	color: gray;
+	text-align:right; 
+	font-size:12px;
+	margin-right: 20px;
+}
+
+.npagelist2{
+	display:inline-block;
+	width:6%;
+	font-size:12px;
+	color: gray;
+	margin-left: 20px;
+}
+
+.pagelist2 a{
+	font-size:12px;
+	color: gray;
+    text-decoration: none;	
+}
+.npagedate2{
+	float:right;
+	color: gray;
+	text-align:right; 
+	font-size:12px;
+    margin-right: 20px;	
+}
+
+.n2line{
+	border-top:1px solid rgb(177,177,177);
+	width: 100%; 
+	margin: auto;
+	margin-top : 20px;
+	margin-bottom : 20px;
+}
+
+.notice_page_text h1 {
+	font-size:15px;
+	color: gray;
+}
+
+.notice_page_img {
+	text-align:center;
+	margin-top:100px;
+}
+
+.notice_page_img img{
+	width:80%;
+}
+
+.n_option{    
+    text-align: right;
+}
+
+.n_option button{
+	background:none;
+    float: right;
+    width: 170px;
+    line-height: 35px;
+    margin-right: 0;
+    text-align: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-top: 16px;
+    color: gray;
+    text-decoration: none;
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.event">
+
+
+	<select id="listcount" resultType="int">
+		select count(*) from TESTEVENT
+	</select>
+	
+	<select id="list" parameterType="map" resultType="com.spring.vo.TestEventVO">
+	select * from (select rownum rno, eid, etitle, 
+			to_char(edate,'yyyy.mm.dd') edate, 
+			to_char(edate2,'yyyy.mm.dd') edate2, 
+			ehits, eend, esfile_t efile_t
+	 from (select * from TESTEVENT order by edate desc))
+	 where rno between #{start} and #{end}
+	</select>
+
+
+	<select id="content" parameterType="java.lang.String"
+				resultType="com.spring.vo.TestEventVO">
+			select eid,etitle, econtent ,to_char(edate,'yyyy.mm.dd') edate,
+				to_char(edate2,'yyyy.mm.dd') edate2,ehits, efile, 
+				esfile, efile_t, esfile_t, eend 
+		  		 from TESTEVENT where eid=#{eid}
+	</select>
+	
+	
+	<insert id="insert" parameterType="com.spring.vo.TestEventVO">	
+		insert into TESTEVENT 
+		  values('n_'||sequ_TESTEVENT.nextval,
+		  #{etitle},#{econtent},#{efile},#{esfile},#{efile_t},#{esfile_t},#{edate},#{edate2},0,#{eend})	
+	</insert>
+	
+	<update id="update" parameterType="com.spring.vo.TestEventVO">
+		update TESTEVENT set 
+		 etitle=#{etitle},
+		 econtent=#{econtent},
+		 efile=#{efile},
+		 esfile=#{esfile},
+		 efile_t=#{efile_t},
+		 esfile_t=#{esfile_t},
+		 edate=#{edate},
+		 edate2=#{edate2},
+		 ehits=0,
+		 eend=#{eend} 
+		 where eid=#{eid}
+				
+	</update>
+
+
+	<delete id="delete" parameterType="java.lang.String">
+		delete from TESTEVENT where eid=#{eid}
+	</delete>
+	
+</mapper>

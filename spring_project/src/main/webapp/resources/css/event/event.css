@@ -1,0 +1,144 @@
+a {
+	text-decoration: none;
+	color: #464646;
+}
+
+.event_content {
+	width: 60%;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 80px;
+}
+
+.hnq_text h1 {
+	color: #84847c;
+	font-size: 15px;
+	/* float: right;  */
+	text-align: right;
+}
+
+.hnq2_text {
+	/*  border: 1px solid red;*/
+	margin-top: 70px;
+}
+
+.hnq2_text h1 {
+	color: #A37758;
+	text-align: center;
+}
+
+.eline {
+	border-top: 3px solid rgb(177, 177, 177);
+	width: 2.2%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.e_textline {
+	border-top: 1px solid rgb(177, 177, 177);
+	width: 100%;
+	margin: auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.e_board {
+	list-style-type: none;
+	border-top: 2px solid #84847c;
+}
+
+.e_board li {
+	position: relative;
+	padding: 20px 0;
+	border-bottom: 1px solid #d9d9d9;
+	overflow: hidden;
+}
+
+.e_img_board {
+	width: 500px;
+	height: 135px;
+	margin-right: 40px;
+	float: left;
+	margin-bottom: 10px;
+	background: #999;
+}
+
+
+.e_img_board img {
+	width: 100%;
+}
+
+.e_content_board {
+	float: left;
+	max-width: 435px;
+	padding-top: 10px;
+}
+
+.e_content_board dt {
+	margin-bottom: 12px;
+	font-size: 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: 500;
+	color: #202023;
+}
+
+.e_content_board a{
+	font-weight:bold;
+}
+
+
+.e_content_board dd {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.e_state_board {
+	margin-top: 10px;
+	float: right;
+}
+
+.e_state_board .end1 {
+	width: 100px;
+	line-height: 30px;
+	border-radius: 15px;
+	color: #fff;
+	text-align: center;
+	font-weight: 500;
+	background: #898989;
+	margin-right: 0;
+	display:inline-block;
+}
+
+.e_state_board .end0 {
+	width: 100px;
+	line-height: 30px;
+	border-radius: 15px;
+	color: #fff;
+	text-align: center;
+	font-weight: 500;
+	background: #ff0000;
+	margin-right: 0;
+	display:inline-block;
+}
+
+.brown_txt {
+	color: #A37758;
+}
+
+#ampaginationsm{
+	text-align:center;
+	margin-top:40px;
+}
+
+.write_btn{
+    background-color: brown;
+    font-size: 15px;
+    color: white;
+    border: 2px solid brown;
+    border-radius: 20px;
+    padding: 0 10px;
+}

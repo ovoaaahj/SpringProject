@@ -1,0 +1,58 @@
+
+
+
+
+.delete_page{
+	width:60%;
+	margin:auto;
+	margin-top:50px;
+}
+
+
+
+.delete_text h1{
+	color: #84847c;
+	font-size:15px;
+	 /* float: right;  */
+	 text-align:right;
+	
+}
+
+.dline{
+	border-top:3px solid rgb(177,177,177);
+	width: 100%; 
+	margin: auto;
+	margin-top : 40px;
+	margin-bottom : 20px;
+}
+
+.d_textline {
+	border-top: 1px solid rgb(177, 177, 177);
+	width: 100%;
+	margin: auto;
+	margin-top: 80px;
+	margin-bottom: 70px;
+}
+
+.dp_list a {
+    float: right;
+    width: 170px;
+    line-height: 35px;
+    margin-right: 0;
+    text-align: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-top: 16px;
+    color:gray;
+    text-decoration: none;
+}
+
+.d_textline2 {
+	border-top: 1px solid rgb(177, 177, 177);
+	width: 100%;
+	margin: auto;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	
+}

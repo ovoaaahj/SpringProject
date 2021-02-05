@@ -1,0 +1,158 @@
+.y_content {
+	
+}
+
+.ymain_box {
+	/* 	border:1px solid black; */
+	width: 60%;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.hny_text {
+	/*  border: 1px solid green;*/
+	
+}
+
+.hny2_text {
+	/*  border: 1px solid red;*/
+	margin-top: 70px;
+}
+
+.hny_text h1 {
+	color: #84847c;
+	font-size: 15px;
+	/* float: right;  */
+	text-align: right;
+}
+
+.hny2_text h1 {
+	color: #A37758;
+	text-align: center;
+}
+
+.yline {
+	border-top: 3px solid rgb(177, 177, 177);
+	width: 2.2%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.notice_content {
+	border-top: 5px solid brown;
+	width: 60%;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.youtube_content {
+	margin: auto;
+}
+
+.y_text {
+	font-size: 15px;
+	text-align: center;
+}
+
+.y_text h1 {
+	font-size: 20px;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.y_textline {
+	border-top: 1px solid rgb(177, 177, 177);
+	width: 100%;
+	margin: auto;
+	margin-top: 80px;
+	margin-bottom: 40px;
+}
+
+.y_text a {
+	text-decoration: none;
+	color: gray;
+}
+
+/**
+	youtube  slide list
+*/
+.y_slider {
+	margin: 0px auto;
+	position: relative;
+	height: 250px;
+	overflow: hidden;
+}
+
+.y_slider .next {
+	position: absolute;
+	top: 30%;
+	right: 30px;
+	font-size: 3em;
+	color: gray;
+	cursor: pointer;
+}
+
+.y_slider .prev {
+	position: absolute;
+	top: 30%;
+	left: 30px;
+	font-size: 3em;
+	color: gray;
+	cursor: pointer;
+}
+
+.y_slider .y_wrapper {
+	width: 84%;
+	height: 350px;
+	margin: 0px auto;
+	overflow: hidden;
+	padding: 10px 0px 10px 0px;
+}
+
+.y_slider .y_wrapper .post {
+	width: 300px;
+	height: 300px;
+	margin: 0px 10px;
+	display: inline-block;
+	background: white;
+	border-radius: 5px;
+}
+
+.y_slider .y_wrapper .post .post_info {
+	font-size: 15px;
+	height: 30%;
+	padding-left: 10px;
+}
+
+.y_slider .y_wrapper .post .slider_image {
+	width: 100%;
+	height: 175px;
+	border-radius: 10px;
+}
+
+.y_slider .post p {
+	width: 100%;
+	/* text-overflow: ellipsis; */
+	white-space: nowrap;
+	overflow: hidden;
+	margin-top: 10px;
+}
+
+.y_slider .post a {
+	margin-top: 5px;
+	text-decoration: none;
+	color: gray;
+	text-decoration: none;
+}
+
+.y_div {
+	width: 100%;
+	height: 30vw;
+}
+
+.y_iframe {
+	border-radius: 20px;
+	width: 100%;
+	height: 100%;
+}
