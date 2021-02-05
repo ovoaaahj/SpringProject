@@ -46,11 +46,23 @@ public class EventController {
 	
 	@RequestMapping(value = "/event_update_proc.do", method = RequestMethod.POST)
 	public ModelAndView event_update_proc(TestEventVO vo,HttpServletRequest request,String eid) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return (ModelAndView)eventService.getResultUpdate(vo,request,eid);
 	}
 	
 	@RequestMapping(value = "/event_write_proc.do", method = RequestMethod.POST)
 	public ModelAndView event_write_proc(TestEventVO vo,HttpServletRequest request){
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return (ModelAndView)eventService.getResultWrite(vo,request);
 	}
 	
