@@ -347,10 +347,36 @@
 		 border:1px solid red;  
 	}
 	
+	ul.main_ul li{
+	 	 background-color:;
+	 	padding:30px 0;
+	 	font-size:15px;
+	 	margin:0 auto;
+	 	border-bottom:1px solid #c9c9c9; 
 	
+	}
+	ul.main_ul li label{
+		width:150px;border:1px solod red;
+		display:inline-block;
+		border-right:1px solid #c9c9c9; 
+		margin-right:20px;
+	}
+	ul.main_ul li input{
+		height:25px; width:250px;
+	}
+	ul.main_ul li.note-taste span{
+		margin-right:15px;
+	}
+	ul.main_ul li.note-taste input{
+		width:102px; margin-right:30px;
+	}
+	textarea.note-content, textarea.product-content{
 	
-	
-	
-	
+		width:550px;
+	}
+	button.save_btn,button.previous-btn{
+		padding:20px 40px; background-color:rgb(34,58,93); font-size:12px; color:white;
+		border-radius:5px;
+	}
 	
 	
