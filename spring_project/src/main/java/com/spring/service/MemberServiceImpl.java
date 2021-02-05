@@ -152,20 +152,18 @@ public class MemberServiceImpl implements MemberService {
 	 * 로그인 처리
 	 */
 	@Override
-	public ModelAndView getResultLogin(CoffeeMemberVO vo, HttpSession session) {
-		//CgvMemberDAO memberDAO = new CgvMemberDAO();
-		ModelAndView mv = new ModelAndView();
+	public String getResultLogin(CoffeeMemberVO vo, HttpSession session) {
 		SessionVO svo = coffee_memberDAO.getLogin(vo);
+		String result = "";
 
 		if(svo.getResult() != 0) {
-			session.setAttribute("id", vo.getId());
-			mv.setViewName("index");
+			session.setAttribute("svo", svo);
+			result = "index";
 		}else {
-			mv.addObject("result","fail");
-			mv.setViewName("/login/login");
+			result = "errorPage";
 		}
 
-		return mv;
+		return result;
 	}
 	/**
 	 * 아이디 중복체크
