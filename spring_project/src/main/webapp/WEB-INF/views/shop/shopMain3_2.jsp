@@ -109,6 +109,8 @@
 <body>
 <jsp:include page="../header.jsp" />
 <div class="content">
+<div class="color">
+</div>
 	<aside class="side">
 		<div class="sidecontent">
 			<ul class="all">
@@ -184,12 +186,12 @@
 				<button id="btnsearch">검색하기</button>
 				</div>
 				<div  class='orders'>
-				<span id='pdate'>New</span>
+			<!--  	<span id='pdate'>New</span>
 				<span id='ptitle' class='left'>Name</span> 
 				<span id='pprice' class='left'>LowPrice</span> 
 				<span id='pprice' class='left'>HighPrice</span>
-			    <span id='name' class='left'>Review</span>
-				</div>	    
+			    <span id='name' class='left'>Review</span>  -->
+				</div>	   
 		<table class="shopMainCenterTable">
 		  <c:forEach var="vo"  items="${list}">
 		  	<% if(i%4==0) {%>
@@ -200,6 +202,7 @@
 				    onmouseover="this.src='http://localhost:9000/project/resources/upload/${vo.phsphoto }'"
 					onmouseout="this.src='http://localhost:9000/project/resources/upload/${vo.pmsphoto }'">
 				    <div class='event'>
+					   <div class='event'>
 					    <div class='a'>
 					       <c:if test ="${!empty vo.psub1 }">
 					    		<img src = 'http://localhost:9000/project/images/${vo.psub1 }'>
@@ -210,6 +213,12 @@
 					   			<img src = 'http://localhost:9000/project/images/${vo.psub2 }'>
 					    	</c:if>
 					    </div>
+					    <div class='c'>
+					   		<c:if test ="${!empty vo.psub3 }">
+					   			<img src = 'http://localhost:9000/project/images/${vo.psub3 }'>
+					    	</c:if>
+					    </div>
+					 </div>
 					 </div>
 					    <div class='title'>
 					   		 <a href="http://localhost:9000/project/shopContent.do?pid=${vo.pid }"> ${vo.ptitle }</a>
