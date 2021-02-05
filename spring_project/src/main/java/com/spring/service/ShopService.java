@@ -18,6 +18,25 @@ public class ShopService {
 	private ProductDAO productDAO;
 	
 	
+	public ModelAndView getProductContent(String pid) {
+		ModelAndView mv = new ModelAndView();
+		
+		ProductVO vo =productDAO.getProductContent(pid);
+		/* System.out.println(vo.getPkind2()+"ssssss"); */
+		
+		//vo.getPcontent().replace("\r\n", "<br>"); //이엘태그는 출력만 하기때문에 로직 처리를 여기서 해줘야 함!!
+		 
+		  
+		mv.addObject("vo",vo);
+		
+		mv.setViewName("shop/shopContent");
+		return mv;
+		
+		
+		
+		
+	}
+	
 	
 	
 	/**리스트 검색 기능 */

@@ -18,6 +18,16 @@ public class ProductDAO extends DBConn{
 	
 	private static String namespace="mapper.shop";
 	
+	
+	
+	public ProductVO getProductContent(String pid) {
+		
+		return (ProductVO)sqlSession.selectOne(namespace+".selectProduct",pid);
+	}
+	
+	
+	
+	
 	/**
 	 * 삭제 진행하기
 	 */

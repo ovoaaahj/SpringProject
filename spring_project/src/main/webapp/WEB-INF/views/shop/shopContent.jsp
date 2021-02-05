@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <!-- <script src="http://localhost:9000/project/js/wook.js"></script> -->
 <script>
 	$(document).ready(function(){
+		
 		
 		   //천단위 콤마 펑션
 		function addComma(value){
@@ -163,7 +165,7 @@
 				if($("#hidden_input").val()=="100"){
 					
 					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
-					var compose_price = parseInt("3000");
+					var compose_price = parseInt("${vo.pprice100}");
 					explan_table(compose,compose_price);
 					total_price += compose_price;
 					$("#sumprice").text(addComma(String(total_price)));
@@ -172,7 +174,7 @@
 	
 				}else if($("#hidden_input").val()=="200"){
 					var compose = $("#product_200g").text()+"/"+ $(this).children('option:selected').text();
-					var compose_price = parseInt("7000");
+					var compose_price = parseInt("${vo.pprice200}");
 					explan_table(compose,compose_price);
 					total_price += compose_price;
 					$("#sumprice").text(addComma(String(total_price)));
@@ -181,7 +183,7 @@
 		
 				}else if($("#hidden_input").val()=="500"){
 					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
-					var compose_price = parseInt("10000");
+					var compose_price = parseInt("${vo.pprice500}");
 					explan_table(compose,compose_price);
 					total_price += compose_price;
 					$("#sumprice").text(addComma(String(total_price)));
@@ -190,7 +192,7 @@
 	
 				}else if($("#hidden_input").val()=="1000"){
 					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
-					var compose_price = parseInt("12000");
+					var compose_price = parseInt("${vo.pprice1000}");
 					explan_table(compose,compose_price);
 					total_price += compose_price;
 					$("#sumprice").text(addComma(String(total_price)));
@@ -257,7 +259,7 @@
 			<div class="centerExplanation_1">
 				<ul >
 					<li> 
-						<img src="http://localhost:9000/project/images/coffee_sample.jpg" class="pmphoto" id ="pmphoto">
+						<img src="http://localhost:9000/project/resources/upload/${vo.pmphoto}" class="pmphoto" id ="pmphoto">
 					</li>
 				</ul>
 			
@@ -273,12 +275,12 @@
 					<p>
 						<b style="font-size: 9pt;">
 							<span style="font-size: 20pt;">
-								<span style="color: rgb(37, 37, 37);" class="ptitle_eng" id="ptitle_eng">ETHIOPIA SIDAMO G2 AIDA &nbsp;<br></span>
+								<span style="color: rgb(37, 37, 37);" class="ptitle_eng" id="ptitle_eng">${vo.ptitle} &nbsp;<br></span>
 							</span>
 						</b>
 						<span style="font-size: 9pt; color: rgb(154, 154, 154);">
 							<span style="color: rgb(37, 37, 37);">
-								<span style="color: rgb(154, 154, 154);" class="ptitle_kor" class="ptitle_kor">에티오피아 시다모 G2 아이다</span>
+								<span style="color: rgb(154, 154, 154);" class="ptitle_kor" class="ptitle_kor">${vo.ptitle}</span>
 							</span>
 						</span>
 					</p>
@@ -502,25 +504,33 @@
 		<!-- shopMainRight 시작 -->
 		 <div class="shopMainRight">
 			<div class="icon">
-				<img src="http://localhost:9000/project/images/custom_singleorigin.gif" id="kind2_photo">
-				<img src="http://localhost:9000/project/images/custom_nowdiscount.png">
+				<!-- <img src="http://localhost:9000/project/images/custom_singleorigin.gif" id="kind2_photo"> -->
+				<c:if test="${vo.psub1 ne null }">
+				<img src="http://localhost:9000/project/resources/images/${vo.psub1}" id="kind2_photo">
+				</c:if>
+				<c:if test="${vo.psub2 ne null }">
+				<img src="http://localhost:9000/project/resources/images/${vo.psub2}" id="kind2_photo">
+				</c:if>
+				<c:if test="${vo.psub3 ne null }">
+				<img src="http://localhost:9000/project/resources/images/${vo.psub3}" id="kind2_photo">
+				</c:if>
 			</div>
 			 <!-- 상품설명 시작 productExplanation -->
 			<div class="productExplanation_1">
 				<table class="ExplanationTable_1" >
 					<tr>
 						<td>
-							<span style="font-size:20px;color:#000000;font-weight:bold;" id="ptitle_kor">에티오피아 시다모 G2 아이다</span>
+							<span style="font-size:20px;color:#000000;font-weight:bold;" id="ptitle_kor">${vo.ptitle}</span>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<span style="font-size:13px;color:#888888;" id="cupping_hash">#열대과일 #감귤류 #초콜릿향</span>
+							<span style="font-size:13px;color:#888888;" id="cupping_hash">${vo.phash}</span>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<strong id="product_price_text">3,000원</strong>
+							<strong id="product_price_text">${vo.pprice100}원</strong>
 							<input id="product_price" name="product_price" value="" type="hidden">
 						</td>
 					</tr>
