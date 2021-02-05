@@ -34,5 +34,12 @@ public class Admin_memberController {
 	public ModelAndView member_list(String rpage) {
 		return memberservice.getMemberListAjax(); //검색기능
 }
-
+	/**
+	 * 관리자페이지 
+	 * @return
+	 */
+	@RequestMapping(value="/admin.do", method=RequestMethod.GET) 
+	public String admin() {
+		return "/admin/admin";
+	}
 }

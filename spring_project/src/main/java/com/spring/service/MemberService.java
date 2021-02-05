@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring.vo.CoffeeMemberVO;
 
 public interface MemberService {
-	ModelAndView getResultLogin(CoffeeMemberVO vo,HttpSession session);
+	String getResultLogin(CoffeeMemberVO vo,HttpSession session);
 	String getResultJoin(CoffeeMemberVO vo);
 	String getResultIdCheck(String id);
 	String getResultName(String name);

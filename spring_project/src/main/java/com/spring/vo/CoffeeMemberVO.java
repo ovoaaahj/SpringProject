@@ -2,7 +2,7 @@ package com.spring.vo;
 
 public class CoffeeMemberVO {
 	int rno;
-	String id, pass, name, hp,hp1,hp2,hp3, email,mdate;
+	String id, pass, spass, name, hp,hp1,hp2,hp3, email,mdate;
 	
 	public int getRno() {
 		return rno;
@@ -27,6 +27,12 @@ public class CoffeeMemberVO {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	public String getSpass() {
+		return spass;
+	}
+	public void setSpass(String spass) {
+		this.spass = spass;
 	}
 	public String getEmail() {
 		return email;

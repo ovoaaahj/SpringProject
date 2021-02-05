@@ -19,10 +19,15 @@
 	<resources mapping="/images/**" location="/resources/images/" />
 
 	<beans:bean id="authInterceptor" class="com.spring.interceptor.AuthHandlerInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor2" class="com.spring.interceptor.AuthHandlerInterceptor2"></beans:bean>
 	<interceptors>
 		<interceptor>
 			<mapping path="/mypage*" /> <!-- url address will be checked -->
 			<beans:ref bean="authInterceptor"/> <!-- object will be checked -->
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin*" /> <!-- url address will be checked -->
+			<beans:ref bean="authInterceptor2"/> <!-- object will be checked -->
 		</interceptor>
 	</interceptors>
 	
