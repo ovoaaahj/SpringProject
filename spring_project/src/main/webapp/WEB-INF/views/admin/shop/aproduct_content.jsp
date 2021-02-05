@@ -9,10 +9,22 @@
 <style>
 	div.admin_product_content div.toptitle{
 		 text-align:center;
-	 	
+		 height:100px;
+		 border-top:1px solid black;
+		 border-bottom:1px solid black;
+		 display:inline-block;
+		 width:900px;
+		margin-left:50px;
+		margin-top:20px;
+		margin-bottom:30px;
+	
+	}
+	div.admin_product_content div.toptitle h2{
+	 	padding-top:40px;
+	 	font-Size:30px;
 	}
 	div.admin_product_content{
-		border:1px solid red;
+	/*	border:1px solid red; */
 		width:1000px;
 		height:800px;
 		margin:auto;
@@ -25,11 +37,11 @@
 	}
 	table.product_content_table{
 		margin:auto;
-		width:800px;
+		width:900px;
 	}
 	
 	table.product_content_table td img {
-		border: 1px solid red;
+	/*	border: 1px solid red; */
 		height:400px;
 		width:400px;
 		padding-left:80px;
@@ -38,12 +50,13 @@
 	table.product_content_table td div.title{
 		/*border:1px solid gray;*/
 		display:inline-block;
+		padding-left:10px;
 		
 	}
 	table.product_content_table td div.product{
 		border-bottom:1px solid gray;
 		display:inline-block;
-		
+		margin-left:10px;
 	}
 	table.product_content_table td.price{
 		margin:auto;
@@ -78,6 +91,7 @@
 
 </head>
 <body>
+<jsp:include page="../../header.jsp" />
 <div class="admin_product_content">
 	<div class="toptitle"><h2>상세 정보 확인</h2></div>
 	<table class="product_content_table">
@@ -150,6 +164,6 @@
 
 
 </div>
-
+<jsp:include page="../../footer.jsp" />
 </body>
 </html>
