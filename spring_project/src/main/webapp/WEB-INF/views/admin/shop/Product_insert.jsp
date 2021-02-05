@@ -11,30 +11,35 @@
 		border:1px solid red;
 		text-align:center;
 		margin:30px;
+		
 	}
 	div.shopinsert div.bigname{
-		border:1px solid red;
+	/*	border:1px solid red; */
+		height:50px;
+		padding-top:20px;
+		
 	}
 	div.shopinsert div.bigname h2{
 		border-bottom:1px solid gray;
 		display:inline-block;
-		width:200px;
+		width:400px;
 		padding-bottom:5px;
+		
 	}
 	div.shopinsert div.shopInsertContent{
 		text-align:center;
-		border:1px solid red;
+	/*	border:1px solid red; */
 	}
 	div.shopinsert div.shopInsertContent ul.big{
 		list-style:none;
-		border:1px solid green;
+	/*	border:1px solid green; */
 		width:900px;
 		margin:auto;
 	}
 	
 	div.shopinsert div.shopInsertContent ul.big>li{
 		margin:auto;
-		border:1px solid blue;
+	/*	border:1px solid blue; */
 		padding:10px;
 		width:50%;
 		clear:left;
@@ -86,7 +91,7 @@
 		
 	}
 	div.shopinsert div.shopInsertContent ul.big>li.picture{
-		border:1px solid red;
+	/*	border-top:1px solid red; */
 		height:230px;
 		text-align:center;
 	}
@@ -96,11 +101,12 @@
 		padding-bottom:5px;
 	}
 	div.shopinsert div.shopInsertContent ul.big>li>div.picture{
-		border:1px solid green;
+	/*	border:1px solid green; */
 		height:200px;
 		width:200px;
 		margin:auto;
 		margin-bottom:5px;
+		
 	}
 	div.shopinsert div.shopInsertContent ul.big>li>div.picture img{
 		height:200px;
@@ -115,6 +121,10 @@
 		 height:30px;
 		 padding:0px;
 	}
+	div.shopinsert div.shopInsertContent  a{
+		color:black;
+		text-decoration:none;
+	}
 	
 	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) button{
 		width:50px;
@@ -122,31 +132,33 @@
 		float:right;
 	}
 	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul{
-		border:1px solid red;
+	/*	border:1px solid red; */
 		text-align:center;
 		list-style:none;
 	}
 	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul li{
-		border:1px solid red;
+	/*	border:1px solid red; */
 		padding:5px 0;
 	}
 	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul li{
-		border:1px solid red;
+	/*	border:1px solid red; */
 		padding:5px 0;
 	}
 	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul li label{
 		border-bottom:1px solid gray;
 		display:inline-block;
 		width:80px;
-		height:30px;
-		padding:0,5px;
+		height:28px;
+		margin:0,10px;
+		
 	}
 	div.shopinsert div.shopInsertContent ul.big>li:nth-child(5) ul li input[type='text']{
 		border: 1px solid white;
 		border-bottom:1px solid gray;
 		display:inline-block;
 		width:200px;
-		height:30px;
+		height:35px;
+		padding:2px 0;
 	}
 	
 	

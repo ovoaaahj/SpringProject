@@ -65,8 +65,18 @@
 	/*	border:1px solid orange; */
 		width:90%;
 		margin:auto;
+		
 	}
-	
+	table.product_table td a{
+		color:black;
+		text-decoration:none;
+	}
+	table.product_table tr:hover{
+		text-decoration:underline;
+	}
+	table.product_table tr:first-child:hover{
+		text-decoration:none;
+	}
 	 table.product_table,
 	 table.product_table tr,
 	 table.product_table td,
@@ -102,24 +112,50 @@
 		width:1500px;
 	}
 	div.admin_shop_content>aside.adminaside{
+		margin-top:50px;
 		width:200px;
 		height:600px;
-		border:1px solid red;
+		border-right:1px solid gray;
 		margin-left:50px;
 		float:left;
+	}
+	aside.adminaside h2{
+		 border-bottom:2px solid gray;
+		 height:60px;
+		 padding-top:30px;
+		 font-Size:30px;
+		 font-weight:70;
+		 margin-top:20px;
 	}
 	aside.adminaside ul.adminaside_ul{
 		list-style:none;
 		margin-top:100px;
-	}
-	aside.adminaside ul.adminaside_ul li{
-		
-		border:1px solid gray;
-		padding : 5px;
-		font-size:18px;
+		/* border:1px solid blue; */
+		margin-top:0;
 	}
 	
+	aside.adminaside ul.adminaside_ul li{
+		
+		border-bottom:1px solid gray;
+		padding : 5px;
+		font-size:20px;
+		font-weight:70;
+		 padding:5px;
+	}
+	
+	aside.adminaside ul.adminaside_ul li div.choose{
+		display:inline-block;
+		padding-right:3px;
+		padding:5px;
+	}
 	 
+	aside.adminaside ul.adminaside_ul li div.choose:hover{
+		 -webkit-transform: scale(1.5,1.5);
+    	-moz-transform: scale(1.5,1.5);
+    	-o-transform: scale(1.5,1.5);
+   		 -ms-transform: scale(1.5,1.5);
+   		 transform: scale(1.5,1.5);
+	} 
 </style>
 <script>
 	$(document).ready(function(){	
@@ -269,10 +305,12 @@
 <jsp:include page="../../header.jsp" />
 <div class="admin_shop_content">
 <aside class="adminaside">
+	<h2>관리자메뉴</h2>
 	<ul class=adminaside_ul>
-		<li>회원관리</li>
-		<li>상품관리</li>
-		<li>공지사항관리</li>
+		
+		<li><a href="http://localhost:9000/project/admin/product_list.do"><div class="choose">회원관리</div></li></a>
+		<li><div class="choose">상품관리</div></li>
+		<li><div class="choose">공지사항관리</div></li>
 	</ul>
 </aside>
 <div class="admin_product_list">
