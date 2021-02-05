@@ -18,10 +18,13 @@ public class ProductDAO extends DBConn{
 	
 	private static String namespace="mapper.shop";
 	
+	public ProductVO getAdminContent(String pid) {
+		return (ProductVO)sqlSession.selectOne(namespace+".selectContent",pid);
+	}
 	
 	
-<<<<<<< HEAD
-=======
+
+
 	public ProductVO getProductContent(String pid) {
 		
 		return (ProductVO)sqlSession.selectOne(namespace+".selectProduct",pid);
@@ -30,7 +33,6 @@ public class ProductDAO extends DBConn{
 	
 	
 	
->>>>>>> branch 'develop' of https://github.com/ovoaaahj/SpringProject.git
 	/**
 	 * 삭제 진행하기
 	 */

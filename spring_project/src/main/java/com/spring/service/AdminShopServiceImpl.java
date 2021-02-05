@@ -19,6 +19,19 @@ public class AdminShopServiceImpl implements AdminShopService{
 	@Autowired
 	private ProductDAO ProductDAO;
 	
+	
+	
+	/** 상세정보 가져오기 */
+	public ModelAndView getContent(String pid) {
+		ModelAndView mv = new ModelAndView();
+		
+		ProductVO vo = ProductDAO.getAdminContent(pid);
+		mv.addObject("vo",vo);
+		mv.setViewName("admin/shop/aproduct_content");
+		
+		return mv;
+	}
+	
 	/**
 	 * 검색 목록 가져오기
 	 * @param sname

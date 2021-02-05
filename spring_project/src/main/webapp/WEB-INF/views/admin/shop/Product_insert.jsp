@@ -87,11 +87,22 @@
 	}
 	div.shopinsert div.shopInsertContent ul.big>li.picture{
 		border:1px solid red;
-		height:220px;
+		height:230px;
 		text-align:center;
+	}
+	div.shopinsert div.shopInsertContent ul.big>li.picture input[type='file']{
+	/**	border:1px solid red; */
+		padding-left:60px;
+		padding-bottom:5px;
 	}
 	div.shopinsert div.shopInsertContent ul.big>li>div.picture{
 		border:1px solid green;
+		height:200px;
+		width:200px;
+		margin:auto;
+		margin-bottom:5px;
+	}
+	div.shopinsert div.shopInsertContent ul.big>li>div.picture img{
 		height:200px;
 		width:200px;
 		margin:auto;
@@ -137,6 +148,9 @@
 		width:200px;
 		height:30px;
 	}
+	
+	
+	
 </style>
 <script>
 $(document).ready(function(){
@@ -158,15 +172,22 @@ $(document).ready(function(){
 		
 	});
 	
-
+	$("#file1").on("change", ImgFileSelect1);
+	$("#file2").on("change", ImgFileSelect2);
 	
 	});
+	
+
+	
+	
+	
 	
 function sub(type, select){
 	$('#pkind2').empty();
 	
 	
 	if(type=='coffee'){
+		$('#pkind2').append("<option value=''>선택해주세요</option>");
 		$('#pkind2').append("<option value='싱글오리진'>싱글오리진</option>");
 		$('#pkind2').append("<option value='블렌드'>블렌드</option>");
 		$('#pkind2').append("<option value='스페셜티'>스페셜티</option>");
@@ -185,24 +206,41 @@ function sub(type, select){
 		
 };
 	
-	
-
-
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#img1').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
+function psub3_val(obj){
+	getObj = obj[obj.selectedIndex].innerHTML;
+	$("input[name='psub3']").val(getObj+".png");
 }
 
-$("#file1").change(function() {
-    readURL(this);
-});
 
+function ImgFileSelect1(e){
+	var files = e.target.files;
+	var filesArr = Array.prototype.slice.call(files);
+	
+	filesArr.forEach(function(f){
+		sel_file = f;
+		var reader= new FileReader();
+		reader.onload = function(e){
+			$("#img1").attr("src",e.target.result);
+		}
+		reader.readAsDataURL(f);
+	});
+	
+}
+
+function ImgFileSelect2(e){
+	var files = e.target.files;
+	var filesArr = Array.prototype.slice.call(files);
+	
+	filesArr.forEach(function(f){
+		sel_file = f;
+		var reader= new FileReader();
+		reader.onload = function(e){
+			$("#img2").attr("src",e.target.result);
+		}
+		reader.readAsDataURL(f);
+	});
+	
+}
 
 
 </script>
@@ -232,7 +270,7 @@ $("#file1").change(function() {
 		<li>
 			<label>소분류</label>
 		
-			<select id="pkind2" name="pkind2" onchange="psub3_val(this.form)">
+			<select id="pkind2" name="pkind2" onchange="psub3_val(this)">
 				<option>소분류를 선택해주세요</option>
 			</select>
 		
@@ -278,26 +316,27 @@ $("#file1").change(function() {
 		</li>
 		<li>
 			<label>커피라벨</label>
-			<input type='text' placeholder="커피면 자동으로 입력됩니다." id="psub3" name="psub3">
+			<input type='text' placeholder="커피면 자동으로 입력됩니다." id="psub3" name="psub3" readonly>
 		</li>
 		
 		<li>
 			<p>메인사진</p>
-			<input type ="file" name="file1" id="file1">
+			
 			
 		</li>
 		<li class="picture">
+			<input type ="file" name="file1" id="file1">
 		<div class="picture" id="mphoto">
-			<img id="img1" src="#" />
+			<img id="img1" />
 		</div>
 		</li>
 		<li>
 			<p>마우스올렸을때사진</p>
-			<input type ="file" name="file2" id="file2">
 		</li>
 		<li class="picture">
+			<input type ="file" name="file2" id="file2">
 		<div class="picture">
-		
+			<img id="img2"/>
 		</div>
 		</li>
 		<li >

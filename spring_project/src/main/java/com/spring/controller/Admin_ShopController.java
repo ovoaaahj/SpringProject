@@ -20,6 +20,17 @@ public class Admin_ShopController {
 	private AdminShopServiceImpl AdminShopService;
 	
 	/**
+	 * 상품 상세정보창 가기
+	 * @return
+	 */
+	@RequestMapping(value = "/admin_product_content.do", method = RequestMethod.GET)
+	public ModelAndView product_content(String pid) {
+		return AdminShopService.getContent(pid);
+	}// shopmain2
+	
+	
+	
+	/**
 	 * 삭제진행
 	 */
 	@RequestMapping(value="/admin/product_delete_proc.do",method = RequestMethod.GET)

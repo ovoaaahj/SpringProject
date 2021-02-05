@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> 
 
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -6,6 +6,12 @@
     
     
     <mapper namespace="mapper.shop">
+    <select id ="selectContent" parameterType="java.lang.String" resultType="com.spring.vo.ProductVO">
+    
+    	select rownum rno, pid,pmphoto,pmsphoto,psub1,psub2,psub3,ptitle,phash,pprice100,pprice200,
+    		pprice500,pprice1000,pkind1,pkind2,pdate from product where pid = #{pid}
+    
+    </select>
     
      <select id="selectProduct" parameterType="java.lang.String" resultType="com.spring.vo.ProductVO">
 		

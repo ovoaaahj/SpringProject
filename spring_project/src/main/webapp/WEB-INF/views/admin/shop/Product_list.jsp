@@ -36,9 +36,11 @@
 		padding-top:20px;
 	}
 	div.admin_product_list div.search{
-	/**	border:1px solid blue; */
+	/*	border:1px solid blue; */
 		height:40px;
 		text-align:right;
+		padding-right:50px;
+		padding-top:5px;
 	}
 	div.admin_product_list div.search select{
 		text-align:center;
@@ -132,8 +134,7 @@
 			}
 			
 		}); //change
-		
-		
+
 		//선택삭제 버튼
 		$("#btnDelete").click(function(){
 			var choice = confirm("정말로 삭제하시겠습니까?");
@@ -151,6 +152,7 @@
 				//삭제할 페이지로 전송
 			}
 		});
+		
 		
 		/**페이지 로딩 시 회원 전체 리스트 출력 **/
    		admin_product_list("total", "","");
@@ -226,7 +228,7 @@
 					for(var i in jdata.jlist){
 						output += "<tr>"
 						output += "<td><input type='checkbox' name='chk' id="+jdata.jlist[i].pid+"class='part'></td>"
-						output += "<td>"+jdata.jlist[i].ptitle+"</td>"
+						output += "<td><a href='http://localhost:9000/project/admin_product_content.do?pid="+jdata.jlist[i].pid+"'>"+jdata.jlist[i].ptitle+"</td></a>"
 						output += "<td>"+jdata.jlist[i].pprice+"</td>"
 						output += "<td>"+jdata.jlist[i].pkind1+"</td>"
 						output += "<td>"+jdata.jlist[i].pkind2+"</td>"
@@ -252,14 +254,10 @@
 					page(jdata.dbcount, jdata.reqpage, jdata.pagesize);
 					
 				}//success
+				
 			});//ajax
+			
 		}   
-		
-		
-	
-		
-		
-	
 		
 	});//ready
 
@@ -291,33 +289,7 @@
 				<button id="btnsearch">검색</button>
 				</div>
 	</div>
-	<div class="product_list_table">
-	<!--  	<table class="product_table">
-			<tr>
-				<th><input type='checkbox' id="all"></th><th>제품명</th><th>가격</th><th>대분류</th><th>소분류</th><th>할인여부</th><th>날짜</th>
-			</tr>
-			<c:forEach var="vo"  items="${list}">
-			<tr>
-				<td><input type='checkbox' name='chk' id=${vo.pid } class="part"></td>
-				<td>${vo.ptitle}</td>
-				<td>${vo.pprice100}</td>
-				<td>${vo.pkind1 }</td>
-				<td>${vo.pkind2 }</td>
-				<td>${vo.psub1 }</td> 
-				<td>${vo.pdate }</td> 
-			</tr>
-			</c:forEach>
-			<tr>
-			   	<td colspan="7"> <div id="ampaginationsm"></div> </td>
-			</tr>
-			<tr>
-			<td colspan="7">
-				<a href="http://localhost:9000/project/admin_product_insert.do"><button type='button'>상품추가</button></a>
-				<button type='button' id="btnDelete">상품삭제</button>
-			</td>
-			</tr>
-		</table>  -->
-	</div>
+	
 
 </div>
 
