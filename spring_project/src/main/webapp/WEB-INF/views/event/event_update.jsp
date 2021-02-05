@@ -141,7 +141,7 @@ $(document).ready(function(){
 
 				<div class="e_textline">
 					<div class="ep_list">
-						<a href="http://localhost:9000/test/event.do">목록보기</a>
+						<a href="event.do">목록보기</a>
 					</div>
 				</div>
 

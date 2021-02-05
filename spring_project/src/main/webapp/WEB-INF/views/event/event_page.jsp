@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.spring.vo.*"  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+
+		SessionVO svo = (SessionVO)session.getAttribute("svo");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,21 +86,20 @@
 				</div>
 				
 				<div class="e_option">
-					<c:set var ="name" value='관리자'/>
-					<c:if test="${name eq '관리자'}">
+					<% if(svo != null) {%>
 						<form action="event_update.do?eid=${vo.eid}" method="get" onsubmit="return confirm('해당 게시물을 수정하시겠습니까?');">
 							<input type="hidden" name="eid" id="eid" value="${vo.eid}" ><button type="submit" class="btn_style">수정</button>
 						</form>		
 							
 						<form action="event_delete.do?eid=${vo.eid}" method="get" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
 							<input type="hidden" name="eid" id="eid" value="${vo.eid}" ><button type="submit" class="btn_style">삭제</button>
-						</form>					
-					</c:if>
+						</form>		
+					<%} %>
 				</div>
 
 				<div class="e_textline">
 					<div class="ep_list">
-						<a href="http://localhost:9000/test/event.do">목록보기</a>
+						<a href="event.do">목록보기</a>
 					</div>
 				</div>
 
