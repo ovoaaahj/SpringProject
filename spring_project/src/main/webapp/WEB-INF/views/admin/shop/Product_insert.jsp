@@ -316,14 +316,14 @@ function ImgFileSelect2(e){
 			<label>할인여부</label>
 			<div class="radio">
 			<input type="radio" name="psub1" value="이달의커피_할인.png">O
-			<input type="radio" name="psub1" value="no">X
+			<input type="radio" name="psub1" value="">X
 			</div>
 		</li>
 		<li>
 			<label>카페인</label>
 			<div class="radio">
 			<input type="radio" name="psub2" value="디카페인.png">디카페인
-			<input type="radio" name="psub2" value="no">카페인
+			<input type="radio" name="psub2" value="">카페인
 			</div>
 		</li>
 		<li>

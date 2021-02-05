@@ -20,7 +20,7 @@ div.content{
 		position:fixed;
 	}
 	div.content>aside.side>div.sidecontent>ul.all{
-		border-right:1px solid gray; 
+		/* border-right:1px solid gray;  */
 		list-style:none;
 		display:inline-block;
 		width:300px;
@@ -28,8 +28,17 @@ div.content{
 		padding:100px 0 0 0;
 		height:600px;	
 		font-size:15px;	
+	
 		
 		
+	}
+	.color {
+	    background-color: #f2dfbb;
+	    width: 17%;
+	    height: 220%;
+	    position: absolute;
+	    top: 17%;
+	    z-index: -1;
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli{
 		padding:10px;
