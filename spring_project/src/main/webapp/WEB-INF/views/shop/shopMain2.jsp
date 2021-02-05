@@ -367,7 +367,7 @@
 				<select id='sname'>
 				<option value='total'>전체</option>
 				<option value='ptitle'>이름</option>
-				<option value='price'>가격</option>
+				<option value='pprice100'>가격</option>
 				</select>
 				<input type='text' id='svalue'>
 				<button id="btnsearch">검색</button>

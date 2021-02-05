@@ -8,15 +8,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.service.AdminShopService;
+import com.spring.service.AdminShopServiceImpl;
 import com.spring.vo.ProductVO;
 
 @Controller
 public class Admin_ShopController {
 	@Autowired
-	private AdminShopService AdminShopService;
+	private AdminShopServiceImpl AdminShopService;
+	
+	/**
+	 * 상품 상세정보창 가기
+	 * @return
+	 */
+	@RequestMapping(value = "/admin_product_content.do", method = RequestMethod.GET)
+	public ModelAndView product_content(String pid) {
+		return AdminShopService.getContent(pid);
+	}// shopmain2
+	
+	
 	
 	/**
 	 * 삭제진행
@@ -42,12 +54,22 @@ public class Admin_ShopController {
 	}
 	
 	
+	/** product_list_proc */
+	@ResponseBody
+	@RequestMapping(value = "admin/admin_product_list_proc.do", produces="application/json;charset=UTF-8",method = RequestMethod.GET)
+	public String product_list_proc(String sname, String svalue, String rpage) {
+		return AdminShopService.getSearchList(sname,svalue,rpage);
+	}  
+	
+	
+	
+	
 	/**
 	 * 상품창 목록경로
 	 */
 	@RequestMapping(value="admin/product_list.do", method = RequestMethod.GET)
-	public ModelAndView admin_product_list() {
-		return AdminShopService.getList();
+	public ModelAndView admin_product_list(String rpage) {
+		return AdminShopService.getList(rpage);
 	}
 	
 	/**
