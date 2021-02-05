@@ -25,7 +25,7 @@
 			<ul  class="main_ul" style=" list-style:none; padding-left:0px; margin:auto ; width:800px; ">
    
 				<li>
-					<label>상품(영어)s</label>
+					<label>상품(영어)</label>
 					<input type='text' id="ptitle" name="ptitle">
 				</li>
 				<li>
