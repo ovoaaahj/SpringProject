@@ -19,7 +19,7 @@ div.sidenav>div{
 }
  div.alls{
  	width:1200px;
- 	border:1px solid red;
+ /*	border:1px solid red; */
  	margin:auto;
  	height:800px;
  }

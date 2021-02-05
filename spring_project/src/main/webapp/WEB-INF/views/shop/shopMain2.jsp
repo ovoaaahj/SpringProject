@@ -414,8 +414,8 @@
 				<span id='ptitle' class='left'>Name</span> 
 				<span id='pprice' class='left'>LowPrice</span> 
 				<span id='pprice' class='left'>HighPrice</span>
-			    <span id='name' class='left'>Review</span> 
-				</div>	     -->
+			    <span id='name' class='left'>Review</span> -->
+				</div>	     
 	
 		</div>
 		
