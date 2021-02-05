@@ -9,7 +9,7 @@
     
      <select id="searchlist" parameterType="map" resultType="com.spring.vo.ProductVO">
 						select * from
-						(select rownum rno, pid,pmphoto,pmsphoto,psub1,psub2,psub3,ptitle,phash,pprice100,pkind1,pkind2 from product
+						(select rownum rno, pid,pmphoto,pmsphoto,psub1,psub2,psub3,ptitle,phash,pprice100,pkind1,pkind2,pdate from product
 						 <choose>
 					 	<when test="sname != 'total'">
 					 		where ${sname} = #{svalue})
@@ -17,7 +17,6 @@
 					 	<otherwise>
 					 		)
 					 	</otherwise>
-					 
 					 </choose>
 					 where rno between #{start}  and  #{end}
 	
@@ -46,7 +45,8 @@
     
     <!-- 관리자페이지 상품리스트 가져오기 -->
     <select id="adminshoplist" resultType="com.spring.vo.ProductVO">
-    	select pid,ptitle,pprice100,pkind1,pkind2,psub1,pdate from product
+    	select * from (select rownum rno,pid,ptitle,pprice100,pkind1,pkind2,psub1,pdate from product)
+    	 where rno between #{start}  and  #{end}
     </select>
     
     
@@ -55,9 +55,9 @@
     <insert id="insertProduct" parameterType="com.spring.vo.ProductVO">
     
     
-    insert into product (pid,ptitle,pkind1,pkind2,phash,pprice100,pprice200,pprice500,pprice1000,psub1,psub2,pmphoto,pmsphoto,phphoto,phsphoto,pdate)
+    insert into product (pid,ptitle,pkind1,pkind2,phash,pprice100,pprice200,pprice500,pprice1000,psub1,psub2,psub3,pmphoto,pmsphoto,phphoto,phsphoto,pdate)
 					values ('p_'||SEQU_PRODUCT.nextval,#{ptitle},#{pkind1},#{pkind2},#{phash},#{pprice100},#{pprice200},#{pprice500},#{pprice1000}
-							, #{psub1 ,jdbcType=VARCHAR},#{psub2, jdbcType=VARCHAR},#{pmphoto},#{pmsphoto},#{phphoto},#{phsphoto},TO_CHAR(SYSDATE,'YYYY/MM/DD'))
+							, #{psub1 ,jdbcType=VARCHAR},#{psub2, jdbcType=VARCHAR},#{psub3, jdbcType=VARCHAR},#{pmphoto},#{pmsphoto},#{phphoto},#{phsphoto},TO_CHAR(SYSDATE,'YYYY/MM/DD'))
     
     </insert>
     

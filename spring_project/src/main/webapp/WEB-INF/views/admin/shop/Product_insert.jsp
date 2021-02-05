@@ -181,8 +181,10 @@ function sub(type, select){
 		$('#pkind2').append("<option value='굿즈'>굿즈</option>");
 	}
 	document.getElementById("pkind2").style.display="";
+
 		
 };
+	
 	
 
 
@@ -230,7 +232,7 @@ $("#file1").change(function() {
 		<li>
 			<label>소분류</label>
 		
-			<select id="pkind2" name="pkind2">
+			<select id="pkind2" name="pkind2" onchange="psub3_val(this.form)">
 				<option>소분류를 선택해주세요</option>
 			</select>
 		
@@ -263,17 +265,22 @@ $("#file1").change(function() {
 		<li>
 			<label>할인여부</label>
 			<div class="radio">
-			<input type="radio" name="sub1" value="이달의커피_할인.png">O
-			<input type="radio" name="sub1" value="no">X
+			<input type="radio" name="psub1" value="이달의커피_할인.png">O
+			<input type="radio" name="psub1" value="no">X
 			</div>
 		</li>
 		<li>
 			<label>카페인</label>
 			<div class="radio">
-			<input type="radio" name="sub2" value="디카페인.png">디카페인
-			<input type="radio" name="sub2" value="no">카페인
+			<input type="radio" name="psub2" value="디카페인.png">디카페인
+			<input type="radio" name="psub2" value="no">카페인
 			</div>
 		</li>
+		<li>
+			<label>커피라벨</label>
+			<input type='text' placeholder="커피면 자동으로 입력됩니다." id="psub3" name="psub3">
+		</li>
+		
 		<li>
 			<p>메인사진</p>
 			<input type ="file" name="file1" id="file1">

@@ -7,30 +7,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
+<script src="http://localhost:9000/project/js/am-pagination.js"></script>  
+<link rel="stylesheet" type="text/css" href="http://localhost:9000/project/css/shopMain.css">
+<link rel="stylesheet" href = "http://localhost:9000/project/css/am-pagination.css">
 <style>
    div.admin_shop_content{
    		margin:auto;
    }
 	div.admin_product_list{
-		border:1px solid purple;
+	/*	border:1px solid purple; */
 		text-align:auto;
 		width:1000px;
 		margin:auto;
 		height:800px;
-		padding-top:70px;
+		padding-top:10px;
 	}
 	div.admin_product_list div.product_TitleName{
-		border:1px solid red;
+	/*	border:1px solid red; */
 		text-align:center;
 	}
 	div.admin_product_list div.product_TitleName h2{
 		border-bottom:1px solid gray;
+		border-top:1px solid gray;
 		display:inline-block;
-		width:200px;
-		padding-bottom:3px;
+		width:900px;
+		height:60px;
+		font-Size:30px;
+		padding-top:20px;
 	}
 	div.admin_product_list div.search{
-		border:1px solid blue;
+	/**	border:1px solid blue; */
 		height:40px;
 		text-align:right;
 	}
@@ -53,25 +59,30 @@
 		height:28px;
 		margin-top:3px;
 	}
-	div.product_list_table{
-		border:1px solid orange;
+	table.product_table{
+	/*	border:1px solid orange; */
 		width:90%;
 		margin:auto;
 	}
 	
-	div.product_list_table table.product_table,
-	div.product_list_table table.product_table tr,
-	div.product_list_table table.product_table td,
-	div.product_list_table table.product_table th{
+	 table.product_table,
+	 table.product_table tr,
+	 table.product_table td,
+	 table.product_table th{
 		border:1px solid gray;
 		border-collapse: collapse;
 	}
-	div.product_list_table table.product_table td{
+	table.product_table td{
 		text-align:center;
 		width:180px;
 		height:40px;
 	}
-	div.product_list_table table.product_table td button{
+	table.product_table th{
+		text-align:center;
+		width:180px;
+		height:40px;
+	}
+	 table.product_table td button{
 		border:1px solid gray;
 		border-radius:4px;
 		background-color:white;
@@ -79,7 +90,10 @@
 		height:30px;
 		margin:10px;
 	}
-	
+	table.product_table td img{
+		width:100px;
+		height:40px;
+	}
 	
 	/** admin aside */
 	div.admin_shop_content{
@@ -106,17 +120,7 @@
 	 
 </style>
 <script>
-	$(document).ready(function(){
-	/* 	$("#deleteProduct").click(function(){
-			  var pid="";
-		      $("input[name='chk']:checked").each(function(index){
-		         pid += $("input[name='chk']:checked").attr("id");
-		      });
-		      
-		      location.href='http://localhost:9000/project/admin/product_delete.do?pid='+pid;
-		}); */
-		
-		
+	$(document).ready(function(){	
 		
 		//체크박스 전체선택
 		$("#all").change(function(){
@@ -148,6 +152,114 @@
 			}
 		});
 		
+		/**페이지 로딩 시 회원 전체 리스트 출력 **/
+   		admin_product_list("total", "","");
+		
+		
+		
+		
+		$("#sname").change(function(){
+			if($("#sname").val()=="total"){
+				$("#svalue").val("");
+			}
+		});
+		
+		
+	// 페이징 처리 함수 
+	function page(dbcount, reqpage, pagesize){
+			//페이지 번호 및 링크 		
+			var pager = jQuery("#ampaginationsm").pagination({
+				maxSize : 5,			
+				totals: dbcount,
+				page : reqpage,
+				pageSize : pagesize,
+				
+				lastText : '&raquo;&raquo;',
+				firstText : '&laquo;&laquo',
+				prevTest : '&laquo;',
+				nextTest : '&raquo;',
+				
+				btnSize : 'sm' 			
+			}); 
+			
+			//
+			jQuery("#ampaginationsm").on('am.pagination.change',function(e){
+				admin_product_list($("#sname").val(), $("#svalue").val(),e.page);
+			});
+		}//page
+		
+		
+		
+		/** 검색 버튼 이벤트 처리 **/
+		$("#btnsearch").click(function(){
+			if($("#sname").val() !="total" && $("#svalue").val() == ""){
+				alert("검색할 데이터를 입력해 주세요");
+				$("#svalue").focus();
+				return false;
+			}else{
+				var sname = $("#sname").val();
+				var svalue = $("#svalue").val();
+				
+				admin_product_list(sname, svalue,"");
+			}
+		});
+		
+		
+		
+		
+		
+		// Ajax를 활용한 물건전체 리스트 출력 
+		function admin_product_list(sname, svalue, rpage){
+			
+			
+			$.ajax({
+				url :"admin_product_list_proc.do?sname="+sname+"&svalue="+svalue+"&rpage="+rpage,
+				success:function(result){
+					var jdata = result;
+					
+					//2-1. DHTML을 이용하여 테이블 생성 및 출력
+					var output = "<table class='product_table'>"
+						output += "<tr>"
+						output += "<th><input type='checkbox' id='all'></th>"
+						output += "<th>제품명</th><th>가격</th><th>대분류</th><th>소분류</th><th>할인여부</th><th>날짜</th>"
+						output += "</tr>"
+					for(var i in jdata.jlist){
+						output += "<tr>"
+						output += "<td><input type='checkbox' name='chk' id="+jdata.jlist[i].pid+"class='part'></td>"
+						output += "<td>"+jdata.jlist[i].ptitle+"</td>"
+						output += "<td>"+jdata.jlist[i].pprice+"</td>"
+						output += "<td>"+jdata.jlist[i].pkind1+"</td>"
+						output += "<td>"+jdata.jlist[i].pkind2+"</td>"
+						if(jdata.jlist[i].psub1 != null){
+						output += "<td><img src = 'http://localhost:9000/project/images/"+jdata.jlist[i].psub1+"'></td>" // 여기는 O,X로 수정해야함 
+						}else{
+							output += "<td></td>"
+						}
+						output += "<td>"+jdata.jlist[i].pdate+"</td>" 
+						output += "</tr>"
+		
+					}
+					
+					output += '<tr><td colspan="7"> <div id="ampaginationsm"></div> </td></tr>'
+					output += "<tr><td colspan='7'>"
+					output += "<a href='http://localhost:9000/project/admin_product_insert.do'><button type='button'>상품추가</button></a>"
+					output += "<button type='button' id='btnDelete'>상품삭제</button>"
+					output += "</td></tr></table>"
+					
+					$("table.product_table").remove();
+					$("div.search").after(output);
+					
+					page(jdata.dbcount, jdata.reqpage, jdata.pagesize);
+					
+				}//success
+			});//ajax
+		}   
+		
+		
+	
+		
+		
+	
 		
 	});//ready
 
@@ -169,17 +281,18 @@
 	<div class="product_TitleName">
 		<h2>상품목록</h2>
 	</div>
-	<div class="search">
-		<select>
-			<option>이름</option>
-			<option>대분류</option>
-			<option>소분류</option>
-		</select>
-		<input type='text'>
-		<button type='button'>검색</button>
+	 <div class="search">
+				<select id='sname'>
+				<option value='total'>전체</option>
+				<option value='pkind1'>대분류</option>
+				<option value='pkind2'>소분류</option>
+				</select>
+				<input type='text' id='svalue'>
+				<button id="btnsearch">검색</button>
+				</div>
 	</div>
 	<div class="product_list_table">
-		<table class="product_table">
+	<!--  	<table class="product_table">
 			<tr>
 				<th><input type='checkbox' id="all"></th><th>제품명</th><th>가격</th><th>대분류</th><th>소분류</th><th>할인여부</th><th>날짜</th>
 			</tr>
@@ -190,21 +303,24 @@
 				<td>${vo.pprice100}</td>
 				<td>${vo.pkind1 }</td>
 				<td>${vo.pkind2 }</td>
-				<td>${vo.psub1 }</td> <!-- 여기는 O,X로 수정해야함 -->
+				<td>${vo.psub1 }</td> 
 				<td>${vo.pdate }</td> 
 			</tr>
 			</c:forEach>
+			<tr>
+			   	<td colspan="7"> <div id="ampaginationsm"></div> </td>
+			</tr>
 			<tr>
 			<td colspan="7">
 				<a href="http://localhost:9000/project/admin_product_insert.do"><button type='button'>상품추가</button></a>
 				<button type='button' id="btnDelete">상품삭제</button>
 			</td>
 			</tr>
-		</table>
+		</table>  -->
 	</div>
 
 </div>
-</div>
+
 <!-- footer -->
 <jsp:include page="../../footer.jsp" />
 </body>
