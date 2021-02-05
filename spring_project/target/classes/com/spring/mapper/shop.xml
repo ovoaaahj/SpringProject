@@ -6,6 +6,19 @@
     
     
     <mapper namespace="mapper.shop">
+     <!-- 상품 내용 삽입 -->
+    <insert id="insertProductContent" parameterType="com.spring.vo.ProductContentVO">
+    
+	    insert into product_content (cid,ptitleEng,productContent,pkind,noteTitle,noteContent,roastingSel,aroma,bitter,acid,sweet,body,pid)
+						values ('c_'||sequ_product_content.nextval,#{ptitleEng},#{productContent},#{pkind},#{noteTitle},#{noteContent},#{roastingSel},#{aroma}
+								, #{bitter},#{acid},#{sweet},#{body},#{pid})
+    
+    
+   
+    
+    </insert>
+    
+    
     <select id ="selectContent" parameterType="java.lang.String" resultType="com.spring.vo.ProductVO">
     
     	select rownum rno, pid,pmphoto,pmsphoto,psub1,psub2,psub3,ptitle,phash,pprice100,pprice200,

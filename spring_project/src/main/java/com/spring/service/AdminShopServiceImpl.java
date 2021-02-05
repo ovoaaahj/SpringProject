@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.spring.dao.ProductDAO;
+import com.spring.vo.ProductContentVO;
 import com.spring.vo.ProductVO;
 
 public class AdminShopServiceImpl implements AdminShopService{
@@ -222,4 +223,21 @@ public class AdminShopServiceImpl implements AdminShopService{
 		return mv;
 		
 	}
+	
+
+	public ModelAndView getContentInsert(ProductContentVO vo) {
+		ModelAndView mv = new ModelAndView();
+		boolean result = false;
+		result =ProductDAO.getContentInsert(vo);
+		if(result) {
+			mv.setViewName("redirect://admin/product_list.do");
+		}else {
+			mv.setViewName("error");
+		}
+		  
+		return mv;
+		
+	
+	}
+	
 }
