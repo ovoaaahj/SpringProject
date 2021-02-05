@@ -7,6 +7,13 @@
     
     <mapper namespace="mapper.shop">
     
+     <select id="selectProduct" parameterType="java.lang.String" resultType="com.spring.vo.ProductVO">
+		
+		      select * from product where pid=#{pid}			
+	
+     </select>
+     
+     
      <select id="searchlist" parameterType="map" resultType="com.spring.vo.ProductVO">
 						select * from
 						(select rownum rno, pid,pmphoto,pmsphoto,psub1,psub2,psub3,ptitle,phash,pprice100,pkind1,pkind2 from product
