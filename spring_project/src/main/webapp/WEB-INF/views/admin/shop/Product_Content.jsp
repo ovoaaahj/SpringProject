@@ -38,7 +38,7 @@
 				
 					<select id="pkind" name="pkind">
 						<option selected disabled hidden>소분류를 선택해주세요</option>
-						<option value="">싱글오리진</option>
+						<option value="" >싱글오리진</option>
 						<option value="">블렌드</option>
 						<option value="">디카페인</option>
 						<option value="">커피팩</option>
