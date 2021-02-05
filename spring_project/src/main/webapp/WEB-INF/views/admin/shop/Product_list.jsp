@@ -308,8 +308,8 @@
 	<h2>관리자메뉴</h2>
 	<ul class=adminaside_ul>
 		
-		<li><a href="http://localhost:9000/project/admin/product_list.do"><div class="choose">회원관리</div></li></a>
-		<li><div class="choose">상품관리</div></li>
+		<li><a href="http://localhost:9000/project/admin/member_list.do"><div class="choose">회원관리</div></a></li>
+		<li><a href="http://localhost:9000/project/admin/product_list.do"><div class="choose">상품관리</div></a></li>
 		<li><div class="choose">공지사항관리</div></li>
 	</ul>
 </aside>

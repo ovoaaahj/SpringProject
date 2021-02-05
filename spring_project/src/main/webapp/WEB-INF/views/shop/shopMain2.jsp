@@ -326,6 +326,8 @@
 <body>
 <div class="content">
 <jsp:include page="../header.jsp" />
+<div class="color">
+</div>
 	<aside class="side">
 		<div class="sidecontent">
 			<ul class="all">
@@ -407,13 +409,13 @@
 		</div> 
 		<div class="shopMainCenter"></div>
 		<div class="subMainCenter">
-				<div  class='orders'>
+			<!--  	<div  class='orders'>
 				<span id='pdate'>New</span>
 				<span id='ptitle' class='left'>Name</span> 
 				<span id='pprice' class='left'>LowPrice</span> 
 				<span id='pprice' class='left'>HighPrice</span>
-			    <span id='name' class='left'>Review</span>
-				</div>	    
+			    <span id='name' class='left'>Review</span> 
+				</div>	     -->
 	
 		</div>
 		

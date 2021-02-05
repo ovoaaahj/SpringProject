@@ -111,7 +111,10 @@
 </head>
 <body>
 <div class="content">
+
 <jsp:include page="../header.jsp" />
+<div class="color">
+</div>
 	<aside class="side">
 		<div class="sidecontent">
 			<ul class="all">
@@ -186,13 +189,13 @@
 			<div class="search">
 				<button id="btnsearch">검색하기</button>
 				</div>
-				<div  class='orders'>
+			<!--  	<div  class='orders'>
 				<span id='pdate'>New</span>
 				<span id='ptitle' class='left'>Name</span> 
 				<span id='pprice' class='left'>LowPrice</span> 
 				<span id='pprice' class='left'>HighPrice</span>
 			    <span id='name' class='left'>Review</span>
-				</div>	    
+				</div>	    -->
 		<table class="shopMainCenterTable">
 		  <c:forEach var="vo"  items="${list}">
 		  	<% if(i%4==0) {%>
