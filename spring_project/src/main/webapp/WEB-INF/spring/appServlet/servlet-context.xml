@@ -18,7 +18,13 @@
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 
-
+	<beans:bean id="authInterceptor" class="com.spring.interceptor.AuthHandlerInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/mypage*" /> <!-- url address will be checked -->
+			<beans:ref bean="authInterceptor"/> <!-- object will be checked -->
+		</interceptor>
+	</interceptors>
 	
 	<!-- multipartResolver -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

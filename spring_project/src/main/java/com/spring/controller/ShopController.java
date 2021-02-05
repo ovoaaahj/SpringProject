@@ -49,7 +49,14 @@ public class ShopController {
 
 
 	@RequestMapping(value = "/shopContent.do", method = RequestMethod.GET)
-	public String shopContent() {
-		return "shop/shopContent";
+	public ModelAndView shopContent(String pid) {
+		System.out.println("id asd-->"+pid);
+		return shopService.getProductContent(pid);
 	}
+	@RequestMapping(value = "/shopBuylist.do", method = RequestMethod.GET)
+	public String shopBuylist() {
+		return "shop/shopBuylist";
+	}
+
+
 }

@@ -77,4 +77,17 @@ public class Admin_ShopController {
 	public String product_insert() {
 		return "admin/shop/Product_insert";
 	}// shopmain2
+	
+	@RequestMapping(value = "/productContent_insert.do", method = RequestMethod.GET)
+	public String productContent_insert() {
+		return "admin/shop/Product_Content";
+	}// shopContent
+	
+	/**
+	 * ¿Œº≠∆Æ proc
+	 */
+	@RequestMapping(value="/productContent_insert_proc.do",method = RequestMethod.POST)
+	public ModelAndView productContent_insert_proc(ProductVO vo,HttpServletRequest request){
+		return AdminShopService.getResultInsert(vo,request);
+	}
 }

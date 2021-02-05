@@ -24,7 +24,7 @@
 				<ul class="right_ul">
 					<% if(id != null) {%>
 						<li class="right"><a class="right_a" href="http://localhost:9000/project/logout.do">로그아웃</a></li>
-						<li class="right"><a class="right_a" href="http://localhost:9000/project/mypage/mypage.do">마이페이지</a></li>
+						<li class="right"><a class="right_a" href="http://localhost:9000/project/mypage.do">마이페이지</a></li>
 						<li class="right"><a class="right_a" href="http://localhost:9000/project/join.do">회원가입</a></li>
 						<li class="right"><a class="right_a" href="#"><img src="http://localhost:9000/project/images/instagram_icon.png"></a></li>
 						<li class="right"><input type="search" placeholder="search"><button type="button">검색</button></li>

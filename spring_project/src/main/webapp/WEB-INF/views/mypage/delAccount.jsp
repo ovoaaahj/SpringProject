@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="com.spring.vo.SessionVO"%>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%--
-    	SessionVO svo = (SessionVO)session.getAttribute(svo);
+    	SessionVO svo = (SessionVO)session.getAttribute("svo");
     	
     	if(svo != null){
     --%>
@@ -85,24 +85,34 @@ tr.t1 td img {
 	margin-left: 300px;
 	margin-right: 400px;
 	margin-top:80px;
-	width:380px;
-	height:310px;
+	width:320px;
+	height:280px;
 	
 }
 table.del_account {
 	display:inline-block;
 	text-align:center;
 }
-table.del_account tr:nth-child(2) {
-	margin-top:80px;
-	margin-left: 200px;
+table.del_account tr:nth-child(2) td {
+
+	padding-top:38px;
+	margin-left: 500px;
 	margin-right: 400px;
 }
 table.del_account tr:nth-child(2) label {
-	font-size:40px;
+	padding-right:50px;
+	font-size:35px;
+}
+table.del_account tr:last-child td {
+	margin-left:-50px;
+}
+
+table.del_account tr:last-child td div {
+	padding-right:50px;
 }
 
 .btn_style {
+	border:1px solid black;
 	margin-top:30px;
 	border:1px solid #c68c53;
 	background-color: #996633;
@@ -145,7 +155,7 @@ button.btn_style:hover {
 					 	</tr>
 					 	<tr>
 					 		<td>
-					 			<label>회원탈퇴 하시겠습니까?</label>
+					 			<label>탈퇴 하시겠습니까?</label>
 					 		</td>
 					 	</tr>
 					<!--  <tr>
@@ -161,8 +171,10 @@ button.btn_style:hover {
 					 	<tr>
 					  	
 					 		<td>
+					 		<div>
 					 		<button type="reset" class="btn_style">탈퇴취소</button>
 					 		<button type="submit" class="btn_style">확인</button>
+					 		</div>
 					 		</td>
 					 	</tr>
 					 	</table>
@@ -178,3 +190,4 @@ button.btn_style:hover {
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
+<%-- } --%>

@@ -20,6 +20,17 @@ public class ProductDAO extends DBConn{
 	
 	
 	
+<<<<<<< HEAD
+=======
+	public ProductVO getProductContent(String pid) {
+		
+		return (ProductVO)sqlSession.selectOne(namespace+".selectProduct",pid);
+	}
+	
+	
+	
+	
+>>>>>>> branch 'develop' of https://github.com/ovoaaahj/SpringProject.git
 	/**
 	 * 삭제 진행하기
 	 */
