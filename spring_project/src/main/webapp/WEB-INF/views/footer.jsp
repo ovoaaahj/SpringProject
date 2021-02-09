@@ -10,7 +10,8 @@
       footer
    */
    *{
-      font-family:"나눔바른고딕";      
+      font-family:"나눔바른고딕";   
+        
    }
    
 footer{
@@ -20,6 +21,7 @@ footer{
       background-color:#ecd8c6;
       color:black;
    height:220px;   /* Height of the footer */
+   clear:both; 
 }
 
 footer>div.info{

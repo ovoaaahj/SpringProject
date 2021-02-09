@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<%	
+		String user_id2 = (String)session.getAttribute("id");
+%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,8 +13,8 @@
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
 <script>
 	$(document).ready(function(){
-		   $('#select').change(function() {
-	            if ($('#select').val() == 'directly') {
+		 $('#select').change(function() {
+			   if ($('#select').val() == 'directly') {
 	                $('#email2').attr("disabled", false);
 	                $('#email2').val("");
 	                $('#email2').focus();
@@ -18,6 +22,108 @@
 	                $('#email2').val($('#select').val());
 	            }
 	        });
+	
+			function uuidv4() {
+				  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+				    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+				    return v.toString(16);
+				  });
+				}
+		   <c:if test="${vo.hidden_buylist ne null }">
+			//천단위 콤마 펑션
+			function addComma(value){
+			     value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			  return value; 
+			}
+			  var buy_list = new Array(); 
+			  buy_list.push('${vo.hidden_buylist}');
+			  var output="";
+			  
+			   var jsonObj = JSON.parse(buy_list);
+				   for(var i=0;i<jsonObj.length;i++){
+					   var uuid = uuidv4();
+					   	output += '<tr id="productList_tr">';
+					    output += '<td><input type="checkbox" id="chk_'+uuid+'"></td>';
+						output += '<td><img src="http://localhost:9000/project/upload/'+jsonObj[i].pmsphoto+'" style="width:70px;height:70px;"></td>';
+						output += '<td><span style="font-size:15px">'+jsonObj[i].ptitle+'</span><br><span style="color:orange">'+jsonObj[i].compose+'</span></td>';
+						output += '<td>'+jsonObj[i].compose_price+'원</td>';
+						output += '<td>'+jsonObj[i].count+'개</td>';
+						output += '<td>기본배송</td>';
+						output += '<td id="tot_td">'+jsonObj[i].tot_price+'원</td>'; 
+						output += '</tr>';
+						  
+						 
+						 
+								// '<tr id="opt_product'+uuid+'">';
+						   //'<tr id="opt_product'+uuid+'">' 
+					   $("#buylistMain_Table_first_tr").after(output);
+						output="";
+						//<td colspan="7" id="buylistMain_Table_price_tr">상품구매금액 5,300 + 배송비 2,500 - 상품할인금액 530 = 합계 : 7,270원</td>
+					  // alert(JSON.stringify(jsonObj[i].ptitle));
+					   /* var jsonData =JSON.stringify(jsonObj[i]);
+					   alert(jsonData);  */
+				   }
+				   if(jsonObj[0].total_price>=30000){
+					   $("#buylistMain_Table_price_tr").append("상품구매금액("+ addComma(String(jsonObj[0].total_price)) + "원) + 배송비(0원) = 총 합계("+addComma(String(jsonObj[0].total_price))+"원)");
+					   $("#buylistMain_Table_price_tr").append("<br><br><div style='font-size:10px;color:orange;'>30,000원 이상 구매시 무료배송</div>");
+					  
+				   }else{
+					   $("#buylistMain_Table_price_tr").append("상품구매금액("+ addComma(String(jsonObj[0].total_price)) + "원) + 배송비(2,500원) = 총 합계("+addComma(String(jsonObj[0].total_price+2500))+"원)");
+					   $("#buylistMain_Table_price_tr").append("<br><br><div style='font-size:10px;color:orange;'>30,000원 이상 구매시 무료배송</div>");
+				   }
+		   	</c:if>
+		   	
+		  /*  var jsonData =JSON.stringify(jsonObj[i]);
+		   
+		   alert(jsonData); */
+		  // alert(JSON.stringify(jsonObj[0]));
+		   
+		      //체크박스 전체선택
+		      $("#all").change(function(){
+		    	  var all_chk = $("#all").is(":checked");
+		    	  if(all_chk){
+		    		  $("input[type=checkbox]").prop("checked",true);
+		    	  }else{
+		    		  $("input[type=checkbox]").prop("checked",false);
+		    	  }
+		      });
+		      //선택삭제 버튼
+		      $("#btnDelete").click(function(){
+		    	 var choice = confirm("정말로 삭제할거임?");
+		    	 if(choice){
+					//삭제리스트 - nid
+					var chk_list = new Array();
+					$("input[type=checkbox]:checked").each(function(i){ // 체크된것만 가져와서 for문 돌리는
+						if($(this).attr("id") != "all"){
+							//체크박스중에 체크된 리스트만 가져와서 삭제 리스트에 추가
+							
+							//alert($(this).parent().parent().children().eq(6).text()); //table에 있는 가격 가져옴
+							var table_price = parseInt($(this).parent().parent().children().eq(6).text().slice(0,-1));
+							//alert(typeof(table_price));
+							alert(user_id2);
+							$(this).parent().parent().remove();
+							$("#buylistMain_Table_price_tr").text("");
+							if(jsonObj[0].total_price-table_price >= 30000){
+								$("#buylistMain_Table_price_tr").append("상품구매금액("+ addComma(String(jsonObj[0].total_price-table_price)) + "원) + 배송비(0원) = 총 합계("+addComma(String(jsonObj[0].total_price-table_price))+"원)");
+								$("#buylistMain_Table_price_tr").append("<br><br><div style='font-size:10px;color:orange;'>30,000원 이상 구매시 무료배송</div>");
+							}else{
+								$("#buylistMain_Table_price_tr").append("상품구매금액("+ addComma(String(jsonObj[0].total_price-table_price)) + "원) + 배송비(2500원) = 총 합계("+addComma(String(jsonObj[0].total_price+2500-table_price))+"원)");
+								$("#buylistMain_Table_price_tr").append("<br><br><div style='font-size:10px;color:orange;'>30,000원 이상 구매시 무료배송</div>");
+								
+							}
+							  
+						}
+					});
+					
+					
+		    	 }else{
+		    		 
+		    	 }
+		      });
+		   
+		   
+		   
+
 	});
 
 </script>
@@ -37,8 +143,8 @@
 				<form name="buylistMainForm" action="" method="post" class="buylistMainForm" enctype="multipart/form-data">
 					
 					<table class="buylistMain_Table">
-						<tr>
-							<td><input type="checkbox"></td>
+						<tr id="buylistMain_Table_first_tr">
+							<td><input type="checkbox"id="all"></td>
 							<td>이미지</td>
 							<td>상품정보</td>
 							<td>판매가</td>
@@ -46,7 +152,7 @@
 							<td>배송구분</td>
 							<td>합계</td>
 						</tr>
-						<tr>
+						<!-- <tr id="productList_tr">
 							<td><input type="checkbox"></td>
 							<td><img src="http://localhost:9000/project/images/error.png" style="width:70px;height:70px;"></td>
 							<td>에티오피아 예가체프 코케 G2</td>
@@ -55,13 +161,14 @@
 							<td>기본배송</td>
 							<td>7000원</td>
 							
-						</tr>
+						</tr> -->
 						<tr class="buylistMain_Table_price">
-							<td colspan="7">상품구매금액 5,300 + 배송비 2,500 - 상품할인금액 530 = 합계 : 7,270원</td>
+							<td colspan="7" id="buylistMain_Table_price_tr"> </td>
 							
 						</tr>
 						<tr class="buylistMain_Table_del">
-							<td colspan="7"><button type="button" class="listDel_btn">삭제하기</div></td>
+							<td colspan="7"><button type="button" class="listDel_btn" id="btnDelete">삭제하기</button></td>
+							
 						</tr>
 						
 					</table>

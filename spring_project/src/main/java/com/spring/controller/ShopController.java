@@ -1,7 +1,5 @@
 package com.spring.controller;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,12 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.spring.dao.ProductDAO;
 import com.spring.service.ShopService;
-import com.spring.vo.ProductVO;
+import com.spring.vo.BuygoVO;
 
 @Controller
 public class ShopController {
@@ -50,12 +44,13 @@ public class ShopController {
 
 	@RequestMapping(value = "/shopContent.do", method = RequestMethod.GET)
 	public ModelAndView shopContent(String pid) {
-		System.out.println("id asd-->"+pid);
+		
 		return shopService.getProductContent(pid);
 	}
-	@RequestMapping(value = "/shopBuylist.do", method = RequestMethod.GET)
-	public String shopBuylist() {
-		return "shop/shopBuylist";
+	@RequestMapping(value = "/shopBuylist.do", method = RequestMethod.POST)
+	public ModelAndView shopBuylist(BuygoVO vo) {
+		
+		return shopService.shopBuylist(vo);
 	}
 
 

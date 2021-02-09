@@ -1,40 +1,70 @@
 	div.content{
-		border: 1px solid orange;
+		/* border: 1px solid orange; */
 		width:100%;
 		 /* overflow:auto;  */
 		/* height:100%;  */
- 		height:3200px; 
+ 		/* height:3200px;  */
+ 		height:3000px; 
 		/* background-color:red;   */
 	}
+	
 	
 	/**  
 	* aside
 	*/ 
 	div.content>aside.side{
-		border:1px solid red;
-		width:350px;
-		height:1000px;
+		width:200px;
+		height:2500px;
+		display:inline-block; 
+		float:left; 
+		margin-left:50px;
+		 
+	}
+	div.content>aside.side>div.sidecontent{
 		display:inline-block;
-		float:left;
-		position:fixed;
+		/*  border :1px solid tomato; */
+		  position:sticky; 
+			top:0;
 	}
 	div.content>aside.side>div.sidecontent>ul.all{
-		border:1px solid purple;
+		/* border-right:1px solid gray;  */
 		list-style:none;
 		display:inline-block;
-		
-		/* clear:both; */
+		width:300px;
+		margin:0;
+		padding:30px 0 0 0;
+		height:600px;	
+		font-size:15px;	
+		 /* border :1px solid yellow; */
+	}
+	.color {
+	    background-color: #f2dfbb;
+	    width: 17%;
+	    height: 380%;
+	    position: absolute;
+	   
+	    top: 17%;
+	    z-index: -1;
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli{
-		
+		padding:10px;
+		margin-right:50px;
 	}
 	div.content>aside.side>div.sidecontent>ul.all>li.allli>ul.subul>li.subli{
-		border:1px solid purple;
+		margin-top:3px;
+		/**border:1px solid purple; */
 		list-style:none;
+		height:28px;
+		padding-top:4px;
+		margin-left:50px;
 	}
 	div.content>aside.side>div.sidecontent>ul.all a img{
-		border:1px solid red;
-		width:80%;
+	  /**  border:1px solid red;*/
+		width:230px;
+		display:inline-block;
+		height:70px;
+		margin:0;
+		 
 	}
 	div.content>aside.side>div.sidecontent>ul.all a {
 		text-decoration:none;
@@ -46,7 +76,94 @@
 	*/ 
 	
 	div.content>div.shopMain{
-		border:1px solid green;
+	/* /*	border:1px solid green; */
+		/* width:1600px;
+		height:2000px;
+		margin-left: 110px;
+		display:inline-block;  */
+	}
+	
+	div.content>div.shopMain>div.shopMainTop{
+	/*	border: 1px solid red;*/
+		display: inline-block;
+		font-size:18px; 
+		height:25px;
+		margin-top:10px;
+	}
+	
+		/**  
+	* shopMainCenterMenu
+	*/ 
+	
+	div.content>div.shopMain>div.shopMainCenterMenu{
+	/*	 border:1px solid blue;*/
+		text-align:center;
+		padding:20px 0;
+		height:180px;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul{
+		list-style:none;
+		margin:40px;
+		font-size:18px;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul li{
+		display:inline-block;
+		margin-top:30px;
+		padding: 0 8px;
+		font-size:15px;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul li a{
+		text-decoration:none;
+		color:black;
+	}
+	div.content>div.shopMain>div.shopMainCenterMenu ul li:hover{
+		text-decoration:underline;
+	}
+	
+	div.content>div.shopMain div.shopMainCenter div.subMainCenter{
+		height: 30px;
+		text-align: right;
+		border-top:1px solid black;
+	}
+	
+	div.subMainCenter{
+		height: 40px;
+		text-align: right;
+		border-top:1px solid gray; 
+		display:inline_block;
+	}
+	div.subMainCenter div.search{
+		padding:0px 10px;
+		font-size:13px;
+		margin-top:2px;
+		text-align:left;
+		display:inline-block;
+	/*	 border:1px solid red; */
+		height:21px;
+		margin-top:7px;
+	}
+	div.subMainCenter div.orders{
+		padding:0px 10px;
+		font-size:13px;
+		margin-top:0;
+		text-align:right;
+		display:inline-block;
+	/*	 border:1px solid red;*/
+		height:21px;
+	}
+	div.subMainCenter div.orders span.left{
+		border-left:1px solid gray;
+		padding:0px 1px;
+	
+	}
+	
+	
+	/**  
+	* shopMain
+	*/ 
+	
+	div.content>div.shopMain{
+		/* border:1px solid green; */
 		width:1120px;
      	height:100%; 
 /*      	height:100%;  */
@@ -54,7 +171,7 @@
 		/* height:1000px; */
 		margin-left:380px;
 		/* clear:right; */
-		
+	/* 	clear:both; */
 		
 	}
 	/********************************************/
@@ -67,7 +184,7 @@
 	
 	
 	div.content>div.shopMain>div.shopMainCenter{
-		border:1px solid red; 
+		/* border:1px solid red;  */
 		display:inline-block;
 		
 		width:650px;
@@ -76,7 +193,7 @@
 		
  		height:auto;
 		/* padding-top:470px; */
-		float:left;
+		float:left; 
 		/* position:relative; */
 	}
 	div.content>div.shopMain>div.shopMainCenter>div.centerExplanation_1{
@@ -169,6 +286,7 @@
 	*/
 	div.content>div.shopMain>div.shopMainRight{
 		/* border:1px solid blue; */
+		/* clear:both; */
  		display:inline-block; 
 		width:450px;
 		height:auto;
@@ -178,7 +296,7 @@
 		 margin-bottom:10px;
 		 /* position:fixed; */
  		 position:sticky; 
-  		 top:4px;
+  		 top:15px;
   		 
 		
  
@@ -203,7 +321,7 @@
 		  width:320px;
 	}
 	div.content>div.shopMain>div.shopMainRight>div.productExplanation_2>table.ExplanationTable_2 tr:nth-child(1) td ul{
-		  margin-left:-25px;
+		  margin-left:-25px;productExplanation_3
 	}
 	div.content>div.shopMain>div.shopMainRight>div.productExplanation_2>table.ExplanationTable_2 tr:nth-child(1) td ul li{
 		margin-left:-2px; padding:5px 0;
@@ -211,53 +329,53 @@
 	div.content>div.shopMain>div.shopMainRight>div.productExplanation_2>table.ExplanationTable_2 tr:nth-child(2) td select{
 		  margin-left:14px; width:260px; height:30px; 
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_3{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_3{
 		display:none; background-color:rgb(248,248,248); height:auto; margin-top:20px; 
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_3>table.ExplanationTable_3{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_3>table.ExplanationTable_3{
 		padding:15px 1px 5px 20px; height:100px; width:430px;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_3>table.ExplanationTable_3 tr {
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_3>table.ExplanationTable_3 tr {
 		height:70px;
 	
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(1){
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(1){
 		width:240px; font-size:13px;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(1) p span#bcompose{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(1) p span#bcompose{
 	 color:rgb(231,144,76); padding-top:5px; 
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(2) span input{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(2) span input{
 		width:20px;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(2) span button{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(2) span button{
 	 padding:2px 2px 2px 2px; width:15px; background-color:white; border :1px solid gray; margin-left:-5px;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(3) span{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_3>table.ExplanationTable_3 tr td:nth-child(3) span{
 		margin-left:10px;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_4{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_4{
 		text-align:right; margin-top:20px; font-size:15px; color:#888888;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_4 span{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_4 span{
 		color:black; margin-right:10px;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_4 span.sumprice{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_4 span.sumprice{
 		font-size:19px; font-weight:bold;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_5{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_5{
 		margin-top:50px;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_5 div{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_5 div{
 		display:inline-block; border:1px solid black; text-align:center; 
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_5 div.product_buy{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_5 div.product_buy{
 		 padding:15px 60px 15px 60px; background-color:black; color:white; font-weight: bold; margin-left:20px;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_5 div.product_cart{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_5 div.product_cart{
 		 padding:15px 20px 15px 20px; font-weight: bold;
 	}
-	div.content>div.shopMain>div.shopMainRight>div.productExplanation_5 div.product_wish{
+	div.content>div.shopMain>div.shopMainRight div.productExplanation_5 div.product_wish{
 		 padding:15px 20px 15px 20px; font-weight: bold;
 	}
 	/********************************************/
@@ -374,7 +492,7 @@
 	
 		width:550px;
 	}
-	button.save_btn,button.previous-btn{
+	button.save_btn, button.previous-btn,button.update_btn{
 		padding:20px 40px; background-color:rgb(34,58,93); font-size:12px; color:white;
 		border-radius:5px;
 	}
