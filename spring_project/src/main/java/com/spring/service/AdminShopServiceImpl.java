@@ -21,6 +21,33 @@ public class AdminShopServiceImpl implements AdminShopService{
 	private ProductDAO ProductDAO;
 	
 	
+	public ModelAndView Product_Content_Update_proc(ProductContentVO vo) {
+		ModelAndView mv =new ModelAndView();
+		boolean result=false;
+		result = ProductDAO.Product_Content_Update_proc(vo);
+		if(result) {
+			mv.setViewName("redirect://admin/product_list.do");
+		}else {
+			mv.setViewName("error");
+		}
+	
+		
+		return  mv;
+	}
+	public ModelAndView Product_Content_Update(String pid) {
+		ModelAndView mv =new ModelAndView();
+		ProductContentVO vo = ProductDAO.Product_Content_Select(pid);
+		mv.addObject("vo",vo);
+		mv.setViewName("admin/shop/Product_Content_Update");
+		return  mv;
+	}
+	public ModelAndView Product_Content_Select(String pid) {
+		ModelAndView mv =new ModelAndView();
+		ProductContentVO vo = ProductDAO.Product_Content_Select(pid);
+		mv.addObject("vo",vo);
+		mv.setViewName("admin/shop/Product_Content_Select");
+		return  mv;
+	}
 	
 	/** 상세정보 가져오기 */
 	public ModelAndView getContent(String pid) {
