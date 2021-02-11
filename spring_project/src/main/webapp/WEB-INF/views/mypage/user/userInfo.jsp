@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"  import="com.spring.vo.*"%>
     
-     <%--
-    	SessionVO svo = (SessionVO)session.getAttribute(svo);
-    	
-    	if(svo != null){
-    --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +25,7 @@ $(document).ready(function(){
 			return false;
 		}else if($("#hp1").val()=="선택"){
 			alert("휴대전화를 선택해주세요");
-			$("#hp1").focus();
+			$("#hp1").focus();			
 			return false;
 		}else if($("#hp2").val()==""){
 			alert("휴대전화를 입력해주세요");
@@ -127,7 +122,7 @@ function ruleCheck(obj){
 		<section class="section1">
 			<div>
 				<h1>개인정보 수정</h1>				
-				   <form id="userupdateForm" name="userupdateForm" action="join_proc.do"
+				   <form id="userupdateForm" name="userupdateForm" action="user_update_proc.do"
          method="POST" target="_self">
          <div style="width: 500px; margin: 0 auto"
             class="xans-element- xans-member xans-member-join">
@@ -146,7 +141,7 @@ function ruleCheck(obj){
                            src="http://localhost:9000/project/images/ico_required.gif"
                            alt="필수" /></td>
                         <td class="joinkong2" style="padding-top: 10px"><input
-                           type="text" name="id" id="id" autocomplete="off" /> <br /> <span
+                           type="text" name="id" id="id" value="${vo.id }" autocomplete="off" /> <br /> <span
                            id="idMsg" class="error"></span></td>
                      </tr>
                      <tr>
@@ -155,7 +150,7 @@ function ruleCheck(obj){
                            src="http://localhost:9000/project/images/ico_required.gif"
                            alt="필수" /></td>
                         <td class="joinkong2" style="padding-top: 10px"><input
-                           type="password" name="pass" id="pass" autocomplete="off"
+                           type="password" name="pass" id="pass" value="${vo.pass }"autocomplete="off"
                            maxlength="16" /> <br /> <span id="pwMsg1" class="error"></span></td>
                      </tr>
                      <tr>
@@ -164,7 +159,7 @@ function ruleCheck(obj){
                            src="http://localhost:9000/project/images/ico_required.gif"
                            alt="필수" /></td>
                         <td class="joinkong2" style="padding-top: 10px"><input
-                           type="password" name="spass" id="spass" autocomplete="off"
+                           type="password" name="spass" id="spass" value="${vo.spass }"autocomplete="off"
                            maxlength="16" /> <br /> <span id="pwMsg2" class="error"></span></td>
                      </tr>
                      <tr>
@@ -173,7 +168,7 @@ function ruleCheck(obj){
                            src="http://localhost:9000/project/images/ico_required.gif"
                            alt="필수" /></td>
                         <td class="joinkong2" style="padding-top: 10px"><input
-                           type="text" name="name" id="name" maxlength="20"
+                           type="text" name="name" id="name" value="${vo.name }"maxlength="20"
                            autocomplete="off" /></td>
                      </tr>
                      <tr>
@@ -183,15 +178,15 @@ function ruleCheck(obj){
                            alt="필수" /></td>
                         <td class="joinkong2" style="padding-top: 10px"><select
                            name="hp1" id="hp1">
-                              <option value="010">010</option>
-                              <option value="011">011</option>
-                              <option value="016">016</option>
-                              <option value="017">017</option>
-                              <option value="018">018</option>
-                              <option value="019">019</option>
+                              <option value="${vo.hp1 }">010</option>
+                              <option value="${vo.hp1 }">011</option>
+                              <option value="${vo.hp1 }">016</option>
+                              <option value="${vo.hp1 }">017</option>
+                              <option value="${vo.hp1 }">018</option>
+                              <option value="${vo.hp1 }">019</option>
                         </select> - <input type="text" name="hp2" id="hp2" maxlength="4"
-                           autocomplete="off" /> - <input type="text" name="hp3" id="hp3"
-                           maxlength="4" autocomplete="off" /></td>
+                           value="${vo.hp2 }" autocomplete="off" /> - <input type="text" name="hp3" id="hp3"
+                           value="${vo.hp3 }" maxlength="4" autocomplete="off" /></td>
                      </tr>
                      <tr>
                         <td class="joinkong" style="padding-top: 10px"><span
@@ -199,7 +194,7 @@ function ruleCheck(obj){
                            src="http://localhost:9000/project/images/ico_required.gif"
                            alt="필수" /></td>
                         <td class="joinkong2" style="padding-top: 10px"><input
-                           type="text" name="email" id="email" maxlength="20"
+                           type="text" name="email" id="email" value="${vo.email }"maxlength="20"
                            autocomplete="off" /><br>
                         <span id="emailMsg" class="error"></span></td>
                      </tr>
@@ -264,9 +259,3 @@ function ruleCheck(obj){
 	
 </body>
 </html>
-
-<%-- }else{ %>
-<script>
-   alert("로그인을 진행하셔야 접근이 가능합니다.");
-</script>
-<% } --%>

@@ -23,6 +23,33 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	/**
+	 * 회원정보 수정 : redirect로 .. 
+	 
+	public ModelAndView getuserUpdate(String id){
+		ModelAndView mv = new ModelAndView();
+		int result = coffee_memberDAO.getUpdate(vo);
+		if(result != 0) {
+			mv.addObject("pass", vo.getPass());
+			mv.setViewName("/find_id_pw/find_id_pw");
+		}else {
+			mv.addObject("failPass", "failPass");
+			mv.setViewName("/find_id_pw/find_id_pw");
+		}
+		return mv;
+	}*/
+	
+	/**
+	 * 회원정보 가져오기
+	 */
+	public ModelAndView getuserList(String id) {
+		ModelAndView mv = new ModelAndView();
+		CoffeeMemberVO vo = coffee_memberDAO.getList(id);
+		mv.addObject("vo", vo);
+		mv.setViewName("/mypage/userInfo");
+		return mv;
+	}
+	
+	/**
 	 * 회원리스트 출력 - 검색기능 처리
 	 */
 	public String getMemberListAjaxProc(String sname, String svalue, String rpage) {

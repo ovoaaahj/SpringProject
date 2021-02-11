@@ -21,15 +21,18 @@ public class MypageServiceImpl implements MypageService{
 		return cartDAO.getDelete(dellist);
 	}
 	
+	/**
+	 * Ε»Επ
+	 */
 	public ModelAndView getdelResult(String id) {
 		ModelAndView mv = new ModelAndView();
-		boolean result = memberDAO.getDelete(id);
+		int del_result = memberDAO.getDelete(id);
 		
-		if(result) {
-			mv.setViewName("redirect:/delSuccess.do");
+		
+		if(del_result != 0) {
+			mv.setViewName("/mypage/delSuccess");
 		}else {
 			mv.setViewName("errorPage");
-			
 		}
 		
 		return mv;

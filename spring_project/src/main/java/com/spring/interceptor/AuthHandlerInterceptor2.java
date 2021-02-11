@@ -23,11 +23,9 @@ public class AuthHandlerInterceptor2 extends HandlerInterceptorAdapter{
 		}else {
 			if(!svo.getName().equals("°ü¸®ÀÚ")) {
 				response.sendRedirect("/project/index.do");
-				return false;
-				
+				return false;			
 			}
 		}
 			return true; 
 		}
-	
 }

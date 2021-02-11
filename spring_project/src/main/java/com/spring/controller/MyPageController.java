@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.dao.CartDAO;
 import com.spring.dao.CoffeeMemberDAO;
+import com.spring.service.MemberServiceImpl;
 import com.spring.service.MypageServiceImpl;
 
 @Controller
@@ -20,8 +21,27 @@ public class MyPageController {
 	private CartDAO cartDAO;
 	@Autowired
 	private MypageServiceImpl mypageService;
+	@Autowired
+	private MemberServiceImpl memberService;
+	
 	/**
-	 * 탈퇴 성공 페이지
+	 * 마이페이지 - 회원정보 가져오기 
+	 */
+	public ModelAndView getuserList(String id) {
+		return memberService.getuserList(id);
+	}
+	
+	/**
+	 * 마이페이지 - 회원정보 수정
+	
+	@RequestMapping(value="/mypage/user_update_proc.do", method=RequestMethod.POST)
+	public ModelAndView getuserUpdate(String id) {
+		ModelAndView mv = new ModelAndView();
+		return memberService.getuserUpdate(id); 
+		} */
+	
+	/**
+	 * 장바구니 삭제 proc
 	 * @return
 	 */
 	@RequestMapping(value="/cart_list_del.do", method=RequestMethod.GET)
@@ -40,6 +60,13 @@ public class MyPageController {
 		
 		mv.setViewName("redirect:/admin/notice_list.do");
 		return mv;
+	}
+	/**
+	 * 회원 탈퇴 proc
+	 */
+	@RequestMapping(value="/del_account_proc.do", method=RequestMethod.GET)
+	public ModelAndView getdelAccount(String id) {
+		return mypageService.getdelResult(id);
 	}
 	
 	

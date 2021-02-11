@@ -1,7 +1,6 @@
 package com.spring.dao;
 
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +22,17 @@ public class CoffeeMemberDAO extends DBConn{
 	private static String namespace_member="mapper.member";
 	
 	
+
+	 /**
+	  * 마이페이지 - 회원정보 가져오기
+	  */
+	 
+	public CoffeeMemberVO getList(String id) {
+		CoffeeMemberVO vo = new CoffeeMemberVO();
 	
+		return sqlSession.selectOne(namespace+".userinfo", vo);
+	}
+	 
 	/**
 	 * 관리자페이지 - 리스트 카운트 
 	 */
@@ -53,10 +62,11 @@ public class CoffeeMemberDAO extends DBConn{
 	 * 마이페이지 - 회원정보 수정하기
 	 */
     
-	public boolean getUpdate(CoffeeMemberVO vo) {
-		boolean result = false;
+	public int getUpdate(CoffeeMemberVO vo) {
+		return sqlSession.update(namespace+".userupdate", vo);
+	/**	boolean result = false;
 		try {
-			String sql="update coffee_member set name =?, pass=?, email=?, hp=? where id=?";
+			String sql="update coffee_member set name =?, pass=?, email=?, hp=?, spass=? where id=?";
 
 			getPreparedStatement(sql);
 
@@ -64,20 +74,22 @@ public class CoffeeMemberDAO extends DBConn{
 			 pstmt.setString(2, vo.getPass());
 			 pstmt.setString(3, vo.getEmail());
 			 pstmt.setString(4, vo.getHp());
-			 pstmt.setString(5, vo.getId());
+			 pstmt.setString(5, vo.getSpass());
+			 pstmt.setString(6, vo.getId());
 			
 			int val = pstmt.executeUpdate();
 			if(val!=0) result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+		return result;*/
 	}
 	/**
 	 * 마이페이지 - 회원 탈퇴하기
 	 */
-	public boolean getDelete(String id) {
-		boolean result = false;
+	public int getDelete(String id) {
+		return sqlSession.delete(namespace+".deletemember", id);
+	/*	boolean result = false;
 		try {
 			String sql="delete from coffee_member where id=?";
 			getPreparedStatement(sql);
@@ -88,7 +100,7 @@ public class CoffeeMemberDAO extends DBConn{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result;
+		return result;*/
 	}
 	
 	/**
