@@ -241,7 +241,7 @@
 							</c:if>
 							<div class='nowprice'>
 								<c:if test ="${!empty vo.psub1 }">
-									${vo.pprice100 }
+									${vo.pprice100 }*0.9
 								</c:if>
 							</div>
 							<div class='discount'>

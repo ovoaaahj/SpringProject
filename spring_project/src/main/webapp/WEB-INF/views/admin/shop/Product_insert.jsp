@@ -8,7 +8,7 @@
 <script src="http://localhost:9000/project/js/jquery-3.5.1.min.js"></script>
 <style>
 	div.shopinsert{
-		border:1px solid red;
+	/*	border:1px solid red; */
 		text-align:center;
 		margin:30px;
 		
@@ -24,6 +24,7 @@
 		display:inline-block;
 		width:400px;
 		padding-bottom:5px;
+		margin-right:40px;
 		
 	}
 	div.shopinsert div.shopInsertContent{
@@ -276,7 +277,6 @@ function ImgFileSelect2(e){
 				<option>대분류를 선택해주세요</option>
 				<option value="coffee">커피</option>
 				<option value="goods">상품</option>
-				<option value="tea">티</option>
 			</select>
 		</li>
 		<li>

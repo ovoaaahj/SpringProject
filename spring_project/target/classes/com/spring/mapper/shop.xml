@@ -62,9 +62,9 @@
     <!-- 관리자페이지 상품 삭제하기 -->
     <delete id="deleteproduct" parameterType="java.lang.reflect.Array">
     	delete from product where pid in
-    	<foreach item="item" index="index" collection="array"
+    	<foreach item="dellist" index="index" collection="array"
 			open="(" separator="," close=")">
-		 #{item}	
+			 #{dellist}	
 		</foreach>
     </delete>
     

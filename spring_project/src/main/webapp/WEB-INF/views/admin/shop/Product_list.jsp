@@ -65,6 +65,7 @@
 	/*	border:1px solid orange; */
 		width:90%;
 		margin:auto;
+		margin-bottom:0px;
 		
 	}
 	table.product_table td a{
@@ -156,11 +157,26 @@
    		 -ms-transform: scale(1.5,1.5);
    		 transform: scale(1.5,1.5);
 	} 
+	div.admin_productbutton{
+		margin:auto;
+	/*	border:1px solid black; */
+		text-align:center; 
+		width:1000px;
+		height:50px;
+		
+	}
+	div.admin_productbutton button{
+		width:80px;
+		height:30px;
+		padding:0 10px;
+		margin:10px 10px;
+	
+	}
 </style>
 <script>
 	$(document).ready(function(){	
 		
-		//체크박스 전체선택
+	/* 	//체크박스 전체선택
 		$("#all").change(function(){
 			//var all_check = $("#all").is(":checked");
 			if($(this).is(":checked")){
@@ -169,7 +185,7 @@
 				$(".part").prop("checked",false);
 			}
 			
-		}); //change
+		}); //change */
 
 		//선택삭제 버튼
 		$("#btnDelete").click(function(){
@@ -258,12 +274,12 @@
 					//2-1. DHTML을 이용하여 테이블 생성 및 출력
 					var output = "<table class='product_table'>"
 						output += "<tr>"
-						output += "<th><input type='checkbox' id='all'></th>"
+						output += "<th>선택</th>"
 						output += "<th>제품명</th><th>가격</th><th>대분류</th><th>소분류</th><th>할인여부</th><th>날짜</th>"
 						output += "</tr>"
 					for(var i in jdata.jlist){
 						output += "<tr>"
-						output += "<td><input type='checkbox' name='chk' id="+jdata.jlist[i].pid+"class='part'></td>"
+						output += "<td><input type='checkbox' name='chk' id="+jdata.jlist[i].pid+"class='part' onchange='changeall(this)'></td>"
 						output += "<td><a href='http://localhost:9000/project/admin_product_content.do?pid="+jdata.jlist[i].pid+"'>"+jdata.jlist[i].ptitle+"</td></a>"
 						output += "<td>"+jdata.jlist[i].pprice+"</td>"
 						output += "<td>"+jdata.jlist[i].pkind1+"</td>"
@@ -279,10 +295,8 @@
 					}
 					
 					output += '<tr><td colspan="7"> <div id="ampaginationsm"></div> </td></tr>'
-					output += "<tr><td colspan='7'>"
-					output += "<a href='http://localhost:9000/project/admin_product_insert.do'><button type='button'>상품추가</button></a>"
-					output += "<button type='button' id='btnDelete'>상품삭제</button>"
-					output += "</td></tr></table>"
+					
+					output += "</table>"
 					
 					$("table.product_table").remove();
 					$("div.search").after(output);
@@ -297,7 +311,7 @@
 		
 	});//ready
 
-	
+
 	
 </script>
 </head>
@@ -326,11 +340,13 @@
 				<input type='text' id='svalue'>
 				<button id="btnsearch">검색</button>
 				</div>
+
+		<div class="admin_productbutton">
+		<a href='http://localhost:9000/project/admin_product_insert.do'><button type='button'>상품추가</button></a>
+		<button type='button' id='btnDelete'>상품삭제</button>
+		</div>
 	</div>
-	
-
 </div>
-
 <!-- footer -->
 <jsp:include page="../../footer.jsp" />
 </body>
