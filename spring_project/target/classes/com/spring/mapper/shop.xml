@@ -6,7 +6,24 @@
     
     
     <mapper namespace="mapper.shop">
-     <!-- 상품 내용 삽입 -->
+    	<!-- id:update -->
+
+     <!-- 상품 내용 업데이트 proc -->
+     
+     <update id="Product_Content_Update_proc" parameterType="com.spring.vo.ProductContentVO">
+     
+     	update product_content set ptitleEng=#{ptitleEng}, productContent=#{productContent},pkind=#{pkind},noteTitle=#{noteTitle},noteContent=#{noteContent},roastingSel=#{roastingSel},aroma=#{aroma},bitter=#{bitter},acid=#{acid},sweet=#{sweet},body=#{body}
+     	where pid=#{pid}
+     </update>
+     <!-- 상품 내용 조회 -->
+     
+     <select id="selectProductContent" parameterType="java.lang.String" resultType="com.spring.vo.ProductContentVO">
+     
+     	select * from product_content where pid=#{pid}
+     
+     </select>
+     
+     
     <insert id="insertProductContent" parameterType="com.spring.vo.ProductContentVO">
     
 	    insert into product_content (cid,ptitleEng,productContent,pkind,noteTitle,noteContent,roastingSel,aroma,bitter,acid,sweet,body,pid)

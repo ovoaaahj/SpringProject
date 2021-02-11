@@ -10,6 +10,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.spring.dao.ProductDAO;
+import com.spring.vo.BuygoVO;
+import com.spring.vo.ProductContentVO;
 import com.spring.vo.ProductVO;
 
 @Service("shopService")
@@ -17,17 +19,24 @@ public class ShopService {
 	@Autowired
 	private ProductDAO productDAO;
 	
+	public ModelAndView shopBuylist(BuygoVO vo) {
+		ModelAndView mv =new ModelAndView();
+		mv.addObject("vo",vo);
+		
+		mv.setViewName("shop/shopBuylist");
+		return mv;
+	}
+	
 	
 	public ModelAndView getProductContent(String pid) {
 		ModelAndView mv = new ModelAndView();
 		
 		ProductVO vo =productDAO.getProductContent(pid);
-		/* System.out.println(vo.getPkind2()+"ssssss"); */
-		
-		//vo.getPcontent().replace("\r\n", "<br>"); //이엘태그는 출력만 하기때문에 로직 처리를 여기서 해줘야 함!!
+		ProductContentVO cvo =productDAO.Product_Content_Select(pid);
+
 		 
-		  
 		mv.addObject("vo",vo);
+		mv.addObject("cvo",cvo);
 		
 		mv.setViewName("shop/shopContent");
 		return mv;

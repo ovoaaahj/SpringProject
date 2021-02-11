@@ -103,7 +103,45 @@ public class Admin_ShopController {
 	 */
 	@RequestMapping(value="/productContent_insert_proc.do",method = RequestMethod.POST)
 	public ModelAndView productContent_insert_proc(ProductContentVO vo){
-		System.out.println("ss -->" +vo.getAroma());
 		return AdminShopService.getContentInsert(vo);
 	}
+	/**
+	 * 상품정보 설명조회화면
+	 * @param pid
+	 * @return
+	 */
+	@RequestMapping(value="/Product_Content_Select.do",method=RequestMethod.GET)
+	public ModelAndView Product_Content_Select(String pid) {
+		/*
+		 * ModelAndView mv = new ModelAndView(); mv.addObject("pid",pid);
+		 * mv.setViewName("admin/shop/Product_Content_Select"); return mv;
+		 */
+		return AdminShopService.Product_Content_Select(pid);
+	}
+	
+	/**
+	 * 상품정보 설명 업데이트화면
+	 * @param pid
+	 * @return
+	 */
+	@RequestMapping(value="/Product_Content_Update.do",method=RequestMethod.GET)
+	public ModelAndView Product_Content_Update(String pid) {
+		
+		
+		return AdminShopService.Product_Content_Update(pid);
+		
+	}
+	/**
+	 * 상품정보 설명 업데이트 proc
+	 * @param pid
+	 * @return
+	 */
+	@RequestMapping(value="/Product_Content_Update_proc.do",method=RequestMethod.POST)
+	public ModelAndView Product_Content_Update_proc(ProductContentVO vo) {
+		
+		
+		return AdminShopService.Product_Content_Update_proc(vo);
+		
+	}
+	
 }
