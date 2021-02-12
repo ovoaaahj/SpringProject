@@ -169,9 +169,9 @@
 $(document).ready(function(){
 	$(".moreul").hide();
 	
-	$("#productInsert").click(function(){
+	/* $("#productInsert").click(function(){
 			shopinsertForm.submit();
-			});
+			}); */
 	$("#more").click(function(){
 		if($(".moreul").is(":visible")){
 			$(".price").css('height','30');
@@ -187,6 +187,43 @@ $(document).ready(function(){
 	
 	$("#file1").on("change", ImgFileSelect1);
 	$("#file2").on("change", ImgFileSelect2);
+	
+	
+	
+	$("#productInsert").click(function(){
+		if($("#ptitle").val() == ""){
+			alert("상품명을 입력해주세요");
+			$("#ptitle").focus();
+			return false;
+		}else if($("#pkind1").val=="대분류를 선택해주세요"){
+			alert("대분류를 선택해주세요");
+			$("#pkind1").focus();
+			return false;
+		}else if($("#pkind2").val=="소분류를 선택해주세요"){
+			alert("소분류를 선택해주세요");
+			$("#pkind2").focus();
+			return false;
+		}else if($("#phash").val==""){
+			alert("해쉬설명을 입력해주세요");
+			$("#phash").focus();
+			return false;
+		}else if($("#pprice100").val==""){
+			alert("기본가격을 입력해주세요");
+			$("#pprice100").focus();
+			return false;
+		}else if($("#psub1").val==""){
+			alert("할인여부를 선택해주세요");
+			$("#psub1").focus();
+			return false;
+		}else{
+			
+			shopinsertForm.submit();
+		}
+		
+	});
+	
+	
+	
 	
 	});
 	
@@ -254,6 +291,9 @@ function ImgFileSelect2(e){
 	});
 	
 }
+
+
+
 
 
 </script>
