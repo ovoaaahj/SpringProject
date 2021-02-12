@@ -48,6 +48,7 @@
 	<beans:bean class="com.spring.dao.TestEventDAO" id="eventDAO"></beans:bean>
 	
 	<beans:bean class="com.spring.dao.CoffeeMemberDAO" id="coffee_memberDAO"></beans:bean>
+	<beans:bean class="com.spring.dao.RealBuyDAO" id="RealBuyDAO"></beans:bean>
 
 	
 	<beans:bean class="com.spring.service.MemberServiceImpl" id="memberService"></beans:bean>

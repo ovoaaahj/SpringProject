@@ -174,11 +174,10 @@
 		  		}
 		  		
 		    });
-		    
 		  	$("#product_buy").click(function(){
+		  		
 			    buy_list.push({ptitle:'${vo.ptitle}', compose:compose,tot_price:tot_price,pmsphoto:'${vo.pmsphoto}',count:$("#opt_product"+uuid+" #bcount_input").val(),compose_price:compose_price,total_price:total_price,total_count:total_count});
 			    var jsonData = JSON.stringify(buy_list);
-	/* 		    var jsonData = JSON.stringify(buy_list[0].ptitle); */
 			    
 			    
 			   // alert(jsonData.replaceAll("\"", ""));
@@ -249,7 +248,7 @@
 					$("#bcount_span").text("("+String(total_count)+")개");
 		
 				}else if($("#hidden_input").val()=="500"){
-					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
+					var compose = $("#product_500g").text()+"/"+ $(this).children('option:selected').text();
 					var compose_price = parseInt("${vo.pprice500}");
 					explan_table(compose,compose_price);
 					total_price += compose_price;
@@ -258,7 +257,7 @@
 					$("#bcount_span").text("("+String(total_count)+")개");
 	
 				}else if($("#hidden_input").val()=="1000"){
-					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
+					var compose = $("#product_1kg").text()+"/"+ $(this).children('option:selected').text();
 					var compose_price = parseInt("${vo.pprice1000}");
 					explan_table(compose,compose_price);
 					total_price += compose_price;
@@ -346,7 +345,7 @@
 			<div class="centerExplanation_1"  >
 				<ul >
 					<li> 
-						<img src="http://localhost:9000/project/resources/upload/${vo.pmphoto}" class="pmphoto" id ="pmphoto">
+						<img src="http://localhost:9000/project/resources/upload/${vo.pmsphoto}" class="pmphoto" id ="pmphoto">
 					</li>
 				</ul>
 			
