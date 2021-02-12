@@ -398,7 +398,7 @@
 		/*    text-align:center;  *//* border:1px solid blue; */
 		   margin:0 auto;
 	}
-	table.buylistMain_Table {
+	table.buylistMain_Table, table.real_buylistMain_Table {
 		/* width:350px; */
 	   border-top:1px solid #c9c9c9; 
 		   text-align:center; width:100% ;
@@ -407,27 +407,37 @@
 		 font-family: palatino;
 		 font-size:10px;
 	}
-    table.buylistMain_Table tr{
+    table.buylistMain_Table tr, table.real_buylistMain_Table tr{
     	border-bottom:1px solid #c9c9c9; height:50px;
     }
-    table.buylistMain_Table tr:nth-child(1) td{
+    table.buylistMain_Table tr:nth-child(1) td, table.real_buylistMain_Table tr:nth-child(1) td{
       font-weight:bold;
     }
-    table.buylistMain_Table tr td:nth-child(1){
+    table.buylistMain_Table tr td:nth-child(1) {
     	 width:5%; 
     }
-    table.buylistMain_Table tr td:nth-child(2){
+    table.real_buylistMain_Table tr td:nth-child(1)) {
+    	 width:5%; padding:10px 0; border-right:1px solid black;
+    }
+    table.buylistMain_Table tr td:nth-child(2) {
     	 width:10%; padding:10px 0;   /* background-color:blue; */
     }
+    table.real_buylistMain_Table tr td:nth-child(2) {
+    	 width:40%; padding:10px 0;   /* background-color:blue; */
+    }
     table.buylistMain_Table tr td:nth-child(3){
-    	 width:40%;
+    	 width:35%;
     	/*  background-color:red; */
     }
     table.buylistMain_Table tr td:nth-child(4),table.buylistMain_Table tr td:nth-child(5),table.buylistMain_Table tr td:nth-child(6),
     table.buylistMain_Table tr td:nth-child(7){
     	/* background-color:blue; */ width:10%;
     }
-    table.buylistMain_Table tr.buylistMain_Table_price{
+     table.real_buylistMain_Table tr td:nth-child(3), table.real_buylistMain_Table tr td:nth-child(4), table.real_buylistMain_Table tr td:nth-child(5),
+     table.real_buylistMain_Table tr td:nth-child(6){
+    	/* background-color:blue; */ width:13%;
+    }
+    table.buylistMain_Table tr.buylistMain_Table_price, table.real_buylistMain_Table tr.real_buylistMain_Table_price{
     	text-align:right; font-size:12px; height:80px; /* background-color: red; */
     }
     table.buylistMain_Table tr.buylistMain_Table_del{

@@ -158,6 +158,7 @@ public class MemberServiceImpl implements MemberService {
 
 		if(svo.getResult() != 0) {
 			session.setAttribute("svo", svo);
+			session.setAttribute("id", vo.getId());
 			result = "index";
 		}else {
 			result = "errorPage";

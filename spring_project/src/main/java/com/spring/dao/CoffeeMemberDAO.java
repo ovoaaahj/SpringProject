@@ -23,6 +23,10 @@ public class CoffeeMemberDAO extends DBConn{
 	private static String namespace_member="mapper.member";
 	
 	
+	public CoffeeMemberVO getMemberContent(String id) {
+	
+		return sqlSession.selectOne(namespace_member+".getMemberContent", id);
+	}
 	
 	/**
 	 * 관리자페이지 - 리스트 카운트 

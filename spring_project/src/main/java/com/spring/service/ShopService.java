@@ -2,6 +2,8 @@ package com.spring.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,20 +11,51 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.spring.dao.CoffeeMemberDAO;
 import com.spring.dao.ProductDAO;
+import com.spring.dao.RealBuyDAO;
 import com.spring.vo.BuygoVO;
+import com.spring.vo.CoffeeMemberVO;
 import com.spring.vo.ProductContentVO;
 import com.spring.vo.ProductVO;
+import com.spring.vo.RealBuyVO;
 
 @Service("shopService")
 public class ShopService {
 	@Autowired
 	private ProductDAO productDAO;
 	
-	public ModelAndView shopBuylist(BuygoVO vo) {
-		ModelAndView mv =new ModelAndView();
+	@Autowired
+	private CoffeeMemberDAO coffee_memberDAO;
+	@Autowired
+	private RealBuyDAO RealBuyDAO;
+	
+	
+	public ModelAndView product_buy_success(RealBuyVO mvo) {
+		ModelAndView mv = new ModelAndView();
+		boolean result = false;
+		result = RealBuyDAO.getBuyInsert(mvo);
+		RealBuyVO vo  = RealBuyDAO.getBuyContent(mvo.getBid());
+		if(result) {
+			mv.setViewName("shop/product_buy_success");
+			
+		}else {
+			mv.setViewName("error");
+		}
+		
 		mv.addObject("vo",vo);
 		
+		return mv;
+	}
+	
+	public ModelAndView shopBuylist(BuygoVO vo, HttpSession session) {
+		ModelAndView mv =new ModelAndView();
+		String id = (String)session.getAttribute("id");
+		CoffeeMemberVO mvo =coffee_memberDAO.getMemberContent(id);
+		
+		mv.addObject("mvo",mvo);
+		mv.addObject("vo",vo);
+		mv.addObject("id",id);
 		mv.setViewName("shop/shopBuylist");
 		return mv;
 	}
