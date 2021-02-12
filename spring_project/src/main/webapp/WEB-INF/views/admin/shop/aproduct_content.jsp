@@ -153,9 +153,9 @@
 		</tr>
 		<tr>
 			<td colspan="2" class="button">
-				<button type="button" id="contentshow">상세설명보기</button>
+				<a href="http://localhost:9000/project/Product_Content_Select.do?pid=${vo.pid }"><button type="button" id="contentshow">상세설명보기</button></a>
 				<a href="http://localhost:9000/project/productContent_insert.do?pid=${vo.pid }"><button type="button" id="contentwrite">상세설명작성</button></a>
-				<a href=""><button type="button" id="contentupdate">상세정보수정</button></a>
+				<a href="http://localhost:9000/project/Product_Content_Update.do?pid=${vo.pid }"><button type="button" id="contentupdate">상세정보수정</button></a>
 				<a href="http://localhost:9000/project/admin/product_list.do"><button type="button" id="contentupdate">뒤로가기</button></a>
 			</td>
 		</tr>

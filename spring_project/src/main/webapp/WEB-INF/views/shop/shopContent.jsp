@@ -13,8 +13,57 @@
 <script>
 	$(document).ready(function(){
 		
+		function taste_star(taste_val){
+			var taste_grim=""
+			if(taste_val=="1"){
+				taste_grim ="■□□□□"
+			}else if(taste_val=="2"){
+				taste_grim ="■■□□□"
+			}else if(taste_val=="3"){
+				taste_grim ="■■■□□"
+			}else if(taste_val=="4"){
+				taste_grim ="■■■■□"
+			}else if(taste_val=="5"){
+				taste_grim ="■■■■■"
+			}
+			return taste_grim;
+		}
+	
+			<c:if test="${cvo.aroma ne null}">
+				$("#cupping_aroma").text(taste_star("${cvo.aroma}"));
+			</c:if>
+			<c:if test="${cvo.bitter ne null}">
+				$("#cupping_bitter").text(taste_star("${cvo.bitter}"));
+			</c:if>
+			<c:if test="${cvo.acid ne null}">
+				$("#cupping_acidity").text(taste_star("${cvo.acid}"));
+			</c:if>
+			<c:if test="${cvo.sweet ne null}">
+				$("#cupping_sweetness").text(taste_star("${cvo.sweet}"));
+			</c:if>
+			<c:if test="${cvo.body ne null}">
+				$("#cupping_body").text(taste_star("${cvo.body}"));
+			</c:if>
+			
+			
+			<c:if test="${cvo.roastingSel eq 'medium'}">
+			$("#roasting_photo").attr("src","http://localhost:9000/project/images/ps_medium.png");
+			</c:if>
+			<c:if test="${cvo.roastingSel eq 'high'}">
+			$("#roasting_photo").attr("src","http://localhost:9000/project/images/ps_high.png");
+			</c:if>
+			<c:if test="${cvo.roastingSel eq 'city'}">
+			$("#roasting_photo").attr("src","http://localhost:9000/project/images/ps_city.png");
+			</c:if>
+			<c:if test="${cvo.roastingSel eq 'fullcity'}">
+			$("#roasting_photo").attr("src","http://localhost:9000/project/images/ps_fullcity.png");
+			</c:if>
+			 
+			
+			
+			
 		
-		   //천단위 콤마 펑션
+		//천단위 콤마 펑션
 		function addComma(value){
 		     value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		  return value; 
@@ -31,7 +80,7 @@
 			}
 		
 		var compose_arr = [];
-		 
+		 var buy_list = new Array(); 
 		 //고른제품 추가되는 기능
 		function explan_table(compose,compose_price){
 			var output="";
@@ -39,7 +88,7 @@
 			output += '<tr id="opt_product'+uuid+'">';
 				output += 	'<td>';
 					output +=   '<p id="ptitle_kor">';
-						output +=   '<span id="bname">에티오피아 시다모 G2 커피</span>';
+						output +=   '<span id="bname">'+"${vo.ptitle}"+ '</span>';
 						output +=   '<br>';
 						output +=   '-';
 						output +=   '<span id="bcompose">'+compose+'</span>';
@@ -126,7 +175,24 @@
 		  		
 		    });
 		    
+		  	$("#product_buy").click(function(){
+			    buy_list.push({ptitle:'${vo.ptitle}', compose:compose,tot_price:tot_price,pmsphoto:'${vo.pmsphoto}',count:$("#opt_product"+uuid+" #bcount_input").val(),compose_price:compose_price,total_price:total_price,total_count:total_count});
+			    var jsonData = JSON.stringify(buy_list);
+	/* 		    var jsonData = JSON.stringify(buy_list[0].ptitle); */
+			    
+			    
+			   // alert(jsonData.replaceAll("\"", ""));
+				$("#hidden_buylist").val(jsonData);
+				//alert(typeof(jsonData));
+/* 				$("#hidden_buylist").val(jsonData.replaceAll("\"", "")); */
+				//$("#hidden_buylist").val(jsonData);
+				$("#shopbuyForm").submit();
+		  	})
 		    
+		    
+
+/* 		    alert(jsonData); */
+
 		} //function explan_table()
 		
 		
@@ -166,6 +232,7 @@
 					
 					var compose = $("#product_100g").text()+"/"+ $(this).children('option:selected').text();
 					var compose_price = parseInt("${vo.pprice100}");
+				
 					explan_table(compose,compose_price);
 					total_price += compose_price;
 					$("#sumprice").text(addComma(String(total_price)));
@@ -204,59 +271,79 @@
  	  			
 			} 
 	  	});
-	  
+	
+	/* 	var jsonTest = {
+		                 no : 1,
+		                 productName : "컴퓨터",
+		                 price : 200000,
+		                 ls:[{"rnum":"10","rank":"15"},{"rnum":"1","rank":"5"}]
 
-	  	
-	  	
+								
+		               };
+
+		$("#te_div").click(function(){
+			$('#test').val(JSON.stringify(jsonTest.ls[1].rnum));
+			alert($("#test").val());
+		}); */
+		
+/* 		var json_buylist = {data:[{name:'라이언', value:13}, {name:'콘', value:10}, {name:'무지', value:5}, {name: '프로도', value:40}]};
+
+		var boxoffice =buylist.buylistResult; // 코드 좀 줄이기위해서 쓴거임
+		output += "<td>"+boxoffice.buylistResulteList[i].rank +"</td>";
 	  	$("#product_buy").click(function(){
-	  		alert("비번 입력해");
+	  		$("#shopbuyForm").submit();
 	  	});
+ */
    });//ready
 </script>
 
 
 </head>
 <body>
+
+<div class="content" >
  <!-- header -->
 	<jsp:include page="../header.jsp" /> 
 
-<div class="content">
-	<aside class="side">
+<div class="color" style=" display:block;"></div>
+	<aside class="side" >
 		<div class="sidecontent">
+		
+
 			<ul class="all">
-				<a href="http://localhost:9000/project/shopMain.do"><img src="http://localhost:9000/project/images/logo.png"></a>
-				<li class="allli">
+				<a href="http://localhost:9000/project/index.do"><img src="http://localhost:9000/project/images/logo.png"></a>
+								<li class="allli">
 					<h3 id="subCoffeeTitle">커피</h3>
 						<ul class="subul" id="subulcoffee">
-							<li class="subli" id="sub1"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=싱글오리진">싱글오리진</a></li>
-							<li class="subli" id="sub2"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=블렌드">블렌드</a></li>
-							<li class="subli" id="sub3"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=스페셜티">스페셜티</a></li>
-							<li class="subli" id="sub4"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=커피팩/선물세트">커피팩/선물세트</a></li>				
-							<li class="subli" id="sub5"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=더치커피">더치커피</a></li>				
-							<li class="subli" id="sub6"><a href="http://localhost:9000/project/shopMain.do?kind1=coffee&&kind2=디카페인">디카페인</a></li>	
+							<li class="subli" id="싱글오리진"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=coffee&&pkind2=싱글오리진">싱글오리진</a></li>
+							<li class="subli" id="블렌드"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=coffee&&pkind2=블렌드">블렌드</a></li>
+							<li class="subli" id="스페셜티"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=coffee&&pkind2=스페셜티">스페셜티</a></li>
+							<li class="subli" id="선물세트"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=coffee&&pkind2=선물세트">커피팩/선물세트</a></li>				
+							<li class="subli" id="더치커피"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=coffee&&pkind2=더치커피">더치커피</a></li>				
+							<li class="subli" id="디카페인"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=coffee&&pkind2=디카페인">디카페인</a></li>	
 						</ul>						
 				</li>
 				<li class="allli">
 					<h3 id="subGoodsTitle">커피용품</h3>
 						<ul class="subul" id="subulgoods">
-							<li class="subli" id="sub7">핸드드립</li>
-							<li class="subli" id="sub8">커피추출용품</li>
-							<li class="subli" id="sub9">브루잉세트</li>
-							<li class="subli" id="sub10">테이크아웃</li>
-							<li class="subli" id="sub11">Bean's Story 굿즈</li>
+							<li class="subli" id="핸드드립"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=goods&&pkind2=핸드드립">핸드드립</a></li>
+							<li class="subli" id="커피추출용품"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=goods&&pkind2=커피추출용품">커피추출용품</a></li>
+							<li class="subli" id="브루잉세트"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=goods&&pkind2=브루잉세트">브루잉세트</a></li>
+							<li class="subli" id="테이크아웃"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=goods&&pkind2=테이크아웃">테이크아웃</a></li>				
+							<li class="subli" id="굿즈"><a href="http://localhost:9000/project/shopMain3_2.do?pkind1=goods&&pkind2=굿즈">Bean's Story 굿즈</a></li>				
 						</ul>
 					
 				</li>
-				<li class="allli"><h3 id="subTeaTitle">티</h3></li>
 				<li class="allli"><h3>고객센터</h3></li>
 				<li class="allli"><h3>이벤트</h3></li>
 			</ul>		
-		</div>s
+		</div>
 	</aside>
-	<div class="shopMain">
+	<div class="shopMain"  >
+		
 		<!-- shopMainCenter 시작 -->
-		<div class="shopMainCenter">
-			<div class="centerExplanation_1">
+		<div class="shopMainCenter"  >
+			<div class="centerExplanation_1"  >
 				<ul >
 					<li> 
 						<img src="http://localhost:9000/project/resources/upload/${vo.pmphoto}" class="pmphoto" id ="pmphoto">
@@ -269,13 +356,13 @@
 
 					<p>
 						<span style="font-size: 9pt;">
-							<span style="color: rgb(37, 37, 37);" class="kind2" id ="kind2">[ 싱글오리진 ]</span>
+							<span style="color: rgb(37, 37, 37);" class="kind2" id ="kind2">[ ${cvo.pkind} ]</span>
 						</span>
 					</p>
 					<p>
 						<b style="font-size: 9pt;">
 							<span style="font-size: 20pt;">
-								<span style="color: rgb(37, 37, 37);" class="ptitle_eng" id="ptitle_eng">${vo.ptitle} &nbsp;<br></span>
+								<span style="color: rgb(37, 37, 37);" class="ptitle_eng" id="ptitle_eng">${cvo.ptitleEng} &nbsp;<br></span>
 							</span>
 						</b>
 						<span style="font-size: 9pt; color: rgb(154, 154, 154);">
@@ -296,11 +383,11 @@
 						</span>
 					</p>
 					<p class="tasting_content_p1" id="tasting_content_p1">
-						<font color="#464646">에티오피아 커피는 커피의 귀부인이라고 불리며 그중에 시다모는 산뜻한 산미와 함께 베리와 초콜릿 플레이버를 가지고 있어 블렌딩에 좋은 고급 모카계열의 커피입니다. 
+						<font color="#464646">${cvo.productContent}
 						</font>
 					</p>
 					<p class="tasting_content_p2" id="tasting_content_p2">
-						<font color="#464646">에티오피아 시다모(Sidamo) 지역의 다채로운 자연환경에서 자란 원두는 과일향과 견과류, 허브향이 나는것이 특징입니다. </font>
+						<font color="#464646"></font>
 					</p>
 					<p class="tasting_content_p3" id="tasting_content_p3">
 						<font color="#464646">
@@ -314,12 +401,12 @@
 					</p>
 					<div style="padding:5% 2%; border-top:1px solid #c9c9c9; border-bottom:1px solid #c9c9c9; ">
 						<p>
-							<b><span style="font-size: 10pt;" class="kind2" id ="kind2">· 싱글오리진 </span>
+							<b><span style="font-size: 10pt;" class="kind2" id ="kind2">·${cvo.pkind }</span>
 							</b>
 							<span style="font-family: palatino;">
 								<em>
 									<span style="font-size: 10pt;">
-										<span style="color: rgb(125, 125, 125); font-style: italic;" class="kind2_eng" id ="kind2_eng">Single origin</span>
+										<span style="color: rgb(125, 125, 125); font-style: italic;" class="kind2_eng" id ="kind2_eng">${cvo.noteTitle }</span>
 									</span>
 								</em>
 							</span>
@@ -328,19 +415,19 @@
 						<span style="color: rgb(125, 125, 125);">
 						</span>
 						<p style="padding-left: 8px" class="kind2_content" id="kind2_content">
-							<font color="#7d7d7d">한 지역에서 재배하고 수확한 커피를 말하며, 해당 지역이 가지고 있는 특별한 맛을 느낄 수 있다.</font>
+							<font color="#7d7d7d">${cvo.noteContent }</font>
 						</p>
 					</div>
 
 
 					<span style="font-size: 14pt;">
-						<span style="color: rgb(37, 37, 37); line-height:48px;"><br><br><b>CUPPING NOTE </b>
+						<span style="color: rgb(37, 37, 37); line-height:48px;"><br><br><b>CUPPING NOTE</b>
 						</span>
 					</span>
 					<p class="p1">
 						<span style="color: rgb(136, 136, 136); font-family: Montserrat, noto, sans-serif; font-size: 15px;">
 							<b>
-							<span class="cupping_hash" id="cupping_hash" style="color: rgb(110, 57, 26);">#열대과일 #감귤류 #초콜릿향</span>
+							<span class="cupping_hash" id="cupping_hash" style="color: rgb(110, 57, 26);">${vo.phash}</span>
 							</b>
 						</span>
 					</p>
@@ -353,25 +440,25 @@
 						<tbody>
 							<tr>
 	  							<td width="40%" height="26" style="font-size:11px;" >AROMA</td>
-	  							<td width="60%" style="font-size:14px"class="cupping_aroma" id="cupping_aroma">■■■■□</td>
+	  							<td width="60%" style="font-size:14px"class="cupping_aroma" id="cupping_aroma"></td>
 	 						</tr>
 	 						<tr>
 	    						<td height="26" style="font-size:11px;">BITTER</td>
-	    						<td td=""><span style="font-size:14px" class="cupping_bitter" id="cupping_bitter">■□□□□</span>    
+	    						<td td=""><span style="font-size:14px" class="cupping_bitter" id="cupping_bitter"></span>    
 	   				 			</td>
-	   				 		</tr>
+	   				 		</tr> 
 	    				</tbody>
 					</table>	
 					<table width="200px" cellspacing="1" cellpadding="0" border="0" _moz_resizing="true" style="word-break: break-all; font-size:11px; color:#555; width:200px; float:left;">
 						<tbody>
 							<tr>
 	  							<td width="40%" height="26" style="font-size:11px;" >ACIDITY</td>
-	  							<td width="60%" style="font-size:14px" class="cupping_acidity" id="cupping_acidity">■■■□□</td>
+	  							<td width="60%" style="font-size:14px" class="cupping_acidity" id="cupping_acidity"></td>
 	  						</tr>
 	  						<tr>
 	    						<td height="26" style="font-size:11px;">SWEETNESS
 	    						</td>
-	    						<td td=""><span style="font-size:14px" class="cupping_sweetness" id="cupping_sweetness">■■■□□</span>    
+	    						<td td=""><span style="font-size:14px" class="cupping_sweetness" id="cupping_sweetness"></span>    
 	    						</td>
 	    					</tr>
 	    				</tbody>
@@ -381,7 +468,7 @@
 						<tbody>
 							<tr>
 	  							<td width="40%" height="26" style="font-size:11px;">BODY</td>
-	  							<td width="60%" style="font-size:14px" class="cupping_body" id="cupping_body">■■□□□</td>
+	  							<td width="60%" style="font-size:14px" class="cupping_body" id="cupping_body"></td>
 	  						</tr>
 	    					<tr>
 	      					<td height="26" style="font-size:11px;">&nbsp;</td>
@@ -396,7 +483,7 @@
 					</span>
 	
 		
-					<img style="width:100%;" src="//www.mrkong.co.kr/fmw/img/roasting/high.png" class="roasting_photo" id ="roasting_photo">	
+					<img style="width:100%;" src="" class="roasting_photo" id ="roasting_photo">	
 	
 					<br>
 	
@@ -404,7 +491,7 @@
 					</span>
 					<span style="color: rgb(125, 125, 125); font-size:13px; ">추출방식에 따른 다양한 분쇄도를 제공하고 있으나, 원두의 향을 잃지 않기 위해 원두상태로 받으시는 것을 추천드립니다.</span>
 					<br>
-					<img style="width:100%;" src="//www.mrkong.co.kr/fmw/img/roasting/grinding3.png" class="grinding_photo" id="grinding_photo">	
+					<img style="width:100%;" src="http://localhost:9000/project/images/grinding3.png"class="grinding_photo" id="grinding_photo">	
 
 
 
@@ -412,14 +499,14 @@
 				
 			</div><!-- centerExplanation_2 끝-->
 			<!-- centerReviewTOP 시작-->
-			<div class="centerReviewTOP" >
+			<div class="centerReviewTOP"  >
                         <div style="float:left;">Review (<span class="reviewCount" id="reviewCount">421</span>)
 						</div>
                         <div style="float:right; text-align:right;" class="bt">
 								<a href="#">Write</a>
 								<a href="#" style="margin-left:15px">View all</a>
 						</div>
-                        <div style="clear:both"></div>
+                        <div ></div> 
             </div>
             <!-- centerReviewTOP 끝-->
 
@@ -464,7 +551,7 @@
 								<a href="#">Write</a>
 								<a href="#" style="margin-left:15px">View all</a>
 						</div>
-                        <div style="clear:both"></div>
+                        <div></div> 
             </div>
             <!-- centerQaTOP 끝-->
                         <!-- centerReviewTable시작 -->
@@ -530,8 +617,9 @@
 					</tr>
 					<tr>
 						<td>
-							<strong id="product_price_text">${vo.pprice100}원</strong>
-							<input id="product_price" name="product_price" value="" type="hidden">
+							<strong id="product_price_text" style="font-size:25px; margin-bottom:10px;">${vo.pprice100}원</strong>
+							<br><br>
+							<!-- <input id="product_price" name="product_price" value="" type="hidden"> -->
 						</td>
 					</tr>
 				</table>
@@ -544,8 +632,8 @@
 					<tr>
 						<th>중량 선택</th>
 						<td>
-							<ul>
-								<li> <span id="product_100g">100g</span></li>
+							<ul style="margin-left:16px;">
+								<li> <span id="product_100g" >100g</span></li>
 								<li> <span id="product_200g">200g</span></li>
 								<li> <span id="product_500g">500g</span></li>
 								<li> <span id="product_1kg">1kg</span></li>
@@ -567,35 +655,41 @@
 						<!-- 		<select id="product_crush">
 								<option value="" selected disabled hidden>-[필수]옵션을 선택해 주세요-</option>
 								<option value="" disabled>---------------</option> -->
-							</select>
+							<!-- </select> -->
 						</td>
 					</tr>
 				
 				</table>
 			</div>
-			<div class="productExplanation_3">
-				<table class="ExplanationTable_3" >
-
-				</table>
-			
-			</div>
-			<div class="productExplanation_4">
-				합계 : <span class="sumprice" id="sumprice"><strong>0</strong></span>	<span id="bcount_span">(0)개</span>
-			
-			</div>
-			<div class="productExplanation_5">
-				<div class="product_buy" id="product_buy">
-					<a href="http://localhost:9000/project/shopBuylist.do"><span>바로구매</span></a>
-				</div>
-				<div class="product_cart" id="product_cart">
-					<span>장바구니</span>
-				</div>
-				<div class="product_wish" id="product_wish">
-					<span>관심상품</span>
-				</div>
+			<form name="shopbuyForm" id="shopbuyForm"action="shopBuylist.do" method="post" >
+			<input type="hidden" id="hidden_buylist"  name ="hidden_buylist" value="">
+				<div class="productExplanation_3">
+					<table class="ExplanationTable_3" >
+	
+					</table>
 				
-			</div>
+				</div>
+				<div class="productExplanation_4">
+					합계 : <span class="sumprice" id="sumprice" ><strong>0</strong></span>	<span id="bcount_span">(0)개</span>
+				
+				</div>
+				<div class="productExplanation_5">
+				
+						<div class="product_buy" id="product_buy">
+							<span>바로구매</span>
+						</div>
+				
+					<div class="product_cart" id="product_cart">
+						<span>장바구니</span>
+					</div>
+					<div class="product_wish" id="product_wish" >
+						<span>관심상품</span>
+					</div>
+					
+				</div>
+			</form>
 		</div>
+		
 		<!-- shopMainRight 끝 -->
 		
 		

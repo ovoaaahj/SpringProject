@@ -24,19 +24,19 @@ public class MemberServiceImpl implements MemberService {
 	
 	/**
 	 * 회원정보 수정 : redirect로 .. 
-	 
-	public ModelAndView getuserUpdate(String id){
+	 */
+	public ModelAndView getuserUpdate(CoffeeMemberVO vo){
 		ModelAndView mv = new ModelAndView();
 		int result = coffee_memberDAO.getUpdate(vo);
 		if(result != 0) {
-			mv.addObject("pass", vo.getPass());
-			mv.setViewName("/find_id_pw/find_id_pw");
+			mv.addObject("msg", "회원정보가 수정되었습니다!");
+			mv.setViewName("redirect://mypage/userInfo.do");
 		}else {
-			mv.addObject("failPass", "failPass");
-			mv.setViewName("/find_id_pw/find_id_pw");
+			/*mv.addObject("failPass", "failPass");*/
+			mv.setViewName("errorPage");
 		}
 		return mv;
-	}*/
+	}
 	
 	/**
 	 * 회원정보 가져오기

@@ -20,6 +20,24 @@ public class ProductDAO extends DBConn{
 	private static String namespace="mapper.shop";
 	
 	
+	public boolean Product_Content_Update_proc(ProductContentVO vo) {
+		boolean result= false;
+		int val =	sqlSession.update(namespace+".Product_Content_Update_proc",vo);
+		if(val!=0) result = true;
+		
+		return result;
+	}
+	public ProductContentVO Product_Content_Update(String pid) {
+		ProductContentVO vo = sqlSession.selectOne(namespace+".updateProductContent",pid);
+		
+		return vo;
+	}
+	public ProductContentVO Product_Content_Select(String pid) {
+		ProductContentVO vo = sqlSession.selectOne(namespace+".selectProductContent",pid);
+		
+		return vo;
+	}
+	
 	public boolean getContentInsert(ProductContentVO vo) {
 		
 		boolean result = false;

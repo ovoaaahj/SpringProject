@@ -12,6 +12,7 @@ import com.spring.dao.CartDAO;
 import com.spring.dao.CoffeeMemberDAO;
 import com.spring.service.MemberServiceImpl;
 import com.spring.service.MypageServiceImpl;
+import com.spring.vo.CoffeeMemberVO;
 
 @Controller
 public class MyPageController {
@@ -33,12 +34,12 @@ public class MyPageController {
 	
 	/**
 	 * 마이페이지 - 회원정보 수정
-	
+	*/
 	@RequestMapping(value="/mypage/user_update_proc.do", method=RequestMethod.POST)
-	public ModelAndView getuserUpdate(String id) {
-		ModelAndView mv = new ModelAndView();
-		return memberService.getuserUpdate(id); 
-		} */
+	public ModelAndView getuserUpdate(CoffeeMemberVO vo) {
+		//ModelAndView mv = new ModelAndView();
+		return memberService.getuserUpdate(vo); 
+		} 
 	
 	/**
 	 * 장바구니 삭제 proc
