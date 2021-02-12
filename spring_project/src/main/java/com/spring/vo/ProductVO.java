@@ -4,7 +4,17 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class ProductVO {
 	String pid,pmphoto,pmsphoto,pcphoto,pcsphoto,psub1,psub1s,psub2,psub2s,psub3,
-			psub3s,ptitle,phash,pprice100,pprice200,pprice500,pprice1000 ,pcontent,pcontent2,pdate,pkind1,pkind2,phphoto,phsphoto;
+			psub3s,ptitle,phash,pprice100,pprice200,pprice500,pprice1000 ,pcontent,pcontent2,pdate,pkind1,pkind2,phphoto,phsphoto,ppricedis;
+	public String getPpricedis() {
+		return ppricedis;
+	}
+
+	public void setPpricedis(String ppricedis) {
+		this.ppricedis = ppricedis;
+	}
+
+
+
 	int rno;
 	
 

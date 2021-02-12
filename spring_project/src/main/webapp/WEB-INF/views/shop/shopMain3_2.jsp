@@ -229,17 +229,17 @@
 					    <div class='price'>
 					   		<c:if test ="${!empty vo.psub1 }">
 						    <div class='beforeprice'>
-								${vo.pprice100 }
+								${vo.pprice100 }원
 							</div>
 							</c:if>
 							<c:if test ="${empty vo.psub1 }">
 								<div class='nowprice'>
-									${vo.pprice100 }
+									${vo.pprice100 }원
 								</div>
 							</c:if>
 							<div class='nowprice'>
 								<c:if test ="${!empty vo.psub1 }">
-									${vo.pprice100 }
+									${vo.ppricedis }원
 								</c:if>
 							</div>
 							<div class='discount'>
@@ -249,7 +249,7 @@
 							</div>
 						</div>
 						<div class='review'>
-							후기: 17
+							
 						</div>
 		   		 </td>
 		   	<% if(i%4==3) {%>
