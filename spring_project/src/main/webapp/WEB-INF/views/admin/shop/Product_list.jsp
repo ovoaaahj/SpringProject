@@ -197,7 +197,6 @@
 						chk_list[i] = $(this).attr("id");
 					}
 				});
-				
 				$(location).attr("href","http://localhost:9000/project/admin/product_delete_proc.do?chklist="+chk_list);
 				//삭제리스트 - nid 
 				//체크박스중에 체크된 리스트만 가져와서 삭제리스트에 추가
@@ -279,7 +278,7 @@
 						output += "</tr>"
 					for(var i in jdata.jlist){
 						output += "<tr>"
-						output += "<td><input type='checkbox' name='chk' id="+jdata.jlist[i].pid+"class='part' onchange='changeall(this)'></td>"
+						output += "<td><input type='checkbox' name='chk' onchange='changeall(this)' id="+jdata.jlist[i].pid+"></td>"
 						output += "<td><a href='http://localhost:9000/project/admin_product_content.do?pid="+jdata.jlist[i].pid+"'>"+jdata.jlist[i].ptitle+"</td></a>"
 						output += "<td>"+jdata.jlist[i].pprice+"</td>"
 						output += "<td>"+jdata.jlist[i].pkind1+"</td>"
