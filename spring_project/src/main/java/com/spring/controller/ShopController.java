@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.service.ShopService;
 import com.spring.vo.BuygoVO;
+import com.spring.vo.RealBuyVO;
 
 @Controller
 public class ShopController {
@@ -48,9 +51,15 @@ public class ShopController {
 		return shopService.getProductContent(pid);
 	}
 	@RequestMapping(value = "/shopBuylist.do", method = RequestMethod.POST)
-	public ModelAndView shopBuylist(BuygoVO vo) {
+	public ModelAndView shopBuylist(BuygoVO vo,HttpSession session) {
 		
-		return shopService.shopBuylist(vo);
+		return shopService.shopBuylist(vo,session);
+	}
+	
+	@RequestMapping(value = "/product_buy_success.do", method = RequestMethod.POST)
+	public ModelAndView product_buy_success(RealBuyVO vo) {
+			
+		return shopService.product_buy_success(vo);
 	}
 
 

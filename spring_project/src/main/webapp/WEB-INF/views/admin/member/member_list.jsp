@@ -9,18 +9,40 @@
 <title>Insert title here</title>
 <style>
 
+div.member_list_table{
+	/*	border:1px solid purple; */
+		text-align:auto;
+		width:1000px;
+		margin:auto;
+		height:800px;
+		padding-top:10px;
+	}
+	div.member_list_table div.product_TitleName{
+	/*	border:1px solid red; */
+		text-align:center;
+	}
+	div.member_list_table div.member_title h2{
+		border-bottom:1px solid gray;
+		border-top:1px solid gray;
+		display:inline-block;
+		width:900px;
+		height:60px;
+		font-Size:30px;
+		padding-top:20px;
+	}
+
 /** admin aside */
-	div.admin_shop_content{
+	div.admin_member_content{
 		width:1500px;
 	}
-	div.admin_shop_content>aside.adminaside{
+	div.admin_member_content>aside.adminaside{
+		margin-top:50px;
 		width:200px;
 		height:600px;
-		border:1px solid red;
+		border-right:1px solid gray;
 		margin-left:50px;
 		float:left;
 	}
-	
 	aside.adminaside h2{
 		 border-bottom:2px solid gray;
 		 height:60px;
@@ -29,10 +51,11 @@
 		 font-weight:70;
 		 margin-top:20px;
 	}
-	
 	aside.adminaside ul.adminaside_ul{
 		list-style:none;
-		margin-top:0px;
+		margin-top:100px;
+		/* border:1px solid blue; */
+		margin-top:0;
 	}
 	
 	aside.adminaside ul.adminaside_ul li{
@@ -73,7 +96,7 @@
 		border:1px solid red;
 		text-align:center;
 	}
-	div.admin_member_list div.member_title h1{
+	div.admin_member_list div.member_title h2{
 		border-bottom:1px solid gray;
 		display:inline-block;
 		width:200px;
@@ -135,7 +158,7 @@
 
 <div class="admin_member_content">
 <aside class="adminaside">
-		<h2>관리자메뉴</h2>
+	<h2>관리자메뉴</h2>
 	<ul class=adminaside_ul>
 		
 		<li><a href="http://localhost:9000/project/admin/member_list.do"><div class="choose">회원관리</div></a></li>
@@ -154,19 +177,21 @@
 						<th>아이디</th>
 						<th>성명</th>
 						<th>핸드폰번호</th>
+						<th>이메일</th>
 						<th>가입일자</th>
 					</tr>
-					<c:forEach var="vo" items="${list}">
+					<c:forEach var="vo" items="${plist}">
 					<tr>
 						<td>${vo.rno }</td>
 						<td>${vo.id }</td>
 						<td>${vo.name }</td>
 						<td>${vo.hp }</td>
+						<td>${vo.email }</td>
 						<td>${vo.mdate }</td>						
 					</tr>
 					</c:forEach>
 					<tr>
-						<td colspan="5"> <div id="ampaginationsm"></div> </td>
+						<td colspan="6"> <div id="ampaginationsm"></div> </td>
 					</tr>
 				</table>
 			</div>

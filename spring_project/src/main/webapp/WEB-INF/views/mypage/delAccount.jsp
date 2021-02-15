@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.spring.vo.SessionVO"%>
-    <%--
+    pageEncoding="UTF-8" import="com.spring.vo.*"%>
+            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
+    <%
     	SessionVO svo = (SessionVO)session.getAttribute("svo");
     	
     	if(svo != null){
-    --%>
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,6 +128,14 @@ button.btn_style:hover {
 	opacity:0.5;
 	transition: all 500ms ease; 
 }
+
+label {
+	font-size:40px;
+}
+
+tr:nth-child(2) td {
+	list-style-type:none;
+}
 </style>
 </head>
 <body>
@@ -152,16 +162,15 @@ button.btn_style:hover {
 					 	<tr class="t1">
 					 		<td><label><img src="http://localhost:9000/project/images/del_account.png"></label></td>
 					 	</tr>
-					 	<tr>
-					 		<td>
+					 	
+					  <tr>
+					  	<td>
 					 			<label>탈퇴 하시겠습니까?</label>
+					 		<li>아이디
+					 		<input type="text" name="id" id="id" value=<%=svo.getId() %>></li>
 					 		</td>
 					 	</tr>
-					<!--  <tr>
-					 		<th>아이디</th>
-					 		<td><input type="text" name="id" disabled value=""></td>
-					 	</tr>
-					 	<tr>
+					<!-- 	<tr>
 					 		<th>비밀번호</th>
 					 		<td><input type="password" name="pass" placeholder="비밀번호 입력"></td>
 					 	</tr>
@@ -189,4 +198,4 @@ button.btn_style:hover {
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
-<%-- } --%>
+<% } %>

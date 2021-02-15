@@ -13,6 +13,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.spring.dao.CoffeeMemberDAO;
 import com.spring.vo.CoffeeMemberVO;
+import com.spring.vo.ProductVO;
 import com.spring.vo.SessionVO;
 
 @Service("memberService")
@@ -68,7 +69,7 @@ public class MemberServiceImpl implements MemberService {
 		int end = 0;
 		int pageSize = 3; //한 페이지당 출력되는 row
 		int pageCount = 1; //전체 페이지 수  : 전체 리스트 row /한 페이지당 출력되는 row
-		int dbCount = dao.getListCount(sname, svalue); //DB연동 후 전체로우수 출력
+		int dbCount = dao.getListCountajax(sname, svalue); //DB연동 후 전체로우수 출력
 		System.out.println("dbCount--->>" + dbCount);	
 		int reqPage = 1; //요청페이지
 		
@@ -121,7 +122,40 @@ public class MemberServiceImpl implements MemberService {
 	 *  관리자페이지 - 회원리스트 출력
 	 */
 	public ModelAndView getMemberListAjax() {
-		ModelAndView mv= new ModelAndView();//검색기능
+		ModelAndView mv= new ModelAndView();
+		
+		int start = 0;
+		int end = 0;
+		int pageSize = 12; //한 페이지당 출력되는 row
+		int pageCount = 1; //전체 페이지 수  : 전체 리스트 row /한 페이지당 출력되는 row
+		int dbCount = coffee_memberDAO.getListCount(); //DB연동 후 전체로우수 출력
+		int reqPage = 1; //요청페이지
+		
+		//2-2. 전체페이지 수 구하기 - 화면출력
+		if(dbCount % pageSize == 0){
+			pageCount = dbCount/pageSize;		
+		}else{
+			pageCount = dbCount/pageSize +1;
+		}
+		
+		//2-3. start, end 값 구하기
+		/*if(rpage != null){
+			reqPage = Integer.parseInt(rpage);
+			start = (reqPage-1) * pageSize +1 ;
+			end = reqPage*pageSize;	
+		}else{
+			start = reqPage;
+			end = pageSize;
+		}*/
+
+
+		ArrayList<CoffeeMemberVO> plist = coffee_memberDAO.getMemberList();
+
+		mv.addObject("plist", plist);
+		mv.addObject("dbCount", dbCount);
+		mv.addObject("pageSize", pageSize);
+		mv.addObject("reqPage", reqPage);
+		
 		mv.setViewName("/admin/member/member_list_ajax");
 		return mv;
 	}
@@ -185,6 +219,7 @@ public class MemberServiceImpl implements MemberService {
 
 		if(svo.getResult() != 0) {
 			session.setAttribute("svo", svo);
+			session.setAttribute("id", vo.getId());
 			result = "index";
 		}else {
 			result = "errorPage";

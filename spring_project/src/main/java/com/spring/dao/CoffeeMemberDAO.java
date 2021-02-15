@@ -23,26 +23,45 @@ public class CoffeeMemberDAO extends DBConn{
 	
 	
 
+
+	public CoffeeMemberVO getMemberContent(String id) {
+		
+		return sqlSession.selectOne(namespace_member+".getMemberContent", id);
+	}
 	 /**
 	  * 마이페이지 - 회원정보 가져오기
 	  */
 	 
 	public CoffeeMemberVO getList(String id) {
 		CoffeeMemberVO vo = new CoffeeMemberVO();
+
+
 	
 		return sqlSession.selectOne(namespace+".userinfo", vo);
 	}
 	 
-	/**
+	
+
+/**
 	 * 관리자페이지 - 리스트 카운트 
 	 */
-	public int getListCount(String sname, String svalue) {
+	public int getListCountajax(String sname, String svalue) {
 		Map<String,String> param = new HashMap<String,String>();
 		param.put("sname", sname);
 		param.put("svalue", svalue);
 		return sqlSession.selectOne(namespace_member+".listcountajax", param);
 	}
+	
 
+	/**
+	 * 관리자페이지 - 리스트 카운트 
+	 */
+	public int getListCount() {
+		return sqlSession.selectOne(namespace_member+".listcount");
+	}
+
+	
+	
 	/**
 	 *  관리자 페이지 - 회원 검색 기능 int String valueof
 	 */
@@ -56,6 +75,21 @@ public class CoffeeMemberDAO extends DBConn{
 		List<CoffeeMemberVO> list = sqlSession.selectList(namespace_member+".searchlist", param);
 		return (ArrayList<CoffeeMemberVO>)list;
 	}		
+	
+	/**
+	 * 	관리자 페이지 - 페이징 처리
+	 */
+	public ArrayList<CoffeeMemberVO> getMemberList(){
+		//파라미터가 1개 이상인 경우는 Map형식의 객체에 담아서 전송
+	//	Map<String,String> param = new HashMap<String,String>();
+		
+	//	param.put("start", String.valueOf(start));
+		//param.put("end", String.valueOf(end));
+		
+		List<CoffeeMemberVO> plist = sqlSession.selectList(namespace_member+".plist");
+		return (ArrayList<CoffeeMemberVO>)plist;
+
+}
 	
 	/**
 	

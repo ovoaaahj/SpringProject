@@ -18,7 +18,7 @@ public class Admin_memberController {
 	/**
 	 * 회원관리 - 회원 전체 리스트(ajax 호출) // ResponseBody 부분적으로 받음 
 	 * @return
-	 */
+	*/
 	@ResponseBody
 	@RequestMapping(value="/admin/member_list_ajax_proc.do", 
 			method=RequestMethod.GET,
@@ -26,12 +26,13 @@ public class Admin_memberController {
 	public String member_list_ajax_proc(String sname, String svalue, String rpage) {
 		return memberservice.getMemberListAjaxProc(sname, svalue, rpage); //gson.toJson(String으로 변환할 객체)
 	}
+	 
 	/**
 	 * 회원관리 - 회원 전체 리스트
 	 * @return
 	 */
-	@RequestMapping(value="/admin/member_list.do", method=RequestMethod.GET)
-	public ModelAndView member_list(String rpage) {
+	@RequestMapping(value="/admin/member_list_ajax.do", method=RequestMethod.GET)
+	public ModelAndView member_list() {
 		return memberservice.getMemberListAjax(); //검색기능
 }
 	/**

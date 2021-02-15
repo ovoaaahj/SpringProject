@@ -66,7 +66,7 @@ public class Admin_ShopController {
 	
 	
 	/**
-	 * 상품창 목록경로
+	 * 상품창 목록경로 
 	 */
 	@RequestMapping(value="admin/product_list.do", method = RequestMethod.GET)
 	public ModelAndView admin_product_list(String rpage) {

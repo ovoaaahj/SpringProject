@@ -15,7 +15,7 @@
 		<section class="section1">
 			<div>
 				<h2>삭제되었습니다.</h2>
-				<img src="http://localhost:9000/project/images/success.png" width="90%">
+				<img src="http://localhost:9000/project/images/success.png" width="50%">
 			</div>
 		</section>		
 	</div>

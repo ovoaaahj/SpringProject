@@ -65,11 +65,11 @@ ul.adminaside_ul{
 	}
 	 
 	ul.adminaside_ul li div.choose:hover{
-		 -webkit-transform: scale(1.5,1.5);
-    	-moz-transform: scale(1.5,1.5);
-    	-o-transform: scale(1.5,1.5);
-   		 -ms-transform: scale(1.5,1.5);
-   		 transform: scale(1.5,1.5);
+		 -webkit-transform: scale(1.2,1.2);
+    	-moz-transform: scale(1.2,1.2);
+    	-o-transform: scale(1.2,1.2);
+   		 -ms-transform: scale(1.2,1.2);
+   		 transform: scale(1.2,1.2);
 	} 
 	 h2{
 		 border-bottom:2px solid gray;
@@ -88,7 +88,7 @@ ul.adminaside_ul{
 	<div class="sidenav">
 		<h2>관리자메뉴</h2>
 		<ul class=adminaside_ul>
-		<li><a href="http://localhost:9000/project/admin/member_list.do"><div class="choose">회원관리</div></a></li>
+		<li><a href="http://localhost:9000/project/admin/member_list_ajax.do"><div class="choose">회원관리</div></a></li>
 		<li><a href="http://localhost:9000/project/admin/product_list.do"><div class="choose">상품관리</div></a></li>
 		<li><div class="choose">공지사항관리</div></li>
 		</ul>
