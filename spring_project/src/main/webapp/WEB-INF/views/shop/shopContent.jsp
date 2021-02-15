@@ -83,6 +83,8 @@
 		 var buy_list = new Array(); 
 		 //고른제품 추가되는 기능
 		function explan_table(compose,compose_price){
+			
+			
 			var output="";
 			var uuid = uuidv4();
 			output += '<tr id="opt_product'+uuid+'">';
@@ -115,7 +117,8 @@
 			    document.writeln(set.size); // 3 */
 		      alert("중복발생");
 			    var s = compose_arr.pop();
-			   /*  alert("배열 >"+compose_arr ); */
+			   
+			     //alert("배열 >"+compose_arr ); 
 			    total_price -= compose_price;
 				$("#sumprice").text(addComma(String(total_price)));
 				total_count -= 1;
@@ -156,7 +159,7 @@
 		  		}
 		  	});
 
-		    $("#opt_product"+uuid+" #option_box1_del").click(function(){
+		    $("#opt_product"+uuid+" #option_box1_del").click(function(e){
 		    	
 		    	var find_compose = compose_arr.indexOf(compose)
 		    	 compose_arr.splice(find_compose,1);
@@ -167,12 +170,13 @@
 		  		total_price -= (compose_price * input_count);
 		  		$("#sumprice").text(addComma(String(total_price)));
 		  		$("#opt_product"+uuid).remove();
-		  		
 		  		if(compose_arr.length <= 0){
 		  			
 		  			$(".productExplanation_3").css("display","none");
 		  		}
+		  		alert("ss");
 		  		
+
 		    });
 		  	$("#product_buy").click(function(){
 		  		
@@ -188,8 +192,8 @@
 				$("#shopbuyForm").submit();
 		  	})
 		    
-		    
-
+		
+			
 /* 		    alert(jsonData); */
 
 		} //function explan_table()
@@ -542,48 +546,8 @@
 				</table>
 			</div>
 			<!-- centerReviewTable끝 -->
-			<!-- centerQaTOP 시작-->
-			<div class="centerQaTOP" >
-                        <div style="float:left;">Q&A (<span class="reviewCount" id="reviewCount">2</span>)
-						</div>
-                        <div style="float:right; text-align:right;" class="bt">
-								<a href="#">Write</a>
-								<a href="#" style="margin-left:15px">View all</a>
-						</div>
-                        <div></div> 
-            </div>
-            <!-- centerQaTOP 끝-->
-                        <!-- centerReviewTable시작 -->
-			<div class="centerQaTable">
-		
-				<table >
-					<tr>
-						<td>번호</td>
-						<td>제목</td>
-						<td>아이디</td>
-						<td>
-							<div class="QaTableDate">2020-12-29</div>
-						</td>
-						
-					</tr>
-					
-					<tr>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>3</td>
-						<td>3</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td colspan="4"><div id="ampaginationsm"></div></td>
-					</tr>
-				</table>
-			</div>
+
+
             
 		</div>
 		<!-- shopMainCenter 끝 -->
